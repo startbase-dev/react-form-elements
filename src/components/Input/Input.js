@@ -1,8 +1,9 @@
 import React, { forwardRef, useCallback, useMemo, useState } from 'react';
 
+import PropTypes from 'prop-types';
+
 import cx from 'classnames';
 import DOMPurify from 'dompurify';
-import PropTypes from 'prop-types';
 
 import s from './Input.module.css';
 

@@ -1,7 +1,8 @@
 import React from 'react';
 
-import cx from 'classnames';
 import PropTypes from 'prop-types';
+
+import cx from 'classnames';
 
 import Radio from '../Radio/Radio';
 import s from './RadioGroup.module.css';

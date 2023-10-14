@@ -1,7 +1,8 @@
 import React from 'react';
 
-import cx from 'classnames';
 import PropTypes from 'prop-types';
+
+import cx from 'classnames';
 
 import { CheckIcon } from '../Icon';
 import s from './Radio.module.css';

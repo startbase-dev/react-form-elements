@@ -1,3 +1,6 @@
+import '../src/style/globals.css';
+import './storybook.css';
+
 const preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
