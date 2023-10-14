@@ -1,0 +1,54 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2024": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:css-modules/recommended",
+    "plugin:compat/recommended",
+    "plugin:prettier/recommended",
+    "prettier",
+    "plugin:storybook/recommended"
+  ],
+  "plugins": ["compat", "prettier", "css-modules"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/no-unused-prop-types": 2,
+    "react/no-unknown-property": 0,
+    "@next/next/no-img-element": ["off"],
+    "jsx-a11y/alt-text": ["off"],
+    "linebreak-style": [2, "unix"],
+    "semi": [2, "always"],
+    "no-multiple-empty-lines": [
+      2,
+      {
+        "max": 1
+      }
+    ],
+    "react/display-name": 0,
+    "react-hooks/exhaustive-deps": 2,
+    "react/require-default-props": [
+      2,
+      {
+        "forbidDefaultForRequired": false,
+        "ignoreFunctionalComponents": false
+      }
+    ],
+    "no-useless-catch": 0,
+    "react/prefer-stateless-function": [
+      2,
+      {
+        "ignorePureComponents": false
+      }
+    ]
+  }
+}
