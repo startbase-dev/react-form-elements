@@ -1,30 +1,30 @@
 :root {
-    --transparent: transparent;
-    --white: #fff;
-    --white-rgb: 255 255 255;
-    --black: #000;
-    --black-rgb: 0 0 0;
+    --rfe-transparent: transparent;
+    --rfe-white: #fff;
+    --rfe-white-rgb: 255 255 255;
+    --rfe-black: #000;
+    --rfe-black-rgb: 0 0 0;
 
-    --color: #000;
-    --color-placeholder: #646464;
-    --color-error: #ff383e;
+    --rfe-color: #000;
+    --rfe-color-placeholder: #646464;
+    --rfe-color-error: #ff383e;
 
-    --border: #e6e6e6;
+    --rfe-border: #e6e6e6;
 
-    --background: #fafafa;
-    --background-selected: #f0f0f0;
-    --background-disabled: #e1e1e1;
+    --rfe-background: #fafafa;
+    --rfe-background-selected: #f0f0f0;
+    --rfe-background-disabled: #e1e1e1;
 
-    --border-radius: 6px;
+    --rfe-border-radius: 6px;
 
-    --font-size: 16px;
-    --input-height: 56px;
-    --spacing: 16px;
-    --label-spacing: 10px;
+    --rfe-font-size: 16px;
+    --rfe-input-height: 56px;
+    --rfe-spacing: 16px;
+    --rfe-label-spacing: 10px;
 
-    --focus: 0 0 10px #dcdcdc;
+    --rfe-focus: 0 0 10px #dcdcdc;
 
-    --font-family: 'Arial', sans-serif;
+    --rfe-font-family: 'Arial', sans-serif;
 }
 
 * {

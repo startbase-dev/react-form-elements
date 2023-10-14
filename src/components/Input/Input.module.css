@@ -1,5 +1,5 @@
 .root {
-    margin-bottom: var(--spacing);
+    margin-bottom: var(--rfe-spacing);
 }
 
 .inputRoot {
@@ -7,23 +7,23 @@
 }
 
 .label {
-    font-size: var(--font-size);
+    font-size: var(--rfe-font-size);
     line-height: 1;
-    color: var(--color);
+    color: var(--rfe-color);
     margin-bottom: 0;
     position: absolute;
     top: -2px;
     left: 16px;
     cursor: text;
-    transform: translateY(calc((var(--input-height) - 14px) / 2));
+    transform: translateY(calc((var(--rfe-input-height) - 14px) / 2));
     transition: all 250ms;
 }
 
 .label.disableShrink {
     display: block;
     position: static;
-    margin-bottom: var(--label-spacing);
-    color: var(--color);
+    margin-bottom: var(--rfe-label-spacing);
+    color: var(--rfe-color);
     transform: none;
 }
 
@@ -45,22 +45,22 @@
     width: 100%;
     font-size: 14px;
     line-height: 24px;
-    color: var(--color);
+    color: var(--rfe-color);
     padding: 19px 16px 0;
-    background: var(--background);
+    background: var(--rfe-background);
     border: 1px solid var(--border);
-    border-radius: var(--border-radius);
-    height: var(--input-height);
+    border-radius: var(--rfe-border-radius);
+    height: var(--rfe-input-height);
     transition: all 250ms;
-    font-family: var(--font-family);
+    font-family: var(--rfe-font-family);
 }
 
 .input:focus {
-    box-shadow: var(--focus);
+    box-shadow: var(--rfe-focus);
 }
 
 .input::placeholder {
-    color: var(--color-placeholder);
+    color: var(--rfe-color-placeholder);
     font-size: 14px;
 }
 
@@ -91,7 +91,7 @@
     left: 16px;
     font-size: 14px;
     line-height: 16px;
-    color: var(--color);
+    color: var(--rfe-color);
     padding-right: 13px;
     border-right: 1px solid var(--border);
 }
@@ -127,13 +127,13 @@
 }
 
 .errorLabel {
-    color: var(--color-error);
+    color: var(--rfe-color-error);
     font-size: 12px;
-    padding-top: var(--label-spacing);
+    padding-top: var(--rfe-label-spacing);
 }
 
 .disabled {
-    background: var(--background-disabled);
-    color: var(--color);
+    background: var(--rfe-background-disabled);
+    color: var(--rfe-color);
     cursor: not-allowed;
 }

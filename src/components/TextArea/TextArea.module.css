@@ -5,11 +5,11 @@
 }
 
 .label {
-    font-size: var(--font-size);
+    font-size: var(--rfe-font-size);
     line-height: 1;
     width: calc(100% - 16px);
-    background-color: var(--background);
-    color: var(--color);
+    background-color: var(--rfe-background);
+    color: var(--rfe-color);
     margin-bottom: 0;
     position: absolute;
     top: 0;
@@ -18,7 +18,7 @@
     align-items: flex-end;
     height: 20px;
     cursor: text;
-    transform: translateY(calc((var(--input-height) - 14px) / 2));
+    transform: translateY(calc((var(--rfe-input-height) - 14px) / 2));
     transition: transform 250ms,
     font-size 250ms;
 }
@@ -27,7 +27,7 @@
     display: block;
     position: static;
     margin-bottom: 10px !important;
-    color: var(--color);
+    color: var(--rfe-color);
     transform: none;
     height: 16px;
     width: auto;
@@ -52,21 +52,21 @@
     display: flex;
     flex-direction: column;
     transition: all 250ms;
-    border-radius: var(--border-radius);
+    border-radius: var(--rfe-border-radius);
 }
 
 .inputContainer .innerWrapper .input {
-    background-color: var(--background);
+    background-color: var(--rfe-background);
     resize: none;
-    color: var(--color);
+    color: var(--rfe-color);
     padding: 7px 16px;
     font-size: 14px;
     width: 100%;
     line-height: 24px;
-    border-radius: var(--border-radius);
+    border-radius: var(--rfe-border-radius);
     border: 1px solid var(--border);
     transition: all 250ms;
-    font-family: var(--font-family);
+    font-family: var(--rfe-font-family);
 }
 
 .inputContainer .innerWrapper .input.withLabel {
@@ -80,26 +80,26 @@
 
 .inputContainer .innerWrapper .input:focus {
     transition: all 250ms;
-    box-shadow: var(--focus);
+    box-shadow: var(--rfe-focus);
 }
 
 .errorLabel {
-    color: var(--color-error);
-    font-size: var(--font-size);
-    margin-top: var(--label-spacing);
+    color: var(--rfe-color-error);
+    font-size: var(--rfe-font-size);
+    margin-top: var(--rfe-label-spacing);
 }
 
 .disabled {
-    background-color: var(--background-disabled) !important;
-    color: var(--color) !important;
+    background-color: var(--rfe-background-disabled) !important;
+    color: var(--rfe-color) !important;
     cursor: not-allowed !important;
 }
 
 .disableShrink {
     display: block;
     position: static !important;
-    font-size: var(--font-size) !important;
-    color: var(--color);
+    font-size: var(--rfe-font-size) !important;
+    color: var(--rfe-color);
     transform: none;
     background: none !important;
 }
@@ -114,8 +114,8 @@
 .input:-ms-input-placeholder, /* IE 10+ */
 .input::-webkit-input-placeholder, /* Webkit based */
 .input::placeholder { /* Modern browsers */
-    font-size: var(--font-size);
-    color: var(--color-placeholder);
+    font-size: var(--rfe-font-size);
+    color: var(--rfe-color-placeholder);
 }
 
 .labelPlaceholder {

@@ -3,7 +3,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-bottom: var(--spacing);
+    margin-bottom: var(--rfe-spacing);
     cursor: pointer;
 }
 
@@ -21,7 +21,7 @@
     margin-top: 1px;
     font-size: 14px;
     line-height: 20px;
-    color: var(--color);
+    color: var(--rfe-color);
 }
 
 .box {
@@ -33,18 +33,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--white);
+    color: var(--rfe-white);
     flex-shrink: 0;
-    background-color: var(--background);
+    background-color: var(--rfe-background);
     transition: all 250ms;
 
     &:hover {
-        box-shadow: var(--focus);
+        box-shadow: var(--rfe-focus);
     }
 }
 
 .boxDisabled {
-    background-color: var(--background-disabled);
+    background-color: var(--rfe-background-disabled);
 
     &:hover {
         box-shadow: none;
@@ -55,7 +55,7 @@
 .icon {
     display: none;
     line-height: 1;
-    color: var(--color);
+    color: var(--rfe-color);
 }
 
 .input {
@@ -69,7 +69,7 @@
 }
 
 .input:checked ~ .box {
-    background-color: var(--background-selected);
+    background-color: var(--rfe-background-selected);
     border-color: var(--border);
 }
 
@@ -78,11 +78,11 @@
 }
 
 .input:focus-visible ~ .box {
-    box-shadow: var(--focus);
+    box-shadow: var(--rfe-focus);
 }
 
 .errorLabel {
-    color: var(--color-error);
+    color: var(--rfe-color-error);
     font-size: 12px;
     padding-top: 4px;
 }
