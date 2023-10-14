@@ -1,0 +1,124 @@
+.inputContainer {
+    position: relative;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+.label {
+    font-size: var(--font-size);
+    line-height: 1;
+    width: calc(100% - 16px);
+    background-color: var(--background);
+    color: var(--color);
+    margin-bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 16px;
+    display: flex;
+    align-items: flex-end;
+    height: 20px;
+    cursor: text;
+    transform: translateY(calc((var(--input-height) - 14px) / 2));
+    transition: transform 250ms,
+    font-size 250ms;
+}
+
+.label.disableShrink {
+    display: block;
+    position: static;
+    margin-bottom: 10px !important;
+    color: var(--color);
+    transform: none;
+    height: 16px;
+    width: auto;
+    background-color: none;
+}
+
+.inputContainer.fluid {
+    width: 100%;
+}
+
+.inputContainer.focusedContainer .label {
+    font-size: 12px;
+    transform: translateY(1px);
+}
+
+.inputContainer .innerContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputContainer .innerWrapper {
+    display: flex;
+    flex-direction: column;
+    transition: all 250ms;
+    border-radius: var(--border-radius);
+}
+
+.inputContainer .innerWrapper .input {
+    background-color: var(--background);
+    resize: none;
+    color: var(--color);
+    padding: 7px 16px;
+    font-size: 14px;
+    width: 100%;
+    line-height: 24px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border);
+    transition: all 250ms;
+    font-family: var(--font-family);
+}
+
+.inputContainer .innerWrapper .input.withLabel {
+    padding-top: 25px;
+    padding-bottom: 0;
+}
+
+.withPlaceholderLabel {
+    padding-top: 35px !important;
+}
+
+.inputContainer .innerWrapper .input:focus {
+    transition: all 250ms;
+    box-shadow: var(--focus);
+}
+
+.errorLabel {
+    color: var(--color-error);
+    font-size: var(--font-size);
+    margin-top: var(--label-spacing);
+}
+
+.disabled {
+    background-color: var(--background-disabled) !important;
+    color: var(--color) !important;
+    cursor: not-allowed !important;
+}
+
+.disableShrink {
+    display: block;
+    position: static !important;
+    font-size: var(--font-size) !important;
+    color: var(--color);
+    transform: none;
+    background: none !important;
+}
+
+.disableShrinkInput {
+    padding-top: 10px !important;
+    padding-bottom: 0 !important;
+}
+
+.input:-moz-placeholder, /* Firefox 18- */
+.input::-moz-placeholder, /* Firefox 19+ */
+.input:-ms-input-placeholder, /* IE 10+ */
+.input::-webkit-input-placeholder, /* Webkit based */
+.input::placeholder { /* Modern browsers */
+    font-size: var(--font-size);
+    color: var(--color-placeholder);
+}
+
+.labelPlaceholder {
+    font-size: 12px;
+    transform: translateY(9px);
+}

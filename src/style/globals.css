@@ -1,0 +1,63 @@
+:root {
+    --transparent: transparent;
+    --white: #fff;
+    --white-rgb: 255 255 255;
+    --black: #000;
+    --black-rgb: 0 0 0;
+
+    --color: #000;
+    --color-placeholder: #646464;
+    --color-error: #ff383e;
+
+    --border: #e6e6e6;
+
+    --background: #fafafa;
+    --background-selected: #f0f0f0;
+    --background-disabled: #e1e1e1;
+
+    --border-radius: 6px;
+
+    --font-size: 16px;
+    --input-height: 56px;
+    --spacing: 16px;
+    --label-spacing: 10px;
+
+    --focus: 0 0 10px #dcdcdc;
+
+    --font-family: 'Arial', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+    appearance: textfield;
+}
+
+/* EDGE */
+input[type='password']::-ms-reveal,
+input[type='password']::-ms-clear {
+    display: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: all 250ms;
+}
+
+input {
+    appearance: none;
+}
+

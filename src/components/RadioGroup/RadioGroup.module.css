@@ -1,0 +1,29 @@
+.root {
+    pointer-events: all;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--spacing);
+    cursor: pointer;
+
+    & label {
+        margin-bottom: var(--label-spacing);
+    }
+
+    & label:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.label {
+    font-size: var(--font-size);
+    line-height: 1;
+    color: var(--color);
+    margin-bottom: var(--label-spacing);
+}
+
+.errorLabel {
+    color: var(--color-error);
+    font-size: 12px;
+    margin-top: var(--label-spacing);
+}
