@@ -2,7 +2,7 @@
   "name": "@start-base/react-form-elements",
   "author": "Start-Base",
   "description": "Simplify form elements and form management. Selection of user friendly inputs and wide customization abilities to match your design and functionality.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "release": "release-it",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build:lib": "rm -rf dist/lib && tsup src/index.js --out-dir dist/lib --format cjs,esm --loader .js=jsx"
+    "build:lib": "rm -rf dist/lib && tsup src/index.js --out-dir dist/lib"
   },
   "peerDependencies": {
     "classnames": "^2.0.0",
@@ -93,6 +93,19 @@
     "webpack": "5.89.0",
     "webpack-bundle-analyzer": "4.9.1",
     "webpack-cli": "5.1.4"
+  },
+  "tsup": {
+    "format": [
+      "esm",
+      "cjs"
+    ],
+    "loader": {
+      ".css": "local-css",
+      ".js": "jsx"
+    },
+    "dts": false,
+    "sourcemap": true,
+    "clean": true
   },
   "bugs": {
     "url": "https://github.com/startbase-dev/react-form-elements/issues"

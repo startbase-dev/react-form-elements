@@ -1,5 +1,5 @@
 /* src/components/Checkbox/Checkbox.module.css */
-.reactFormElements-root {
+.Checkbox_module_root {
   pointer-events: all;
   position: relative;
   display: flex;
@@ -7,7 +7,7 @@
   margin-bottom: var(--spacing);
   cursor: pointer;
 }
-.reactFormElements-inputRoot {
+.Checkbox_module_inputRoot {
   pointer-events: all;
   position: relative;
   display: flex;
@@ -15,13 +15,13 @@
   justify-content: flex-start;
   cursor: pointer;
 }
-.reactFormElements-text {
+.Checkbox_module_text {
   margin-top: 1px;
   font-size: 14px;
   line-height: 20px;
   color: var(--color);
 }
-.reactFormElements-box {
+.Checkbox_module_box {
   width: 24px;
   height: 24px;
   border: solid 1px var(--border);
@@ -38,19 +38,19 @@
     box-shadow: var(--focus);
   }
 }
-.reactFormElements-boxDisabled {
+.Checkbox_module_boxDisabled {
   background-color: var(--background-disabled);
   &:hover {
     box-shadow: none;
     cursor: not-allowed;
   }
 }
-.reactFormElements-icon {
+.Checkbox_module_icon {
   display: none;
   line-height: 1;
   color: var(--color);
 }
-.reactFormElements-input {
+.Checkbox_module_input {
   position: fixed;
   top: 0;
   left: 0;
@@ -59,35 +59,35 @@
   width: 0;
   height: 0;
 }
-.reactFormElements-input:checked ~ .reactFormElements-box {
+.Checkbox_module_input:checked ~ .Checkbox_module_box {
   background-color: var(--background-selected);
   border-color: var(--border);
 }
-.reactFormElements-input:checked ~ .reactFormElements-box .reactFormElements-icon {
+.Checkbox_module_input:checked ~ .Checkbox_module_box .Checkbox_module_icon {
   display: block;
 }
-.reactFormElements-input:focus-visible ~ .reactFormElements-box {
+.Checkbox_module_input:focus-visible ~ .Checkbox_module_box {
   box-shadow: var(--focus);
 }
-.reactFormElements-errorLabel {
+.Checkbox_module_errorLabel {
   color: var(--color-error);
   font-size: 12px;
   margin-top: var(--label-spacing);
 }
 
 /* src/components/Form/Form.module.css */
-.reactFormElements-root {
+.Form_module_root {
   margin-bottom: 16px;
 }
 
 /* src/components/Input/Input.module.css */
-.reactFormElements-root {
+.Input_module_root {
   margin-bottom: var(--spacing);
 }
-.reactFormElements-inputRoot {
+.Input_module_inputRoot {
   position: relative;
 }
-.reactFormElements-label {
+.Input_module_label {
   font-size: var(--font-size);
   line-height: 1;
   color: var(--color);
@@ -99,25 +99,25 @@
   transform: translateY(calc((var(--input-height) - 14px) / 2));
   transition: all 250ms;
 }
-.reactFormElements-label.reactFormElements-disableShrink {
+.Input_module_label.Input_module_disableShrink {
   display: block;
   position: static;
   margin-bottom: var(--label-spacing);
   color: var(--color);
   transform: none;
 }
-.reactFormElements-prepend ~ .reactFormElements-placeholder {
+.Input_module_prepend ~ .Input_module_placeholder {
   padding: 24px 16px 0 60px !important;
 }
-.reactFormElements-placeholder {
+.Input_module_placeholder {
   padding: 19px 16px 0 !important;
 }
-.reactFormElements-labelPlaceholder {
+.Input_module_labelPlaceholder {
   font-size: 12px;
   transform: translateY(9px);
   top: 0;
 }
-.reactFormElements-input {
+.Input_module_input {
   width: 100%;
   font-size: 14px;
   line-height: 24px;
@@ -130,28 +130,28 @@
   transition: all 250ms;
   font-family: var(--font-family);
 }
-.reactFormElements-input:focus {
+.Input_module_input:focus {
   box-shadow: var(--focus);
 }
-.reactFormElements-input::-moz-placeholder {
+.Input_module_input::-moz-placeholder {
   color: var(--color-placeholder);
   font-size: 14px;
 }
-.reactFormElements-input::placeholder {
+.Input_module_input::placeholder {
   color: var(--color-placeholder);
   font-size: 14px;
 }
-.reactFormElements-input:-webkit-autofill:not(.reactFormElements-disableShrink) ~ .reactFormElements-label,
-.reactFormElements-input:focus:not(.reactFormElements-disableShrink) ~ .reactFormElements-label,
-.reactFormElements-input:not([value=""], .reactFormElements-disableShrink) ~ .reactFormElements-label {
+.Input_module_input:-webkit-autofill:not(.Input_module_disableShrink) ~ .Input_module_label,
+.Input_module_input:focus:not(.Input_module_disableShrink) ~ .Input_module_label,
+.Input_module_input:not([value=""], .Input_module_disableShrink) ~ .Input_module_label {
   font-size: 12px;
   transform: translateY(9px);
 }
-.reactFormElements-input.reactFormElements-disableShrink {
+.Input_module_input.Input_module_disableShrink {
   padding: 16px;
 }
-.reactFormElements-append,
-.reactFormElements-prepend {
+.Input_module_append,
+.Input_module_prepend {
   position: absolute;
   top: 50%;
   z-index: 1;
@@ -161,7 +161,7 @@
   justify-content: center;
   pointer-events: none;
 }
-.reactFormElements-prepend {
+.Input_module_prepend {
   left: 16px;
   font-size: 14px;
   line-height: 16px;
@@ -169,42 +169,42 @@
   padding-right: 13px;
   border-right: 1px solid var(--border);
 }
-.reactFormElements-prepend ~ .reactFormElements-label {
+.Input_module_prepend ~ .Input_module_label {
   left: 62px;
 }
-.reactFormElements-prepend ~ .reactFormElements-input {
+.Input_module_prepend ~ .Input_module_input {
   padding: 20px 16px 0 60px;
 }
-.reactFormElements-prepend ~ .reactFormElements-input.reactFormElements-disableShrink {
+.Input_module_prepend ~ .Input_module_input.Input_module_disableShrink {
   padding: 16px 16px 16px 60px;
 }
-.reactFormElements-append {
+.Input_module_append {
   right: 16px;
   height: 56px;
 }
-.reactFormElements-append ~ .reactFormElements-input {
+.Input_module_append ~ .Input_module_input {
   padding: 19px 56px 0 16px;
 }
-.reactFormElements-append ~ .reactFormElements-input.reactFormElements-disableShrink {
+.Input_module_append ~ .Input_module_input.Input_module_disableShrink {
   padding: 0 50px 0 16px;
 }
-.reactFormElements-appendDisabledShrink {
+.Input_module_appendDisabledShrink {
   top: 24px;
   transform: none;
 }
-.reactFormElements-errorLabel {
+.Input_module_errorLabel {
   color: var(--color-error);
   font-size: 12px;
   padding-top: var(--label-spacing);
 }
-.reactFormElements-disabled {
+.Input_module_disabled {
   background: var(--background-disabled);
   color: var(--color);
   cursor: not-allowed;
 }
 
 /* src/components/PasswordInput/PasswordInput.module.css */
-.reactFormElements-toggle {
+.PasswordInput_module_toggle {
   background: none;
   border: 0;
   height: 100%;
@@ -213,53 +213,53 @@
   justify-content: center;
   pointer-events: all;
 }
-.reactFormElements-iconEye {
+.PasswordInput_module_iconEye {
   width: 40px;
   margin: auto;
   padding: 20px;
   overflow: auto;
   color: var(--color);
 }
-.reactFormElements-eyeOpen button::after {
+.PasswordInput_module_eyeOpen button::after {
   content: "Close";
 }
-.reactFormElements-eyeClose button::after {
+.PasswordInput_module_eyeClose button::after {
   content: "Open";
 }
-.reactFormElements-eye {
+.PasswordInput_module_eye {
   --duration-blink: .2s;
   --duration-lashes: .2s;
   --delay-lashes: var(--duration-blink);
   --duration-pupil: .1s;
   --delay-pupil: calc(var(--duration-blink) * 2 / 3);
 }
-.reactFormElements-eyeBottom,
-.reactFormElements-eyeTop {
+.PasswordInput_module_eyeBottom,
+.PasswordInput_module_eyeTop {
   stroke-linecap: round;
 }
-.reactFormElements-eyeTop,
-.reactFormElements-eyeLashes {
+.PasswordInput_module_eyeTop,
+.PasswordInput_module_eyeLashes {
   transition: var(--duration-blink) ease-in;
 }
-.reactFormElements-eyePupil {
+.PasswordInput_module_eyePupil {
   opacity: 0;
   transition: opacity var(--duration-pupil) var(--delay-pupil) ease;
 }
-.reactFormElements-eyeOpen .reactFormElements-eyeTop,
-.reactFormElements-eyeOpen .reactFormElements-eyeLashes {
+.PasswordInput_module_eyeOpen .PasswordInput_module_eyeTop,
+.PasswordInput_module_eyeOpen .PasswordInput_module_eyeLashes {
   transform: rotateX(.5turn);
-  animation: scaleUp var(--duration-lashes) var(--delay-lashes) ease-in-out;
+  animation: PasswordInput_module_scaleUp var(--duration-lashes) var(--delay-lashes) ease-in-out;
 }
-.reactFormElements-eyeOpen .reactFormElements-eyePupil {
+.PasswordInput_module_eyeOpen .PasswordInput_module_eyePupil {
   opacity: 1;
 }
-.reactFormElements-eyeClose .reactFormElements-eyeLashes {
-  animation: scaleDown var(--duration-lashes) var(--duration-blink) ease-in-out;
+.PasswordInput_module_eyeClose .PasswordInput_module_eyeLashes {
+  animation: PasswordInput_module_scaleDown var(--duration-lashes) var(--duration-blink) ease-in-out;
 }
-.reactFormElements-eyeClose .reactFormElements-eyePupil {
+.PasswordInput_module_eyeClose .PasswordInput_module_eyePupil {
   opacity: 0;
 }
-@keyframes scaleUp {
+@keyframes PasswordInput_module_scaleUp {
   50% {
     transform: rotateX(.5turn) scaleY(1.15);
   }
@@ -267,7 +267,7 @@
     transform: rotateX(.5turn) scaleY(1);
   }
 }
-@keyframes scaleDown {
+@keyframes PasswordInput_module_scaleDown {
   50% {
     transform: scaleY(1.15);
   }
@@ -277,7 +277,7 @@
 }
 
 /* src/components/Radio/Radio.module.css */
-.reactFormElements-root {
+.Radio_module_root {
   pointer-events: all;
   position: relative;
   display: flex;
@@ -285,7 +285,7 @@
   margin-bottom: var(--spacing);
   cursor: pointer;
 }
-.reactFormElements-inputRoot {
+.Radio_module_inputRoot {
   pointer-events: all;
   position: relative;
   display: flex;
@@ -293,13 +293,13 @@
   justify-content: flex-start;
   cursor: pointer;
 }
-.reactFormElements-text {
+.Radio_module_text {
   margin-top: 1px;
   font-size: 14px;
   line-height: 20px;
   color: var(--color);
 }
-.reactFormElements-box {
+.Radio_module_box {
   width: 24px;
   height: 24px;
   border: solid 1px var(--border);
@@ -316,19 +316,19 @@
     box-shadow: var(--focus);
   }
 }
-.reactFormElements-boxDisabled {
+.Radio_module_boxDisabled {
   background-color: var(--background-disabled);
   &:hover {
     box-shadow: none;
     cursor: not-allowed;
   }
 }
-.reactFormElements-icon {
+.Radio_module_icon {
   display: none;
   line-height: 1;
   color: var(--color);
 }
-.reactFormElements-input {
+.Radio_module_input {
   position: fixed;
   top: 0;
   left: 0;
@@ -337,24 +337,24 @@
   width: 0;
   height: 0;
 }
-.reactFormElements-input:checked ~ .reactFormElements-box {
+.Radio_module_input:checked ~ .Radio_module_box {
   background-color: var(--background-selected);
   border-color: var(--border);
 }
-.reactFormElements-input:checked ~ .reactFormElements-box .reactFormElements-icon {
+.Radio_module_input:checked ~ .Radio_module_box .Radio_module_icon {
   display: block;
 }
-.reactFormElements-input:focus-visible ~ .reactFormElements-box {
+.Radio_module_input:focus-visible ~ .Radio_module_box {
   box-shadow: var(--focus);
 }
-.reactFormElements-errorLabel {
+.Radio_module_errorLabel {
   color: var(--color-error);
   font-size: 12px;
   padding-top: 4px;
 }
 
 /* src/components/RadioGroup/RadioGroup.module.css */
-.reactFormElements-root {
+.RadioGroup_module_root {
   pointer-events: all;
   position: relative;
   display: flex;
@@ -368,25 +368,25 @@
     margin-bottom: 0;
   }
 }
-.reactFormElements-label {
+.RadioGroup_module_label {
   font-size: var(--font-size);
   line-height: 1;
   color: var(--color);
   margin-bottom: var(--label-spacing);
 }
-.reactFormElements-errorLabel {
+.RadioGroup_module_errorLabel {
   color: var(--color-error);
   font-size: 12px;
   margin-top: var(--label-spacing);
 }
 
 /* src/components/TextArea/TextArea.module.css */
-.reactFormElements-inputContainer {
+.TextArea_module_inputContainer {
   position: relative;
   margin-bottom: 16px;
   box-sizing: border-box;
 }
-.reactFormElements-label {
+.TextArea_module_label {
   font-size: var(--font-size);
   line-height: 1;
   width: calc(100% - 16px);
@@ -403,7 +403,7 @@
   transform: translateY(calc((var(--input-height) - 14px) / 2));
   transition: transform 250ms, font-size 250ms;
 }
-.reactFormElements-label.reactFormElements-disableShrink {
+.TextArea_module_label.TextArea_module_disableShrink {
   display: block;
   position: static;
   margin-bottom: 10px !important;
@@ -413,24 +413,24 @@
   width: auto;
   background-color: none;
 }
-.reactFormElements-inputContainer.reactFormElements-fluid {
+.TextArea_module_inputContainer.TextArea_module_fluid {
   width: 100%;
 }
-.reactFormElements-inputContainer.reactFormElements-focusedContainer .reactFormElements-label {
+.TextArea_module_inputContainer.TextArea_module_focusedContainer .TextArea_module_label {
   font-size: 12px;
   transform: translateY(1px);
 }
-.reactFormElements-inputContainer .reactFormElements-innerContainer {
+.TextArea_module_inputContainer .TextArea_module_innerContainer {
   display: flex;
   flex-direction: column;
 }
-.reactFormElements-inputContainer .reactFormElements-innerWrapper {
+.TextArea_module_inputContainer .TextArea_module_innerWrapper {
   display: flex;
   flex-direction: column;
   transition: all 250ms;
   border-radius: var(--border-radius);
 }
-.reactFormElements-inputContainer .reactFormElements-innerWrapper .reactFormElements-input {
+.TextArea_module_inputContainer .TextArea_module_innerWrapper .TextArea_module_input {
   background-color: var(--background);
   resize: none;
   color: var(--color);
@@ -443,28 +443,28 @@
   transition: all 250ms;
   font-family: var(--font-family);
 }
-.reactFormElements-inputContainer .reactFormElements-innerWrapper .reactFormElements-input.reactFormElements-withLabel {
+.TextArea_module_inputContainer .TextArea_module_innerWrapper .TextArea_module_input.TextArea_module_withLabel {
   padding-top: 25px;
   padding-bottom: 0;
 }
-.reactFormElements-withPlaceholderLabel {
+.TextArea_module_withPlaceholderLabel {
   padding-top: 35px !important;
 }
-.reactFormElements-inputContainer .reactFormElements-innerWrapper .reactFormElements-input:focus {
+.TextArea_module_inputContainer .TextArea_module_innerWrapper .TextArea_module_input:focus {
   transition: all 250ms;
   box-shadow: var(--focus);
 }
-.reactFormElements-errorLabel {
+.TextArea_module_errorLabel {
   color: var(--color-error);
   font-size: var(--font-size);
   margin-top: var(--label-spacing);
 }
-.reactFormElements-disabled {
+.TextArea_module_disabled {
   background-color: var(--background-disabled) !important;
   color: var(--color) !important;
   cursor: not-allowed !important;
 }
-.reactFormElements-disableShrink {
+.TextArea_module_disableShrink {
   display: block;
   position: static !important;
   font-size: var(--font-size) !important;
@@ -472,23 +472,23 @@
   transform: none;
   background: none !important;
 }
-.reactFormElements-disableShrinkInput {
+.TextArea_module_disableShrinkInput {
   padding-top: 10px !important;
   padding-bottom: 0 !important;
 }
-.reactFormElements-input::-moz-placeholder {
+.TextArea_module_input::-moz-placeholder {
   font-size: var(--font-size);
   color: var(--color-placeholder);
 }
-.reactFormElements-input:-moz-placeholder,
-.reactFormElements-input::-moz-placeholder,
-.reactFormElements-input:-ms-input-placeholder,
-.reactFormElements-input::-webkit-input-placeholder,
-.reactFormElements-input::placeholder {
+.TextArea_module_input:-moz-placeholder,
+.TextArea_module_input::-moz-placeholder,
+.TextArea_module_input:-ms-input-placeholder,
+.TextArea_module_input::-webkit-input-placeholder,
+.TextArea_module_input::placeholder {
   font-size: var(--font-size);
   color: var(--color-placeholder);
 }
-.reactFormElements-labelPlaceholder {
+.TextArea_module_labelPlaceholder {
   font-size: 12px;
   transform: translateY(9px);
 }
@@ -547,3 +547,4 @@ input {
   -moz-appearance: none;
   appearance: none;
 }
+/*# sourceMappingURL=index.css.map */
