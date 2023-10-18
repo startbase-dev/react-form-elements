@@ -48,7 +48,7 @@
     color: var(--rfe-color);
     padding: 19px 16px 0;
     background: var(--rfe-background);
-    border: 1px solid var(--border);
+    border: 1px solid var(--rfe-border);
     border-radius: var(--rfe-border-radius);
     height: var(--rfe-input-height);
     transition: all 250ms;
@@ -93,7 +93,7 @@
     line-height: 16px;
     color: var(--rfe-color);
     padding-right: 13px;
-    border-right: 1px solid var(--border);
+    border-right: 1px solid var(--rfe-border);
 }
 
 .prepend ~ .label {

@@ -26,7 +26,7 @@
 .box {
     width: 24px;
     height: 24px;
-    border: solid 1px var(--border);
+    border: solid 1px var(--rfe-border);
     border-radius: var(--rfe-border-radius);
     margin-right: 16px;
     display: flex;
@@ -69,7 +69,7 @@
 
 .input:checked ~ .box {
     background-color: var(--rfe-background-selected);
-    border-color: var(--border);
+    border-color: var(--rfe-border);
 }
 
 .input:checked ~ .box .icon {

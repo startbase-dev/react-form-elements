@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Checkbox from '../Checkbox/Checkbox';
 import Input from '../Input/Input';
+import PasswordInput from '../PasswordInput/PasswordInput';
 import RadioGroup from '../RadioGroup/RadioGroup';
 import TextArea from '../TextArea/TextArea';
 import Form from './Form.js';
@@ -27,7 +28,7 @@ const Template = () => {
           value={inputs.username}
           onChange={onChange}
         />
-        <Input
+        <PasswordInput
           label="Password"
           name="password"
           value={inputs.password}
@@ -50,9 +51,8 @@ const Template = () => {
           value={inputs.username}
           onChange={onChange}
         />
-        <Input
+        <PasswordInput
           label="Password"
-          type="password"
           name="password"
           disableShrink
           value={inputs.password}
@@ -76,9 +76,8 @@ const Template = () => {
           value={inputs.username}
           onChange={onChange}
         />
-        <Input
+        <PasswordInput
           label="Password"
-          type="password"
           name="password"
           disableShrink
           value={inputs.password}

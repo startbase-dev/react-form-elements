@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { Col, Row } from 'styled-bootstrap-grid';
-
 import { PieIcon } from '../Icon';
 import Input from './Input';
 
@@ -19,16 +17,7 @@ const Template = (arg) => {
   return (
     <>
       <h2>{arg.title}</h2>
-      <Row>
-        <Col col={12}>
-          <Input
-            {...arg}
-            name="input"
-            value={inputs.input}
-            onChange={onChange}
-          />
-        </Col>
-      </Row>
+      <Input {...arg} name="input" value={inputs.input} onChange={onChange} />
     </>
   );
 };

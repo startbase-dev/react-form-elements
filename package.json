@@ -82,7 +82,6 @@
     "sass-loader": "13.3.2",
     "storybook": "7.4.6",
     "style-loader": "3.3.3",
-    "styled-bootstrap-grid": "3.1.2",
     "stylelint": "15.10.3",
     "stylelint-config-prettier-scss": "1.0.0",
     "stylelint-config-standard-scss": "11.0.0",

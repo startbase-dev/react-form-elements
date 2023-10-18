@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { Col, Row } from 'styled-bootstrap-grid';
-
 import PasswordInput from './PasswordInput';
 
 const Template = (arg) => {
@@ -18,16 +16,12 @@ const Template = (arg) => {
   return (
     <>
       <h2>{arg.title}</h2>
-      <Row>
-        <Col col={12}>
-          <PasswordInput
-            {...arg}
-            name="input"
-            value={inputs.input}
-            onChange={onChange}
-          />
-        </Col>
-      </Row>
+      <PasswordInput
+        {...arg}
+        name="input"
+        value={inputs.input}
+        onChange={onChange}
+      />
     </>
   );
 };

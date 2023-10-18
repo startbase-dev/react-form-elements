@@ -64,7 +64,7 @@
     width: 100%;
     line-height: 24px;
     border-radius: var(--rfe-border-radius);
-    border: 1px solid var(--border);
+    border: 1px solid var(--rfe-border);
     transition: all 250ms;
     font-family: var(--rfe-font-family);
 }

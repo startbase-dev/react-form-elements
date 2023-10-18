@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { Col, Row } from 'styled-bootstrap-grid';
-
 import { RadioComponent } from '../Radio/Radio.stories';
 import TextArea from './TextArea';
 
@@ -21,16 +19,12 @@ const Template = (args) => {
   return (
     <>
       <h2>{args.title}</h2>
-      <Row>
-        <Col col={12}>
-          <TextArea
-            {...args}
-            name="input"
-            onChange={onChange}
-            value={inputs.input}
-          />
-        </Col>
-      </Row>
+      <TextArea
+        {...args}
+        name="input"
+        onChange={onChange}
+        value={inputs.input}
+      />
     </>
   );
 };
