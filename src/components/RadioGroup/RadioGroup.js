@@ -8,14 +8,14 @@ import Radio from '../Radio/Radio';
 import s from './RadioGroup.module.css';
 
 function RadioGroup({
-  options,
-  label,
-  name,
-  className,
-  onChange,
-  disabled,
-  value,
-  error,
+  options = [],
+  label = null,
+  name = null,
+  className = '',
+  onChange = () => {},
+  disabled = false,
+  value = false,
+  error = null,
 }) {
   return (
     <label htmlFor={`radio_${name}`} className={cx(s.root, className)}>
@@ -41,17 +41,15 @@ function RadioGroup({
 RadioGroup.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   name: PropTypes.string,
+  options: PropTypes.arrayOf({
+    value: PropTypes.any,
+    label: PropTypes.any,
+  }),
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,
-};
-
-RadioGroup.defaultProps = {
-  name: null,
-  label: null,
-  onChange: () => {},
-  className: '',
-  disabled: false,
+  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  value: PropTypes.bool,
 };
 
 export default RadioGroup;

@@ -8,14 +8,14 @@ import { CheckIcon } from '../Icon';
 import s from './Radio.module.css';
 
 function Radio({
-  label,
-  name,
-  checked,
-  className,
-  onChange,
-  disabled,
-  value,
-  error,
+  label = null,
+  name = null,
+  checked = false,
+  className = '',
+  onChange = () => {},
+  disabled = false,
+  value = false,
+  error = null,
   ...rest
 }) {
   return (
@@ -56,6 +56,8 @@ Radio.propTypes = {
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  value: PropTypes.bool,
 };
 
 Radio.defaultProps = {
@@ -65,6 +67,8 @@ Radio.defaultProps = {
   onChange: () => {},
   className: '',
   disabled: false,
+  value: false,
+  error: null,
 };
 
 export default Radio;

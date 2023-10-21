@@ -1,29 +1,29 @@
 .root {
-    pointer-events: all;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: var(--rfe-spacing);
-    cursor: pointer;
+  pointer-events: all;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--rfe-spacing);
+  cursor: pointer;
 
-    & label {
-        margin-bottom: var(--rfe-label-spacing);
-    }
+  & label {
+    margin-bottom: var(--rfe-label-spacing);
+  }
 
-    & label:last-of-type {
-        margin-bottom: 0;
-    }
+  & label:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .label {
-    font-size: var(--rfe-font-size);
-    line-height: 1;
-    color: var(--rfe-color);
-    margin-bottom: var(--rfe-label-spacing);
+  font-size: var(--rfe-font-size);
+  line-height: 1;
+  color: var(--rfe-color);
+  margin-bottom: var(--rfe-label-spacing);
 }
 
 .errorLabel {
-    color: var(--rfe-color-error);
-    font-size: 12px;
-    margin-top: var(--rfe-label-spacing);
+  color: var(--rfe-color-error);
+  font-size: var(--rfe-error-font-size);
+  margin-top: var(--rfe-label-spacing);
 }

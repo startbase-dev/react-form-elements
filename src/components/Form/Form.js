@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import cx from 'classnames';
 
 import s from './Form.module.css';
@@ -12,8 +14,8 @@ const Form = ({ children, ...rest }) => {
   );
 };
 
-Form.propTypes = {};
-
-Form.defaultProps = {};
+Form.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
+};
 
 export default Form;

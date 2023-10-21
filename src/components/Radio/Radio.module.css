@@ -1,88 +1,87 @@
 .root {
-    pointer-events: all;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: var(--rfe-spacing);
-    cursor: pointer;
+  pointer-events: all;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--rfe-spacing);
+  cursor: pointer;
 }
 
 .inputRoot {
-    pointer-events: all;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    cursor: pointer;
+  pointer-events: all;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
 }
 
-
 .text {
-    margin-top: 1px;
-    font-size: 14px;
-    line-height: 20px;
-    color: var(--rfe-color);
+  margin-top: 1px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--rfe-color);
 }
 
 .box {
-    width: 24px;
-    height: 24px;
-    border: solid 1px var(--rfe-border);
-    border-radius: 24px;
-    margin-right: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--rfe-white);
-    flex-shrink: 0;
-    background-color: var(--rfe-background);
-    transition: all 250ms;
+  width: 24px;
+  height: 24px;
+  border: solid 1px var(--rfe-border);
+  border-radius: 24px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rfe-white);
+  flex-shrink: 0;
+  background-color: var(--rfe-background);
+  transition: all 250ms;
 
-    &:hover {
-        box-shadow: var(--rfe-focus);
-    }
+  &:hover {
+    box-shadow: var(--rfe-focus);
+  }
 }
 
 .boxDisabled {
-    background-color: var(--rfe-background-disabled);
+  background-color: var(--rfe-background-disabled);
 
-    &:hover {
-        box-shadow: none;
-        cursor: not-allowed;
-    }
+  &:hover {
+    box-shadow: none;
+    cursor: not-allowed;
+  }
 }
 
 .icon {
-    display: none;
-    line-height: 1;
-    color: var(--rfe-color);
+  display: none;
+  line-height: 1;
+  color: var(--rfe-color);
 }
 
 .input {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    opacity: 0;
-    width: 0;
-    height: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .input:checked ~ .box {
-    background-color: var(--rfe-background-selected);
-    border-color: var(--rfe-border);
+  background-color: var(--rfe-background-selected);
+  border-color: var(--rfe-border);
 }
 
 .input:checked ~ .box .icon {
-    display: block;
+  display: block;
 }
 
 .input:focus-visible ~ .box {
-    box-shadow: var(--rfe-focus);
+  box-shadow: var(--rfe-focus);
 }
 
 .errorLabel {
-    color: var(--rfe-color-error);
-    font-size: 12px;
-    padding-top: 4px;
+  color: var(--rfe-color-error);
+  font-size: var(--rfe-error-font-size);
+  margin-top: var(--rfe-label-spacing);
 }

@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 
 import cx from 'classnames';
 
-import { CheckIcon } from '../Icon';
-import s from './Checkbox.module.css';
+import s from './Switch.module.css';
 
-function Checkbox({
+function Switch({
   label = null,
   name = null,
   checked = false,
@@ -17,13 +16,10 @@ function Checkbox({
   error = null,
 }) {
   return (
-    <label
-      htmlFor={name ? `checkbox_${name}` : ''}
-      className={cx(s.root, className)}
-    >
-      <div className={cx(s.inputRoot)}>
+    <label htmlFor={name ? `checkbox_${name}` : ''} className={s.switch}>
+      <div className={cx(s.inputRoot, className)}>
         <input
-          className={s.input}
+          className={s.switchCheckbox}
           name={name}
           type="checkbox"
           checked={checked}
@@ -31,13 +27,22 @@ function Checkbox({
           id={name ? `checkbox_${name}` : ''}
           disabled={disabled}
         />
-        <span
-          className={cx(s.box, {
-            [s.boxDisabled]: disabled,
+        <div
+          className={cx(s.switchLabel, {
+            [s.disabled]: disabled,
           })}
         >
-          <CheckIcon className={s.icon} />
-        </span>
+          <span
+            className={cx(s.switchInner, {
+              [s.switchInnerChecked]: checked,
+            })}
+          />
+          <span
+            className={cx(s.switchSwitch, {
+              [s.switchSwitchChecked]: checked,
+            })}
+          />
+        </div>
         <div className={s.text}>{label}</div>
       </div>
       {error ? <div className={s.errorLabel}>{error}</div> : null}
@@ -45,7 +50,7 @@ function Checkbox({
   );
 }
 
-Checkbox.propTypes = {
+Switch.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   name: PropTypes.string,
   error: PropTypes.string,
@@ -55,4 +60,4 @@ Checkbox.propTypes = {
   disabled: PropTypes.bool,
 };
 
-export default Checkbox;
+export default Switch;

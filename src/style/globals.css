@@ -1,63 +1,73 @@
 :root {
-    --rfe-transparent: transparent;
-    --rfe-white: #fff;
-    --rfe-white-rgb: 255 255 255;
-    --rfe-black: #000;
-    --rfe-black-rgb: 0 0 0;
+  --rfe-transparent: transparent;
+  --rfe-white: #fff;
+  --rfe-white-rgb: 255 255 255;
+  --rfe-black: #000;
+  --rfe-black-rgb: 0 0 0;
+  --rfe-color: #000;
+  --rfe-color-placeholder: #646464;
+  --rfe-color-error: #ff383e;
+  --rfe-border: #e6e6e6;
+  --rfe-background: #fafafa;
+  --rfe-background-selected: #f0f0f0;
+  --rfe-background-disabled: #e1e1e1;
+  --rfe-border-radius: 6px;
+  --rfe-font-size: 16px;
+  --rfe-error-font-size: 12px;
+  --rfe-focus-font-size: 12px;
+  --rfe-input-height: 56px;
+  --rfe-spacing: 16px;
+  --rfe-label-spacing: 10px;
+  --rfe-focus: 0 0 10px #dcdcdc;
+  --rfe-font-family: 'Arial', sans-serif;
+}
 
-    --rfe-color: #000;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --rfe-white: #000;
+    --rfe-white-rgb: 0 0 0;
+    --rfe-black: #fff;
+    --rfe-black-rgb: 255 255 255;
+    --rfe-color: #fff;
     --rfe-color-placeholder: #646464;
-    --rfe-color-error: #ff383e;
-
-    --rfe-border: #e6e6e6;
-
-    --rfe-background: #fafafa;
-    --rfe-background-selected: #f0f0f0;
-    --rfe-background-disabled: #e1e1e1;
-
-    --rfe-border-radius: 6px;
-
-    --rfe-font-size: 16px;
-    --rfe-input-height: 56px;
-    --rfe-spacing: 16px;
-    --rfe-label-spacing: 10px;
-
-    --rfe-focus: 0 0 10px #dcdcdc;
-
-    --rfe-font-family: 'Arial', sans-serif;
+    --rfe-border: #282828;
+    --rfe-background: #0f0f0f;
+    --rfe-background-selected: #191919;
+    --rfe-background-disabled: #282828;
+    --rfe-focus: 0 0 10px #4b4b4b, 0 0 0 1px #4b4b4b;
+  }
 }
 
 * {
-    box-sizing: border-box;
-    outline: 0;
-    -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-tap-highlight-color: var(--rfe-transparent);
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    appearance: none;
-    margin: 0;
+  appearance: none;
+  margin: 0;
 }
 
 /* Firefox */
 input[type='number'] {
-    appearance: textfield;
+  appearance: textfield;
 }
 
 /* EDGE */
 input[type='password']::-ms-reveal,
 input[type='password']::-ms-clear {
-    display: none;
+  display: none;
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    transition: all 250ms;
+  transition: all 250ms;
 }
 
 input {
-    appearance: none;
+  appearance: none;
 }
-

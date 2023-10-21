@@ -14,23 +14,22 @@ import DOMPurify from 'dompurify';
 import s from './TextArea.module.css';
 
 const TextArea = ({
-  fluid,
-  error,
-  value,
-  onChange,
-  placeholder,
-  label,
-  disabled,
-  className,
-  containerClassName,
-  innerContainerClassName,
-  innerWrapperClassName,
-  onFocus,
-  onBlur,
-  name,
-  rows,
-  resizable,
-  disableShrink,
+  error = null,
+  value = '',
+  onChange = () => {},
+  placeholder = '',
+  label = '',
+  disabled = false,
+  className = '',
+  containerClassName = '',
+  innerContainerClassName = '',
+  innerWrapperClassName = '',
+  onFocus = () => {},
+  onBlur = () => {},
+  name = '',
+  rows = 5,
+  resizable = false,
+  disableShrink = false,
   ...rest
 }) => {
   const inputEl = useRef();
@@ -86,7 +85,6 @@ const TextArea = ({
           [s.withLabel]: !!label,
           [s.disabled]: disabled,
           [s.disableShrinkInput]: disableShrink,
-          [s.withPlaceholderLabel]: placeholder && label,
         })}
         value={value}
         onChange={handleChange}
@@ -143,7 +141,6 @@ const TextArea = ({
     <div
       className={cx(s.inputContainer, {
         [containerClassName]: containerClassName,
-        [s.fluid]: fluid,
         [s.focusedContainer]: !placeholder && (focused || !!value),
       })}
     >
@@ -185,25 +182,6 @@ TextArea.propTypes = {
   error: PropTypes.string,
   name: PropTypes.string,
   rows: PropTypes.number,
-};
-
-TextArea.defaultProps = {
-  onFocus: () => {},
-  onBlur: () => {},
-  fluid: true,
-  placeholder: '',
-  label: '',
-  className: '',
-  containerClassName: '',
-  innerContainerClassName: '',
-  innerWrapperClassName: '',
-  disabled: false,
-  value: '',
-  error: null,
-  name: '',
-  rows: 5,
-  resizable: false,
-  disableShrink: false,
 };
 
 export default TextArea;

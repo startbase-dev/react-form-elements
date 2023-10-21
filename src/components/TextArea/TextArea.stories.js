@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import { RadioComponent } from '../Radio/Radio.stories';
 import TextArea from './TextArea';
 
 const Template = (args) => {

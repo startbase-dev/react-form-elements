@@ -10,21 +10,21 @@ import s from './Input.module.css';
 const Input = forwardRef(
   (
     {
-      error,
-      name,
-      label,
-      placeholder,
-      value,
-      onChange,
-      className,
-      rootClassName,
-      containerClassName,
-      prepend,
-      prependClassName,
-      append,
-      appendClassName,
-      disableShrink,
-      disabled,
+      error = null,
+      name = '',
+      label = null,
+      placeholder = null,
+      value = '',
+      onChange = () => {},
+      className = '',
+      rootClassName = '',
+      containerClassName = '',
+      prepend = null,
+      prependClassName = '',
+      append = null,
+      appendClassName = '',
+      disableShrink = false,
+      disabled = false,
       ...rest
     },
     inputRef
@@ -142,6 +142,8 @@ const Input = forwardRef(
   }
 );
 
+Input.displayName = 'Input';
+
 Input.propTypes = {
   error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   name: PropTypes.string,
@@ -158,24 +160,6 @@ Input.propTypes = {
   appendClassName: PropTypes.string,
   disableShrink: PropTypes.bool,
   disabled: PropTypes.bool,
-};
-
-Input.defaultProps = {
-  disabled: false,
-  error: null,
-  name: '',
-  label: null,
-  placeholder: null,
-  value: '',
-  className: null,
-  containerClassName: null,
-  rootClassName: null,
-  onChange: null,
-  prepend: null,
-  prependClassName: null,
-  append: null,
-  appendClassName: null,
-  disableShrink: false,
 };
 
 export default Input;

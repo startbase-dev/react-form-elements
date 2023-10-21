@@ -4,6 +4,7 @@ import Checkbox from '../Checkbox/Checkbox';
 import Input from '../Input/Input';
 import PasswordInput from '../PasswordInput/PasswordInput';
 import RadioGroup from '../RadioGroup/RadioGroup';
+import Switch from '../Switch/Switch';
 import TextArea from '../TextArea/TextArea';
 import Form from './Form.js';
 
@@ -40,12 +41,35 @@ const Template = () => {
           onChange={onChange}
           value={inputs.textarea}
         />
+        <RadioGroup
+          label="RadioGroup"
+          value={inputs.country}
+          name="country"
+          onChange={onChange}
+          options={[
+            { label: 'Radio Option 1', value: 'default1' },
+            { label: 'Radio Option 2', value: 'default2' },
+          ]}
+        />
+        <Checkbox
+          checked={inputs.agree}
+          label="I understand and accept the terms and conditions and privacy policy."
+          name="agree"
+          onChange={onChange}
+        />
+        <Switch
+          checked={inputs.dark}
+          label="Switch"
+          name="dark"
+          onChange={onChange}
+        />
       </Form>
 
       <h2>Form Component</h2>
       <Form>
         <Input
           label="Username"
+          placeholder="Username"
           name="username"
           disableShrink
           value={inputs.username}
@@ -53,6 +77,7 @@ const Template = () => {
         />
         <PasswordInput
           label="Password"
+          placeholder="Password"
           name="password"
           disableShrink
           value={inputs.password}
@@ -60,28 +85,11 @@ const Template = () => {
         />
         <TextArea
           name="textarea"
+          placeholder="Description"
           onChange={onChange}
           disableShrink
           label="Description"
           value={inputs.textarea}
-        />
-      </Form>
-
-      <h2>Form Component</h2>
-      <Form>
-        <Input
-          label="Username"
-          name="username"
-          disableShrink
-          value={inputs.username}
-          onChange={onChange}
-        />
-        <PasswordInput
-          label="Password"
-          name="password"
-          disableShrink
-          value={inputs.password}
-          onChange={onChange}
         />
         <RadioGroup
           label="RadioGroup"
@@ -97,6 +105,57 @@ const Template = () => {
           checked={inputs.agree}
           label="I understand and accept the terms and conditions and privacy policy."
           name="agree"
+          onChange={onChange}
+        />
+        <Switch
+          checked={inputs.dark}
+          label="Switch"
+          name="dark"
+          onChange={onChange}
+        />
+      </Form>
+
+      <h2>Form Component</h2>
+      <Form>
+        <Input
+          disabled
+          label="Username"
+          name="username_disabled"
+          disableShrink
+          value={inputs.username_disabled}
+          onChange={onChange}
+        />
+        <PasswordInput
+          disabled
+          label="Password"
+          name="password_disabled"
+          disableShrink
+          value={inputs.password_disabled}
+          onChange={onChange}
+        />
+        <RadioGroup
+          disabled
+          label="RadioGroup"
+          value={inputs.country_disabled}
+          name="country_disabled"
+          onChange={onChange}
+          options={[
+            { label: 'Radio Option 1', value: 'default1' },
+            { label: 'Radio Option 2', value: 'default2' },
+          ]}
+        />
+        <Checkbox
+          disabled
+          checked={inputs.agree_disabled}
+          label="I understand and accept the terms and conditions and privacy policy."
+          name="agree_disabled"
+          onChange={onChange}
+        />
+        <Switch
+          disabled
+          checked={inputs.dark_disabled}
+          label="Switch"
+          name="dark_disabled"
           onChange={onChange}
         />
       </Form>
