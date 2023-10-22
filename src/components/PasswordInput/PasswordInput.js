@@ -18,12 +18,7 @@ function PasswordInput({ ...rest }) {
       {...rest}
       type={isOpen ? 'text' : 'password'}
       append={
-        <button
-          type="button"
-          className={s.toggle}
-          onClick={handleToggle}
-          tabIndex="-1"
-        >
+        <button type="button" className={s.toggle} onClick={handleToggle}>
           <div
             className={cx({
               [s.eyeOpen]: isOpen,

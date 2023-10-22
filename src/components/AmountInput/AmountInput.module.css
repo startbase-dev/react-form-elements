@@ -4,6 +4,7 @@
 
 .inputRoot {
   position: relative;
+  width: 100%;
 }
 
 .label {
@@ -12,33 +13,27 @@
   color: var(--rfe-color);
   margin-bottom: 0;
   position: absolute;
-  top: -2px;
+  top: 0;
   left: 16px;
+  transform: translateY(21px);
+  transition:
+    transform 250ms,
+    font-size 250ms;
+  pointer-events: all;
   cursor: text;
-  transform: translateY(calc((var(--rfe-input-height) - 14px) / 2));
-  transition: all 250ms;
+
+  &.disableShrink {
+    display: block;
+    position: static;
+    margin-bottom: 10px;
+    color: var(--rfe-color);
+    transform: none;
+  }
 }
 
-.label.disableShrink {
-  display: block;
-  position: static;
-  margin-bottom: var(--rfe-label-spacing);
-  color: var(--rfe-color);
-  transform: none;
-}
-
-.prepend ~ .placeholder {
-  padding: 24px 16px 0 60px !important;
-}
-
-.placeholder {
-  padding: 19px 16px 0 !important;
-}
-
-.labelPlaceholder {
+.focusedLabel {
   font-size: 12px;
   transform: translateY(9px);
-  top: 0;
 }
 
 .input {
@@ -46,41 +41,48 @@
   font-size: 14px;
   line-height: 24px;
   color: var(--rfe-color);
-  padding: 19px 16px 0;
+  padding: 20px 16px 0;
   background: var(--rfe-background);
   border: 1px solid var(--rfe-border);
   border-radius: var(--rfe-border-radius);
   height: var(--rfe-input-height);
   transition: all 250ms;
-  font-family: var(--rfe-font-family);
-}
 
-.input:focus {
-  box-shadow: var(--rfe-focus);
-}
+  &:focus {
+    box-shadow: var(--rfe-focus);
 
-.input::placeholder {
-  color: var(--rfe-color-placeholder);
-  font-size: 14px;
-}
+    &::placeholder {
+      color: var(--rfe-color-placeholder);
+    }
+  }
 
-.input:-webkit-autofill:not(.disableShrink) ~ .label,
-.input:focus:not(.disableShrink) ~ .label,
-.input:not([value=''], .disableShrink) ~ .label {
-  font-size: 12px;
-  transform: translateY(9px);
-}
+  &::placeholder {
+    color: var(--rfe-color-placeholder);
+    font-size: 14px;
+  }
 
-.input.disableShrink {
-  padding: 16px;
+  &:-webkit-autofill,
+  &:focus,
+  &:not([value='']) {
+    &:not(.disableShrink) {
+      & ~ .label {
+        font-size: 12px;
+        transform: translateY(9px);
+      }
+    }
+  }
+
+  &.disableShrink {
+    padding: 16px;
+  }
 }
 
 .append,
 .prepend {
   position: absolute;
+  color: var(--rfe-color);
   top: 50%;
   z-index: 1;
-  color: var(--rfe-color);
   transform: translateY(-50%);
   display: flex;
   align-items: center;
@@ -94,36 +96,40 @@
   line-height: 16px;
   padding-right: 13px;
   border-right: 1px solid var(--rfe-border);
-}
 
-.prepend ~ .label {
-  left: 62px;
-}
+  & ~ .label {
+    left: 62px;
+  }
 
-.prepend ~ .input {
-  padding: 20px 16px 0 60px;
-}
+  & ~ .input {
+    padding: 20px 16px 0 60px;
 
-.prepend ~ .input.disableShrink {
-  padding: 16px 16px 16px 60px;
+    &.disableShrink {
+      padding: 16px 16px 16px 60px;
+    }
+  }
 }
 
 .append {
   right: 16px;
   height: 56px;
-}
 
-.append ~ .input {
-  padding: 19px 56px 0 16px;
-}
+  & ~ .input {
+    padding: 20px 50px 0 16px;
 
-.append ~ .input.disableShrink {
-  padding: 0 50px 0 16px;
+    &.disableShrink {
+      padding: 0 50px 0 16px;
+    }
+  }
 }
 
 .appendDisabledShrink {
   top: 24px;
   transform: none;
+}
+
+.noLabel {
+  padding: 16px;
 }
 
 .errorLabel {

@@ -1,6 +1,6 @@
 .inputContainer {
   position: relative;
-  margin-bottom: 16px;
+  margin-bottom: var(--rfe-spacing);
   box-sizing: border-box;
 }
 
@@ -15,6 +15,18 @@
   cursor: text;
   transform: translateY(calc((var(--rfe-input-height) - 14px) / 2));
   transition: all 250ms;
+  width: calc(100% - 16px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 0;
+    width: calc(100% - 14px);
+    height: 24px;
+    background-color: var(--rfe-background);
+    z-index: -1;
+  }
 }
 
 .inputContainer.focusedContainer .label {
@@ -25,6 +37,7 @@
 .inputContainer .innerContainer {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .inputContainer .innerWrapper {
@@ -70,14 +83,23 @@
   cursor: not-allowed !important;
 }
 
+.disabledLabel {
+  &::before {
+    background-color: var(--rfe-background-disabled) !important;
+  }
+}
+
 .disableShrink {
   display: block;
   position: static !important;
   font-size: var(--rfe-font-size) !important;
   color: var(--rfe-color);
   transform: none;
-  background: none !important;
   margin-bottom: var(--rfe-label-spacing);
+
+  &::before {
+    background-color: var(--rfe-transparent);
+  }
 }
 
 .disableShrinkInput {

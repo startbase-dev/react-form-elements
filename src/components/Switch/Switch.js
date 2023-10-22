@@ -7,24 +7,26 @@ import cx from 'classnames';
 import s from './Switch.module.css';
 
 function Switch({
+  name,
+  onChange,
   label = null,
-  name = null,
   checked = false,
-  className = '',
-  onChange = () => {},
+  inputClassName = null,
+  labelClassName = null,
+  errorClassName = null,
   disabled = false,
   error = null,
 }) {
   return (
-    <label htmlFor={name ? `checkbox_${name}` : ''} className={s.switch}>
-      <div className={cx(s.inputRoot, className)}>
+    <label htmlFor={`switch_${name}`} className={s.switch}>
+      <div className={cx(s.inputRoot, { [inputClassName]: inputClassName })}>
         <input
           className={s.switchCheckbox}
           name={name}
           type="checkbox"
           checked={checked}
           onChange={onChange}
-          id={name ? `checkbox_${name}` : ''}
+          id={`switch_${name}`}
           disabled={disabled}
         />
         <div
@@ -43,20 +45,28 @@ function Switch({
             })}
           />
         </div>
-        <div className={s.text}>{label}</div>
+        <div className={cx(s.label, { [labelClassName]: labelClassName })}>
+          {label}
+        </div>
       </div>
-      {error ? <div className={s.errorLabel}>{error}</div> : null}
+      {error ? (
+        <div className={cx(s.errorLabel, { [errorClassName]: errorClassName })}>
+          {error}
+        </div>
+      ) : null}
     </label>
   );
 }
 
 Switch.propTypes = {
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  name: PropTypes.string,
-  error: PropTypes.string,
-  checked: PropTypes.bool,
+  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  className: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  checked: PropTypes.bool,
+  inputClassName: PropTypes.string,
+  labelClassName: PropTypes.string,
+  errorClassName: PropTypes.string,
   disabled: PropTypes.bool,
 };
 

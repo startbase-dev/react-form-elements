@@ -16,7 +16,7 @@
   cursor: pointer;
 }
 
-.text {
+.label {
   margin-top: 1px;
   font-size: 14px;
   line-height: 20px;
@@ -24,8 +24,8 @@
 }
 
 .box {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border: solid 1px var(--rfe-border);
   border-radius: var(--rfe-border-radius);
   margin-right: 16px;

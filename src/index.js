@@ -5,6 +5,20 @@ import PasswordInput from './components/PasswordInput/PasswordInput';
 import Radio from './components/Radio/Radio';
 import RadioGroup from './components/RadioGroup/RadioGroup';
 import TextArea from './components/TextArea/TextArea';
+import AmountInput from './components/AmountInput/AmountInput';
+import NumberInput from './components/NumberInput/NumberInput';
+import Switch from './components/Switch/Switch';
 import './style/globals.css';
 
-export { Form, Input, TextArea, Checkbox, Radio, RadioGroup, PasswordInput };
+export {
+  Form,
+  Input,
+  TextArea,
+  Checkbox,
+  Radio,
+  Switch,
+  RadioGroup,
+  PasswordInput,
+  AmountInput,
+  NumberInput,
+};

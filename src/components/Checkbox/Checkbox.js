@@ -8,19 +8,18 @@ import { CheckIcon } from '../Icon';
 import s from './Checkbox.module.css';
 
 function Checkbox({
+  name,
+  onChange,
   label = null,
-  name = null,
   checked = false,
-  className = '',
-  onChange = () => {},
+  inputClassName = null,
+  labelClassName = null,
+  errorClassName = null,
   disabled = false,
   error = null,
 }) {
   return (
-    <label
-      htmlFor={name ? `checkbox_${name}` : ''}
-      className={cx(s.root, className)}
-    >
+    <label htmlFor={`checkbox_${name}`} className={s.root}>
       <div className={cx(s.inputRoot)}>
         <input
           className={s.input}
@@ -28,30 +27,43 @@ function Checkbox({
           type="checkbox"
           checked={checked}
           onChange={onChange}
-          id={name ? `checkbox_${name}` : ''}
+          id={`checkbox_${name}`}
           disabled={disabled}
         />
         <span
           className={cx(s.box, {
             [s.boxDisabled]: disabled,
+            [inputClassName]: inputClassName,
           })}
         >
           <CheckIcon className={s.icon} />
         </span>
-        <div className={s.text}>{label}</div>
+        <div
+          className={cx(s.label, {
+            [labelClassName]: labelClassName,
+          })}
+        >
+          {label}
+        </div>
       </div>
-      {error ? <div className={s.errorLabel}>{error}</div> : null}
+      {error ? (
+        <div className={cx(s.errorLabel, { [errorClassName]: errorClassName })}>
+          {error}
+        </div>
+      ) : null}
     </label>
   );
 }
 
 Checkbox.propTypes = {
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  name: PropTypes.string,
-  error: PropTypes.string,
-  checked: PropTypes.bool,
+  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  className: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  checked: PropTypes.bool,
+  inputClassName: PropTypes.string,
+  labelClassName: PropTypes.string,
+  errorClassName: PropTypes.string,
   disabled: PropTypes.bool,
 };
 

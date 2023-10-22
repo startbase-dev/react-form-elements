@@ -1,0 +1,23 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  color: var(--rfe-color);
+  padding: 4px;
+  margin: 4px;
+  background: none;
+  border: 0;
+  border-radius: var(--rfe-border-radius);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--rfe-background-selected);
+  }
+}

@@ -8,21 +8,20 @@ import { CheckIcon } from '../Icon';
 import s from './Radio.module.css';
 
 function Radio({
+  name,
+  onChange,
+  value,
   label = null,
-  name = null,
   checked = false,
-  className = '',
-  onChange = () => {},
+  inputClassName = null,
+  labelClassName = null,
+  errorClassName = null,
   disabled = false,
-  value = false,
   error = null,
   ...rest
 }) {
   return (
-    <label
-      htmlFor={name ? `radio_${value}` : ''}
-      className={cx(s.root, className)}
-    >
+    <label htmlFor={`radio_${name}_${value}`} className={cx(s.root)}>
       <div className={cx(s.inputRoot)}>
         <input
           {...rest}
@@ -32,43 +31,47 @@ function Radio({
           checked={checked}
           value={value}
           onChange={onChange}
-          id={`radio_${value}`}
+          id={`radio_${name}_${value}`}
           disabled={disabled}
         />
         <span
           className={cx(s.box, {
             [s.boxDisabled]: disabled,
+            [inputClassName]: inputClassName,
           })}
         >
           <CheckIcon className={s.icon} />
         </span>
-        <div className={s.text}>{label}</div>
+        <div
+          className={cx(s.label, {
+            [labelClassName]: labelClassName,
+          })}
+        >
+          {label}
+        </div>
       </div>
-      {error ? <span className={s.errorLabel}>{error}</span> : null}
+      {error ? (
+        <span
+          className={cx(s.errorLabel, { [errorClassName]: errorClassName })}
+        >
+          {error}
+        </span>
+      ) : null}
     </label>
   );
 }
 
 Radio.propTypes = {
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  name: PropTypes.string,
-  checked: PropTypes.bool,
+  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  className: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  checked: PropTypes.bool,
+  inputClassName: PropTypes.string,
+  labelClassName: PropTypes.string,
+  errorClassName: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  value: PropTypes.bool,
-};
-
-Radio.defaultProps = {
-  name: null,
-  checked: false,
-  label: null,
-  onChange: () => {},
-  className: '',
-  disabled: false,
-  value: false,
-  error: null,
 };
 
 export default Radio;

@@ -1,13 +1,10 @@
 import React, { forwardRef, useCallback, useMemo } from 'react';
-
 import PropTypes from 'prop-types';
-
 import cx from 'classnames';
-import DOMPurify from 'dompurify';
+import AmountInputRoot from './AmountInputRoot';
+import s from './AmountInput.module.css';
 
-import s from './Input.module.css';
-
-const Input = forwardRef(
+const AmountInput = forwardRef(
   (
     {
       name,
@@ -30,15 +27,11 @@ const Input = forwardRef(
     inputRef
   ) => {
     const handleChange = useCallback(
-      (e) => {
-        const inputName = e.target.name;
-        const val = DOMPurify.sanitize(e.target.value);
-
+      (value, name) => {
         onChange({
-          ...e,
           target: {
-            name: inputName,
-            value: val,
+            name,
+            value,
           },
         });
       },
@@ -47,33 +40,25 @@ const Input = forwardRef(
 
     const input = useMemo(() => {
       return (
-        <input
-          type="text"
+        <AmountInputRoot
+          id={name}
           className={cx(s.input, {
-            [s.disableShrink]: disableShrink || !label,
-            [s.placeholder]: label && placeholder && !disableShrink,
+            [s.disableShrink]: disableShrink,
+            [s.noLabel]: !label,
             [s.disabled]: disabled,
             [inputClassName]: inputClassName,
           })}
           name={name}
+          placeholder={placeholder}
           value={value}
           ref={inputRef}
-          onChange={handleChange}
+          onValueChange={handleChange}
           disabled={disabled}
-          placeholder={placeholder}
+          maxLength={10}
           {...rest}
         />
       );
-    }, [
-      inputClassName,
-      disableShrink,
-      disabled,
-      name,
-      value,
-      inputRef,
-      handleChange,
-      rest,
-    ]);
+    }, [name, disableShrink, disabled, value, inputRef, handleChange, rest]);
 
     const labelEl = useMemo(
       () => (
@@ -81,45 +66,22 @@ const Input = forwardRef(
           htmlFor={name}
           className={cx(s.label, {
             [s.disableShrink]: disableShrink,
-            [s.labelPlaceholder]: label && placeholder && !disableShrink,
+            [s.focusedLabel]: label && placeholder && !disableShrink,
             [labelClassName]: labelClassName,
           })}
-          onClick={() => {
-            try {
-              const inputs = document.querySelectorAll(`[name="${name}"]`);
-
-              if (!inputs.length) {
-                return;
-              }
-
-              let input = inputs?.[0];
-
-              if (input?.type === 'hidden') {
-                input = input?.parentNode?.querySelector('input');
-              }
-
-              input?.focus();
-            } catch (error) {
-              throw error;
-            }
-          }}
         >
           {label}
         </label>
       ),
-      [name, disableShrink, label]
+      [name, label, disableShrink]
     );
 
     return (
       <div className={cx(s.root)}>
         <div className={cx(s.inputRoot)}>
           {prepend && (
-            <div
-              className={cx(s.prepend, {
-                [prependClassName]: prependClassName,
-              })}
-            >
-              {prepend}
+            <div className={cx(s.prepend, prependClassName)}>
+              {prepend ? prepend : null}
             </div>
           )}
 
@@ -152,9 +114,9 @@ const Input = forwardRef(
   }
 );
 
-Input.displayName = 'Input';
+AmountInput.displayName = 'AmountInput';
 
-Input.propTypes = {
+AmountInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
@@ -172,4 +134,4 @@ Input.propTypes = {
   disabled: PropTypes.bool,
 };
 
-export default Input;
+export default AmountInput;

@@ -1,6 +1,10 @@
 .switch {
   display: flex;
   flex-direction: column;
+  pointer-events: all;
+  position: relative;
+  margin-bottom: var(--rfe-spacing);
+  cursor: pointer;
 }
 
 .inputRoot {
@@ -8,7 +12,7 @@
   align-items: center;
 }
 
-.text {
+.label {
   margin-top: 1px;
   font-size: var(--rfe-font-size);
   line-height: 20px;
@@ -41,7 +45,7 @@
   cursor: pointer;
   border-radius: 20px;
   border: var(--rfe-border) 1px solid;
-  width: 48px;
+  width: 56px;
   position: relative;
   margin: 0 16px 0 0;
 
@@ -60,7 +64,7 @@
     display: block;
     float: left;
     width: 50%;
-    height: 22px;
+    height: 26px;
   }
 
   &::before {
@@ -77,14 +81,14 @@
 
 .switchSwitch {
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   margin: 1px;
   background: var(--rfe-background);
   position: absolute;
-  top: 1px;
+  top: 2px;
   bottom: 0;
-  right: 25px;
+  right: 29px;
   border-radius: 100px;
   transition: all 250ms;
   border: var(--rfe-border) 1px solid;
@@ -95,7 +99,7 @@
 }
 
 .switchSwitchChecked {
-  right: 1px;
+  right: 2px;
 }
 
 .disabled {

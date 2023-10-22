@@ -8,22 +8,27 @@ import Radio from '../Radio/Radio';
 import s from './RadioGroup.module.css';
 
 function RadioGroup({
+  name,
+  onChange,
+  value = null,
   options = [],
   label = null,
-  name = null,
-  className = '',
-  onChange = () => {},
+  inputClassName = null,
+  labelClassName = null,
+  optionLabelClassName = null,
+  errorClassName = null,
   disabled = false,
-  value = false,
   error = null,
 }) {
   return (
-    <label htmlFor={`radio_${name}`} className={cx(s.root, className)}>
+    <label className={cx(s.root, { [labelClassName]: labelClassName })}>
       <span className={s.label}>{label}</span>
       {options.map((option, index) => {
         return (
           <Radio
             key={index}
+            inputClassName={inputClassName}
+            labelClassName={optionLabelClassName}
             checked={option.value === value}
             label={option.label}
             value={option.value}
@@ -33,23 +38,32 @@ function RadioGroup({
           />
         );
       })}
-      {error ? <div className={s.errorLabel}>{error}</div> : null}
+      {error ? (
+        <div className={cx(s.errorLabel, { [errorClassName]: errorClassName })}>
+          {error}
+        </div>
+      ) : null}
     </label>
   );
 }
 
-RadioGroup.propTypes = {
+const Option = PropTypes.shape({
+  value: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  name: PropTypes.string,
-  options: PropTypes.arrayOf({
-    value: PropTypes.any,
-    label: PropTypes.any,
-  }),
+});
+
+RadioGroup.propTypes = {
+  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  className: PropTypes.string,
+  value: PropTypes.string,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  options: PropTypes.arrayOf(Option),
+  inputClassName: PropTypes.string,
+  labelClassName: PropTypes.string,
+  optionLabelClassName: PropTypes.string,
+  errorClassName: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  value: PropTypes.bool,
 };
 
 export default RadioGroup;

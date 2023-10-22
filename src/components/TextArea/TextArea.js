@@ -14,21 +14,19 @@ import DOMPurify from 'dompurify';
 import s from './TextArea.module.css';
 
 const TextArea = ({
+  name,
+  onChange,
   error = null,
   value = '',
-  onChange = () => {},
-  placeholder = '',
-  label = '',
+  placeholder = null,
+  label = null,
   disabled = false,
-  className = '',
-  containerClassName = '',
-  innerContainerClassName = '',
-  innerWrapperClassName = '',
+  inputClassName = null,
+  labelClassName = null,
+  errorClassName = null,
   onFocus = () => {},
   onBlur = () => {},
-  name = '',
-  rows = 5,
-  resizable = false,
+  autoGrow = false,
   disableShrink = false,
   ...rest
 }) => {
@@ -36,13 +34,13 @@ const TextArea = ({
   const [focused, setFocus] = useState(false);
 
   const resizeTextArea = () => {
-    if (resizable) {
+    if (autoGrow) {
       inputEl.current.style.height = 'auto';
       inputEl.current.style.height = inputEl.current.scrollHeight + 'px';
     }
   };
 
-  useEffect(resizeTextArea, [resizable, value]);
+  useEffect(resizeTextArea, [autoGrow, value]);
 
   const handleChange = useCallback(
     (e) => {
@@ -79,12 +77,11 @@ const TextArea = ({
       <textarea
         ref={inputEl}
         disabled={disabled}
-        rows={rows}
         className={cx(s.input, {
-          [className]: className,
           [s.withLabel]: !!label,
           [s.disabled]: disabled,
           [s.disableShrinkInput]: disableShrink,
+          [inputClassName]: inputClassName,
         })}
         value={value}
         onChange={handleChange}
@@ -101,7 +98,15 @@ const TextArea = ({
         {...rest}
       />
     );
-  }, [className, disableShrink, disabled, name, value, handleChange, rest]);
+  }, [
+    inputClassName,
+    disableShrink,
+    disabled,
+    name,
+    value,
+    handleChange,
+    rest,
+  ]);
 
   const labelEl = useMemo(
     () => (
@@ -109,7 +114,9 @@ const TextArea = ({
         htmlFor={name}
         className={cx(s.label, {
           [s.disableShrink]: disableShrink,
+          [s.disabledLabel]: disabled,
           [s.labelPlaceholder]: label && placeholder && !disableShrink,
+          [labelClassName]: labelClassName,
         })}
         onClick={() => {
           try {
@@ -140,48 +147,39 @@ const TextArea = ({
   return (
     <div
       className={cx(s.inputContainer, {
-        [containerClassName]: containerClassName,
         [s.focusedContainer]: !placeholder && (focused || !!value),
       })}
     >
-      <div
-        className={cx(s.innerContainer, {
-          [innerContainerClassName]: innerContainerClassName,
-        })}
-      >
+      <div className={s.innerContainer}>
         {label && labelEl}
-        <div
-          onClick={setFocusState}
-          className={cx(s.innerWrapper, {
-            [innerWrapperClassName]: innerWrapperClassName,
-          })}
-        >
+        <div onClick={setFocusState} className={s.innerWrapper}>
           {textArea}
         </div>
       </div>
-      {errorMessage ? <div className={s.errorLabel}>{errorMessage}</div> : null}
+      {errorMessage ? (
+        <div className={cx(s.errorLabel, { [errorClassName]: errorClassName })}>
+          {errorMessage}
+        </div>
+      ) : null}
     </div>
   );
 };
 
 TextArea.propTypes = {
-  fluid: PropTypes.bool,
-  value: PropTypes.string,
+  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
+  value: PropTypes.string,
   label: PropTypes.string,
+  placeholder: PropTypes.string,
   disabled: PropTypes.bool,
-  resizable: PropTypes.bool,
+  autoGrow: PropTypes.bool,
   disableShrink: PropTypes.bool,
-  className: PropTypes.string,
-  containerClassName: PropTypes.string,
-  innerContainerClassName: PropTypes.string,
-  innerWrapperClassName: PropTypes.string,
+  inputClassName: PropTypes.string,
+  labelClassName: PropTypes.string,
+  errorClassName: PropTypes.string,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
-  error: PropTypes.string,
-  name: PropTypes.string,
-  rows: PropTypes.number,
+  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 };
 
 export default TextArea;

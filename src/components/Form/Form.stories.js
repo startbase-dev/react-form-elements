@@ -7,6 +7,8 @@ import RadioGroup from '../RadioGroup/RadioGroup';
 import Switch from '../Switch/Switch';
 import TextArea from '../TextArea/TextArea';
 import Form from './Form.js';
+import NumberInput from '../NumberInput/NumberInput';
+import AmountInput from '../AmountInput/AmountInput';
 
 const Template = () => {
   const [inputs, setInputs] = useState({});
@@ -33,6 +35,18 @@ const Template = () => {
           label="Password"
           name="password"
           value={inputs.password}
+          onChange={onChange}
+        />
+        <NumberInput
+          label="Number"
+          name="number"
+          value={inputs.number}
+          onChange={onChange}
+        />
+        <AmountInput
+          label="Amount"
+          name="amount"
+          value={inputs.amount}
           onChange={onChange}
         />
         <TextArea
@@ -70,47 +84,63 @@ const Template = () => {
         <Input
           label="Username"
           placeholder="Username"
-          name="username"
+          name="username1"
           disableShrink
-          value={inputs.username}
+          value={inputs.username1}
           onChange={onChange}
         />
         <PasswordInput
           label="Password"
           placeholder="Password"
-          name="password"
+          name="password1"
           disableShrink
-          value={inputs.password}
+          value={inputs.password1}
+          onChange={onChange}
+        />
+        <NumberInput
+          label="Number"
+          placeholder="Number"
+          name="number"
+          disableShrink
+          value={inputs.number}
+          onChange={onChange}
+        />
+        <AmountInput
+          label="Amount"
+          placeholder="Amount"
+          name="amount"
+          disableShrink
+          value={inputs.amount}
           onChange={onChange}
         />
         <TextArea
-          name="textarea"
+          name="textarea1"
           placeholder="Description"
           onChange={onChange}
           disableShrink
           label="Description"
-          value={inputs.textarea}
+          value={inputs.textarea1}
         />
         <RadioGroup
           label="RadioGroup"
-          value={inputs.country}
-          name="country"
+          value={inputs.country1}
+          name="country1"
           onChange={onChange}
           options={[
-            { label: 'Radio Option 1', value: 'default1' },
-            { label: 'Radio Option 2', value: 'default2' },
+            { label: 'Radio Option 1', value: 'default11' },
+            { label: 'Radio Option 2', value: 'default21' },
           ]}
         />
         <Checkbox
-          checked={inputs.agree}
+          checked={inputs.agree1}
           label="I understand and accept the terms and conditions and privacy policy."
-          name="agree"
+          name="agree1"
           onChange={onChange}
         />
         <Switch
-          checked={inputs.dark}
+          checked={inputs.dark1}
           label="Switch"
-          name="dark"
+          name="dark1"
           onChange={onChange}
         />
       </Form>
@@ -133,6 +163,22 @@ const Template = () => {
           value={inputs.password_disabled}
           onChange={onChange}
         />
+        <NumberInput
+          label="Number"
+          name="number"
+          disabled
+          disableShrink
+          value={inputs.number}
+          onChange={onChange}
+        />
+        <AmountInput
+          label="Amount"
+          name="amount"
+          disabled
+          disableShrink
+          value={inputs.amount}
+          onChange={onChange}
+        />
         <RadioGroup
           disabled
           label="RadioGroup"
@@ -140,8 +186,8 @@ const Template = () => {
           name="country_disabled"
           onChange={onChange}
           options={[
-            { label: 'Radio Option 1', value: 'default1' },
-            { label: 'Radio Option 2', value: 'default2' },
+            { label: 'Radio Option 1', value: 'default122' },
+            { label: 'Radio Option 2', value: 'default222' },
           ]}
         />
         <Checkbox
