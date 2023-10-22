@@ -19,7 +19,7 @@ function Switch({
 }) {
   return (
     <label htmlFor={`switch_${name}`} className={s.switch}>
-      <div className={cx(s.inputRoot, { [inputClassName]: inputClassName })}>
+      <div className={s.inputRoot}>
         <input
           className={s.switchCheckbox}
           name={name}
@@ -32,13 +32,10 @@ function Switch({
         <div
           className={cx(s.switchLabel, {
             [s.disabled]: disabled,
+            [inputClassName]: inputClassName,
+            [s.switchInnerChecked]: checked,
           })}
         >
-          <span
-            className={cx(s.switchInner, {
-              [s.switchInnerChecked]: checked,
-            })}
-          />
           <span
             className={cx(s.switchSwitch, {
               [s.switchSwitchChecked]: checked,

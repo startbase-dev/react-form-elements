@@ -47,7 +47,7 @@
   border-radius: var(--rfe-border-radius);
 }
 
-.inputContainer .innerWrapper .input {
+.input {
   background-color: var(--rfe-background);
   resize: none;
   color: var(--rfe-color);

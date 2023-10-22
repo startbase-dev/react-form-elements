@@ -4,12 +4,13 @@
 
 This npm package provides a set of form-related components for React. You can use these components to build forms with ease.
 
-- CSS variables for theming are available for all components. 
+- CSS variables for theming are available for all components.
 - Classnames are available for all components.
 - Built-in dark mode support.
 
 ![](dark.png)
 ![](light.png)
+![](theme.png)
 
 ## Table of Contents
 
@@ -66,86 +67,96 @@ export default function RootLayout({ children }) {
 ## Props
 
 ### Common Props
-| Name           | Type                  | Default | Description                                                                 |
-|----------------|-----------------------| ------- | --------------------------------------------------------------------------- |
-| name           | `string`              |         | Name of the input                                                           |
-| label          | `string`              |         | Label of the input                                                          |
-| value          | `string` or `number`  |         | Value of the input                                                          |
-| onChange       | `function`            |         | Callback function that is fired when the value changes.                     |
-| inputClassName | `string`              |         | Classname for input element                                                 |
-| labelClassName | `string`              |         | Classname for label element                                                 |
-| errorClassName | `string`              |         | Classname for error element                                                 |
-| disabled       | `boolean`             | `false` | Disable the input                                                           |
-| error          | `string` or `boolean` |         | Error message to display below the input                                    |
-| required       | `boolean`             | `false` | Mark the input as required                                                  |
+
+| Name           | Type                  | Default | Description                                             |
+| -------------- | --------------------- | ------- | ------------------------------------------------------- |
+| name           | `string`              |         | Name of the input                                       |
+| label          | `string`              |         | Label of the input                                      |
+| value          | `string` or `number`  |         | Value of the input                                      |
+| onChange       | `function`            |         | Callback function that is fired when the value changes. |
+| inputClassName | `string`              |         | Classname for input element                             |
+| labelClassName | `string`              |         | Classname for label element                             |
+| errorClassName | `string`              |         | Classname for error element                             |
+| disabled       | `boolean`             | `false` | Disable the input                                       |
+| error          | `string` or `boolean` |         | Error message to display below the input                |
+| required       | `boolean`             | `false` | Mark the input as required                              |
 
 ### Form
-| Name        | Type                 | Default | Description                                                                 |
-| ----------- |----------------------| ------- | --------------------------------------------------------------------------- |
- | children   | `ReactNode`          |         | Children of the form                                                        |
+
+| Name     | Type        | Default | Description          |
+| -------- | ----------- | ------- | -------------------- |
+| children | `ReactNode` |         | Children of the form |
 
 ### Input
-| Name        | Type                    | Default | Description                                                                |
-| ----------- |-------------------------| ------- | -------------------------------------------------------------------------- |
-| prepend     | `string` or `element`   |         | Prepend text to the input                                                  |
-| append      | `string` or `element`   |         | Append text to the input                                                   |
-| appendClassName | `string`            |         | Classname for append element                                               |
-| prependClassName | `string`           |         | Classname for prepend element                                              |
+
+| Name             | Type                  | Default | Description                   |
+| ---------------- | --------------------- | ------- | ----------------------------- |
+| prepend          | `string` or `element` |         | Prepend text to the input     |
+| append           | `string` or `element` |         | Append text to the input      |
+| appendClassName  | `string`              |         | Classname for append element  |
+| prependClassName | `string`              |         | Classname for prepend element |
 
 ### TextArea
-| Name                     | Type                    | Default          | Description                                                                |
-|--------------------------|-------------------------|------------------| -------------------------------------------------------------------------- |
-| disableShrink            | `boolean`               | `false`          | Disable shrink on focus                                                    |
-|autoGrowautoGrow          | `boolean`               | `false`          | Auto grow textarea                                                         |
+
+| Name             | Type      | Default | Description             |
+| ---------------- | --------- | ------- | ----------------------- |
+| disableShrink    | `boolean` | `false` | Disable shrink on focus |
+| autoGrowautoGrow | `boolean` | `false` | Auto grow textarea      |
 
 ### Checkbox
-| Name           | Type                    | Default | Description                                                          |
-|----------------|-------------------------| ------- |----------------------------------------------------------------------|
-| checked        | `boolean`               |         | Checked state of the switch                                          |
+
+| Name    | Type      | Default | Description                 |
+| ------- | --------- | ------- | --------------------------- |
+| checked | `boolean` |         | Checked state of the switch |
 
 ### Radio
-| Name           | Type                    | Default | Description                                                          |
-|----------------|-------------------------| ------- |----------------------------------------------------------------------|
-| checked        | `boolean`               |         | Checked state of the switch                                          |
+
+| Name    | Type      | Default | Description                 |
+| ------- | --------- | ------- | --------------------------- |
+| checked | `boolean` |         | Checked state of the switch |
 
 ### Switch
-| Name           | Type                    | Default | Description                                                          |
-|----------------|-------------------------| ------- |----------------------------------------------------------------------|
-| checked        | `boolean`               |         | Checked state of the switch                                          |
+
+| Name    | Type      | Default | Description                 |
+| ------- | --------- | ------- | --------------------------- |
+| checked | `boolean` |         | Checked state of the switch |
 
 ### RadioGroup
-| Name                   | Type                    | Default | Description                                                          |
-|------------------------|-------------------------| ------- |----------------------------------------------------------------------|
-| options                | `array`                 |         | Array of options to display                                          |
-| optionLabelClassName   | `string`                |         | Classname for option label                                          |
+
+| Name                 | Type     | Default | Description                 |
+| -------------------- | -------- | ------- | --------------------------- |
+| options              | `array`  |         | Array of options to display |
+| optionLabelClassName | `string` |         | Classname for option label  |
 
 ### PasswordInput
-| Name        | Type                    | Default | Description                                                                |
-| ----------- |-------------------------| ------- | -------------------------------------------------------------------------- |
-| prepend     | `string` or `element`   |         | Prepend text to the input                                                  |
-| append      | `string` or `element`   |         | Append text to the input                                                   |
-| appendClassName | `string`            |         | Classname for append element                                               |
-| prependClassName | `string`           |         | Classname for prepend element                                              |
-| disableShrink          | `boolean`             | `false`        | Disable shrink on focus                                                    |
+
+| Name             | Type                  | Default | Description                   |
+| ---------------- | --------------------- | ------- | ----------------------------- |
+| prepend          | `string` or `element` |         | Prepend text to the input     |
+| append           | `string` or `element` |         | Append text to the input      |
+| appendClassName  | `string`              |         | Classname for append element  |
+| prependClassName | `string`              |         | Classname for prepend element |
+| disableShrink    | `boolean`             | `false` | Disable shrink on focus       |
 
 ### AmountInput
-| Name        | Type                    | Default | Description                                                                |
-| ----------- |-------------------------| ------- | -------------------------------------------------------------------------- |
-| prepend     | `string` or `element`   |         | Prepend text to the input                                                  |
-| append      | `string` or `element`   |         | Append text to the input                                                   |
-| appendClassName | `string`            |         | Classname for append element                                               |
-| prependClassName | `string`           |         | Classname for prepend element                                              |
-| disableShrink          | `boolean`             | `false`        | Disable shrink on focus                                                    |
 
+| Name             | Type                  | Default | Description                   |
+| ---------------- | --------------------- | ------- | ----------------------------- |
+| prepend          | `string` or `element` |         | Prepend text to the input     |
+| append           | `string` or `element` |         | Append text to the input      |
+| appendClassName  | `string`              |         | Classname for append element  |
+| prependClassName | `string`              |         | Classname for prepend element |
+| disableShrink    | `boolean`             | `false` | Disable shrink on focus       |
 
 ### NumberInput
-| Name                   | Type                  | Default        | Description                                                                |
-|------------------------|-----------------------|----------------| -------------------------------------------------------------------------- |
-| prepend                | `string` or `element` |                | Prepend text to the input                                                  |
-| append                 | `string` or `element` |                | Append text to the input                                                   |
-| appendClassName        | `string`              |                | Classname for append element                                               |
-| prependClassName       | `string`              |                | Classname for prepend element                                              |
-| disableShrink          | `boolean`             | `false`        | Disable shrink on focus                                                    |
+
+| Name                   | Type                  | Default        | Description                                                                                                                                                                                                                                                                                                                                                                      |
+| ---------------------- | --------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| prepend                | `string` or `element` |                | Prepend text to the input                                                                                                                                                                                                                                                                                                                                                        |
+| append                 | `string` or `element` |                | Append text to the input                                                                                                                                                                                                                                                                                                                                                         |
+| appendClassName        | `string`              |                | Classname for append element                                                                                                                                                                                                                                                                                                                                                     |
+| prependClassName       | `string`              |                | Classname for prepend element                                                                                                                                                                                                                                                                                                                                                    |
+| disableShrink          | `boolean`             | `false`        | Disable shrink on focus                                                                                                                                                                                                                                                                                                                                                          |
 | allowDecimals          | `boolean`             | `true`         | Allow decimals                                                                                                                                                                                                                                                                                                                                                                   |
 | allowNegativeValue     | `boolean`             | `true`         | Allow user to enter negative value                                                                                                                                                                                                                                                                                                                                               |
 | defaultValue           | `number`              |                | Default value                                                                                                                                                                                                                                                                                                                                                                    |

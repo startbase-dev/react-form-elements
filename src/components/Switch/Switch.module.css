@@ -45,37 +45,14 @@
   cursor: pointer;
   border-radius: 20px;
   border: var(--rfe-border) 1px solid;
+  background-color: var(--rfe-background);
+  height: 28px;
   width: 56px;
   position: relative;
   margin: 0 16px 0 0;
 
   &:hover {
     box-shadow: var(--rfe-focus);
-  }
-}
-
-.switchInner {
-  display: block;
-  width: 200%;
-  margin-left: -100%;
-
-  &::before,
-  &::after {
-    display: block;
-    float: left;
-    width: 50%;
-    height: 26px;
-  }
-
-  &::before {
-    content: '';
-    background: var(--rfe-background-selected);
-  }
-
-  &::after {
-    content: '';
-    background-color: var(--rfe-background);
-    text-align: right;
   }
 }
 
@@ -96,6 +73,7 @@
 
 .switchInnerChecked {
   margin-left: 0;
+  background: var(--rfe-background-selected);
 }
 
 .switchSwitchChecked {

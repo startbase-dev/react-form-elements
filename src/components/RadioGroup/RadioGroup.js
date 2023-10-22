@@ -21,8 +21,10 @@ function RadioGroup({
   error = null,
 }) {
   return (
-    <label className={cx(s.root, { [labelClassName]: labelClassName })}>
-      <span className={s.label}>{label}</span>
+    <label className={s.root}>
+      <span className={cx(s.label, { [labelClassName]: labelClassName })}>
+        {label}
+      </span>
       {options.map((option, index) => {
         return (
           <Radio
