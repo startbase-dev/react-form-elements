@@ -1,15 +1,15 @@
 # react-form-elements
 
-This npm package provides a set of form-related components for React. You can use these components to build forms with ease. The package includes the following components:
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/%40start-base%2Freact-form-elements)
 
-Form
-The Form component is used for creating forms and can contain various input fields. It supports the following components:
+This npm package provides a set of form-related components for React. You can use these components to build forms with ease.
 
-Input: A text input field.
-PasswordInput: A password input field.
-RadioGroup: A group of radio buttons.
-TextArea: A multi-line text input field.
-Checkbox: A checkbox input field.
+- CSS variables for theming are available for all components. 
+- Classnames are available for all components.
+- Built-in dark mode support.
+
+![](dark.png)
+![](light.png)
 
 ## Table of Contents
 
@@ -65,44 +65,103 @@ export default function RootLayout({ children }) {
 
 ## Props
 
+### Common Props
+| Name           | Type                  | Default | Description                                                                 |
+|----------------|-----------------------| ------- | --------------------------------------------------------------------------- |
+| name           | `string`              |         | Name of the input                                                           |
+| label          | `string`              |         | Label of the input                                                          |
+| value          | `string` or `number`  |         | Value of the input                                                          |
+| onChange       | `function`            |         | Callback function that is fired when the value changes.                     |
+| inputClassName | `string`              |         | Classname for input element                                                 |
+| labelClassName | `string`              |         | Classname for label element                                                 |
+| errorClassName | `string`              |         | Classname for error element                                                 |
+| disabled       | `boolean`             | `false` | Disable the input                                                           |
+| error          | `string` or `boolean` |         | Error message to display below the input                                    |
+| required       | `boolean`             | `false` | Mark the input as required                                                  |
+
 ### Form
+| Name        | Type                 | Default | Description                                                                 |
+| ----------- |----------------------| ------- | --------------------------------------------------------------------------- |
+ | children   | `ReactNode`          |         | Children of the form                                                        |
 
 ### Input
+| Name        | Type                    | Default | Description                                                                |
+| ----------- |-------------------------| ------- | -------------------------------------------------------------------------- |
+| prepend     | `string` or `element`   |         | Prepend text to the input                                                  |
+| append      | `string` or `element`   |         | Append text to the input                                                   |
+| appendClassName | `string`            |         | Classname for append element                                               |
+| prependClassName | `string`           |         | Classname for prepend element                                              |
 
 ### TextArea
+| Name                     | Type                    | Default          | Description                                                                |
+|--------------------------|-------------------------|------------------| -------------------------------------------------------------------------- |
+| disableShrink            | `boolean`               | `false`          | Disable shrink on focus                                                    |
+|autoGrowautoGrow          | `boolean`               | `false`          | Auto grow textarea                                                         |
 
 ### Checkbox
+| Name           | Type                    | Default | Description                                                          |
+|----------------|-------------------------| ------- |----------------------------------------------------------------------|
+| checked        | `boolean`               |         | Checked state of the switch                                          |
 
 ### Radio
+| Name           | Type                    | Default | Description                                                          |
+|----------------|-------------------------| ------- |----------------------------------------------------------------------|
+| checked        | `boolean`               |         | Checked state of the switch                                          |
 
 ### Switch
+| Name           | Type                    | Default | Description                                                          |
+|----------------|-------------------------| ------- |----------------------------------------------------------------------|
+| checked        | `boolean`               |         | Checked state of the switch                                          |
 
 ### RadioGroup
+| Name                   | Type                    | Default | Description                                                          |
+|------------------------|-------------------------| ------- |----------------------------------------------------------------------|
+| options                | `array`                 |         | Array of options to display                                          |
+| optionLabelClassName   | `string`                |         | Classname for option label                                          |
 
 ### PasswordInput
+| Name        | Type                    | Default | Description                                                                |
+| ----------- |-------------------------| ------- | -------------------------------------------------------------------------- |
+| prepend     | `string` or `element`   |         | Prepend text to the input                                                  |
+| append      | `string` or `element`   |         | Append text to the input                                                   |
+| appendClassName | `string`            |         | Classname for append element                                               |
+| prependClassName | `string`           |         | Classname for prepend element                                              |
+| disableShrink          | `boolean`             | `false`        | Disable shrink on focus                                                    |
 
 ### AmountInput
+| Name        | Type                    | Default | Description                                                                |
+| ----------- |-------------------------| ------- | -------------------------------------------------------------------------- |
+| prepend     | `string` or `element`   |         | Prepend text to the input                                                  |
+| append      | `string` or `element`   |         | Append text to the input                                                   |
+| appendClassName | `string`            |         | Classname for append element                                               |
+| prependClassName | `string`           |         | Classname for prepend element                                              |
+| disableShrink          | `boolean`             | `false`        | Disable shrink on focus                                                    |
+
 
 ### NumberInput
-
-| Name                   | Type       | Default        | Description                                                                                                                                                                                                                                                                                                                                                                      |
-| ---------------------- | ---------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| allowDecimals          | `boolean`  | `true`         | Allow decimals                                                                                                                                                                                                                                                                                                                                                                   |
-| allowNegativeValue     | `boolean`  | `true`         | Allow user to enter negative value                                                                                                                                                                                                                                                                                                                                               |
-| defaultValue           | `number`   |                | Default value                                                                                                                                                                                                                                                                                                                                                                    |
-| decimalsLimit          | `number`   | `2`            | Limit length of decimals allowed                                                                                                                                                                                                                                                                                                                                                 |
-| decimalScale           | `number`   |                | Specify decimal scale for padding/trimming eg. 1.5 -> 1.50 or 1.234 -> 1.23 if decimal scale 2                                                                                                                                                                                                                                                                                   |
-| fixedDecimalLength     | `number`   |                | Value will always have the specified length of decimals                                                                                                                                                                                                                                                                                                                          |
-| prefix                 | `string`   |                | Include a prefix eg. £ or \$                                                                                                                                                                                                                                                                                                                                                     |
-| suffix                 | `string`   |                | Include a suffix eg. € or %                                                                                                                                                                                                                                                                                                                                                      |
-| decimalSeparator       | `string`   | locale default | Separator between integer part and fractional part of value                                                                                                                                                                                                                                                                                                                      |
-| groupSeparator         | `string`   | locale default | Separator between thousand, million and billion                                                                                                                                                                                                                                                                                                                                  |
-| intlConfig             | `object`   |                | `locale` should be a [BCP 47 language tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation), such as "en-US" or "en-IN". `currency` should be a [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217), such as "USD" for the US dollar, "EUR" for the euro, or "CNY" for the Chinese RMB. |
-| disableAbbreviations   | `boolean`  | `false`        | Disable abbreviations eg. 1k -> 1,000, 2m -> 2,000,000                                                                                                                                                                                                                                                                                                                           |
-| disableGroupSeparators | `boolean`  | `false`        | Disable auto adding the group separator between values, eg. 1000 -> 1,000                                                                                                                                                                                                                                                                                                        |
-| maxLength              | `number`   |                | Maximum characters the user can enter                                                                                                                                                                                                                                                                                                                                            |
-| step                   | `number`   |                | Incremental value change on arrow down and arrow up key press                                                                                                                                                                                                                                                                                                                    |
-| transformRawValue      | `function` |                | Transform the raw value from the input before parsing. Needs to return `string`.                                                                                                                                                                                                                                                                                                 |
+| Name                   | Type                  | Default        | Description                                                                |
+|------------------------|-----------------------|----------------| -------------------------------------------------------------------------- |
+| prepend                | `string` or `element` |                | Prepend text to the input                                                  |
+| append                 | `string` or `element` |                | Append text to the input                                                   |
+| appendClassName        | `string`              |                | Classname for append element                                               |
+| prependClassName       | `string`              |                | Classname for prepend element                                              |
+| disableShrink          | `boolean`             | `false`        | Disable shrink on focus                                                    |
+| allowDecimals          | `boolean`             | `true`         | Allow decimals                                                                                                                                                                                                                                                                                                                                                                   |
+| allowNegativeValue     | `boolean`             | `true`         | Allow user to enter negative value                                                                                                                                                                                                                                                                                                                                               |
+| defaultValue           | `number`              |                | Default value                                                                                                                                                                                                                                                                                                                                                                    |
+| decimalsLimit          | `number`              | `2`            | Limit length of decimals allowed                                                                                                                                                                                                                                                                                                                                                 |
+| decimalScale           | `number`              |                | Specify decimal scale for padding/trimming eg. 1.5 -> 1.50 or 1.234 -> 1.23 if decimal scale 2                                                                                                                                                                                                                                                                                   |
+| fixedDecimalLength     | `number`              |                | Value will always have the specified length of decimals                                                                                                                                                                                                                                                                                                                          |
+| prefix                 | `string`              |                | Include a prefix eg. £ or \$                                                                                                                                                                                                                                                                                                                                                     |
+| suffix                 | `string`              |                | Include a suffix eg. € or %                                                                                                                                                                                                                                                                                                                                                      |
+| decimalSeparator       | `string`              | locale default | Separator between integer part and fractional part of value                                                                                                                                                                                                                                                                                                                      |
+| groupSeparator         | `string`              | locale default | Separator between thousand, million and billion                                                                                                                                                                                                                                                                                                                                  |
+| intlConfig             | `object`              |                | `locale` should be a [BCP 47 language tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation), such as "en-US" or "en-IN". `currency` should be a [ISO 4217 currency code](https://en.wikipedia.org/wiki/ISO_4217), such as "USD" for the US dollar, "EUR" for the euro, or "CNY" for the Chinese RMB. |
+| disableAbbreviations   | `boolean`             | `false`        | Disable abbreviations eg. 1k -> 1,000, 2m -> 2,000,000                                                                                                                                                                                                                                                                                                                           |
+| disableGroupSeparators | `boolean`             | `false`        | Disable auto adding the group separator between values, eg. 1000 -> 1,000                                                                                                                                                                                                                                                                                                        |
+| maxLength              | `number`              |                | Maximum characters the user can enter                                                                                                                                                                                                                                                                                                                                            |
+| step                   | `number`              |                | Incremental value change on arrow down and arrow up key press                                                                                                                                                                                                                                                                                                                    |
+| transformRawValue      | `function`            |                | Transform the raw value from the input before parsing. Needs to return `string`.                                                                                                                                                                                                                                                                                                 |
 
 ## Examples
 
