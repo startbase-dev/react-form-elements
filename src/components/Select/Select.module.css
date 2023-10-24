@@ -1,0 +1,161 @@
+.root {
+  margin-bottom: var(--rfe-spacing);
+}
+
+.inputRoot {
+  position: relative;
+}
+
+.label {
+  line-height: 1;
+  font-size: var(--rfe-font-size);
+  color: var(--rfe-color);
+  margin-bottom: 0;
+  position: absolute;
+  left: 16px;
+  top: -2px;
+  cursor: text;
+  transform: translateY(calc((var(--rfe-input-height) - 14px) / 2));
+  transition: all 250ms;
+}
+
+.label.disableShrink {
+  display: block;
+  position: static;
+  margin-bottom: var(--rfe-label-spacing);
+  color: var(--rfe-color);
+  transform: none;
+}
+
+.labelPlaceholder {
+  font-size: 12px;
+  transform: translateY(9px);
+  top: 0;
+}
+
+.labelFocused {
+  font-size: 12px;
+  transform: translateY(9px);
+  top: 0;
+}
+
+.input {
+  width: 100%;
+  font-size: 14px;
+  line-height: 24px;
+  background-color: var(--rfe-background) !important;
+  border: 1px solid var(--rfe-border) !important;
+  border-radius: var(--rfe-border-radius);
+  height: var(--rfe-input-height);
+  transition: all 250ms !important;
+  font-family: var(--rfe-font-family);
+
+  &:hover {
+    border: 1px solid var(--rfe-border) !important;
+  }
+}
+
+.focus {
+  box-shadow: var(--rfe-focus) !important;
+}
+
+.input:-webkit-autofill:not(.disableShrink) ~ .label,
+.input:focus:not(.disableShrink) ~ .label,
+.input:not([value=''], .disableShrink) ~ .label {
+  font-size: 12px;
+  transform: translateY(9px);
+}
+
+.input.disableShrink {
+  padding: 16px;
+}
+
+.errorLabel {
+  color: var(--rfe-color-error);
+  font-size: var(--rfe-error-font-size);
+  margin-top: var(--rfe-label-spacing);
+}
+
+.disabled {
+  background: var(--rfe-background-disabled) !important;
+  color: var(--rfe-color) !important;
+  cursor: not-allowed !important;
+  pointer-events: all;
+}
+
+.innerInput {
+  margin-left: 8px !important;
+  color: var(--rfe-color) !important;
+}
+
+.control {
+  align-items: flex-end !important;
+}
+
+.menu {
+  background-color: var(--rfe-background);
+  border: 1px solid var(--rfe-border);
+  border-radius: var(--rfe-border-radius);
+}
+
+.option {
+  color: var(--rfe-color) !important;
+  background-color: var(--rfe-background) !important;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:focus-visible,
+  &:focus-within {
+    background-color: var(--rfe-background-selected) !important;
+  }
+}
+
+.optionFocused {
+  color: var(--rfe-color) !important;
+  background-color: var(--rfe-background-selected) !important;
+}
+
+.singleValue {
+  color: var(--rfe-color) !important;
+  margin-left: 8px !important;
+}
+
+.placeholder {
+  color: var(--rfe-color-placeholder) !important;
+  font-size: 14px;
+  margin-left: 8px !important;
+}
+
+.indicatorSeparator {
+  display: none;
+}
+
+.indicatorsContainer,
+.clearIndicator,
+.multiValueRemove {
+  & svg {
+    color: var(--rfe-black);
+    pointer-events: all;
+    cursor: pointer;
+  }
+}
+
+.multiValue {
+  height: 24px;
+  border-radius: var(--rfe-border-radius) !important;
+  background-color: var(--rfe-background-selected) !important;
+  align-items: center;
+
+  & div {
+    color: var(--rfe-color) !important;
+  }
+}
+
+.multiValueRemove {
+  color: var(--rfe-color) !important;
+
+  &:hover {
+    background: unset !important;
+  }
+}

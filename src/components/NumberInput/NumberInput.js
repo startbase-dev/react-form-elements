@@ -33,30 +33,18 @@ function NumberInput({ value, onChange, name, ...rest }) {
       append={
         <div className={s.buttons}>
           <button type="button" className={s.button} onClick={handleIncrease}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlSpace="preserve"
-              width={12}
-              height={12}
-              viewBox="0 0 330 330"
-            >
+            <svg width={20} height={20} style={{ transform: 'rotate(180deg)' }}>
               <path
-                fill={'currentColor'}
-                d="m325.606 229.393-150.004-150a14.997 14.997 0 0 0-21.213.001l-149.996 150c-5.858 5.858-5.858 15.355 0 21.213 5.857 5.857 15.355 5.858 21.213 0l139.39-139.393 139.397 139.393A14.953 14.953 0 0 0 315 255a14.95 14.95 0 0 0 10.607-4.394c5.857-5.858 5.857-15.355-.001-21.213z"
+                fill="currentColor"
+                d="M4.516 7.548c.436-.446 1.043-.481 1.576 0L10 11.295l3.908-3.747c.533-.481 1.141-.446 1.574 0 .436.445.408 1.197 0 1.615-.406.418-4.695 4.502-4.695 4.502a1.095 1.095 0 0 1-1.576 0S4.924 9.581 4.516 9.163s-.436-1.17 0-1.615z"
               />
             </svg>
           </button>
           <button type="button" className={s.button} onClick={handleDecrease}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlSpace="preserve"
-              width={12}
-              height={12}
-              viewBox="0 0 330 330"
-            >
+            <svg width={20} height={20}>
               <path
-                fill={'currentColor'}
-                d="M325.607 79.393c-5.857-5.857-15.355-5.858-21.213.001l-139.39 139.393L25.607 79.393c-5.857-5.857-15.355-5.858-21.213.001-5.858 5.858-5.858 15.355 0 21.213l150.004 150a14.999 14.999 0 0 0 21.212-.001l149.996-150c5.859-5.857 5.859-15.355.001-21.213z"
+                fill="currentColor"
+                d="M4.516 7.548c.436-.446 1.043-.481 1.576 0L10 11.295l3.908-3.747c.533-.481 1.141-.446 1.574 0 .436.445.408 1.197 0 1.615-.406.418-4.695 4.502-4.695 4.502a1.095 1.095 0 0 1-1.576 0S4.924 9.581 4.516 9.163s-.436-1.17 0-1.615z"
               />
             </svg>
           </button>

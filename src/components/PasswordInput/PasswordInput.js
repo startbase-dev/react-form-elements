@@ -29,10 +29,10 @@ function PasswordInput({ ...rest }) {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 -220 320 400"
-                width={24}
-                height={24}
+                width={20}
+                height={20}
               >
-                <g fill="none" className={s.eye} strokeWidth={20}>
+                <g fill="none" className={s.eye} strokeWidth={32}>
                   <g stroke="currentColor" className={s.eyeLashes}>
                     <path d="M140 90v90M70 60l-60 80M210 60l60 80" />
                   </g>

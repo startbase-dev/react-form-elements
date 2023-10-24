@@ -8,6 +8,7 @@ import TextArea from './components/TextArea/TextArea';
 import AmountInput from './components/AmountInput/AmountInput';
 import NumberInput from './components/NumberInput/NumberInput';
 import Switch from './components/Switch/Switch';
+import Select from './components/Select/Select';
 import './style/globals.css';
 
 export {
@@ -21,4 +22,5 @@ export {
   PasswordInput,
   AmountInput,
   NumberInput,
+  Select,
 };

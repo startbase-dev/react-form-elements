@@ -9,6 +9,30 @@ import TextArea from '../TextArea/TextArea';
 import Form from './Form.js';
 import NumberInput from '../NumberInput/NumberInput';
 import AmountInput from '../AmountInput/AmountInput';
+import Select from '../Select/Select';
+
+const OPTIONS = [
+  {
+    label: 'Item 1',
+    value: 'item_1',
+  },
+  {
+    label: 'Item 2',
+    value: 'item_2',
+  },
+  {
+    label: 'Item 3',
+    value: 'item_3',
+  },
+  {
+    label: 'Item 4',
+    value: 'item_4',
+  },
+  {
+    label: 'Item 5',
+    value: 'item_5',
+  },
+];
 
 const Template = () => {
   const [inputs, setInputs] = useState({});
@@ -47,6 +71,21 @@ const Template = () => {
           label="Amount"
           name="amount"
           value={inputs.amount}
+          onChange={onChange}
+        />
+        <Select
+          label="Select"
+          name="select"
+          options={OPTIONS}
+          value={inputs.select}
+          onChange={onChange}
+        />
+        <Select
+          label="Multi Select"
+          name="multi"
+          options={OPTIONS}
+          value={inputs.multi}
+          isMulti
           onChange={onChange}
         />
         <TextArea
@@ -111,6 +150,25 @@ const Template = () => {
           name="amount"
           disableShrink
           value={inputs.amount}
+          onChange={onChange}
+        />
+        <Select
+          label="Select"
+          placeholder="Select"
+          name="select"
+          disableShrink
+          options={OPTIONS}
+          value={inputs.select}
+          onChange={onChange}
+        />
+        <Select
+          label="Multi Select"
+          placeholder="Select"
+          name="multi"
+          disableShrink
+          options={OPTIONS}
+          value={inputs.multi}
+          isMulti
           onChange={onChange}
         />
         <TextArea

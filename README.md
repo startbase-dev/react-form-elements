@@ -1,6 +1,9 @@
 # react-form-elements
 
+![npm](https://img.shields.io/npm/v/%40start-base%2Freact-form-elements)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/%40start-base%2Freact-form-elements)
+![npm](https://img.shields.io/npm/dm/%40start-base/react-form-elements)
+
 
 This npm package provides a set of form-related components for React. You can use these components to build forms with ease.
 
@@ -79,7 +82,6 @@ export default function RootLayout({ children }) {
 | errorClassName | `string`              |         | Classname for error element                             |
 | disabled       | `boolean`             | `false` | Disable the input                                       |
 | error          | `string` or `boolean` |         | Error message to display below the input                |
-| required       | `boolean`             | `false` | Mark the input as required                              |
 
 ### Form
 
@@ -173,6 +175,14 @@ export default function RootLayout({ children }) {
 | maxLength              | `number`              |                | Maximum characters the user can enter                                                                                                                                                                                                                                                                                                                                            |
 | step                   | `number`              |                | Incremental value change on arrow down and arrow up key press                                                                                                                                                                                                                                                                                                                    |
 | transformRawValue      | `function`            |                | Transform the raw value from the input before parsing. Needs to return `string`.                                                                                                                                                                                                                                                                                                 |
+
+### Select
+This component is a wrapper around [react-select](https://react-select.com/home) component. All props from react-select can be passed to this component.
+
+| Name             | Type     | Default | Description                             |
+| ---------------- |----------| ------- |-----------------------------------------|
+| classNames       | `object` |         | ClassNames object for select components |
+| components       | `object` |         | Components object for select components |
 
 ## Examples
 

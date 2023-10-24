@@ -14,7 +14,9 @@
   left: 16px;
   cursor: text;
   transform: translateY(calc((var(--rfe-input-height) - 14px) / 2));
-  transition: all 250ms;
+  transition:
+    transform 250ms,
+    font-size 250ms;
   width: calc(100% - 16px);
 
   &::before {
