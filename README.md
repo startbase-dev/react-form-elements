@@ -4,7 +4,6 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/%40start-base%2Freact-form-elements)
 ![npm](https://img.shields.io/npm/dm/%40start-base/react-form-elements)
 
-
 This npm package provides a set of form-related components for React. You can use these components to build forms with ease.
 
 - CSS variables for theming are available for all components.
@@ -177,12 +176,13 @@ export default function RootLayout({ children }) {
 | transformRawValue      | `function`            |                | Transform the raw value from the input before parsing. Needs to return `string`.                                                                                                                                                                                                                                                                                                 |
 
 ### Select
+
 This component is a wrapper around [react-select](https://react-select.com/home) component. All props from react-select can be passed to this component.
 
-| Name             | Type     | Default | Description                             |
-| ---------------- |----------| ------- |-----------------------------------------|
-| classNames       | `object` |         | ClassNames object for select components |
-| components       | `object` |         | Components object for select components |
+| Name       | Type     | Default | Description                             |
+| ---------- | -------- | ------- | --------------------------------------- |
+| classNames | `object` |         | ClassNames object for select components |
+| components | `object` |         | Components object for select components |
 
 ## Examples
 
