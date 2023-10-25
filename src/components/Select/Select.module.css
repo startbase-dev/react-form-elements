@@ -51,7 +51,7 @@
   font-family: var(--rfe-font-family);
 
   &:hover {
-    border: 1px solid var(--rfe-border) !important;
+    border: 1px solid var(--rfe-border);
   }
 }
 
@@ -93,9 +93,11 @@
 }
 
 .menu {
-  background-color: var(--rfe-background);
+  background-color: var(--rfe-background) !important;
   border: 1px solid var(--rfe-border);
   border-radius: var(--rfe-border-radius);
+  padding: 0 !important;
+  margin: 6px 0 0 !important;
 }
 
 .option {
@@ -135,7 +137,7 @@
 .clearIndicator,
 .multiValueRemove {
   & svg {
-    color: var(--rfe-black);
+    color: var(--rfe-color);
     pointer-events: all;
     cursor: pointer;
   }

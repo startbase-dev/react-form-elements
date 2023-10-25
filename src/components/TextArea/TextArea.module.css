@@ -110,7 +110,7 @@
 }
 
 .input::placeholder {
-  font-size: var(--rfe-font-size);
+  font-size: 14px;
   color: var(--rfe-color-placeholder);
 }
 

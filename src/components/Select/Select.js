@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -29,8 +29,12 @@ function RFESelect({
   ...rest
 }) {
   const [focused, setFocus] = useState(false);
+  const inputRef = useRef(null);
   const handleChange = useCallback(
-    (option) => {
+    (option, { action }) => {
+      if (action === 'clear') {
+        inputRef?.current?.blur();
+      }
       onChange({
         target: {
           name,
@@ -40,7 +44,6 @@ function RFESelect({
     },
     [name, onChange]
   );
-
   const labelEl = useMemo(
     () => (
       <label
@@ -50,7 +53,7 @@ function RFESelect({
           [s.labelPlaceholder]: label && placeholder && !disableShrink,
           [s.labelFocused]:
             (label && focused && !disableShrink) ||
-            (label && value && !disableShrink),
+            (label && value?.length !== 0 && !!value && !disableShrink),
           [labelClassName]: labelClassName,
         })}
         onClick={() => {
@@ -68,6 +71,7 @@ function RFESelect({
             }
 
             input?.focus();
+            inputRef?.current?.focus();
           } catch (error) {
             throw error;
           }
@@ -86,18 +90,11 @@ function RFESelect({
 
         <Select
           value={value}
+          ref={inputRef}
           options={options}
           onChange={handleChange}
           classNames={{
             input: () => s.innerInput,
-            container: () => s.container,
-            control: (state) =>
-              cx(s.input, {
-                [s.control]: !disableShrink && label,
-                [s.focus]: state.isFocused,
-                [s.disabled]: state.isDisabled,
-                [inputClassName]: inputClassName,
-              }),
             menu: () => s.menu,
             option: (state) => (state.isFocused ? s.optionFocused : s.option),
             singleValue: () => s.singleValue,
@@ -108,6 +105,14 @@ function RFESelect({
             multiValue: () => s.multiValue,
             multiValueRemove: () => s.multiValueRemove,
             ...classNames,
+            control: (state) =>
+              cx(s.input, {
+                [s.control]: !disableShrink && label,
+                [s.focus]: state.isFocused,
+                [s.disabled]: state.isDisabled,
+                [inputClassName]: inputClassName,
+                [classNames?.control?.(state)]: classNames?.control?.(state),
+              }),
           }}
           placeholder={placeholder}
           name={name}

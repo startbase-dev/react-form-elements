@@ -53,16 +53,19 @@ const Template = () => {
           label="Username"
           name="username"
           value={inputs.username}
+          error="Error message"
           onChange={onChange}
         />
         <PasswordInput
           label="Password"
           name="password"
+          error="Error message"
           value={inputs.password}
           onChange={onChange}
         />
         <NumberInput
           label="Number"
+          error="Error message"
           name="number"
           value={inputs.number}
           onChange={onChange}
@@ -70,19 +73,23 @@ const Template = () => {
         <AmountInput
           label="Amount"
           name="amount"
+          error="Error message"
           value={inputs.amount}
           onChange={onChange}
         />
         <Select
           label="Select"
           name="select"
+          error="Error message"
           options={OPTIONS}
+          isClearable
           value={inputs.select}
           onChange={onChange}
         />
         <Select
           label="Multi Select"
           name="multi"
+          error="Error message"
           options={OPTIONS}
           value={inputs.multi}
           isMulti
@@ -91,12 +98,14 @@ const Template = () => {
         <TextArea
           name="textarea"
           label="Description"
+          error="Error message"
           onChange={onChange}
           value={inputs.textarea}
         />
         <RadioGroup
           label="RadioGroup"
           value={inputs.country}
+          error="Error message"
           name="country"
           onChange={onChange}
           options={[
@@ -106,12 +115,14 @@ const Template = () => {
         />
         <Checkbox
           checked={inputs.agree}
+          error="Error message"
           label="I understand and accept the terms and conditions and privacy policy."
           name="agree"
           onChange={onChange}
         />
         <Switch
           checked={inputs.dark}
+          error="Error message"
           label="Switch"
           name="dark"
           onChange={onChange}
@@ -157,6 +168,7 @@ const Template = () => {
           placeholder="Select"
           name="select"
           disableShrink
+          isClearable
           options={OPTIONS}
           value={inputs.select}
           onChange={onChange}
@@ -178,28 +190,6 @@ const Template = () => {
           disableShrink
           label="Description"
           value={inputs.textarea1}
-        />
-        <RadioGroup
-          label="RadioGroup"
-          value={inputs.country1}
-          name="country1"
-          onChange={onChange}
-          options={[
-            { label: 'Radio Option 1', value: 'default11' },
-            { label: 'Radio Option 2', value: 'default21' },
-          ]}
-        />
-        <Checkbox
-          checked={inputs.agree1}
-          label="I understand and accept the terms and conditions and privacy policy."
-          name="agree1"
-          onChange={onChange}
-        />
-        <Switch
-          checked={inputs.dark1}
-          label="Switch"
-          name="dark1"
-          onChange={onChange}
         />
       </Form>
 
@@ -223,18 +213,38 @@ const Template = () => {
         />
         <NumberInput
           label="Number"
-          name="number"
+          name="number_disabled"
           disabled
           disableShrink
-          value={inputs.number}
+          value={inputs.number_disabled}
           onChange={onChange}
         />
         <AmountInput
           label="Amount"
-          name="amount"
+          name="amount_disabled"
           disabled
           disableShrink
-          value={inputs.amount}
+          value={inputs.amount_disabled}
+          onChange={onChange}
+        />
+        <Select
+          label="Select"
+          name="select_disabled"
+          disableShrink
+          isClearable
+          disabled
+          options={OPTIONS}
+          value={inputs.select_disabled}
+          onChange={onChange}
+        />
+        <Select
+          label="Multi Select"
+          name="multi_disabled"
+          disableShrink
+          disabled
+          options={OPTIONS}
+          value={inputs.multi_disabled}
+          isMulti
           onChange={onChange}
         />
         <RadioGroup

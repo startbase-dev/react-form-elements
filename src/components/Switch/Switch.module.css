@@ -83,16 +83,9 @@
 .disabled {
   box-shadow: none !important;
   cursor: not-allowed !important;
+  background: var(--rfe-background-disabled);
 
-  .switchInner {
-    &::before {
-      content: '';
-      background: var(--rfe-background-disabled);
-    }
-
-    &::after {
-      content: '';
-      background-color: var(--rfe-background-disabled);
-    }
+  & span {
+    background: var(--rfe-background);
   }
 }
