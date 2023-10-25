@@ -45,7 +45,6 @@
 .inputContainer .innerWrapper {
   display: flex;
   flex-direction: column;
-  transition: all 250ms;
   border-radius: var(--rfe-border-radius);
 }
 
@@ -59,7 +58,7 @@
   line-height: 24px;
   border-radius: var(--rfe-border-radius);
   border: 1px solid var(--rfe-border);
-  transition: all 250ms;
+  transition: box-shadow 250ms;
   font-family: var(--rfe-font-family);
 }
 
@@ -69,7 +68,6 @@
 }
 
 .inputContainer .innerWrapper .input:focus {
-  transition: all 250ms;
   box-shadow: var(--rfe-focus);
 }
 
