@@ -74,6 +74,7 @@
   color: var(--rfe-color-error);
   font-size: var(--rfe-error-font-size);
   margin-top: var(--rfe-label-spacing);
+  pointer-events: none;
 }
 
 .disabled {

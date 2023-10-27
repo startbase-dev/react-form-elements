@@ -1,0 +1,13 @@
+.root {
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.prepend {
+    padding: 10px;
+
+    & svg {
+        width: 24px;
+        height: 24px;
+    }
+}

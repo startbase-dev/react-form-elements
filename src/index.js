@@ -9,6 +9,7 @@ import AmountInput from './components/AmountInput/AmountInput';
 import NumberInput from './components/NumberInput/NumberInput';
 import Switch from './components/Switch/Switch';
 import Select from './components/Select/Select';
+import PhoneInput from './components/PhoneInput/PhoneInput';
 import './style/globals.css';
 
 export {
@@ -23,4 +24,5 @@ export {
   AmountInput,
   NumberInput,
   Select,
+  PhoneInput,
 };

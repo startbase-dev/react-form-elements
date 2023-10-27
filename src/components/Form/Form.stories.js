@@ -10,6 +10,7 @@ import Form from './Form.js';
 import NumberInput from '../NumberInput/NumberInput';
 import AmountInput from '../AmountInput/AmountInput';
 import Select from '../Select/Select';
+import PhoneInput from '../PhoneInput/PhoneInput';
 
 const OPTIONS = [
   {
@@ -95,11 +96,19 @@ const Template = () => {
           isMulti
           onChange={onChange}
         />
+        <PhoneInput
+          label="Phone"
+          name="phone"
+          error="Error message"
+          value={inputs.phone}
+          onChange={onChange}
+        />
         <TextArea
           name="textarea"
           label="Description"
           error="Error message"
           onChange={onChange}
+          autoGrow
           value={inputs.textarea}
         />
         <RadioGroup
@@ -183,11 +192,20 @@ const Template = () => {
           isMulti
           onChange={onChange}
         />
+        <PhoneInput
+          label="Phone"
+          placeholder="+1 234 567 8901"
+          name="phone1"
+          disableShrink
+          value={inputs.phone1}
+          onChange={onChange}
+        />
         <TextArea
           name="textarea1"
           placeholder="Description"
           onChange={onChange}
           disableShrink
+          autoGrow
           label="Description"
           value={inputs.textarea1}
         />
@@ -245,6 +263,14 @@ const Template = () => {
           options={OPTIONS}
           value={inputs.multi_disabled}
           isMulti
+          onChange={onChange}
+        />
+        <PhoneInput
+          label="Phone"
+          name="phone_disabled"
+          disabled
+          disableShrink
+          value={inputs.phone_disabled}
           onChange={onChange}
         />
         <RadioGroup

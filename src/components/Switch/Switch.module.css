@@ -1,10 +1,8 @@
 .switch {
   display: flex;
   flex-direction: column;
-  pointer-events: all;
   position: relative;
   margin-bottom: var(--rfe-spacing);
-  cursor: pointer;
 }
 
 .inputRoot {
@@ -17,12 +15,15 @@
   font-size: var(--rfe-font-size);
   line-height: 20px;
   color: var(--rfe-color);
+  pointer-events: all;
+  cursor: pointer;
 }
 
 .errorLabel {
   color: var(--rfe-color-error);
   font-size: var(--rfe-error-font-size);
   margin-top: var(--rfe-label-spacing);
+  pointer-events: none;
 }
 
 .switchCheckbox {

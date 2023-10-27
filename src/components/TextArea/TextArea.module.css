@@ -27,6 +27,7 @@
     width: calc(100% - 14px);
     height: 24px;
     background-color: var(--rfe-background);
+    transition: all 250ms;
     z-index: -1;
   }
 }
@@ -58,7 +59,7 @@
   line-height: 24px;
   border-radius: var(--rfe-border-radius);
   border: 1px solid var(--rfe-border);
-  transition: box-shadow 250ms;
+  transition: all 250ms;
   font-family: var(--rfe-font-family);
 }
 
@@ -75,6 +76,7 @@
   color: var(--rfe-color-error);
   font-size: var(--rfe-error-font-size);
   margin-top: var(--rfe-label-spacing);
+  pointer-events: none;
 }
 
 .disabled {

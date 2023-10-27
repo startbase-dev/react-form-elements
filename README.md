@@ -184,6 +184,10 @@ This component is a wrapper around [react-select](https://react-select.com/home)
 | classNames | `object` |         | ClassNames object for select components |
 | components | `object` |         | Components object for select components |
 
+### PhoneInput
+
+This component is a wrapper around [react-phone-number-input](https://catamphetamine.gitlab.io/react-phone-number-input/) component. All props from react-phone-number-input can be passed to this component.
+
 ## Examples
 
 Here's an example of using the form elements in a React component:
