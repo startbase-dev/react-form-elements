@@ -1,4 +1,10 @@
-import React, { forwardRef, useCallback, useMemo, useState } from 'react';
+import React, {
+  useId,
+  forwardRef,
+  useCallback,
+  useMemo,
+  useState,
+} from 'react';
 
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -108,6 +114,7 @@ const Select = forwardRef(
             value={value}
             ref={inputRef}
             options={options}
+            instanceId={useId()}
             onChange={handleChange}
             classNames={{
               input: () => s.innerInput,

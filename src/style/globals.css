@@ -72,10 +72,10 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus,
 select:-webkit-autofill:active {
-  background-clip: text;
-  -webkit-text-fill-color: var(--rfe-color);
-  transition: background-color 50000s ease-in-out 0s;
-  box-shadow: var(--rfe-focus);
+  background-clip: border-box !important;
+  -webkit-text-fill-color: var(--rfe-color) !important;
+  transition: background-color 50000s ease-in-out 0s !important;
+  box-shadow: var(--rfe-focus) !important;
 }
 
 input {

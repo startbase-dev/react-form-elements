@@ -107,7 +107,6 @@
 
 .option {
   color: var(--rfe-color) !important;
-  background-color: var(--rfe-background) !important;
 
   &:hover,
   &:focus,
