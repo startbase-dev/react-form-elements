@@ -27,7 +27,7 @@ const Template = (arg) => {
   );
 };
 export const PhoneInputComponent = Template.bind({});
-PhoneInputComponent.args = { title: 'Input' };
+PhoneInputComponent.args = { title: 'PhoneInput' };
 
 export const PhoneInputWithLabel = Template.bind({});
 PhoneInputWithLabel.args = { title: 'PhoneInput with label', label: 'Label' };

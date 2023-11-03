@@ -139,6 +139,10 @@
   pointer-events: none;
 }
 
+.inputError {
+  border-color: var(--rfe-color-error) !important;
+}
+
 .disabled {
   background: var(--rfe-background-disabled);
   color: var(--rfe-color);

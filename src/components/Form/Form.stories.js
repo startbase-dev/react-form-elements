@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import Checkbox from '../Checkbox/Checkbox';
 import Input from '../Input/Input';
@@ -37,267 +38,81 @@ const OPTIONS = [
 
 const Template = () => {
   const [inputs, setInputs] = useState({});
-  const onChange = (e) => {
-    const { name, value, type } = e.target;
 
-    setInputs((prevState) => ({
-      ...prevState,
-      [name]: type === 'checkbox' ? !prevState[name] : value,
-    }));
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => setInputs(data);
 
+  console.log(inputs);
   return (
     <>
       <h2>Form Component</h2>
-      <Form>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           label="Username"
-          name="username"
-          value={inputs.username}
-          error="Error message"
-          onChange={onChange}
+          value={watch('username')}
+          {...register('username')}
         />
         <PasswordInput
           label="Password"
-          name="password"
-          error="Error message"
-          value={inputs.password}
-          onChange={onChange}
+          value={watch('password')}
+          {...register('password')}
         />
         <NumberInput
           label="Number"
-          error="Error message"
-          name="number"
-          value={inputs.number}
-          onChange={onChange}
+          value={watch('number')}
+          {...register('number')}
         />
         <AmountInput
           label="Amount"
-          name="amount"
-          error="Error message"
-          value={inputs.amount}
-          onChange={onChange}
+          value={watch('amount')}
+          {...register('amount')}
         />
         <Select
           label="Select"
-          name="select"
-          error="Error message"
           options={OPTIONS}
           isClearable
-          value={inputs.select}
-          onChange={onChange}
+          value={watch('select')}
+          {...register('select')}
         />
         <Select
           label="Multi Select"
-          name="multi"
-          error="Error message"
           options={OPTIONS}
-          value={inputs.multi}
           isMulti
-          onChange={onChange}
+          value={watch('multi')}
+          {...register('multi')}
         />
         <PhoneInput
           label="Phone"
-          name="phone"
-          error="Error message"
-          value={inputs.phone}
-          onChange={onChange}
+          value={watch('phone')}
+          {...register('phone')}
         />
         <TextArea
-          name="textarea"
           label="Description"
-          error="Error message"
-          onChange={onChange}
           autoGrow
-          value={inputs.textarea}
+          value={watch('textarea')}
+          {...register('textarea')}
         />
         <RadioGroup
           label="RadioGroup"
-          value={inputs.country}
-          error="Error message"
-          name="country"
-          onChange={onChange}
+          value={watch('country')}
+          {...register('country')}
           options={[
             { label: 'Radio Option 1', value: 'default1' },
             { label: 'Radio Option 2', value: 'default2' },
           ]}
         />
         <Checkbox
-          checked={inputs.agree}
-          error="Error message"
           label="I understand and accept the terms and conditions and privacy policy."
-          name="agree"
-          onChange={onChange}
+          checked={watch('agree')}
+          {...register('agree')}
         />
-        <Switch
-          checked={inputs.dark}
-          error="Error message"
-          label="Switch"
-          name="dark"
-          onChange={onChange}
-        />
-      </Form>
-
-      <h2>Form Component</h2>
-      <Form>
-        <Input
-          label="Username"
-          placeholder="Username"
-          name="username1"
-          disableShrink
-          value={inputs.username1}
-          onChange={onChange}
-        />
-        <PasswordInput
-          label="Password"
-          placeholder="Password"
-          name="password1"
-          disableShrink
-          value={inputs.password1}
-          onChange={onChange}
-        />
-        <NumberInput
-          label="Number"
-          placeholder="Number"
-          name="number"
-          disableShrink
-          value={inputs.number}
-          onChange={onChange}
-        />
-        <AmountInput
-          label="Amount"
-          placeholder="Amount"
-          name="amount"
-          disableShrink
-          value={inputs.amount}
-          onChange={onChange}
-        />
-        <Select
-          label="Select"
-          placeholder="Select"
-          name="select"
-          disableShrink
-          isClearable
-          options={OPTIONS}
-          value={inputs.select}
-          onChange={onChange}
-        />
-        <Select
-          label="Multi Select"
-          placeholder="Select"
-          name="multi"
-          disableShrink
-          options={OPTIONS}
-          value={inputs.multi}
-          isMulti
-          onChange={onChange}
-        />
-        <PhoneInput
-          label="Phone"
-          placeholder="+1 234 567 8901"
-          name="phone1"
-          disableShrink
-          value={inputs.phone1}
-          onChange={onChange}
-        />
-        <TextArea
-          name="textarea1"
-          placeholder="Description"
-          onChange={onChange}
-          disableShrink
-          autoGrow
-          label="Description"
-          value={inputs.textarea1}
-        />
-      </Form>
-
-      <h2>Form Component</h2>
-      <Form>
-        <Input
-          disabled
-          label="Username"
-          name="username_disabled"
-          disableShrink
-          value={inputs.username_disabled}
-          onChange={onChange}
-        />
-        <PasswordInput
-          disabled
-          label="Password"
-          name="password_disabled"
-          disableShrink
-          value={inputs.password_disabled}
-          onChange={onChange}
-        />
-        <NumberInput
-          label="Number"
-          name="number_disabled"
-          disabled
-          disableShrink
-          value={inputs.number_disabled}
-          onChange={onChange}
-        />
-        <AmountInput
-          label="Amount"
-          name="amount_disabled"
-          disabled
-          disableShrink
-          value={inputs.amount_disabled}
-          onChange={onChange}
-        />
-        <Select
-          label="Select"
-          name="select_disabled"
-          disableShrink
-          isClearable
-          disabled
-          options={OPTIONS}
-          value={inputs.select_disabled}
-          onChange={onChange}
-        />
-        <Select
-          label="Multi Select"
-          name="multi_disabled"
-          disableShrink
-          disabled
-          options={OPTIONS}
-          value={inputs.multi_disabled}
-          isMulti
-          onChange={onChange}
-        />
-        <PhoneInput
-          label="Phone"
-          name="phone_disabled"
-          disabled
-          disableShrink
-          value={inputs.phone_disabled}
-          onChange={onChange}
-        />
-        <RadioGroup
-          disabled
-          label="RadioGroup"
-          value={inputs.country_disabled}
-          name="country_disabled"
-          onChange={onChange}
-          options={[
-            { label: 'Radio Option 1', value: 'default122' },
-            { label: 'Radio Option 2', value: 'default222' },
-          ]}
-        />
-        <Checkbox
-          disabled
-          checked={inputs.agree_disabled}
-          label="I understand and accept the terms and conditions and privacy policy."
-          name="agree_disabled"
-          onChange={onChange}
-        />
-        <Switch
-          disabled
-          checked={inputs.dark_disabled}
-          label="Switch"
-          name="dark_disabled"
-          onChange={onChange}
-        />
+        <Switch checked={watch('dark')} label="Switch" {...register('dark')} />
+        <input type="submit" />
       </Form>
     </>
   );

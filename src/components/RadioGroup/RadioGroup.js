@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef, useMemo } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -7,47 +7,69 @@ import cx from 'classnames';
 import Radio from '../Radio/Radio';
 import s from './RadioGroup.module.css';
 
-function RadioGroup({
-  name,
-  onChange,
-  value = null,
-  options = [],
-  label = null,
-  inputClassName = null,
-  labelClassName = null,
-  optionLabelClassName = null,
-  errorClassName = null,
-  disabled = false,
-  error = null,
-}) {
-  return (
-    <label className={s.root}>
-      <span className={cx(s.label, { [labelClassName]: labelClassName })}>
-        {label}
-      </span>
-      {options.map((option, index) => {
-        return (
-          <Radio
-            key={index}
-            inputClassName={inputClassName}
-            labelClassName={optionLabelClassName}
-            checked={option.value === value}
-            label={option.label}
-            value={option.value}
-            disabled={disabled}
-            name={name}
-            onChange={onChange}
-          />
-        );
-      })}
-      {error ? (
-        <div className={cx(s.errorLabel, { [errorClassName]: errorClassName })}>
-          {error}
-        </div>
-      ) : null}
-    </label>
-  );
-}
+const RadioGroup = forwardRef(
+  (
+    {
+      name,
+      onChange,
+      value = null,
+      options = [],
+      label = null,
+      inputClassName = null,
+      labelClassName = null,
+      optionLabelClassName = null,
+      errorClassName = null,
+      disabled = false,
+      error = null,
+    },
+    inputRef
+  ) => {
+    const errorMessage = useMemo(() => {
+      let message = '';
+      if (error && typeof error === 'string') {
+        message = error;
+      } else if (error && typeof error === 'object' && error?.message) {
+        message = error?.message;
+      } else {
+        message = null;
+      }
+
+      return message;
+    }, [error, name, label]);
+
+    return (
+      <label className={s.root}>
+        <span className={cx(s.label, { [labelClassName]: labelClassName })}>
+          {label}
+        </span>
+        {options.map((option, index) => {
+          return (
+            <Radio
+              ref={inputRef}
+              key={index}
+              inputClassName={inputClassName}
+              labelClassName={optionLabelClassName}
+              checked={option.value === value}
+              label={option.label}
+              value={option.value}
+              error={error && typeof error === 'boolean'}
+              disabled={disabled}
+              name={name}
+              onChange={onChange}
+            />
+          );
+        })}
+        {errorMessage ? (
+          <div
+            className={cx(s.errorLabel, { [errorClassName]: errorClassName })}
+          >
+            {errorMessage}
+          </div>
+        ) : null}
+      </label>
+    );
+  }
+);
 
 const Option = PropTypes.shape({
   value: PropTypes.string,
@@ -65,7 +87,13 @@ RadioGroup.propTypes = {
   optionLabelClassName: PropTypes.string,
   errorClassName: PropTypes.string,
   disabled: PropTypes.bool,
-  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.object,
+  ]),
 };
+
+RadioGroup.displayName = 'RadioGroup';
 
 export default RadioGroup;

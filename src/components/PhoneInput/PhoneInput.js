@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { forwardRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 import PhoneInputModule from 'react-phone-number-input/input';
@@ -8,46 +8,47 @@ import 'react-phone-number-input/style.css';
 import Input from '../Input/Input';
 import s from './PhoneInput.module.css';
 
-export default function PhoneInput({ value, name, onChange, ...rest }) {
-  const handleChange = useCallback(
-    (value) => {
-      onChange({ target: { name, value: DOMPurify.sanitize(value) } });
-    },
-    [name, onChange]
-  );
+const PhoneInput = forwardRef(
+  ({ name, onChange, value = '', ...rest }, inputRef) => {
+    const handleChange = useCallback(
+      (value) => {
+        onChange({ target: { name, value: DOMPurify.sanitize(value) } });
+      },
+      [name, onChange]
+    );
 
-  const phoneNumber = parsePhoneNumber(value);
-  const isSupported = phoneNumber && isSupportedCountry(phoneNumber.country);
+    const phoneNumber = parsePhoneNumber(value);
+    const isSupported = phoneNumber && isSupportedCountry(phoneNumber.country);
 
-  return (
-    <div className={s.root}>
-      <PhoneInputModule
-        onChange={handleChange}
-        inputComponent={Input}
-        name={name}
-        value={value}
-        {...rest}
-        append={
-          <>
-            {phoneNumber && isSupported
-              ? flags[phoneNumber?.country]({ title: phoneNumber?.country })
-              : null}
-          </>
-        }
-        appendClassName={s.prepend}
-      />
-    </div>
-  );
-}
+    return (
+      <div className={s.root}>
+        <PhoneInputModule
+          ref={inputRef}
+          onChange={handleChange}
+          inputComponent={Input}
+          name={name}
+          value={value}
+          {...rest}
+          append={
+            <>
+              {phoneNumber && isSupported
+                ? flags[phoneNumber?.country]({ title: phoneNumber?.country })
+                : null}
+            </>
+          }
+          appendClassName={s.prepend}
+        />
+      </div>
+    );
+  }
+);
 
 PhoneInput.propTypes = {
-  value: PropTypes.string,
-  name: PropTypes.string,
-  onChange: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-PhoneInput.defaultProps = {
-  value: '',
-  name: '',
-  onChange: () => {},
-};
+PhoneInput.displayName = 'PhoneInput';
+
+export default PhoneInput;

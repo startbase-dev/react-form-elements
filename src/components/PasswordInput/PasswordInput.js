@@ -1,11 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React, { forwardRef, useCallback, useState } from 'react';
 
 import cx from 'classnames';
 
 import Input from '../Input/Input';
 import s from './PasswordInput.module.css';
 
-function PasswordInput({ ...rest }) {
+const PasswordInput = forwardRef(({ ...rest }, inputRef) => {
   const [isOpen, setOpen] = useState(false);
 
   const handleToggle = useCallback((e) => {
@@ -15,6 +15,7 @@ function PasswordInput({ ...rest }) {
 
   return (
     <Input
+      ref={inputRef}
       {...rest}
       type={isOpen ? 'text' : 'password'}
       append={
@@ -60,6 +61,8 @@ function PasswordInput({ ...rest }) {
       }
     />
   );
-}
+});
+
+PasswordInput.displayName = 'PasswordInput';
 
 export default PasswordInput;

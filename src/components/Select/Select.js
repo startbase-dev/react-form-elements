@@ -1,154 +1,178 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useMemo, useState } from 'react';
 
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import Select from 'react-select';
+import { default as ReactSelect } from 'react-select';
 import makeAnimated from 'react-select/animated';
 
 import s from './Select.module.css';
 
 const animatedComponents = makeAnimated();
 
-function RFESelect({
-  name,
-  onChange,
-  error = null,
-  label = null,
-  options = [],
-  placeholder = null,
-  value = '',
-  inputClassName = null,
-  labelClassName = null,
-  errorClassName = null,
-  disableShrink = false,
-  disabled = false,
-  classNames = null,
-  components = null,
-  onFocus = () => {},
-  onBlur = () => {},
-  ...rest
-}) {
-  const [focused, setFocus] = useState(false);
-  const inputRef = useRef(null);
-  const handleChange = useCallback(
-    (option, { action }) => {
-      if (action === 'clear') {
-        inputRef?.current?.blur();
-      }
-      onChange({
-        target: {
-          name,
-          value: option,
-        },
-      });
+const Select = forwardRef(
+  (
+    {
+      name,
+      onChange,
+      error = null,
+      label = null,
+      options = [],
+      placeholder = null,
+      value = '',
+      inputClassName = null,
+      labelClassName = null,
+      errorClassName = null,
+      disableShrink = false,
+      disabled = false,
+      classNames = null,
+      components = null,
+      onFocus = () => {},
+      onBlur = () => {},
+      ...rest
     },
-    [name, onChange]
-  );
-  const labelEl = useMemo(
-    () => (
-      <label
-        htmlFor={name}
-        className={cx(s.label, {
-          [s.disableShrink]: disableShrink,
-          [s.labelPlaceholder]: label && placeholder && !disableShrink,
-          [s.labelFocused]:
-            (label && focused && !disableShrink) ||
-            (label && value?.length !== 0 && !!value && !disableShrink),
-          [labelClassName]: labelClassName,
-        })}
-        onClick={() => {
-          try {
-            const inputs = document.querySelectorAll(`[name="${name}"]`);
+    inputRef
+  ) => {
+    const [focused, setFocus] = useState(false);
+    const handleChange = useCallback(
+      (option, { action }) => {
+        if (action === 'clear') {
+          inputRef?.current?.blur();
+        }
+        onChange({
+          target: {
+            name,
+            value: option,
+          },
+        });
+      },
+      [name, onChange]
+    );
+    const labelEl = useMemo(
+      () => (
+        <label
+          htmlFor={name}
+          className={cx(s.label, {
+            [s.disableShrink]: disableShrink,
+            [s.labelPlaceholder]: label && placeholder && !disableShrink,
+            [s.labelFocused]:
+              (label && focused && !disableShrink) ||
+              (label && value?.length !== 0 && !!value && !disableShrink),
+            [labelClassName]: labelClassName,
+          })}
+          onClick={() => {
+            try {
+              const inputs = document.querySelectorAll(`[name="${name}"]`);
 
-            if (!inputs.length) {
-              return;
+              if (!inputs.length) {
+                return;
+              }
+
+              let input = inputs?.[0];
+
+              if (input?.type === 'hidden') {
+                input = input?.parentNode?.querySelector('input');
+              }
+
+              input?.focus();
+              inputRef?.current?.focus();
+            } catch (error) {
+              throw error;
             }
-
-            let input = inputs?.[0];
-
-            if (input?.type === 'hidden') {
-              input = input?.parentNode?.querySelector('input');
-            }
-
-            input?.focus();
-            inputRef?.current?.focus();
-          } catch (error) {
-            throw error;
-          }
-        }}
-      >
-        {label}
-      </label>
-    ),
-    [name, disableShrink, label, focused, labelClassName, placeholder, value]
-  );
-
-  return (
-    <div className={cx(s.root)}>
-      <div className={cx(s.inputRoot)}>
-        {label && disableShrink ? labelEl : null}
-
-        <Select
-          value={value}
-          ref={inputRef}
-          options={options}
-          onChange={handleChange}
-          classNames={{
-            input: () => s.innerInput,
-            menu: () => s.menu,
-            option: (state) => (state.isFocused ? s.optionFocused : s.option),
-            singleValue: () => s.singleValue,
-            placeholder: () => s.placeholder,
-            indicatorSeparator: () => s.indicatorSeparator,
-            indicatorsContainer: () => s.indicatorsContainer,
-            clearIndicator: () => s.clearIndicator,
-            multiValue: () => s.multiValue,
-            multiValueRemove: () => s.multiValueRemove,
-            ...classNames,
-            control: (state) =>
-              cx(s.input, {
-                [s.control]: !disableShrink && label,
-                [s.focus]: state.isFocused,
-                [s.disabled]: state.isDisabled,
-                [inputClassName]: inputClassName,
-                [classNames?.control?.(state)]: classNames?.control?.(state),
-              }),
           }}
-          placeholder={placeholder}
-          name={name}
-          isDisabled={disabled}
-          onFocus={(e) => {
-            onFocus(e);
-            setFocus(true);
-          }}
-          onBlur={(e) => {
-            onBlur(e);
-            setFocus(false);
-          }}
-          components={{ ...animatedComponents, ...components }}
-          {...rest}
-        />
+        >
+          {label}
+        </label>
+      ),
+      [name, disableShrink, label, focused, labelClassName, placeholder, value]
+    );
 
-        {label && !disableShrink ? labelEl : null}
-      </div>
-      {error ? (
-        <div className={cx(s.errorLabel, { [errorClassName]: errorClassName })}>
-          {error}
+    const errorMessage = useMemo(() => {
+      let message = '';
+      if (error && typeof error === 'string') {
+        message = error;
+      } else if (error && typeof error === 'object' && error?.message) {
+        message = error?.message;
+      } else {
+        message = null;
+      }
+
+      return message;
+    }, [error, name, label]);
+
+    return (
+      <div className={cx(s.root)}>
+        <div className={cx(s.inputRoot)}>
+          {label && disableShrink ? labelEl : null}
+
+          <ReactSelect
+            value={value}
+            ref={inputRef}
+            options={options}
+            onChange={handleChange}
+            classNames={{
+              input: () => s.innerInput,
+              menu: () => s.menu,
+              option: (state) => (state.isFocused ? s.optionFocused : s.option),
+              singleValue: () => s.singleValue,
+              placeholder: () => s.placeholder,
+              indicatorSeparator: () => s.indicatorSeparator,
+              indicatorsContainer: () => s.indicatorsContainer,
+              clearIndicator: () => s.clearIndicator,
+              multiValue: () => s.multiValue,
+              multiValueRemove: () => s.multiValueRemove,
+              ...classNames,
+              control: (state) =>
+                cx(s.input, {
+                  [s.control]: !disableShrink && label,
+                  [s.focus]: state.isFocused,
+                  [s.inputError]: typeof error === 'boolean' && error,
+                  [s.disabled]: state.isDisabled,
+                  [inputClassName]: inputClassName,
+                  [classNames?.control?.(state)]: classNames?.control?.(state),
+                }),
+            }}
+            placeholder={placeholder}
+            name={name}
+            isDisabled={disabled}
+            onFocus={(e) => {
+              onFocus(e);
+              setFocus(true);
+            }}
+            onBlur={(e) => {
+              onBlur(e);
+              setFocus(false);
+            }}
+            components={{ ...animatedComponents, ...components }}
+            {...rest}
+          />
+
+          {label && !disableShrink ? labelEl : null}
         </div>
-      ) : null}
-    </div>
-  );
-}
+        {errorMessage ? (
+          <div
+            className={cx(s.errorLabel, { [errorClassName]: errorClassName })}
+          >
+            {errorMessage}
+          </div>
+        ) : null}
+      </div>
+    );
+  }
+);
 
 const Option = PropTypes.shape({
   value: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 });
 
-RFESelect.propTypes = {
+Select.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.object,
+  ]),
   options: PropTypes.arrayOf(Option),
   label: PropTypes.string,
   placeholder: PropTypes.string,
@@ -164,4 +188,6 @@ RFESelect.propTypes = {
   components: PropTypes.object,
 };
 
-export default RFESelect;
+Select.displayName = 'Select';
+
+export default Select;

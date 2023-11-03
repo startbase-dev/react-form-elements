@@ -81,6 +81,10 @@
   right: 2px;
 }
 
+.inputError {
+  border-color: var(--rfe-color-error) !important;
+}
+
 .disabled {
   box-shadow: none !important;
   cursor: not-allowed !important;

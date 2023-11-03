@@ -59,6 +59,10 @@
   box-shadow: var(--rfe-focus) !important;
 }
 
+.inputError {
+  border-color: var(--rfe-color-error) !important;
+}
+
 .input:-webkit-autofill:not(.disableShrink) ~ .label,
 .input:focus:not(.disableShrink) ~ .label,
 .input:not([value=''], .disableShrink) ~ .label {

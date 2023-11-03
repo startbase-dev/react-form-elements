@@ -46,6 +46,7 @@ const AmountInput = forwardRef(
             [s.disableShrink]: disableShrink,
             [s.noLabel]: !label,
             [s.disabled]: disabled,
+            [s.inputError]: typeof error === 'boolean' && error,
             [inputClassName]: inputClassName,
           })}
           name={name}
@@ -54,7 +55,6 @@ const AmountInput = forwardRef(
           ref={inputRef}
           onValueChange={handleChange}
           disabled={disabled}
-          maxLength={10}
           {...rest}
         />
       );
@@ -75,6 +75,19 @@ const AmountInput = forwardRef(
       ),
       [name, label, disableShrink]
     );
+
+    const errorMessage = useMemo(() => {
+      let message = '';
+      if (error && typeof error === 'string') {
+        message = error;
+      } else if (error && typeof error === 'object' && error?.message) {
+        message = error?.message;
+      } else {
+        message = null;
+      }
+
+      return message;
+    }, [error, name, label]);
 
     return (
       <div className={cx(s.root)}>
@@ -102,11 +115,11 @@ const AmountInput = forwardRef(
 
           {label && !disableShrink ? labelEl : null}
         </div>
-        {error ? (
+        {errorMessage ? (
           <div
             className={cx(s.errorLabel, { [errorClassName]: errorClassName })}
           >
-            {error}
+            {errorMessage}
           </div>
         ) : null}
       </div>
@@ -119,7 +132,11 @@ AmountInput.displayName = 'AmountInput';
 AmountInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  error: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.object,
+  ]),
   label: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

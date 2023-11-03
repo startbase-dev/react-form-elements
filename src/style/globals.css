@@ -78,8 +78,6 @@ select:-webkit-autofill:active {
   box-shadow: var(--rfe-focus);
 }
 
-
-
 input {
   appearance: none;
 }

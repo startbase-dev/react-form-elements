@@ -52,7 +52,7 @@ TextAreaComponentResizable.args = {
   title: 'TextArea',
   placeholder: 'TextArea Placeholder',
   label: 'TextArea Label',
-  resizable: true,
+  autoGrow: true,
 };
 
 export const TextAreaComponentError = Template.bind({});

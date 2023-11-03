@@ -49,6 +49,10 @@
   }
 }
 
+.inputError {
+  border-color: var(--rfe-color-error) !important;
+}
+
 .icon {
   display: none;
   line-height: 1;

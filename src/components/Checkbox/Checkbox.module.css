@@ -40,6 +40,10 @@
   }
 }
 
+.inputError {
+  border-color: var(--rfe-color-error) !important;
+}
+
 .boxDisabled {
   background-color: var(--rfe-background-disabled);
 

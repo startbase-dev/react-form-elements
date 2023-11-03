@@ -85,6 +85,10 @@
   cursor: not-allowed !important;
 }
 
+.inputError {
+  border-color: var(--rfe-color-error) !important;
+}
+
 .disabledLabel {
   &::before {
     background-color: var(--rfe-background-disabled) !important;
