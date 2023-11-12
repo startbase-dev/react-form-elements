@@ -10,6 +10,7 @@
     "plugin:css-modules/recommended",
     "plugin:react/recommended",
     "plugin:compat/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
     "prettier",
     "plugin:storybook/recommended"

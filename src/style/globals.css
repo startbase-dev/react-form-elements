@@ -19,6 +19,26 @@
   --rfe-label-spacing: 10px;
   --rfe-focus: 0 0 10px #dcdcdc;
   --rfe-font-family: 'Arial', sans-serif;
+
+  .rdp {
+    --rdp-cell-size: 40px !important; /* Size of the day cells. */
+    --rdp-caption-font-size: 16px !important; /* Font size for the caption labels. */
+    --rdp-accent-color: var(
+      --rfe-background-disabled
+    ) !important; /* Accent color for the background of selected days. */
+
+    --rdp-background-color: var(
+      --rfe-background-disabled
+    ) !important; /* Background color for the hovered/focused elements. */
+
+    --rdp-accent-color-dark: green !important; /* Accent color for the background of selected days (to use in dark-mode). */
+    --rdp-background-color-dark: pink !important; /* Background color for the hovered/focused elements (to use in dark-mode). */
+    --rdp-outline: 2px solid rgb(128 128 128) !important; /* Outline border for focused elements */
+    --rdp-outline-selected: 3px solid var(--rdp-accent-color) !important; /* Outline border for focused _and_ selected elements */
+    --rdp-selected-color: var(
+      --rfe-color
+    ) !important; /* Color of selected day text */
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -74,8 +94,7 @@ select:-webkit-autofill:focus,
 select:-webkit-autofill:active {
   background-clip: border-box !important;
   -webkit-text-fill-color: var(--rfe-color) !important;
-  transition: background-color 50000s ease-in-out 0s !important;
-  box-shadow: var(--rfe-focus) !important;
+  box-shadow: 0 0 0 1000px var(--rfe-background) inset !important;
 }
 
 input {

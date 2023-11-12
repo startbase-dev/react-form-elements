@@ -25,7 +25,7 @@ const RadioGroup = forwardRef(
     inputRef
   ) => {
     const errorMessage = useMemo(() => {
-      let message = '';
+      let message;
       if (error && typeof error === 'string') {
         message = error;
       } else if (error && typeof error === 'object' && error?.message) {
@@ -35,7 +35,7 @@ const RadioGroup = forwardRef(
       }
 
       return message;
-    }, [error, name, label]);
+    }, [error]);
 
     return (
       <label className={s.root}>

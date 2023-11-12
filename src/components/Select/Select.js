@@ -8,7 +8,7 @@ import React, {
 
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { default as ReactSelect } from 'react-select';
+import { default as ReactSelect, components } from 'react-select';
 import makeAnimated from 'react-select/animated';
 
 import s from './Select.module.css';
@@ -38,7 +38,7 @@ const Select = forwardRef(
     },
     inputRef
   ) => {
-    const [focused, setFocus] = useState(false);
+    const [focused, setFocused] = useState(false);
     const handleChange = useCallback(
       (option, { action }) => {
         if (action === 'clear') {
@@ -51,7 +51,7 @@ const Select = forwardRef(
           },
         });
       },
-      [name, onChange]
+      [inputRef, name, onChange]
     );
     const labelEl = useMemo(
       () => (
@@ -89,11 +89,20 @@ const Select = forwardRef(
           {label}
         </label>
       ),
-      [name, disableShrink, label, focused, labelClassName, placeholder, value]
+      [
+        name,
+        disableShrink,
+        label,
+        placeholder,
+        focused,
+        value,
+        labelClassName,
+        inputRef,
+      ]
     );
 
     const errorMessage = useMemo(() => {
-      let message = '';
+      let message;
       if (error && typeof error === 'string') {
         message = error;
       } else if (error && typeof error === 'object' && error?.message) {
@@ -103,7 +112,7 @@ const Select = forwardRef(
       }
 
       return message;
-    }, [error, name, label]);
+    }, [error]);
 
     return (
       <div className={cx(s.root)}>
@@ -143,11 +152,11 @@ const Select = forwardRef(
             isDisabled={disabled}
             onFocus={(e) => {
               onFocus(e);
-              setFocus(true);
+              setFocused(true);
             }}
             onBlur={(e) => {
               onBlur(e);
-              setFocus(false);
+              setFocused(false);
             }}
             components={{ ...animatedComponents, ...components }}
             {...rest}
@@ -156,11 +165,11 @@ const Select = forwardRef(
           {label && !disableShrink ? labelEl : null}
         </div>
         {errorMessage ? (
-          <div
+          <span
             className={cx(s.errorLabel, { [errorClassName]: errorClassName })}
           >
             {errorMessage}
-          </div>
+          </span>
         ) : null}
       </div>
     );
@@ -168,7 +177,7 @@ const Select = forwardRef(
 );
 
 const Option = PropTypes.shape({
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 });
 
@@ -198,3 +207,5 @@ Select.propTypes = {
 Select.displayName = 'Select';
 
 export default Select;
+
+export { components };

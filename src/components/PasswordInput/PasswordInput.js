@@ -6,11 +6,11 @@ import Input from '../Input/Input';
 import s from './PasswordInput.module.css';
 
 const PasswordInput = forwardRef(({ ...rest }, inputRef) => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = useCallback((e) => {
     e.preventDefault();
-    setOpen((prev) => !prev);
+    setIsOpen((prev) => !prev);
   }, []);
 
   return (

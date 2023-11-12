@@ -23,7 +23,7 @@ const Checkbox = forwardRef(
     inputRef
   ) => {
     const errorMessage = useMemo(() => {
-      let message = '';
+      let message;
       if (error && typeof error === 'string') {
         message = error;
       } else if (error && typeof error === 'object' && error?.message) {
@@ -33,7 +33,7 @@ const Checkbox = forwardRef(
       }
 
       return message;
-    }, [error, name, label]);
+    }, [error]);
 
     return (
       <label htmlFor={`checkbox_${name}`} className={s.root}>

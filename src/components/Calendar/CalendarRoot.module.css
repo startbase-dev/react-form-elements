@@ -1,0 +1,39 @@
+.calendar {
+  margin: 0;
+}
+
+.months {
+  background: var(--rfe-background) !important;
+  color: var(--rfe-color) !important;
+  border-radius: var(--rfe-border-radius) !important;
+  padding: var(--rfe-label-spacing) !important;
+  border: 1px solid var(--rfe-border);
+  transition: all 250ms;
+  display: flex;
+  gap: var(--rfe-spacing);
+  width: fit-content;
+}
+
+.month {
+  background: var(--rfe-background) !important;
+  color: var(--rfe-color) !important;
+  border-radius: var(--rfe-border-radius) !important;
+  padding: var(--rfe-label-spacing) !important;
+  border: 1px solid var(--rfe-border);
+  transition: all 250ms;
+  display: block;
+}
+
+.captionLabel {
+  z-index: unset;
+}
+
+.disabled {
+  background: var(--rfe-background-disabled) !important;
+  color: var(--rfe-color);
+  cursor: not-allowed;
+}
+
+.error {
+  border-color: var(--rfe-color-error) !important;
+}

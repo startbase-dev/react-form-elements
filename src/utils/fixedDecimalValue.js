@@ -17,7 +17,7 @@ export const fixedDecimalValue = (
     const reg =
       value.length > fixedDecimalLength
         ? new RegExp(`(\\d+)(\\d{${fixedDecimalLength}})`)
-        : new RegExp(`(\\d)(\\d+)`);
+        : /(\d)(\d+)/;
 
     const match = value.match(reg);
     if (match) {

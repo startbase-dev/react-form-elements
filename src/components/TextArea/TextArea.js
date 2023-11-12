@@ -10,7 +10,6 @@ import React, {
 import PropTypes from 'prop-types';
 
 import cx from 'classnames';
-import DOMPurify from 'dompurify';
 
 import s from './TextArea.module.css';
 
@@ -36,7 +35,7 @@ const TextArea = forwardRef(
     ref
   ) => {
     const inputRef = useRef(ref);
-    const [focused, setFocus] = useState(false);
+    const [focused, setFocused] = useState(false);
 
     const resizeTextArea = () => {
       if (autoGrow) {
@@ -48,7 +47,7 @@ const TextArea = forwardRef(
     useEffect(resizeTextArea, [autoGrow, value]);
 
     const errorMessage = useMemo(() => {
-      let message = '';
+      let message;
       if (error && typeof error === 'string') {
         message = error;
       } else if (error && typeof error === 'object' && error?.message) {
@@ -58,18 +57,15 @@ const TextArea = forwardRef(
       }
 
       return message;
-    }, [error, name, label]);
+    }, [error]);
 
     const handleChange = useCallback(
       (e) => {
-        const inputName = e.target.name;
-        const inputValue = DOMPurify.sanitize(e.target.value);
-
         onChange({
           ...e,
           target: {
-            name: inputName,
-            value: inputValue,
+            name: e.target.name,
+            value: e.target.value,
           },
         });
       },
@@ -77,7 +73,7 @@ const TextArea = forwardRef(
     );
 
     const setFocusState = useCallback(() => {
-      setFocus(true);
+      setFocused(true);
       inputRef?.current?.focus();
     }, [inputRef]);
 
@@ -99,23 +95,28 @@ const TextArea = forwardRef(
           name={name}
           onFocus={(e) => {
             onFocus(e);
-            setFocus(true);
+            setFocused(true);
           }}
           onBlur={(e) => {
             onBlur(e);
-            setFocus(false);
+            setFocused(false);
           }}
           {...rest}
         />
       );
     }, [
-      inputClassName,
-      disableShrink,
       disabled,
-      name,
+      label,
+      disableShrink,
+      error,
+      inputClassName,
       value,
       handleChange,
+      placeholder,
+      name,
       rest,
+      onFocus,
+      onBlur,
     ]);
 
     const labelEl = useMemo(
@@ -123,6 +124,7 @@ const TextArea = forwardRef(
         <label
           htmlFor={name}
           className={cx(s.label, {
+            ['yunus']: true,
             [s.disableShrink]: disableShrink,
             [s.disabledLabel]: disabled,
             [s.labelPlaceholder]: label && placeholder && !disableShrink,
@@ -151,13 +153,14 @@ const TextArea = forwardRef(
           {label}
         </label>
       ),
-      [name, disableShrink, label]
+      [name, disableShrink, label, disabled, labelClassName, placeholder]
     );
 
     return (
       <div
         className={cx(s.inputContainer, {
-          [s.focusedContainer]: !placeholder && (focused || !!value),
+          [s.focusedContainer]:
+            !placeholder && (focused || !!value) && !disableShrink,
         })}
       >
         <div className={s.innerContainer}>

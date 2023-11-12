@@ -1,12 +1,17 @@
-import React, { forwardRef, useCallback, useMemo } from 'react';
+import React, { forwardRef, useMemo, useRef, useState } from 'react';
 
 import PropTypes from 'prop-types';
-
+import dateFNSFormat from 'date-fns/format';
+import * as dateFNSLocales from 'date-fns/locale';
+import FocusTrap from 'focus-trap-react';
+import { usePopper } from 'react-popper';
 import cx from 'classnames';
 
-import s from './Input.module.css';
+import CalendarRoot from '../Calendar/CalendarRoot';
 
-const Input = forwardRef(
+import s from './DatePicker.module.css';
+
+const DatePicker = forwardRef(
   (
     {
       name,
@@ -15,31 +20,61 @@ const Input = forwardRef(
       label = null,
       placeholder = null,
       value = '',
+      locale = 'en',
+      format = 'MM/dd/yyyy',
       inputClassName = null,
       labelClassName = null,
       errorClassName = null,
       prepend = null,
       prependClassName = null,
-      append = null,
+      append = (
+        <svg
+          className={s.icon}
+          xmlns="http://www.w3.org/2000/svg"
+          width="20px"
+          height="20px"
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          viewBox="0 0 24 24"
+        >
+          <rect width={18} height={18} x={3} y={4} rx={2} ry={2} />
+          <path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" />
+        </svg>
+      ),
       appendClassName = null,
       disableShrink = false,
       disabled = false,
       ...rest
     },
-    inputRef
+    ref
   ) => {
-    const handleChange = useCallback(
-      (e) => {
-        onChange({
-          ...e,
-          target: {
-            name: e.target.name,
-            value: e.target.value,
-          },
-        });
-      },
-      [onChange]
-    );
+    const [isPopperOpen, setIsPopperOpen] = useState(false);
+
+    const inputRef = useRef(ref);
+    const popperRef = useRef();
+    const [popperElement, setPopperElement] = useState(null);
+
+    const popper = usePopper(popperRef.current, popperElement, {
+      placement: 'bottom-end',
+    });
+
+    const closePopper = () => {
+      setIsPopperOpen(false);
+      inputRef?.current?.focus();
+    };
+
+    const handleDaySelect = (date) => {
+      onChange({
+        target: {
+          name: name,
+          value: date,
+        },
+      });
+      closePopper();
+    };
 
     const errorMessage = useMemo(() => {
       let message;
@@ -57,35 +92,52 @@ const Input = forwardRef(
     const input = useMemo(() => {
       return (
         <input
+          {...rest}
           type="text"
+          autoComplete="off"
           className={cx(s.input, {
             [s.disableShrink]: disableShrink || !label,
             [s.placeholder]: label && placeholder && !disableShrink,
+            [s.focused]: isPopperOpen,
             [s.disabled]: disabled,
             [s.inputError]: typeof error === 'boolean' && error,
             [inputClassName]: inputClassName,
           })}
           name={name}
-          value={value}
+          value={
+            value instanceof Date
+              ? dateFNSFormat(
+                  value,
+                  format,
+                  locale ? { locale: dateFNSLocales[locale] } : {}
+                )
+              : value
+          }
           ref={inputRef}
-          onChange={handleChange}
           disabled={disabled}
           placeholder={placeholder}
-          {...rest}
+          onClick={() => {
+            if (!isPopperOpen) {
+              inputRef?.current?.focus();
+              setIsPopperOpen((prevState) => !prevState);
+            }
+          }}
+          onChange={() => {}}
         />
       );
     }, [
+      rest,
       disableShrink,
       label,
       placeholder,
+      isPopperOpen,
       disabled,
       error,
       inputClassName,
       name,
       value,
-      inputRef,
-      handleChange,
-      rest,
+      format,
+      locale,
     ]);
 
     const labelEl = useMemo(
@@ -94,7 +146,9 @@ const Input = forwardRef(
           htmlFor={name}
           className={cx(s.label, {
             [s.disableShrink]: disableShrink,
-            [s.labelPlaceholder]: label && placeholder && !disableShrink,
+            [s.labelPlaceholder]:
+              (label && placeholder && !disableShrink) ||
+              (label && value && !disableShrink),
             [labelClassName]: labelClassName,
           })}
           onClick={() => {
@@ -120,7 +174,7 @@ const Input = forwardRef(
           {label}
         </label>
       ),
-      [name, disableShrink, label, placeholder, labelClassName]
+      [name, disableShrink, label, placeholder, value, labelClassName]
     );
 
     return (
@@ -142,6 +196,7 @@ const Input = forwardRef(
                 [s.appendDisabledShrink]: disableShrink,
                 [appendClassName]: appendClassName,
               })}
+              onClick={() => setIsPopperOpen(true)}
             >
               {append}
             </div>
@@ -149,7 +204,39 @@ const Input = forwardRef(
 
           {label && disableShrink ? labelEl : null}
 
-          {input}
+          <div ref={popperRef}>{input}</div>
+          {isPopperOpen && (
+            <FocusTrap
+              active={isPopperOpen}
+              focusTrapOptions={{
+                initialFocus: true,
+                allowOutsideClick: true,
+                clickOutsideDeactivates: true,
+                onDeactivate: () => closePopper(),
+                fallbackFocus: inputRef.current || undefined,
+              }}
+            >
+              <div
+                className={s.popper}
+                style={popper.styles.popper}
+                {...popper.attributes.popper}
+                ref={setPopperElement}
+                role="dialog"
+                aria-label="Calendar"
+              >
+                <CalendarRoot
+                  error={error}
+                  className={s.calendar}
+                  disabled={disabled}
+                  initialFocus={isPopperOpen}
+                  selected={value instanceof Date ? value : null}
+                  onSelect={handleDaySelect}
+                  {...rest}
+                  mode="single"
+                />
+              </div>
+            </FocusTrap>
+          )}
 
           {label && !disableShrink ? labelEl : null}
         </div>
@@ -165,14 +252,14 @@ const Input = forwardRef(
   }
 );
 
-Input.displayName = 'Input';
+DatePicker.displayName = 'DatePicker';
 
 const DateRangePickerInputProps = PropTypes.shape({
   from: PropTypes.instanceOf(Date),
   to: PropTypes.instanceOf(Date),
 });
 
-Input.propTypes = {
+DatePicker.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   error: PropTypes.oneOfType([
@@ -192,6 +279,8 @@ Input.propTypes = {
   inputClassName: PropTypes.string,
   labelClassName: PropTypes.string,
   errorClassName: PropTypes.string,
+  locale: PropTypes.string,
+  format: PropTypes.string,
   prepend: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
   prependClassName: PropTypes.string,
   append: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
@@ -200,4 +289,4 @@ Input.propTypes = {
   disabled: PropTypes.bool,
 };
 
-export default Input;
+export default DatePicker;

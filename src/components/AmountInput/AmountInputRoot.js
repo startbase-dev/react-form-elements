@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, {
   useState,
   useEffect,
@@ -245,8 +246,8 @@ export const AmountInputRoot = forwardRef(
 
       const newValue = padTrimValue(
         fixedDecimals,
-        decimalSeparator,
-        decimalScale !== undefined ? decimalScale : fixedDecimalLength
+        decimalScale !== undefined ? decimalScale : fixedDecimalLength,
+        decimalSeparator
       );
 
       const numberValue = parseFloat(newValue.replace(decimalSeparator, '.'));

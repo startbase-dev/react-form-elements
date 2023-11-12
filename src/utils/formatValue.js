@@ -60,7 +60,7 @@ export const formatValue = (options) => {
   const includeDecimalSeparator =
     _value.slice(-1) === decimalSeparator ? decimalSeparator : '';
 
-  const [, decimals] = value.match(RegExp('\\d+\\.(\\d+)')) || [];
+  const [, decimals] = value.match(/\d+\.(\d+)/) || [];
 
   // Keep original decimal padding if no decimalScale
   if (decimalScale === undefined && decimals && decimalSeparator) {
@@ -69,15 +69,13 @@ export const formatValue = (options) => {
         RegExp(`(\\d+)(${escapeRegExp(decimalSeparator)})(\\d+)`, 'g'),
         `$1$2${decimals}`
       );
+    } else if (intlSuffix && !suffix) {
+      formatted = formatted.replace(
+        intlSuffix,
+        `${decimalSeparator}${decimals}${intlSuffix}`
+      );
     } else {
-      if (intlSuffix && !suffix) {
-        formatted = formatted.replace(
-          intlSuffix,
-          `${decimalSeparator}${decimals}${intlSuffix}`
-        );
-      } else {
-        formatted = `${formatted}${decimalSeparator}${decimals}`;
-      }
+      formatted = `${formatted}${decimalSeparator}${decimals}`;
     }
   }
 

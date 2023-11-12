@@ -1,4 +1,4 @@
-export const padTrimValue = (value, decimalSeparator = '.', decimalScale) => {
+export const padTrimValue = (value, decimalScale, decimalSeparator = '.') => {
   if (decimalScale === undefined || value === '' || value === undefined) {
     return value;
   }

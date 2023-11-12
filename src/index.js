@@ -10,6 +10,10 @@ import NumberInput from './components/NumberInput/NumberInput';
 import Switch from './components/Switch/Switch';
 import Select from './components/Select/Select';
 import PhoneInput from './components/PhoneInput/PhoneInput';
+import Calendar from './components/Calendar/Calendar';
+import DatePicker from './components/DatePicker/DatePicker';
+import DateRangePicker from './components/DateRangePicker/DateRangePicker';
+import MultipleDatePicker from './components/MultipleDatePicker/MultipleDatePicker';
 import './style/globals.css';
 
 export {
@@ -25,4 +29,8 @@ export {
   NumberInput,
   Select,
   PhoneInput,
+  Calendar,
+  DatePicker,
+  DateRangePicker,
+  MultipleDatePicker,
 };

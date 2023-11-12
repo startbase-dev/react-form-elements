@@ -57,6 +57,7 @@
   font-size: 14px;
   width: 100%;
   line-height: 24px;
+  min-height: calc(var(--rfe-input-height) * 2);
   border-radius: var(--rfe-border-radius);
   border: 1px solid var(--rfe-border);
   transition: all 250ms;

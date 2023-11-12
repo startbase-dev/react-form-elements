@@ -58,7 +58,19 @@ const AmountInput = forwardRef(
           {...rest}
         />
       );
-    }, [name, disableShrink, disabled, value, inputRef, handleChange, rest]);
+    }, [
+      name,
+      disableShrink,
+      label,
+      disabled,
+      error,
+      inputClassName,
+      placeholder,
+      value,
+      inputRef,
+      handleChange,
+      rest,
+    ]);
 
     const labelEl = useMemo(
       () => (
@@ -73,11 +85,11 @@ const AmountInput = forwardRef(
           {label}
         </label>
       ),
-      [name, label, disableShrink]
+      [name, disableShrink, label, placeholder, labelClassName]
     );
 
     const errorMessage = useMemo(() => {
-      let message = '';
+      let message;
       if (error && typeof error === 'string') {
         message = error;
       } else if (error && typeof error === 'object' && error?.message) {
@@ -87,14 +99,14 @@ const AmountInput = forwardRef(
       }
 
       return message;
-    }, [error, name, label]);
+    }, [error]);
 
     return (
       <div className={cx(s.root)}>
         <div className={cx(s.inputRoot)}>
           {prepend && (
             <div className={cx(s.prepend, prependClassName)}>
-              {prepend ? prepend : null}
+              {prepend || null}
             </div>
           )}
 

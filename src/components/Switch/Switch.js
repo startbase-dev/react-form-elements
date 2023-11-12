@@ -22,7 +22,7 @@ const Switch = forwardRef(
     inputRef
   ) => {
     const errorMessage = useMemo(() => {
-      let message = '';
+      let message;
       if (error && typeof error === 'string') {
         message = error;
       } else if (error && typeof error === 'object' && error?.message) {
@@ -32,7 +32,7 @@ const Switch = forwardRef(
       }
 
       return message;
-    }, [error, name, label]);
+    }, [error]);
 
     return (
       <label htmlFor={`switch_${name}`} className={s.switch}>

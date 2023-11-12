@@ -1,0 +1,168 @@
+.root {
+  margin-bottom: var(--rfe-spacing);
+}
+
+.inputRoot {
+  position: relative;
+}
+
+.calendar {
+  margin: var(--rfe-label-spacing) 0;
+}
+
+.label {
+  font-size: var(--rfe-font-size);
+  line-height: 1;
+  color: var(--rfe-color);
+  margin-bottom: 0;
+  position: absolute;
+  top: -2px;
+  left: 16px;
+  cursor: text;
+  transform: translateY(calc((var(--rfe-input-height) - 14px) / 2));
+  transition: all 250ms;
+}
+
+.label.disableShrink {
+  display: block;
+  position: static;
+  margin-bottom: var(--rfe-label-spacing);
+  color: var(--rfe-color);
+  transform: none;
+}
+
+.prepend ~ .placeholder {
+  padding: 24px 16px 0 60px !important;
+}
+
+.placeholder {
+  padding: 19px 16px 0 !important;
+}
+
+.labelPlaceholder {
+  font-size: 12px;
+  transform: translateY(9px);
+  top: 0;
+}
+
+.focused {
+  box-shadow: var(--rfe-focus);
+}
+
+.input {
+  width: 100%;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--rfe-color);
+  padding: 19px 16px 0;
+  background: var(--rfe-background);
+  border: 1px solid var(--rfe-border);
+  border-radius: var(--rfe-border-radius);
+  height: var(--rfe-input-height);
+  transition: all 250ms;
+  font-family: var(--rfe-font-family);
+}
+
+.input:focus {
+  box-shadow: var(--rfe-focus);
+}
+
+.input::placeholder {
+  color: var(--rfe-color-placeholder);
+  font-size: 14px;
+}
+
+.input:-webkit-autofill:not(.disableShrink) ~ .label,
+.input:focus:not(.disableShrink) ~ .label,
+.input:not([value=''], .disableShrink) ~ .label {
+  font-size: 12px;
+  transform: translateY(9px);
+}
+
+.input.disableShrink {
+  padding: 16px;
+}
+
+.append,
+.prepend {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  color: var(--rfe-color);
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.prepend {
+  left: 16px;
+  font-size: 14px;
+  line-height: 16px;
+  padding-right: 13px;
+  border-right: 1px solid var(--rfe-border);
+}
+
+.prepend ~ .label {
+  left: 62px;
+}
+
+.prepend ~ .input {
+  padding: 20px 16px 0 60px;
+}
+
+.prepend ~ .input.disableShrink {
+  padding: 16px 16px 16px 60px;
+}
+
+.append {
+  right: 2px;
+  height: 56px;
+}
+
+.append ~ .input {
+  padding: 19px 56px 0 16px;
+}
+
+.append ~ .input.disableShrink {
+  padding: 0 50px 0 16px;
+}
+
+.appendDisabledShrink {
+  top: 24px;
+  transform: none;
+}
+
+.errorLabel {
+  color: var(--rfe-color-error);
+  font-size: var(--rfe-error-font-size);
+  margin-top: var(--rfe-label-spacing);
+  pointer-events: none;
+}
+
+.inputError {
+  border-color: var(--rfe-color-error) !important;
+}
+
+.disabled {
+  background: var(--rfe-background-disabled);
+  color: var(--rfe-color);
+  cursor: not-allowed;
+}
+
+.icon {
+  background: none;
+  border: 0;
+  margin: 0 8px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.popper {
+  z-index: 1000;
+}

@@ -1,6 +1,5 @@
 import React, { forwardRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import DOMPurify from 'dompurify';
 import PhoneInputModule from 'react-phone-number-input/input';
 import { parsePhoneNumber, isSupportedCountry } from 'react-phone-number-input';
 import flags from 'react-phone-number-input/flags';
@@ -12,7 +11,7 @@ const PhoneInput = forwardRef(
   ({ name, onChange, value = '', ...rest }, inputRef) => {
     const handleChange = useCallback(
       (value) => {
-        onChange({ target: { name, value: DOMPurify.sanitize(value) } });
+        onChange({ target: { name, value } });
       },
       [name, onChange]
     );
