@@ -109,12 +109,12 @@ export const AmountInputRoot = forwardRef(
             value: String(defaultValue),
           })
         : userValue !== undefined && userValue !== null
-        ? formatValue({
-            ...formatValueOptions,
-            decimalScale,
-            value: String(userValue),
-          })
-        : '';
+          ? formatValue({
+              ...formatValueOptions,
+              decimalScale,
+              value: String(userValue),
+            })
+          : '';
 
     const [stateValue, setStateValue] = useState(formattedStateValue);
     const [dirty, setDirty] = useState(false);

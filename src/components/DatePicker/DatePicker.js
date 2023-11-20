@@ -3,7 +3,7 @@ import React, { forwardRef, useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import dateFNSFormat from 'date-fns/format';
 import * as dateFNSLocales from 'date-fns/locale';
-import FocusTrap from 'focus-trap-react';
+import { FocusOn } from 'react-focus-on';
 import { usePopper } from 'react-popper';
 import cx from 'classnames';
 
@@ -25,6 +25,7 @@ const DatePicker = forwardRef(
       inputClassName = null,
       labelClassName = null,
       errorClassName = null,
+      calendarClassName = null,
       prepend = null,
       prependClassName = null,
       append = (
@@ -95,6 +96,7 @@ const DatePicker = forwardRef(
           {...rest}
           type="text"
           autoComplete="off"
+          readOnly
           className={cx(s.input, {
             [s.disableShrink]: disableShrink || !label,
             [s.placeholder]: label && placeholder && !disableShrink,
@@ -117,10 +119,8 @@ const DatePicker = forwardRef(
           disabled={disabled}
           placeholder={placeholder}
           onClick={() => {
-            if (!isPopperOpen) {
-              inputRef?.current?.focus();
-              setIsPopperOpen((prevState) => !prevState);
-            }
+            inputRef?.current?.focus();
+            setIsPopperOpen((prevState) => !prevState);
           }}
           onChange={() => {}}
         />
@@ -166,6 +166,8 @@ const DatePicker = forwardRef(
               }
 
               input?.focus();
+              inputRef?.current?.focus();
+              setIsPopperOpen((prevState) => !prevState);
             } catch (error) {
               throw error;
             }
@@ -196,7 +198,7 @@ const DatePicker = forwardRef(
                 [s.appendDisabledShrink]: disableShrink,
                 [appendClassName]: appendClassName,
               })}
-              onClick={() => setIsPopperOpen(true)}
+              onClick={() => setIsPopperOpen((prevState) => !prevState)}
             >
               {append}
             </div>
@@ -206,15 +208,13 @@ const DatePicker = forwardRef(
 
           <div ref={popperRef}>{input}</div>
           {isPopperOpen && (
-            <FocusTrap
-              active={isPopperOpen}
-              focusTrapOptions={{
-                initialFocus: true,
-                allowOutsideClick: true,
-                clickOutsideDeactivates: true,
-                onDeactivate: () => closePopper(),
-                fallbackFocus: inputRef.current || undefined,
-              }}
+            <FocusOn
+              enabled={isPopperOpen}
+              autoFocus
+              onClickOutside={closePopper}
+              onEscapeKey={closePopper}
+              onDeactivation={closePopper}
+              scrollLock={false}
             >
               <div
                 className={s.popper}
@@ -227,6 +227,7 @@ const DatePicker = forwardRef(
                 <CalendarRoot
                   error={error}
                   className={s.calendar}
+                  calendarClassName={calendarClassName}
                   disabled={disabled}
                   initialFocus={isPopperOpen}
                   selected={value instanceof Date ? value : null}
@@ -235,7 +236,7 @@ const DatePicker = forwardRef(
                   mode="single"
                 />
               </div>
-            </FocusTrap>
+            </FocusOn>
           )}
 
           {label && !disableShrink ? labelEl : null}
@@ -279,6 +280,7 @@ DatePicker.propTypes = {
   inputClassName: PropTypes.string,
   labelClassName: PropTypes.string,
   errorClassName: PropTypes.string,
+  calendarClassName: PropTypes.string,
   locale: PropTypes.string,
   format: PropTypes.string,
   prepend: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),

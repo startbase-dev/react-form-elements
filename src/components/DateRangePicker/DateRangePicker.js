@@ -1,11 +1,11 @@
-import React, { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
+import React, { forwardRef, useMemo, useRef, useState } from 'react';
 
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import dateFNSFormat from 'date-fns/format';
 import * as dateFNSLocales from 'date-fns/locale';
 import { usePopper } from 'react-popper';
-import FocusTrap from 'focus-trap-react';
+import { FocusOn } from 'react-focus-on';
 
 import CalendarRoot from '../Calendar/CalendarRoot';
 
@@ -27,6 +27,7 @@ const DateRangePicker = forwardRef(
       inputClassName = null,
       labelClassName = null,
       errorClassName = null,
+      calendarClassName = null,
       prepend = null,
       prependClassName = null,
       append = (
@@ -54,7 +55,7 @@ const DateRangePicker = forwardRef(
     ref
   ) => {
     const [isPopperOpen, setIsPopperOpen] = useState(false);
-    const [range, setRange] = useState({});
+    const [range, setRange] = useState(value);
 
     const popperRef = useRef();
     const inputRef = useRef(ref);
@@ -67,29 +68,20 @@ const DateRangePicker = forwardRef(
     const closePopper = () => {
       setIsPopperOpen(false);
       inputRef?.current?.focus();
-      onChange({
-        target: {
-          name: name,
-          value: range,
-        },
-      });
     };
 
     const handleDaySelect = (date) => {
       setRange(date);
+      onChange({
+        target: {
+          name: name,
+          value: date,
+        },
+      });
       if (date?.from && date?.to) {
         closePopper();
       }
     };
-
-    useEffect(() => {
-      onChange({
-        target: {
-          name: name,
-          value: range,
-        },
-      });
-    }, [name, onChange, range]);
 
     const errorMessage = useMemo(() => {
       let message;
@@ -149,9 +141,7 @@ const DateRangePicker = forwardRef(
               : ''
           }
           onClick={() => {
-            if (!isPopperOpen) {
-              setIsPopperOpen(true);
-            }
+            setIsPopperOpen((prevState) => !prevState);
           }}
           onChange={() => {}}
         />
@@ -198,6 +188,8 @@ const DateRangePicker = forwardRef(
               }
 
               input?.focus();
+              inputRef?.current?.focus();
+              setIsPopperOpen((prevState) => !prevState);
             } catch (error) {
               throw error;
             }
@@ -228,7 +220,7 @@ const DateRangePicker = forwardRef(
                 [s.appendDisabledShrink]: disableShrink,
                 [appendClassName]: appendClassName,
               })}
-              onClick={() => setIsPopperOpen(true)}
+              onClick={() => setIsPopperOpen((prevState) => !prevState)}
             >
               {append}
             </div>
@@ -238,15 +230,13 @@ const DateRangePicker = forwardRef(
 
           <div ref={popperRef}>{input}</div>
           {isPopperOpen && (
-            <FocusTrap
-              active={isPopperOpen}
-              focusTrapOptions={{
-                initialFocus: false,
-                allowOutsideClick: true,
-                clickOutsideDeactivates: true,
-                onDeactivate: () => closePopper(),
-                fallbackFocus: inputRef.current || undefined,
-              }}
+            <FocusOn
+              enabled={isPopperOpen}
+              autoFocus
+              onClickOutside={closePopper}
+              onEscapeKey={closePopper}
+              onDeactivation={closePopper}
+              scrollLock={false}
             >
               <div
                 className={s.popper}
@@ -259,6 +249,7 @@ const DateRangePicker = forwardRef(
                 <CalendarRoot
                   error={error}
                   className={s.calendar}
+                  calendarClassName={calendarClassName}
                   disabled={disabled}
                   initialFocus={isPopperOpen}
                   selected={range}
@@ -268,7 +259,7 @@ const DateRangePicker = forwardRef(
                   mode="range"
                 />
               </div>
-            </FocusTrap>
+            </FocusOn>
           )}
 
           {label && !disableShrink ? labelEl : null}
@@ -314,6 +305,7 @@ DateRangePicker.propTypes = {
   separator: PropTypes.string,
   labelClassName: PropTypes.string,
   errorClassName: PropTypes.string,
+  calendarClassName: PropTypes.string,
   locale: PropTypes.string,
   format: PropTypes.string,
   prepend: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),

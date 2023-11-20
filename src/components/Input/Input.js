@@ -184,6 +184,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.oneOfType([
     PropTypes.string,
+    PropTypes.bool,
     PropTypes.number,
     PropTypes.instanceOf(Date),
     PropTypes.arrayOf(PropTypes.instanceOf(Date)),

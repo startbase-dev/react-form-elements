@@ -18,7 +18,7 @@ import makeAnimated from 'react-select/animated';
 import dateFNSFormat from 'date-fns/format';
 import * as dateFNSLocales from 'date-fns/locale';
 import { usePopper } from 'react-popper';
-import FocusTrap from 'focus-trap-react';
+import { FocusOn } from 'react-focus-on';
 
 import CalendarRoot from '../Calendar/CalendarRoot';
 
@@ -40,6 +40,7 @@ const MultipleDatePicker = forwardRef(
       inputClassName = null,
       labelClassName = null,
       errorClassName = null,
+      calendarClassName = null,
       disableShrink = false,
       disabled = false,
       classNames = null,
@@ -60,11 +61,6 @@ const MultipleDatePicker = forwardRef(
       placement: 'bottom-end',
     });
 
-    const closePopper = () => {
-      inputRef?.current?.blur();
-      setIsPopperOpen(false);
-    };
-
     const handleDaySelect = (date) => {
       onChange({
         target: {
@@ -84,7 +80,7 @@ const MultipleDatePicker = forwardRef(
         <ReactSelectComponents.DropdownIndicator {...props}>
           <svg
             className={s.icon}
-            onClick={() => setIsPopperOpen(true)}
+            onClick={() => setIsPopperOpen((prevState) => !prevState)}
             xmlns="http://www.w3.org/2000/svg"
             width="20px"
             height="20px"
@@ -110,7 +106,7 @@ const MultipleDatePicker = forwardRef(
           innerProps={{
             ...innerProps,
             onClick: () => {
-              setIsPopperOpen(true);
+              setIsPopperOpen((prevState) => !prevState);
             },
           }}
         >
@@ -159,6 +155,7 @@ const MultipleDatePicker = forwardRef(
 
               input?.focus();
               inputRef?.current?.focus();
+              setIsPopperOpen((prevState) => !prevState);
             } catch (error) {
               throw error;
             }
@@ -175,6 +172,10 @@ const MultipleDatePicker = forwardRef(
         inputRef?.current?.blur();
       }
     }, [isPopperOpen]);
+
+    const closePopper = () => {
+      setIsPopperOpen(false);
+    };
 
     const errorMessage = useMemo(() => {
       let message;
@@ -244,6 +245,7 @@ const MultipleDatePicker = forwardRef(
                 ref={inputRef}
                 options={options}
                 isMulti
+                isSearchable={false}
                 value={value?.map((v, index) => ({
                   value: index,
                   label:
@@ -260,14 +262,13 @@ const MultipleDatePicker = forwardRef(
             </div>
 
             {isPopperOpen && (
-              <FocusTrap
-                active={isPopperOpen}
-                focusTrapOptions={{
-                  initialFocus: false,
-                  allowOutsideClick: true,
-                  clickOutsideDeactivates: true,
-                  onDeactivate: () => closePopper(),
-                }}
+              <FocusOn
+                enabled={isPopperOpen}
+                autoFocus
+                onClickOutside={closePopper}
+                onEscapeKey={closePopper}
+                onDeactivation={closePopper}
+                scrollLock={false}
               >
                 <div
                   className={s.popper}
@@ -280,6 +281,7 @@ const MultipleDatePicker = forwardRef(
                   <CalendarRoot
                     error={error}
                     className={s.calendar}
+                    calendarClassName={calendarClassName}
                     disabled={disabled}
                     initialFocus={isPopperOpen}
                     selected={value}
@@ -288,7 +290,7 @@ const MultipleDatePicker = forwardRef(
                     mode="multiple"
                   />
                 </div>
-              </FocusTrap>
+              </FocusOn>
             )}
           </div>
 
@@ -326,6 +328,7 @@ MultipleDatePicker.propTypes = {
   inputClassName: PropTypes.string,
   labelClassName: PropTypes.string,
   errorClassName: PropTypes.string,
+  calendarClassName: PropTypes.string,
   disableShrink: PropTypes.bool,
   locale: PropTypes.string,
   format: PropTypes.string,

@@ -7,7 +7,7 @@
 }
 
 .calendar {
-  margin: var(--rfe-label-spacing) 0;
+  margin: var(--rfe-label-spacing) 0 !important;
 }
 
 .label {

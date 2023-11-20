@@ -1,12 +1,12 @@
 .calendar {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .months {
   background: var(--rfe-background) !important;
   color: var(--rfe-color) !important;
   border-radius: var(--rfe-border-radius) !important;
-  padding: var(--rfe-label-spacing) !important;
+  padding: 1rem !important;
   border: 1px solid var(--rfe-border);
   transition: all 250ms;
   display: flex;
@@ -18,7 +18,7 @@
   background: var(--rfe-background) !important;
   color: var(--rfe-color) !important;
   border-radius: var(--rfe-border-radius) !important;
-  padding: var(--rfe-label-spacing) !important;
+  padding: 1rem !important;
   border: 1px solid var(--rfe-border);
   transition: all 250ms;
   display: block;

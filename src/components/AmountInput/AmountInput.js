@@ -12,7 +12,7 @@ const AmountInput = forwardRef(
       error = null,
       label = null,
       placeholder = null,
-      value = '',
+      value = null,
       inputClassName = null,
       labelClassName = null,
       errorClassName = null,
@@ -55,6 +55,9 @@ const AmountInput = forwardRef(
           ref={inputRef}
           onValueChange={handleChange}
           disabled={disabled}
+          groupSeparator=","
+          decimalSeparator="."
+          prefix="$"
           {...rest}
         />
       );

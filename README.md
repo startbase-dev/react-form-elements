@@ -189,10 +189,12 @@ This component is a wrapper around [react-select](https://react-select.com/home)
 This component is a wrapper around [react-phone-number-input](https://catamphetamine.gitlab.io/react-phone-number-input/) component. All props from react-phone-number-input can be passed to this component.
 
 ### Calendar
-### DatePicker
-### MultipleDatePicker
-### DateRangePicker
 
+### DatePicker
+
+### MultipleDatePicker
+
+### DateRangePicker
 
 ## Examples
 

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import Checkbox from '../Checkbox/Checkbox';
 import Input from '../Input/Input';
@@ -15,7 +17,7 @@ import PhoneInput from '../PhoneInput/PhoneInput';
 import DatePicker from '../DatePicker/DatePicker';
 import DateRangePicker from '../DateRangePicker/DateRangePicker';
 import MultipleDatePicker from '../MultipleDatePicker/MultipleDatePicker';
-import CalendarRoot from '../Calendar/CalendarRoot';
+import Calendar from '../Calendar/Calendar';
 
 const OPTIONS = [
   {
@@ -40,108 +42,221 @@ const OPTIONS = [
   },
 ];
 
+const validationSchema = yup.object({
+  username: yup.string().required('Required').label('Username'),
+  password: yup.string().required('Required').label('Password'),
+  number: yup.number().required('Required').label('Number'),
+  amount: yup.number().required('Required').label('Amount'),
+  select: yup.object().required('Required').label('Select'),
+  multi: yup.array().required('Required').label('Multi'),
+  phone: yup.string().required('Required').label('Phone'),
+  calendar: yup.date().required('Required').label('Calendar'),
+  date: yup.date().required('Required').label('Date'),
+  multiple_date: yup.array().required('Required').label('Multiple Date'),
+  date_range: yup.object().required('Required').label('Date Range'),
+  textarea: yup.string().required('Required').label('Description'),
+  country: yup.string().required('Required').label('Country'),
+  policy: yup.boolean().required('Required').label('Policy'),
+  terms: yup.boolean().required('Required').label('Terms'),
+});
+
 const Template = () => {
   const [inputs, setInputs] = useState({});
-
-  const { control, register, handleSubmit, watch } = useForm();
+  const [disabled, setDisabled] = useState(false);
+  const [disableShrink, setDisableShrink] = useState(false);
+  const {
+    formState: { errors },
+    control,
+    register,
+    handleSubmit,
+    watch,
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
   const onSubmit = (data) => setInputs(data);
 
   console.log(inputs);
   return (
     <>
       <h2>Form Component</h2>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <div
+        style={{
+          display: 'flex',
+          gap: '1rem',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Checkbox
+          label="Disabled"
+          name="disabled"
+          checked={disabled}
+          onChange={() => {
+            setDisabled((prevState) => !prevState);
+          }}
+        />
+        <Checkbox
+          label="Disable Shrink"
+          name="disableShrink"
+          checked={disableShrink}
+          onChange={() => {
+            setDisableShrink((prevState) => !prevState);
+          }}
+        />
+      </div>
+      <Form>
         <Input
           label="Username"
           value={watch('username')}
           {...register('username')}
+          disableShrink={disableShrink}
+          error={errors.username}
+          disabled={disabled}
         />
         <PasswordInput
           label="Password"
+          disableShrink={disableShrink}
           value={watch('password')}
           {...register('password')}
+          error={errors.password}
+          disabled={disabled}
         />
         <NumberInput
           label="Number"
+          disableShrink={disableShrink}
           value={watch('number')}
           {...register('number')}
+          error={errors.number}
+          disabled={disabled}
         />
-        <AmountInput
-          label="Amount"
-          value={watch('amount')}
-          {...register('amount')}
+        <Controller
+          name="amount"
+          control={control}
+          render={({ field }) => (
+            <AmountInput
+              label="Amount"
+              disableShrink={disableShrink}
+              value={watch('amount')}
+              error={errors.amount}
+              {...field}
+              disabled={disabled}
+            />
+          )}
         />
         <Select
           label="Select"
           options={OPTIONS}
           isClearable
+          disableShrink={disableShrink}
           value={watch('select')}
           {...register('select')}
+          error={errors.select}
+          disabled={disabled}
         />
         <Select
           label="Multi Select"
           options={OPTIONS}
           isMulti
+          disableShrink={disableShrink}
           value={watch('multi')}
           {...register('multi')}
+          error={errors.multi}
+          disabled={disabled}
         />
         <PhoneInput
           label="Phone"
+          disableShrink={disableShrink}
           value={watch('phone')}
           {...register('phone')}
+          error={errors.phone}
+          disabled={disabled}
         />
-        <CalendarRoot />
-        <DatePicker
-          inputProps={{
-            label: 'Date',
-            value: watch('date'),
-            ...register('date'),
-          }}
+        <Calendar
+          label="Calendar"
+          value={watch('calendar')}
+          {...register('calendar')}
+          error={errors.calendar}
+          disabled={disabled}
+        />
+        <Controller
+          name="date"
+          control={control}
+          render={({ field }) => (
+            <DatePicker
+              label="Date"
+              disableShrink={disableShrink}
+              value={watch('date')}
+              {...field}
+              error={errors.date}
+              disabled={disabled}
+            />
+          )}
         />
         <MultipleDatePicker
-          inputProps={{
-            label: 'MultipleDatePicker',
-            value: watch('multiple_date'),
-            ...register('multiple_date'),
-          }}
+          value={watch('multiple_date')}
+          {...register('multiple_date')}
+          disableShrink={disableShrink}
+          error={errors.multiple_date}
+          label="Multiple Date Picker"
+          disabled={disabled}
         />
-
         <Controller
           name="date_range"
           control={control}
           render={({ field }) => (
             <DateRangePicker
-              inputProps={{
-                label: 'DateRange',
-                value: watch('date_range'),
-                ...field,
-              }}
+              label="DateRange"
+              disableShrink={disableShrink}
+              value={watch('date_range')}
+              {...register('date_range')}
+              error={errors.date_range}
+              disabled={disabled}
+              {...field}
             />
           )}
         />
-        <TextArea
-          label="Description"
-          autoGrow
-          value={watch('textarea')}
-          {...register('textarea')}
+        <Controller
+          name="textarea"
+          control={control}
+          render={({ field }) => (
+            <TextArea
+              label="Description"
+              autoGrow
+              disableShrink={disableShrink}
+              value={watch('textarea')}
+              {...field}
+              error={errors.textarea}
+              disabled={disabled}
+            />
+          )}
         />
         <RadioGroup
+          disabled={disabled}
           label="RadioGroup"
           value={watch('country')}
           {...register('country')}
+          error={errors.country}
           options={[
             { label: 'Radio Option 1', value: 'default1' },
             { label: 'Radio Option 2', value: 'default2' },
           ]}
         />
         <Checkbox
+          disabled={disabled}
           label="I understand and accept the terms and conditions and privacy policy."
-          checked={watch('agree')}
-          {...register('agree')}
+          checked={watch('policy')}
+          {...register('policy')}
+          error={errors.policy}
         />
-        <Switch checked={watch('dark')} label="Switch" {...register('dark')} />
-        <input type="submit" />
+        <Switch
+          label="Switch"
+          checked={watch('terms')}
+          {...register('terms')}
+          error={errors.terms}
+          disabled={disabled}
+        />
       </Form>
+      <button onClick={handleSubmit(onSubmit)}> Submit </button>
     </>
   );
 };
@@ -149,7 +264,7 @@ const Template = () => {
 export const FormComponent = Template.bind({});
 
 const Component = {
-  title: 'Form/Form/ReactHookFormWithYup',
+  title: 'Form/Form/ReactHookFormYup',
   component: Form,
 };
 
