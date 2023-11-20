@@ -209,6 +209,8 @@ const MultipleDatePicker = forwardRef(
                   indicatorsContainer: () => s.indicatorsContainer,
                   clearIndicator: () => s.clearIndicator,
                   multiValue: () => s.multiValue,
+                  valueContainer: () =>
+                    label && !disableShrink ? s.valueContainer : null,
                   multiValueRemove: () => s.multiValueRemove,
                   ...classNames,
                   control: (state) =>

@@ -159,6 +159,10 @@
   }
 }
 
+.valueContainer {
+  padding-top: 20px !important;
+}
+
 .multiValueRemove {
   color: var(--rfe-color) !important;
 

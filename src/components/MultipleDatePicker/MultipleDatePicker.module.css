@@ -175,6 +175,10 @@
   }
 }
 
+.valueContainer {
+  padding-top: 20px !important;
+}
+
 .popper {
   z-index: 1000;
 }
