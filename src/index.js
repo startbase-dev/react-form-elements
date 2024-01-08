@@ -1,19 +1,19 @@
-import Checkbox from './components/Checkbox/Checkbox';
-import Form from './components/Form/Form';
-import Input from './components/Input/Input';
-import PasswordInput from './components/PasswordInput/PasswordInput';
-import Radio from './components/Radio/Radio';
-import RadioGroup from './components/RadioGroup/RadioGroup';
-import TextArea from './components/TextArea/TextArea';
-import AmountInput from './components/AmountInput/AmountInput';
-import NumberInput from './components/NumberInput/NumberInput';
-import Switch from './components/Switch/Switch';
-import Select from './components/Select/Select';
-import PhoneInput from './components/PhoneInput/PhoneInput';
-import Calendar from './components/Calendar/Calendar';
-import DatePicker from './components/DatePicker/DatePicker';
-import DateRangePicker from './components/DateRangePicker/DateRangePicker';
-import MultipleDatePicker from './components/MultipleDatePicker/MultipleDatePicker';
+import Checkbox from './Checkbox';
+import Form from './Form';
+import Input from './Input';
+import PasswordInput from './PasswordInput';
+import Radio from './Radio';
+import RadioGroup from './RadioGroup';
+import TextArea from './TextArea';
+import AmountInput from './AmountInput';
+import NumberInput from './NumberInput';
+import Switch from './Switch';
+import Select from './Select';
+import PhoneInput from './PhoneInput';
+import Calendar from './Calendar';
+import DatePicker from './DatePicker';
+import DateRangePicker from './DateRangePicker';
+import MultipleDatePicker from './MultipleDatePicker';
 import './style/globals.css';
 
 export {

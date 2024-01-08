@@ -2,14 +2,32 @@
   "name": "@start-base/react-form-elements",
   "author": "Start-Base",
   "description": "Simplify form elements and form management. Selection of user friendly inputs and wide customization abilities to match your design and functionality.",
-  "version": "1.7.0",
+  "version": "1.7.6",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/startbase-dev/react-form-elements.git"
   },
   "files": [
-    "dist"
+    "./index.js",
+    "./index.mjs",
+    "./index.css",
+    "AmountInput",
+    "Calendar",
+    "Checkbox",
+    "DatePicker",
+    "DateRangePicker",
+    "Form",
+    "Input",
+    "MultipleDatePicker",
+    "NumberInput",
+    "PasswordInput",
+    "PhoneInput",
+    "Radio",
+    "RadioGroup",
+    "Select",
+    "Switch",
+    "TextArea"
   ],
   "keywords": [
     "form",
@@ -44,17 +62,105 @@
     "date-range-picker",
     "react-date-range-picker"
   ],
-  "main": "dist/lib/index.cjs",
-  "module": "dist/lib/index.js",
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "exports": {
+    ".": {
+      "require": "./index.cjs",
+      "import": "./index.js"
+    },
+    "./index.css": "./index.css",
+    "./AmountInput": {
+      "require": "./AmountInput/index.cjs",
+      "import": "./AmountInput/index.js"
+    },
+    "./Calendar": {
+      "require": "./Calendar/index.cjs",
+      "import": "./Calendar/index.js"
+    },
+    "./Checkbox": {
+      "require": "./Checkbox/index.cjs",
+      "import": "./Checkbox/index.js"
+    },
+    "./DatePicker": {
+      "require": "./DatePicker/index.cjs",
+      "import": "./DatePicker/index.js"
+    },
+    "./DateRangePicker": {
+      "require": "./DateRangePicker/index.cjs",
+      "import": "./DateRangePicker/index.js"
+    },
+    "./Form": {
+      "require": "./Form/index.cjs",
+      "import": "./Form/index.js"
+    },
+    "./Input": {
+      "require": "./Input/index.cjs",
+      "import": "./Input/index.js"
+    },
+    "./MultipleDatePicker": {
+      "require": "./MultipleDatePicker/index.cjs",
+      "import": "./MultipleDatePicker/index.js"
+    },
+    "./NumberInput": {
+      "require": "./NumberInput/index.cjs",
+      "import": "./NumberInput/index.js"
+    },
+    "./PasswordInput": {
+      "require": "./PasswordInput/index.cjs",
+      "import": "./PasswordInput/index.js"
+    },
+    "./PhoneInput": {
+      "require": "./PhoneInput/index.cjs",
+      "import": "./PhoneInput/index.js"
+    },
+    "./Radio": {
+      "require": "./Radio/index.cjs",
+      "import": "./Radio/index.js"
+    },
+    "./RadioGroup": {
+      "require": "./RadioGroup/index.cjs",
+      "import": "./RadioGroup/index.js"
+    },
+    "./Select": {
+      "require": "./Select/index.cjs",
+      "import": "./Select/index.js"
+    },
+    "./Switch": {
+      "require": "./Switch/index.cjs",
+      "import": "./Switch/index.js"
+    },
+    "./TextArea": {
+      "require": "./TextArea/index.cjs",
+      "import": "./TextArea/index.js"
+    }
+  },
   "scripts": {
-    "lint": "eslint src/*.js src/utils/*.js src/components/**/*.js --fix",
+    "lint": "eslint src/*.js src/utils/*.js src/**/*.js --fix",
     "format": "prettier --write .",
     "stylelint": "stylelint \"src/**/*.css\" --fix",
     "unimported": "npx unimported",
     "release": "release-it",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build:lib": "rm -rf dist/lib && tsup src/index.js --out-dir dist/lib"
+    "build": "npm run build0 && npm run build1 && npm run build2 && npm run build3 && npm run build4 && npm run build5 && npm run build6 && npm run build7 && npm run build8 && npm run build9 && npm run build10 && npm run build11 && npm run build12 && npm run build13 && npm run build14 && npm run build15 && npm run build16",
+    "build0": "tsup --out-dir ./ --no-splitting --treeshake --minify terser",
+    "build1": "tsup src/PhoneInput/index.js --out-dir ./PhoneInput --no-splitting --treeshake --minify terser",
+    "build2": "tsup src/NumberInput/index.js --out-dir ./NumberInput --no-splitting --treeshake --minify terser",
+    "build3": "tsup src/PasswordInput/index.js --out-dir ./PasswordInput --no-splitting --treeshake --minify terser",
+    "build4": "tsup src/Input/index.js --out-dir ./Input --no-splitting --treeshake --minify terser",
+    "build5": "tsup src/Select/index.js --out-dir ./Select --no-splitting --treeshake --minify terser",
+    "build6": "tsup src/Switch/index.js --out-dir ./Switch --no-splitting --treeshake --minify terser",
+    "build7": "tsup src/TextArea/index.js --out-dir ./TextArea --no-splitting --treeshake --minify terser",
+    "build8": "tsup src/RadioGroup/index.js --out-dir ./RadioGroup --no-splitting --treeshake --minify terser",
+    "build9": "tsup src/Radio/index.js --out-dir ./Radio --no-splitting --treeshake --minify terser",
+    "build10": "tsup src/MultipleDatePicker/index.js --out-dir ./MultipleDatePicker --no-splitting --treeshake --minify terser",
+    "build11": "tsup src/Form/index.js --out-dir ./Form --no-splitting --treeshake --minify terser",
+    "build12": "tsup src/DateRangePicker/index.js --out-dir ./DateRangePicker --no-splitting --treeshake --minify terser",
+    "build13": "tsup src/DatePicker/index.js --out-dir ./DatePicker --no-splitting --treeshake --minify terser",
+    "build14": "tsup src/Checkbox/index.js --out-dir ./Checkbox --no-splitting --treeshake --minify terser",
+    "build15": "tsup src/Calendar/index.js --out-dir ./Calendar --no-splitting --treeshake --minify terser",
+    "build16": "tsup src/AmountInput/index.js --out-dir ./AmountInput --no-splitting --treeshake --minify terser"
   },
   "peerDependencies": {
     "@popperjs/core": "^2.0.0",
@@ -108,7 +214,6 @@
     "eslint-plugin-storybook": "0.6.15",
     "husky": "8.0.3",
     "mini-css-extract-plugin": "2.7.6",
-    "node-sass": "9.0.0",
     "postcss": "8.4.33",
     "postcss-prefixer": "3.0.0",
     "prettier": "3.1.1",
@@ -124,6 +229,7 @@
     "stylelint-declaration-strict-value": "1.10.4",
     "stylelint-no-unsupported-browser-features": "8.0.0",
     "stylelint-scss": "6.0.0",
+    "terser": "^5.26.0",
     "tsup": "8.0.1",
     "webpack": "5.89.0",
     "webpack-bundle-analyzer": "4.10.1",
@@ -131,6 +237,9 @@
     "yup": "1.3.3"
   },
   "tsup": {
+    "entry": [
+      "src/index.js"
+    ],
     "format": [
       "esm",
       "cjs"
@@ -141,7 +250,7 @@
     },
     "dts": false,
     "sourcemap": false,
-    "clean": true
+    "clean": false
   },
   "bugs": {
     "url": "https://github.com/startbase-dev/react-form-elements/issues"

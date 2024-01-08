@@ -42,3 +42,24 @@ package-lock.json
 
 # dist
 /dist
+
+/TextArea
+/AmountInput
+/Input
+/Select
+/Checkbox
+/Radio
+/DatePicker
+/RadioGroup
+/DateRangePicker
+/MultipleDatePicker
+/Switch
+/PasswordInput
+/NumberInput
+/PhoneInput
+/Calendar
+/Form
+
+index.js
+index.css
+index.mjs
