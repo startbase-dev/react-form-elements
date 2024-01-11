@@ -2,7 +2,7 @@ import custom from '../webpack.config';
 
 const path = require('path');
 const config = {
-  stories: ['../src/components/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
 
   webpackFinal: async (config) => {
     return {

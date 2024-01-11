@@ -15,7 +15,7 @@ import {
   components as ReactSelectComponents,
 } from 'react-select';
 import makeAnimated from 'react-select/animated';
-import dateFNSFormat from 'date-fns/format';
+import { format as dateFNSFormat } from 'date-fns';
 import * as dateFNSLocales from 'date-fns/locale';
 import { usePopper } from 'react-popper';
 import { FocusOn } from 'react-focus-on';

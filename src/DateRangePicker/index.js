@@ -2,7 +2,7 @@ import React, { forwardRef, useMemo, useRef, useState } from 'react';
 
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import dateFNSFormat from 'date-fns/format';
+import { format as dateFNSFormat } from 'date-fns';
 import * as dateFNSLocales from 'date-fns/locale';
 import { usePopper } from 'react-popper';
 import { FocusOn } from 'react-focus-on';
