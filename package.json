@@ -2,7 +2,7 @@
   "name": "@start-base/react-form-elements",
   "author": "Start-Base",
   "description": "Simplify form elements and form management. Selection of user friendly inputs and wide customization abilities to match your design and functionality.",
-  "version": "1.7.7",
+  "version": "1.7.8",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -232,6 +232,7 @@
     "stylelint-scss": "6.0.0",
     "terser": "^5.26.0",
     "tsup": "8.0.1",
+    "use-debounce": "10.0.0",
     "webpack": "5.89.0",
     "webpack-bundle-analyzer": "4.10.1",
     "webpack-cli": "5.1.4",
