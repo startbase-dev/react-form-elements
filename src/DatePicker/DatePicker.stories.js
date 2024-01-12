@@ -17,12 +17,11 @@ const Template = (arg) => {
     <>
       <h2>{arg.title}</h2>
       <DatePicker
+        value={inputs.input}
         {...arg}
-        inputProps={{
-          name: 'input',
-          value: inputs.input,
-          onChange: onChange,
-        }}
+        label="DateRangePicker"
+        name="input"
+        onChange={onChange}
       />
     </>
   );

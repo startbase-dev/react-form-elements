@@ -12,6 +12,10 @@
   display: flex;
   gap: var(--rfe-spacing);
   width: fit-content;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
 }
 
 .month {
