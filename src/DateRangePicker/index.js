@@ -2,8 +2,7 @@ import React, { forwardRef, useMemo, useRef, useState } from 'react';
 
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { format as dateFNSFormat } from 'date-fns';
-import * as dateFNSLocales from 'date-fns/locale';
+import { format as dateFNSFormat } from 'date-fns/format';
 import { usePopper } from 'react-popper';
 import { FocusOn } from 'react-focus-on';
 
@@ -22,7 +21,7 @@ const Index = forwardRef(
       label = null,
       placeholder = null,
       value = '',
-      locale = 'en',
+      locale = null,
       format = 'MM/dd/yyyy',
       inputClassName = null,
       labelClassName = null,
@@ -123,7 +122,7 @@ const Index = forwardRef(
                       ? dateFNSFormat(
                           value?.from,
                           format,
-                          locale ? { locale: dateFNSLocales[locale] } : {}
+                          locale ? { locale: locale } : {}
                         )
                       : value?.from
                     : ''
@@ -133,7 +132,7 @@ const Index = forwardRef(
                       ? dateFNSFormat(
                           value?.to,
                           format,
-                          locale ? { locale: dateFNSLocales[locale] } : {}
+                          locale ? { locale: locale } : {}
                         )
                       : value?.to
                     : ''
@@ -306,7 +305,7 @@ Index.propTypes = {
   labelClassName: PropTypes.string,
   errorClassName: PropTypes.string,
   calendarClassName: PropTypes.string,
-  locale: PropTypes.string,
+  locale: PropTypes.object,
   format: PropTypes.string,
   prepend: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
   prependClassName: PropTypes.string,

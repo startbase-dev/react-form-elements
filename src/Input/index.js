@@ -30,13 +30,7 @@ const Index = forwardRef(
   ) => {
     const handleChange = useCallback(
       (e) => {
-        onChange({
-          ...e,
-          target: {
-            name: e.target.name,
-            value: e.target.value,
-          },
-        });
+        onChange(e);
       },
       [onChange]
     );

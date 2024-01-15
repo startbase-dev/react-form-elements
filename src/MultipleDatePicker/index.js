@@ -15,8 +15,7 @@ import {
   components as ReactSelectComponents,
 } from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { format as dateFNSFormat } from 'date-fns';
-import * as dateFNSLocales from 'date-fns/locale';
+import { format as dateFNSFormat } from 'date-fns/format';
 import { usePopper } from 'react-popper';
 import { FocusOn } from 'react-focus-on';
 
@@ -35,7 +34,7 @@ const Index = forwardRef(
       label = null,
       placeholder = null,
       value = [],
-      locale = 'en',
+      locale = null,
       format = 'MM/dd/yyyy',
       inputClassName = null,
       labelClassName = null,
@@ -255,7 +254,7 @@ const Index = forwardRef(
                       ? dateFNSFormat(
                           v,
                           format,
-                          locale ? { locale: dateFNSLocales[locale] } : {}
+                          locale ? { locale: locale } : {}
                         )
                       : v.toString(),
                 }))}
@@ -332,7 +331,7 @@ Index.propTypes = {
   errorClassName: PropTypes.string,
   calendarClassName: PropTypes.string,
   disableShrink: PropTypes.bool,
-  locale: PropTypes.string,
+  locale: PropTypes.object,
   format: PropTypes.string,
   disabled: PropTypes.bool,
   onFocus: PropTypes.func,
