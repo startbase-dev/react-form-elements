@@ -21,19 +21,19 @@ This npm package provides a set of form-related components for React. You can us
 
 To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com):
 
-```bash :Terminal
+```bash:Terminal
     $ npm install --save @start-base/react-form-elements
 ```
 
 or
 
-```bash :Terminal
+```bash:Terminal
     $ yarn add @start-base/react-form-elements
 ```
 
 Make sure to add css file to your app root file
 
-```jsx :_app.js or layout.js
+```jsx:layout.js
 import '@start-base/react-form-elements/index.css';
 ```
 
@@ -41,7 +41,7 @@ import '@start-base/react-form-elements/index.css';
 
 Each form element can be use separately. You can import them like this:
 
-```jsx :Page.js
+```jsx:Page.js
 import Input from '@start-base/react-form-elements/Input';
 
 const Page = () => {
@@ -60,7 +60,7 @@ export default Page;
 
 or you can import all components from `@start-base/react-form-elements` like this:
 
-```jsx :Page.js
+```jsx:Page.js
 import React, { useState } from 'react';
 import {
   Input,
@@ -300,7 +300,7 @@ This component combined with Calendar component and Select component. All props 
 
 You can use CSS variables to customize the look and feel of the components. Here's a list of all available variables:
 
-```css :global.css
+```css:global.css
 --rfe-transparent: transparent;
 --rfe-white: #fff;
 --rfe-white-rgb: 255 255 255;
@@ -327,7 +327,7 @@ You can use CSS variables to customize the look and feel of the components. Here
 
 You can use classnames to customize the look and feel of the components. Here's an example of how to use classnames:
 
-```css :CustomInput.module.scss
+```css:CustomInput.module.scss
 .input {
   &:focus {
   }
@@ -340,7 +340,7 @@ You can use classnames to customize the look and feel of the components. Here's 
 }
 ```
 
-```jsx :CustomInput.js
+```jsx:CustomInput.js
 import { forwardRef } from 'react';
 
 import Input from '@start-base/react-form-elements/Input';
@@ -368,7 +368,7 @@ For more examples, please visit our [CodeSandbox](https://codesandbox.io/p/sandb
 
 Here's an example of using the form elements with [react-hook-form](https://react-hook-form.com/):
 
-```jsx :Page.js
+```jsx:Page.js
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
@@ -414,7 +414,7 @@ export default Page;
 
 Here's an example of using the form elements with [react-hook-form](https://react-hook-form.com/) and [yup](https://www.npmjs.com/package/yup):
 
-```jsx :Page.js
+```jsx:Page.js
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import {
