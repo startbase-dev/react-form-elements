@@ -328,7 +328,7 @@ export default CustomInput;
 
 ## Examples
 
-For more examples, please visit our [CodeSandbox](https://codesandbox.io/p/sandbox/inspiring-jepsen-wnr5tg) and [Storybook](https://form-storybook-am7u.vercel.app/) demo pages.
+For more examples, please visit our [CodeSandbox](https://codesandbox.io/p/sandbox/inspiring-jepsen-wnr5tg) and [Storybook](https://react-form-elements-eosin.vercel.app/) demo pages.
 
 ### react-hook-form
 
@@ -447,7 +447,7 @@ export default Page;
 
 ## Demos
 
-For live demos of these components in action, please visit our [CodeSandbox](https://codesandbox.io/p/sandbox/inspiring-jepsen-wnr5tg) and [Storybook](https://form-storybook-am7u.vercel.app/) demo pages.
+For live demos of these components in action, please visit our [CodeSandbox](https://codesandbox.io/p/sandbox/inspiring-jepsen-wnr5tg) and [Storybook](https://react-form-elements-eosin.vercel.app/) demo pages.
 
 ![](og.png)
 <br />
