@@ -107,6 +107,40 @@ const Page = () => {
 export default Page;
 ```
 
+## Components
+
+### Form
+
+### Input
+
+### TextArea
+
+### Checkbox
+
+### Radio
+
+### Switch
+
+### RadioGroup
+
+### PasswordInput
+
+### AmountInput
+
+### NumberInput
+
+### Select
+
+### PhoneInput
+
+### Calendar
+
+### DatePicker
+
+### MultipleDatePicker
+
+### DateRangePicker
+
 ## API
 
 The following props are available for each component:
