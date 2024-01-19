@@ -101,23 +101,25 @@
   line-height: 16px;
   padding-right: 13px;
   border-right: 1px solid var(--rfe-border);
+  height: var(--rfe-input-height);
 }
 
 .prepend ~ .label {
   left: 62px;
 }
 
-.prepend ~ .input {
+.prepend ~ div > .input {
   padding: 20px 16px 0 60px;
 }
 
-.prepend ~ .input.disableShrink {
+.prepend ~ div > .disableShrink {
   padding: 16px 16px 16px 60px;
 }
 
 .append {
-  right: 2px;
+  right: 0;
   height: 56px;
+  min-width: 36px;
 }
 
 .append ~ .input {
@@ -129,6 +131,11 @@
 }
 
 .appendDisabledShrink {
+  top: 24px;
+  transform: none;
+}
+
+.prependDisabledShrink {
   top: 24px;
   transform: none;
 }

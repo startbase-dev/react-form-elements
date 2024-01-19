@@ -206,6 +206,7 @@ const Index = forwardRef(
           {prepend && (
             <div
               className={cx(s.prepend, {
+                [s.prependDisabledShrink]: disableShrink,
                 [prependClassName]: prependClassName,
               })}
             >

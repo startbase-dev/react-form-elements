@@ -16,6 +16,7 @@ import DatePicker from '../DatePicker';
 import DateRangePicker from '../DateRangePicker';
 import MultipleDatePicker from '../MultipleDatePicker';
 import Calendar from '../Calendar';
+import { PieIcon } from '../Icon';
 
 const OPTIONS = [
   {
@@ -101,6 +102,7 @@ const Template = () => {
           disableShrink={disableShrink}
           error={error}
           disabled={disabled}
+          prepend={<PieIcon />}
         />
         <PasswordInput
           label="Password"
@@ -109,6 +111,7 @@ const Template = () => {
           {...register('password')}
           error={error}
           disabled={disabled}
+          prepend={<PieIcon />}
         />
         <NumberInput
           label="Number"
@@ -117,6 +120,7 @@ const Template = () => {
           {...register('number')}
           error={error}
           disabled={disabled}
+          prepend={<PieIcon />}
         />
         <Controller
           name="amount"
@@ -129,6 +133,7 @@ const Template = () => {
               error={error}
               {...field}
               disabled={disabled}
+              prepend={<PieIcon />}
             />
           )}
         />
@@ -159,6 +164,7 @@ const Template = () => {
           {...register('phone')}
           error={error}
           disabled={disabled}
+          prepend={<PieIcon />}
         />
         <Calendar
           label="Calendar"
@@ -178,6 +184,7 @@ const Template = () => {
               {...field}
               error={error}
               disabled={disabled}
+              prepend={<PieIcon />}
             />
           )}
         />
@@ -201,6 +208,7 @@ const Template = () => {
               {...field}
               error={error}
               disabled={disabled}
+              prepend={<PieIcon />}
             />
           )}
         />

@@ -95,6 +95,7 @@
   line-height: 16px;
   padding-right: 13px;
   border-right: 1px solid var(--rfe-border);
+  height: var(--rfe-input-height);
 
   & ~ .label {
     left: 62px;
@@ -123,6 +124,11 @@
 }
 
 .appendDisabledShrink {
+  top: 24px;
+  transform: none;
+}
+
+.prependDisabledShrink {
   top: 24px;
   transform: none;
 }

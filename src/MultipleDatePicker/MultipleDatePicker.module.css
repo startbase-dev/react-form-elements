@@ -142,6 +142,12 @@
   margin-left: 8px !important;
 }
 
+.indicatorsContainer {
+  min-width: 36px;
+  display: flex;
+  justify-content: center;
+}
+
 .indicatorSeparator {
   display: none;
 }

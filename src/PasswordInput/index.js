@@ -29,7 +29,7 @@ const Index = forwardRef(({ ...rest }, inputRef) => {
             <div className={s.iconEye}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 -220 320 400"
+                viewBox="-20 -220 320 400"
                 width={20}
                 height={20}
               >
