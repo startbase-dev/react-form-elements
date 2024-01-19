@@ -87,7 +87,6 @@
 .prepend {
   position: absolute;
   top: 50%;
-  z-index: 1;
   color: var(--rfe-color);
   transform: translateY(-50%);
   display: flex;
