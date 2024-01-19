@@ -28,6 +28,7 @@ const Index = forwardRef(({ value, onChange, name, ...rest }, inputRef) => {
       ref={inputRef}
       {...rest}
       type="number"
+      inputMode="numeric"
       name={name}
       value={value}
       onChange={onChange}

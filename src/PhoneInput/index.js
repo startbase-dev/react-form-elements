@@ -12,11 +12,11 @@ const Index = forwardRef(
     const phoneInput = usePhoneInput({
       defaultCountry: defaultCountry,
       value,
-      onChange: ({ inputValue }) => {
+      onChange: ({ phone }) => {
         onChange({
           target: {
             name: name,
-            value: inputValue,
+            value: phone,
           },
         });
       },
@@ -29,7 +29,8 @@ const Index = forwardRef(
           ref={phoneInput.inputRef}
           onChange={phoneInput.handlePhoneValueChange}
           name={name}
-          value={value}
+          type="tel"
+          value={phoneInput.inputValue}
           {...rest}
           append={<FlagImage iso2={phoneInput.country.iso2} size="24px" />}
           appendClassName={s.prepend}
