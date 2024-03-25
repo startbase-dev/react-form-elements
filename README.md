@@ -294,6 +294,21 @@ This component combined with Calendar component and Select component. All props 
 | numberOfMonths    | `integer` | `2`          | Calender count to show date selection popup |
 | separator         | `string`  | `" / "`      | Separator for dates on showing input        |
 
+### OTPInput
+
+This component is a wrapper around [input-otp](https://www.npmjs.com/package/input-otp) component. All props from input-otp can be passed to this component.
+
+| Name              | Type       | Default    | Description                                                                 |
+| ----------------- |------------|------------|-----------------------------------------------------------------------------|
+| value             | `string`   |            | Value of the input                                                          |
+| length            | `object`   |            | Length of the code.                                                         |
+| timer            | `integer`  | `null`     | OTP code timer limit of seconds.                                            |
+| onComplete | `function` |            | Callback function that is fired when the all values entered.                |
+| onResend    | `function` |            | Callback function that is fired when the time out and cliced resend button. |
+| format         | `array`    | `null`     | Inputs Separation array.                                                    |
+| separator         | `string`   | `"-"`      | Separator element between inputs                                            |
+| resendLabel         | `string`   | `"Resend"` | Resend button text.                                                         |
+
 ## Styling
 
 ### With CSS variables
@@ -315,6 +330,8 @@ You can use CSS variables to customize the look and feel of the components. Here
 --rfe-background-disabled: #e1e1e1;
 --rfe-border-radius: 6px;
 --rfe-font-size: 16px;
+--rfe-placeholder-font-size: 14px;
+--rfe-focused-font-size: 12px;
 --rfe-error-font-size: 12px;
 --rfe-input-height: 56px;
 --rfe-spacing: 16px;

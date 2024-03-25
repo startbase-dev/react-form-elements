@@ -28,20 +28,19 @@
 }
 
 .labelPlaceholder {
-  font-size: 12px;
+  font-size: var(--rfe-focused-font-size);
   transform: translateY(9px);
   top: 0;
 }
 
 .labelFocused {
-  font-size: 12px;
+  font-size: var(--rfe-focused-font-size);
   transform: translateY(9px);
   top: 0;
 }
 
 .input {
   width: 100%;
-  font-size: 14px;
   line-height: 24px;
   background-color: var(--rfe-background) !important;
   border: 1px solid var(--rfe-border) !important;
@@ -66,7 +65,7 @@
 .input:-webkit-autofill:not(.disableShrink) ~ .label,
 .input:focus:not(.disableShrink) ~ .label,
 .input:not([value=''], .disableShrink) ~ .label {
-  font-size: 12px;
+  font-size: var(--rfe-focused-font-size);
   transform: translateY(9px);
 }
 
@@ -130,7 +129,7 @@
 
 .placeholder {
   color: var(--rfe-color-placeholder) !important;
-  font-size: 14px;
+  font-size: var(--rfe-placeholder-font-size);
   margin-left: 8px !important;
 }
 

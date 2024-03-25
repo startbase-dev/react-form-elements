@@ -60,6 +60,6 @@ package-lock.json
 /Calendar
 /Form
 
-index.js
-index.css
-index.mjs
+/index.js
+/index.css
+/index.mjs

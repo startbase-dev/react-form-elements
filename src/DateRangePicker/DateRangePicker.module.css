@@ -40,14 +40,13 @@
 }
 
 .labelPlaceholder {
-  font-size: 12px;
+  font-size: var(--rfe-focused-font-size);
   transform: translateY(9px);
   top: 0;
 }
 
 .input {
   width: 100%;
-  font-size: 14px;
   line-height: 24px;
   color: var(--rfe-color);
   padding: 19px 16px 0;
@@ -65,13 +64,13 @@
 
 .input::placeholder {
   color: var(--rfe-color-placeholder);
-  font-size: 14px;
+  font-size: var(--rfe-placeholder-font-size);
 }
 
 .input:-webkit-autofill:not(.disableShrink) ~ .label,
 .input:focus:not(.disableShrink) ~ .label,
 .input:not([value=''], .disableShrink) ~ .label {
-  font-size: 12px;
+  font-size: var(--rfe-focused-font-size);
   transform: translateY(9px);
 }
 
@@ -93,7 +92,7 @@
 
 .prepend {
   left: 16px;
-  font-size: 14px;
+  font-size: var(--rfe-placeholder-font-size);
   line-height: 16px;
   padding-right: 13px;
   border-right: 1px solid var(--rfe-border);
@@ -127,12 +126,12 @@
 }
 
 .appendDisabledShrink {
-  top: 24px;
+  top: 26px;
   transform: none;
 }
 
 .prependDisabledShrink {
-  top: 24px;
+  top: 26px;
   transform: none;
 }
 

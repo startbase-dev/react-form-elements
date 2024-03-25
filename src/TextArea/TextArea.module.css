@@ -33,7 +33,7 @@
 }
 
 .inputContainer.focusedContainer .label {
-  font-size: 12px;
+  font-size: var(--rfe-focused-font-size);
   transform: translateY(9px);
 }
 
@@ -54,7 +54,6 @@
   resize: none;
   color: var(--rfe-color);
   padding: 7px 16px;
-  font-size: 14px;
   width: 100%;
   line-height: 24px;
   min-height: calc(var(--rfe-input-height) * 2);
@@ -105,7 +104,7 @@
   margin-bottom: var(--rfe-label-spacing);
 
   &::before {
-    background-color: var(--rfe-transparent);
+    background-color: var(--rfe-transparent) !important;
   }
 }
 
@@ -115,11 +114,11 @@
 }
 
 .input::placeholder {
-  font-size: 14px;
+  font-size: var(--rfe-placeholder-font-size);
   color: var(--rfe-color-placeholder);
 }
 
 .labelPlaceholder {
-  font-size: 12px;
+  font-size: var(--rfe-focused-font-size);
   transform: translateY(9px);
 }

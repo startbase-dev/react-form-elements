@@ -1,0 +1,58 @@
+.slot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: var(--rfe-font-size);
+  line-height: 24px;
+  background-color: var(--rfe-background);
+  border: 1px solid var(--rfe-border);
+  border-radius: var(--rfe-border-radius);
+  min-height: var(--rfe-input-height);
+  transition: all 250ms;
+  font-family: var(--rfe-font-family);
+  color: var(--rfe-color);
+}
+
+.slotActive {
+  box-shadow: var(--rfe-focus);
+}
+
+.slotDisabled {
+  background: var(--rfe-background-disabled);
+  color: var(--rfe-color);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.slotError {
+  border-color: var(--rfe-color-error) !important;
+}
+
+.caretRoot {
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.caret {
+  width: 1px;
+  min-height: calc(var(--rfe-input-height) / 3);
+  background-color: var(--rfe-black);
+  animation: caret-blink 1.2s ease-out infinite;
+}
+
+@keyframes caret-blink {
+  0%, 70%, 100% {
+    opacity: 1;
+  }
+
+  20%, 50% {
+    opacity: 0;
+  }
+}

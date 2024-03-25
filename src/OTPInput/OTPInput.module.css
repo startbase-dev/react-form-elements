@@ -1,0 +1,70 @@
+.root {
+  margin-bottom: var(--rfe-spacing);
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.inputRoot {
+  width: 100%;
+  pointer-events: all;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--rfe-black);
+  gap: 1rem;
+}
+
+.label {
+  font-size: var(--rfe-font-size);
+  line-height: 1;
+  color: var(--rfe-color);
+  margin-bottom: var(--rfe-label-spacing);
+}
+
+.errorLabel {
+  color: var(--rfe-color-error);
+  font-size: var(--rfe-error-font-size);
+  pointer-events: none;
+}
+
+.resendContainer {
+  display: flex;
+  justify-content: space-between;
+  color: var(--rfe-black);
+  margin-top: var(--rfe-label-spacing);
+}
+
+.resend {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  font-size: var(--rfe-placeholder-font-size);
+  line-height: 16px;
+  color: var(--rfe-black);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.resendActive {
+  color: var(--rfe-black);
+  font-weight: 500;
+  text-decoration: underline;
+  opacity: 1;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.time {
+  font-size: var(--rfe-placeholder-font-size);
+  line-height: 16px;
+  text-align: right;
+  color: var(--rfe-color-error);
+}

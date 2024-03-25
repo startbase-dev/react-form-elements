@@ -14,7 +14,7 @@
 
 .label {
   margin-top: 1px;
-  font-size: 14px;
+  font-size: var(--rfe-font-size);
   line-height: 20px;
   color: var(--rfe-color);
   pointer-events: all;

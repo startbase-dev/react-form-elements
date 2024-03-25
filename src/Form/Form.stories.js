@@ -12,6 +12,7 @@ import AmountInput from '../AmountInput';
 import Select from '../Select';
 import PhoneInput from '../PhoneInput';
 import DatePicker from '../DatePicker';
+import OTPInput from '../OTPInput';
 import DateRangePicker from '../DateRangePicker';
 import MultipleDatePicker from '../MultipleDatePicker';
 import Calendar from '../Calendar';
@@ -202,14 +203,24 @@ const Template = () => {
           error={error}
           disabled={disabled}
         />
+        <OTPInput
+          length={6}
+          label="OTP Input"
+          name="otp"
+          value={inputs.otp}
+          onChange={onChange}
+          error={error}
+          disabled={disabled}
+          timer={120}
+        />
         <TextArea
           label="Description"
           autoGrow
+          error={error}
           name="textarea"
           disableShrink={disableShrink}
           value={inputs.textarea}
           onChange={onChange}
-          error={error}
           disabled={disabled}
         />
         <RadioGroup
