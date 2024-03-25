@@ -298,16 +298,16 @@ This component combined with Calendar component and Select component. All props 
 
 This component is a wrapper around [input-otp](https://www.npmjs.com/package/input-otp) component. All props from input-otp can be passed to this component.
 
-| Name              | Type       | Default    | Description                                                                 |
-| ----------------- |------------|------------|-----------------------------------------------------------------------------|
-| value             | `string`   |            | Value of the input                                                          |
-| length            | `object`   |            | Length of the code.                                                         |
-| timer            | `integer`  | `null`     | OTP code timer limit of seconds.                                            |
-| onComplete | `function` |            | Callback function that is fired when the all values entered.                |
+| Name        | Type       | Default    | Description                                                                 |
+| ----------- | ---------- | ---------- | --------------------------------------------------------------------------- |
+| value       | `string`   |            | Value of the input                                                          |
+| length      | `object`   |            | Length of the code.                                                         |
+| timer       | `integer`  | `null`     | OTP code timer limit of seconds.                                            |
+| onComplete  | `function` |            | Callback function that is fired when the all values entered.                |
 | onResend    | `function` |            | Callback function that is fired when the time out and cliced resend button. |
-| format         | `array`    | `null`     | Inputs Separation array.                                                    |
-| separator         | `string`   | `"-"`      | Separator element between inputs                                            |
-| resendLabel         | `string`   | `"Resend"` | Resend button text.                                                         |
+| format      | `array`    | `null`     | Inputs Separation array.                                                    |
+| separator   | `string`   | `"-"`      | Separator element between inputs                                            |
+| resendLabel | `string`   | `"Resend"` | Resend button text.                                                         |
 
 ## Styling
 
