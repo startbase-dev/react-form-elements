@@ -7,6 +7,7 @@ import RadioGroup from './RadioGroup';
 import TextArea from './TextArea';
 import AmountInput from './AmountInput';
 import NumberInput from './NumberInput';
+import OTPInput from './OTPInput';
 import Switch from './Switch';
 import Select from './Select';
 import PhoneInput from './PhoneInput';
@@ -27,6 +28,7 @@ export {
   PasswordInput,
   AmountInput,
   NumberInput,
+  OTPInput,
   Select,
   PhoneInput,
   Calendar,

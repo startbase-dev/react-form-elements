@@ -57,6 +57,7 @@ package-lock.json
 /PasswordInput
 /NumberInput
 /PhoneInput
+/OTPInput
 /Calendar
 /Form
 

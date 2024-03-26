@@ -1,6 +1,6 @@
 import { OTPInput } from 'input-otp';
 
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo } from 'react';
 
 import s from './OTPInput.module.css';
 import PropTypes from 'prop-types';
@@ -11,192 +11,198 @@ import { useCountDown } from '../utils/useCountDown';
 import { remove, set } from '../utils/localStorage';
 import { formatSeconds } from '../utils/date';
 
-const Index = ({
-  name,
-  length,
-  onChange,
-  format = null,
-  separator = '-',
-  timer = null,
-  onComplete = () => {},
-  onResend = () => {},
-  value = '',
-  error = null,
-  label = null,
-  resendLabel = 'Resend',
-  inputClassName = null,
-  labelClassName = null,
-  errorClassName = null,
-  disabled = false,
-}) => {
-  const [seconds, resetSeconds] = useCountDown(name);
+const Index = forwardRef(
+  (
+    {
+      name,
+      length,
+      onChange,
+      format = null,
+      separator = '-',
+      timer = null,
+      onComplete = () => {},
+      onResend = () => {},
+      value = '',
+      error = null,
+      label = null,
+      resendLabel = 'Resend',
+      inputClassName = null,
+      labelClassName = null,
+      errorClassName = null,
+      disabled = false,
+    },
+    inputRef
+  ) => {
+    const [seconds, resetSeconds] = useCountDown(name);
 
-  const handleResend = useCallback(() => {
-    remove(name);
-    remove(`${name}_TIMER`);
-    resetSeconds();
+    const handleResend = useCallback(() => {
+      remove(name);
+      remove(`${name}_TIMER`);
+      resetSeconds();
 
-    onChange({
-      target: {
-        name: name,
-        value: '',
-      },
-    });
-    onResend();
-  }, [onResend, resetSeconds, name, onChange]);
-
-  useEffect(() => {
-    if (!timer) return;
-
-    set(name, seconds);
-    set(`${name}_TIMER`, +new Date());
-  }, [name, seconds, timer]);
-
-  const errorMessage = useMemo(() => {
-    let message;
-    if (error && typeof error === 'string') {
-      message = error;
-    } else if (error && typeof error === 'object' && error?.message) {
-      message = error?.message;
-    } else {
-      message = null;
-    }
-
-    return message;
-  }, [error]);
-
-  const labelEl = useMemo(
-    () => (
-      <label
-        htmlFor={name}
-        className={cx(s.label, {
-          [labelClassName]: labelClassName,
-        })}
-        onClick={() => {
-          try {
-            const inputs = document.querySelectorAll(`[name="${name}"]`);
-
-            if (!inputs.length) {
-              return;
-            }
-
-            let input = inputs?.[0];
-
-            if (input?.type === 'hidden') {
-              input = input?.parentNode?.querySelector('input');
-            }
-
-            input?.focus();
-          } catch (error) {
-            throw error;
-          }
-        }}
-      >
-        {label}
-      </label>
-    ),
-    [name, label, labelClassName]
-  );
-
-  const handleChange = useCallback(
-    (e) => {
       onChange({
         target: {
           name: name,
-          value: e,
+          value: '',
         },
       });
-    },
-    [onChange, name]
-  );
+      onResend();
+    }, [onResend, resetSeconds, name, onChange]);
 
-  const createSlot = (slot) => (
-    <Slot
-      hasFakeCaret={slot.hasFakeCaret}
-      isActive={slot.isActive}
-      char={slot.char}
-      inputClassName={inputClassName}
-      disabled={disabled}
-      error={typeof error === 'boolean' && error}
-    />
-  );
+    useEffect(() => {
+      if (!timer) return;
 
-  const generateSlots = (format, slots) => {
-    const allSlots = [];
+      set(name, seconds);
+      set(`${name}_TIMER`, +new Date());
+    }, [name, seconds, timer]);
 
-    const cumulativeSums = format.reduce((acc, curr, index) => {
-      const sum = index === 0 ? curr : acc[index - 1] + curr;
-      acc.push(sum);
-      return acc;
-    }, []);
+    const errorMessage = useMemo(() => {
+      let message;
+      if (error && typeof error === 'string') {
+        message = error;
+      } else if (error && typeof error === 'object' && error?.message) {
+        message = error?.message;
+      } else {
+        message = null;
+      }
 
-    format.forEach((_, index) => {
-      const start = index === 0 ? 0 : cumulativeSums[index - 1];
-      const end = cumulativeSums[index];
+      return message;
+    }, [error]);
 
-      const slotComponents = slots.slice(start, end).map(createSlot);
+    const labelEl = useMemo(
+      () => (
+        <label
+          htmlFor={name}
+          className={cx(s.label, {
+            [labelClassName]: labelClassName,
+          })}
+          onClick={() => {
+            try {
+              const inputs = document.querySelectorAll(`[name="${name}"]`);
 
-      allSlots.push(...slotComponents);
-      if (separator && end != slots.length) allSlots.push(separator);
-    });
+              if (!inputs.length) {
+                return;
+              }
 
-    return allSlots;
-  };
+              let input = inputs?.[0];
 
-  return (
-    <div className={cx(s.root)}>
-      <div className={cx(s.inputRoot)}>
-        {label ? labelEl : null}
+              if (input?.type === 'hidden') {
+                input = input?.parentNode?.querySelector('input');
+              }
 
-        <OTPInput
-          maxLength={length}
-          value={value}
-          onChange={handleChange}
-          onComplete={onComplete}
-          disabled={disabled}
-          render={({ slots }) => (
-            <div className={s.inputs}>
-              {format ? generateSlots(format, slots) : slots.map(createSlot)}
-            </div>
-          )}
-        />
+              input?.focus();
+            } catch (error) {
+              throw error;
+            }
+          }}
+        >
+          {label}
+        </label>
+      ),
+      [name, label, labelClassName]
+    );
 
-        <div className={s.resendContainer}>
-          <div>
-            {errorMessage ? (
-              <span
-                className={cx(s.errorLabel, {
-                  [errorClassName]: errorClassName,
-                })}
-              >
-                {errorMessage}
-              </span>
-            ) : null}
-          </div>
+    const handleChange = useCallback(
+      (e) => {
+        onChange({
+          target: {
+            name: name,
+            value: e,
+          },
+        });
+      },
+      [onChange, name]
+    );
 
-          {timer && (
-            <>
-              {seconds === 0 ? (
-                <button
-                  type="button"
-                  className={cx(s.resend, {
-                    [s.resendActive]: !seconds,
+    const createSlot = (slot) => (
+      <Slot
+        hasFakeCaret={slot.hasFakeCaret}
+        isActive={slot.isActive}
+        char={slot.char}
+        inputClassName={inputClassName}
+        disabled={disabled}
+        error={typeof error === 'boolean' && error}
+      />
+    );
+
+    const generateSlots = (format, slots) => {
+      const allSlots = [];
+
+      const cumulativeSums = format.reduce((acc, curr, index) => {
+        const sum = index === 0 ? curr : acc[index - 1] + curr;
+        acc.push(sum);
+        return acc;
+      }, []);
+
+      format.forEach((_, index) => {
+        const start = index === 0 ? 0 : cumulativeSums[index - 1];
+        const end = cumulativeSums[index];
+
+        const slotComponents = slots.slice(start, end).map(createSlot);
+
+        allSlots.push(...slotComponents);
+        if (separator && end !== slots.length) allSlots.push(separator);
+      });
+
+      return allSlots;
+    };
+
+    return (
+      <div className={cx(s.root)}>
+        <div className={cx(s.inputRoot)}>
+          {label ? labelEl : null}
+
+          <OTPInput
+            maxLength={length}
+            value={value}
+            ref={inputRef}
+            onChange={handleChange}
+            onComplete={onComplete}
+            disabled={disabled}
+            render={({ slots }) => (
+              <div className={s.inputs}>
+                {format ? generateSlots(format, slots) : slots.map(createSlot)}
+              </div>
+            )}
+          />
+
+          <div className={s.resendContainer}>
+            <div>
+              {errorMessage ? (
+                <span
+                  className={cx(s.errorLabel, {
+                    [errorClassName]: errorClassName,
                   })}
-                  disabled={seconds}
-                  onClick={handleResend}
                 >
-                  {resendLabel}
-                </button>
-              ) : (
-                <div className={s.time}>{formatSeconds(seconds)}</div>
-              )}
-            </>
-          )}
+                  {errorMessage}
+                </span>
+              ) : null}
+            </div>
+
+            {timer && (
+              <>
+                {seconds === 0 ? (
+                  <button
+                    type="button"
+                    className={cx(s.resend, {
+                      [s.resendActive]: !seconds,
+                    })}
+                    disabled={seconds}
+                    onClick={handleResend}
+                  >
+                    {resendLabel}
+                  </button>
+                ) : (
+                  <div className={s.time}>{formatSeconds(seconds)}</div>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
 
 Index.displayName = 'OTPInput';
 
