@@ -114,8 +114,9 @@ const Index = forwardRef(
       [onChange, name]
     );
 
-    const createSlot = (slot) => (
+    const createSlot = (slot, idx) => (
       <Slot
+        key={idx}
         hasFakeCaret={slot.hasFakeCaret}
         isActive={slot.isActive}
         char={slot.char}
@@ -138,7 +139,9 @@ const Index = forwardRef(
         const start = index === 0 ? 0 : cumulativeSums[index - 1];
         const end = cumulativeSums[index];
 
-        const slotComponents = slots.slice(start, end).map(createSlot);
+        const slotComponents = slots
+          .slice(start, end)
+          .map((slot, idx) => createSlot(slot, `${idx}_${index}`));
 
         allSlots.push(...slotComponents);
         if (separator && end !== slots.length) allSlots.push(separator);
