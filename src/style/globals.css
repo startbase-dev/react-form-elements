@@ -97,6 +97,23 @@ select:-webkit-autofill:active {
   box-shadow: 0 0 0 1000px var(--rfe-background) inset !important;
 }
 
+input:-webkit-autofill:disabled,
+input:-webkit-autofill:disabled:hover,
+input:-webkit-autofill:disabled:focus,
+input:-webkit-autofill:disabled:active,
+textarea:-webkit-autofill:disabled,
+textarea:-webkit-autofill:disabled:hover,
+textarea:-webkit-autofill:disabled:focus,
+textarea:-webkit-autofill:disabled:active,
+select:-webkit-autofill:disabled,
+select:-webkit-autofill:disabled:hover,
+select:-webkit-autofill:disabled:focus,
+select:-webkit-autofill:disabled:active {
+  background-clip: border-box !important;
+  -webkit-text-fill-color: var(--rfe-color) !important;
+  box-shadow: 0 0 0 1000px var(--rfe-background-disabled) inset !important;
+}
+
 input {
   appearance: none;
 }
