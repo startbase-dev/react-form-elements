@@ -151,4 +151,5 @@
   background: var(--rfe-background-disabled);
   color: var(--rfe-color);
   cursor: not-allowed;
+  opacity: 1;
 }
