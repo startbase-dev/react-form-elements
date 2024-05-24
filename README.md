@@ -196,11 +196,15 @@ This component is a wrapper around [react-day-picker](https://www.npmjs.com/pack
 
 ### Checkbox
 
+A basic checkbox input component.
+
 | Name    | Type      | Default | Description                   |
 | ------- | --------- | ------- | ----------------------------- |
 | checked | `boolean` | `false` | Checked state of the checkbox |
 
 ### CheckboxCards
+
+A card-style checkbox group component for enhanced visual presentation.
 
 | Name                 | Type      | Default  | Description                         |
 | -------------------- | --------- | -------- | ----------------------------------- |
@@ -210,6 +214,8 @@ This component is a wrapper around [react-day-picker](https://www.npmjs.com/pack
 | hideInput            | `boolean` | `true`   | Input hide option                   |
 
 ### CheckboxGroup
+
+A group of checkbox inputs managed together.
 
 | Name                 | Type     | Default | Description                 |
 | -------------------- | -------- | ------- | --------------------------- |
@@ -241,11 +247,15 @@ This component combined with Calendar component and Select component. All props 
 
 ### Form
 
+A wrapper component for form elements.
+
 | Name     | Type        | Default | Description          |
 | -------- | ----------- | ------- | -------------------- |
 | children | `ReactNode` |         | Children of the form |
 
 ### Input
+
+A basic input component with options for prepending and appending elements.
 
 | Name             | Type                  | Default | Description                   |
 | ---------------- | --------------------- | ------- | ----------------------------- |
@@ -266,6 +276,8 @@ This component combined with Calendar component and Select component. All props 
 | calendarClassName | `string` | `null`       | Classname for calendar element    |
 
 ### NumberInput
+
+A numeric input component with options for prepending and appending elements.
 
 | Name             | Type                  | Default | Description                   |
 | ---------------- | --------------------- | ------- | ----------------------------- |
@@ -290,6 +302,8 @@ This component is a wrapper around [input-otp](https://www.npmjs.com/package/inp
 
 ### PasswordInput
 
+A password input component with options for prepending and appending elements.
+
 | Name             | Type                  | Default | Description                   |
 | ---------------- | --------------------- | ------- | ----------------------------- |
 | prepend          | `string` or `element` | `null`  | Prepend text to the input     |
@@ -306,11 +320,15 @@ This component is a wrapper around [react-international-phone](https://www.npmjs
 
 ### Radio
 
+A basic radio input component.
+
 | Name    | Type      | Default | Description                |
 | ------- | --------- | ------- | -------------------------- |
 | checked | `boolean` | `false` | Checked state of the radio |
 
 ### RadioCards
+
+A card-style radio group component for enhanced visual presentation.
 
 | Name                 | Type      | Default  | Description                         |
 | -------------------- | --------- | -------- | ----------------------------------- |
@@ -320,6 +338,8 @@ This component is a wrapper around [react-international-phone](https://www.npmjs
 | hideInput            | `boolean` | `true`   | Input hide option                   |
 
 ### RadioGroup
+
+A group of radio inputs managed together.
 
 | Name                 | Type     | Default | Description                 |
 | -------------------- | -------- | ------- | --------------------------- |
@@ -346,11 +366,15 @@ This component is a wrapper around [rc-slider](https://slider-react-component.ve
 
 ### Switch
 
+A toggle switch component.
+
 | Name    | Type      | Default | Description                 |
 | ------- | --------- | ------- | --------------------------- |
 | checked | `boolean` | `false` | Checked state of the switch |
 
 ### TextArea
+
+A textarea component with optional auto-grow functionality.
 
 | Name     | Type      | Default | Description        |
 | -------- | --------- | ------- | ------------------ |
