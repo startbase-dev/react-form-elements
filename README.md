@@ -112,26 +112,47 @@ export default Page;
 ```
 
 ## Components
+
 ### AmountInput
+
 ### Calendar
+
 ### Checkbox
+
 ### CheckboxCards
+
 ### CheckboxGroup
+
 ### DatePicker
+
 ### DateRangePicker
+
 ### Form
+
 ### Input
+
 ### MultipleDatePicker
+
 ### NumberInput
+
 ### OTPInput
+
 ### PasswordInput
+
 ### PhoneInput
+
 ### Radio
+
 ### RadioCards
+
 ### RadioGroup
+
 ### Select
+
 ### Slider
+
 ### Switch
+
 ### TextArea
 
 ## API
@@ -181,17 +202,17 @@ This component is a wrapper around [react-day-picker](https://www.npmjs.com/pack
 
 ### CheckboxCards
 
-| Name    | Type      | Default | Description                        |
-| ------- |-----------|---------|------------------------------------|
-| options              | `array`   | `[]`    | Array of options to display        |
-| optionLabelClassName | `string`  | `null`  | Classname for option label         |
-| direction | `string`  | `column`  | Options direction `column` or `row` |
-| hideInput | `boolean` | `true`  | Input hide option                  |
+| Name                 | Type      | Default  | Description                         |
+| -------------------- | --------- | -------- | ----------------------------------- |
+| options              | `array`   | `[]`     | Array of options to display         |
+| optionLabelClassName | `string`  | `null`   | Classname for option label          |
+| direction            | `string`  | `column` | Options direction `column` or `row` |
+| hideInput            | `boolean` | `true`   | Input hide option                   |
 
 ### CheckboxGroup
 
-| Name    | Type      | Default | Description                   |
-| ------- | --------- | ------- | ----------------------------- |
+| Name                 | Type     | Default | Description                 |
+| -------------------- | -------- | ------- | --------------------------- |
 | options              | `array`  | `[]`    | Array of options to display |
 | optionLabelClassName | `string` | `null`  | Classname for option label  |
 
@@ -291,12 +312,12 @@ This component is a wrapper around [react-international-phone](https://www.npmjs
 
 ### RadioCards
 
-| Name    | Type      | Default | Description                        |
-| ------- |-----------|---------|------------------------------------|
-| options              | `array`   | `[]`    | Array of options to display        |
-| optionLabelClassName | `string`  | `null`  | Classname for option label         |
-| direction | `string`  | `column`  | Options direction `column` or `row` |
-| hideInput | `boolean` | `true`  | Input hide option                  |
+| Name                 | Type      | Default  | Description                         |
+| -------------------- | --------- | -------- | ----------------------------------- |
+| options              | `array`   | `[]`     | Array of options to display         |
+| optionLabelClassName | `string`  | `null`   | Classname for option label          |
+| direction            | `string`  | `column` | Options direction `column` or `row` |
+| hideInput            | `boolean` | `true`   | Input hide option                   |
 
 ### RadioGroup
 
