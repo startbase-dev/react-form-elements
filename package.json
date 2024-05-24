@@ -2,7 +2,7 @@
   "name": "@start-base/react-form-elements",
   "author": "Start-Base",
   "description": "Simplify form elements and form management. Selection of user friendly inputs and wide customization abilities to match your design and functionality.",
-  "version": "1.8.7",
+  "version": "1.9.0",
   "license": "MIT",
   "repository": {
     "type": "git",
