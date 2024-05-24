@@ -43,23 +43,27 @@ package-lock.json
 # dist
 /dist
 
-/TextArea
 /AmountInput
-/Input
-/Select
-/Checkbox
-/Radio
-/DatePicker
-/RadioGroup
-/DateRangePicker
-/MultipleDatePicker
-/Switch
-/PasswordInput
-/NumberInput
-/PhoneInput
-/OTPInput
 /Calendar
+/Checkbox
+/CheckboxCards
+/CheckboxGroup
+/DatePicker
+/DateRangePicker
 /Form
+/Input
+/MultipleDatePicker
+/NumberInput
+/OTPInput
+/PasswordInput
+/PhoneInput
+/Radio
+/RadioCards
+/RadioGroup
+/Select
+/Slider
+/Switch
+/TextArea
 
 /index.js
 /index.css

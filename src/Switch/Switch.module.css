@@ -52,6 +52,7 @@
   min-width: 56px;
   position: relative;
   margin: 0 16px 0 0;
+  transition: all 250ms;
 
   &:hover {
     box-shadow: var(--rfe-focus);
@@ -69,7 +70,6 @@
   bottom: 0;
   right: 29px;
   border-radius: 100px;
-  transition: all 250ms;
   border: var(--rfe-border) 1px solid;
 }
 

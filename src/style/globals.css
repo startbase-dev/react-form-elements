@@ -21,6 +21,7 @@
   --rfe-label-spacing: 10px;
   --rfe-focus: 0 0 10px #dcdcdc;
   --rfe-font-family: 'Arial', sans-serif;
+  --rfe-transition: all 250ms;
 
   .rdp {
     --rdp-cell-size: 40px !important; /* Size of the day cells. */

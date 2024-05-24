@@ -16,6 +16,11 @@ import OTPInput from '../OTPInput';
 import DateRangePicker from '../DateRangePicker';
 import MultipleDatePicker from '../MultipleDatePicker';
 import Calendar from '../Calendar';
+import CheckboxGroup from '../CheckboxGroup';
+import Radio from '../Radio';
+import CheckboxCards from '../CheckboxCards';
+import RadioCards from '../RadioCards';
+import Slider from '../Slider';
 
 const OPTIONS = [
   {
@@ -47,6 +52,7 @@ const Template = () => {
   const [disableShrink, setDisableShrink] = useState(false);
   const onChange = (e) => {
     const { name, value, type } = e.target;
+    console.log(name, value, type);
 
     setInputs((prevState) => ({
       ...prevState,
@@ -102,16 +108,16 @@ const Template = () => {
       </div>
       <Form>
         <Input
-          label="Username"
-          name="username"
+          label="Input"
+          name="input"
           disableShrink={disableShrink}
-          value={inputs.username}
+          value={inputs.input}
           onChange={onChange}
           error={error}
           disabled={disabled}
         />
         <PasswordInput
-          label="Password"
+          label="Password Input"
           name="password"
           disableShrink={disableShrink}
           value={inputs.password}
@@ -120,7 +126,7 @@ const Template = () => {
           disabled={disabled}
         />
         <NumberInput
-          label="Number"
+          label="Number Input"
           name="number"
           disableShrink={disableShrink}
           value={inputs.number}
@@ -129,7 +135,7 @@ const Template = () => {
           disabled={disabled}
         />
         <AmountInput
-          label="Amount"
+          label="Amount Input"
           name="amount"
           disableShrink={disableShrink}
           value={inputs.amount}
@@ -149,7 +155,7 @@ const Template = () => {
           disabled={disabled}
         />
         <Select
-          label="Multi Select"
+          label="Select Multiple"
           options={OPTIONS}
           isMulti
           name="multi"
@@ -160,7 +166,7 @@ const Template = () => {
           disabled={disabled}
         />
         <PhoneInput
-          label="Phone"
+          label="Phone Input"
           name="phone"
           disableShrink={disableShrink}
           value={inputs.phone}
@@ -177,7 +183,7 @@ const Template = () => {
           disabled={disabled}
         />
         <DatePicker
-          label="Date"
+          label="Date Picker"
           name="date"
           disableShrink={disableShrink}
           value={inputs.date}
@@ -195,7 +201,7 @@ const Template = () => {
           disabled={disabled}
         />
         <DateRangePicker
-          label="DateRange"
+          label="Date Range Picker"
           name="date_range"
           disableShrink={disableShrink}
           value={inputs.date_range}
@@ -214,7 +220,7 @@ const Template = () => {
           timer={120}
         />
         <TextArea
-          label="Description"
+          label="TextArea"
           autoGrow
           error={error}
           name="textarea"
@@ -223,11 +229,33 @@ const Template = () => {
           onChange={onChange}
           disabled={disabled}
         />
+        <Radio
+          disabled={disabled}
+          label="Radio"
+          name="radio"
+          value="radio"
+          checked={inputs.radio === 'radio'}
+          onChange={onChange}
+          error={error}
+        />
+        <RadioCards
+          disabled={disabled}
+          label="Radio Cards"
+          name="radioCards"
+          value={inputs.radioCards}
+          hideInput
+          onChange={onChange}
+          error={error}
+          options={[
+            { label: 'Radio Option 1', value: 'default1' },
+            { label: 'Radio Option 2', value: 'default2' },
+          ]}
+        />
         <RadioGroup
           disabled={disabled}
-          label="RadioGroup"
-          name="country"
-          value={inputs.country}
+          label="Radio Group"
+          name="radioGroup"
+          value={inputs.radioGroup}
           onChange={onChange}
           error={error}
           options={[
@@ -237,22 +265,97 @@ const Template = () => {
         />
         <Checkbox
           disabled={disabled}
-          label="I understand and accept the terms and conditions and privacy policy."
-          name="policy"
-          checked={inputs.policy}
+          label="Checkbox"
+          name="checkbox"
+          checked={inputs.checkbox}
           onChange={onChange}
           error={error}
         />
+        <CheckboxCards
+          disabled={disabled}
+          label="Checkbox Cards"
+          name="checkboxCards"
+          value={inputs.checkboxCards}
+          onChange={onChange}
+          error={error}
+          options={[
+            { label: 'Checkbox Option 1', value: 'default1' },
+            { label: 'Checkbox Option 2', value: 'default2' },
+            { label: 'Checkbox Option 3', value: 'default3' },
+          ]}
+        />
+        <CheckboxGroup
+          disabled={disabled}
+          label="Checkbox Group"
+          name="checkboxGroup"
+          value={inputs.checkboxGroup}
+          onChange={onChange}
+          error={error}
+          options={[
+            { label: 'Checkbox Option 1', value: 'default1' },
+            { label: 'Checkbox Option 2', value: 'default2' },
+            { label: 'Checkbox Option 3', value: 'default3' },
+          ]}
+        />
         <Switch
           label="Switch"
-          name="terms"
-          checked={inputs.terms}
+          name="switch"
+          checked={inputs.switch}
+          onChange={onChange}
+          error={error}
+          disabled={disabled}
+        />
+        <Slider
+          name="slider"
+          label="Slider"
+          value={inputs.slider}
           onChange={onChange}
           error={error}
           disabled={disabled}
         />
       </Form>
-      <button onClick={handleOnSubmit}> Submit </button>
+      <div
+        style={{
+          display: 'flex',
+          gap: '1rem',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Checkbox
+          label="Error"
+          name="error"
+          checked={error}
+          onChange={() => {
+            setError((prevState) => !prevState);
+          }}
+        />
+        <Checkbox
+          label="Disabled"
+          name="disabled"
+          checked={disabled}
+          onChange={() => {
+            setDisabled((prevState) => !prevState);
+          }}
+        />
+        <Checkbox
+          label="Disable Shrink"
+          name="disableShrink"
+          checked={disableShrink}
+          onChange={() => {
+            setDisableShrink((prevState) => !prevState);
+          }}
+        />
+        <Input
+          label="Error Message"
+          name="errorMessage"
+          value={error}
+          onChange={(e) => {
+            setError(e.target.value);
+          }}
+        />
+      </div>
+      <button onClick={handleOnSubmit}> Submit</button>
     </>
   );
 };

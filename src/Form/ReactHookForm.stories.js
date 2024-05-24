@@ -5,7 +5,9 @@ import Checkbox from '../Checkbox';
 import Input from '../Input';
 import PasswordInput from '../PasswordInput';
 import RadioGroup from '../RadioGroup';
+import CheckboxGroup from '../CheckboxGroup';
 import Switch from '../Switch';
+import Radio from '../Radio';
 import TextArea from '../TextArea';
 import Form from './index.js';
 import NumberInput from '../NumberInput';
@@ -237,6 +239,25 @@ const Template = () => {
             { label: 'Radio Option 1', value: 'default1' },
             { label: 'Radio Option 2', value: 'default2' },
           ]}
+        />
+        <CheckboxGroup
+          disabled={disabled}
+          label="CheckboxGroup"
+          value={watch('country2')}
+          {...register('country2')}
+          error={error}
+          options={[
+            { label: 'Radio Option 1', value: 'default1' },
+            { label: 'Radio Option 2', value: 'default2' },
+          ]}
+        />
+        <Radio
+          disabled={disabled}
+          label="I understand and accept the terms and conditions and privacy policy."
+          checked={watch('policy2')}
+          value={true}
+          {...register('policy2')}
+          error={error}
         />
         <Checkbox
           disabled={disabled}

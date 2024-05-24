@@ -112,38 +112,27 @@ export default Page;
 ```
 
 ## Components
-
-### Form
-
-### Input
-
-### TextArea
-
-### Checkbox
-
-### Radio
-
-### Switch
-
-### RadioGroup
-
-### PasswordInput
-
 ### AmountInput
-
-### NumberInput
-
-### Select
-
-### PhoneInput
-
 ### Calendar
-
+### Checkbox
+### CheckboxCards
+### CheckboxGroup
 ### DatePicker
-
-### MultipleDatePicker
-
 ### DateRangePicker
+### Form
+### Input
+### MultipleDatePicker
+### NumberInput
+### OTPInput
+### PasswordInput
+### PhoneInput
+### Radio
+### RadioCards
+### RadioGroup
+### Select
+### Slider
+### Switch
+### TextArea
 
 ## API
 
@@ -165,6 +154,70 @@ The following props are available for each component:
 | disabled       | `boolean`                         | `false` | Disable the input                                                                                                                              |
 | error          | `string` or `boolean` or `object` | `null`  | Error message to display below the input. if value is a boolean input border will be change. Also you can pass schema validator error objects. |
 
+### AmountInput
+
+This component is a wrapper around [react-currency-input-field](https://www.npmjs.com/package/react-currency-input-field) component. All props from react-currency-input-field can be passed to this component.
+
+| Name             | Type                  | Default | Description                   |
+| ---------------- | --------------------- | ------- | ----------------------------- |
+| prepend          | `string` or `element` | `null`  | Prepend text to the input     |
+| append           | `string` or `element` | `null`  | Append text to the input      |
+| appendClassName  | `string`              | `null`  | Classname for append element  |
+| prependClassName | `string`              | `null`  | Classname for prepend element |
+
+### Calendar
+
+This component is a wrapper around [react-day-picker](https://www.npmjs.com/package/react-day-picker) component. All props from react-day-picker can be passed to this component.
+
+| Name              | Type     | Default | Description                    |
+| ----------------- | -------- | ------- | ------------------------------ |
+| calendarClassName | `string` | `null`  | Classname for calendar element |
+
+### Checkbox
+
+| Name    | Type      | Default | Description                   |
+| ------- | --------- | ------- | ----------------------------- |
+| checked | `boolean` | `false` | Checked state of the checkbox |
+
+### CheckboxCards
+
+| Name    | Type      | Default | Description                        |
+| ------- |-----------|---------|------------------------------------|
+| options              | `array`   | `[]`    | Array of options to display        |
+| optionLabelClassName | `string`  | `null`  | Classname for option label         |
+| direction | `string`  | `column`  | Options direction `column` or `row` |
+| hideInput | `boolean` | `true`  | Input hide option                  |
+
+### CheckboxGroup
+
+| Name    | Type      | Default | Description                   |
+| ------- | --------- | ------- | ----------------------------- |
+| options              | `array`  | `[]`    | Array of options to display |
+| optionLabelClassName | `string` | `null`  | Classname for option label  |
+
+### DatePicker
+
+This component combined with Calendar component and Input component. All props from Calendar component and Input can be passed to this component.
+
+| Name              | Type     | Default      | Description                    |
+| ----------------- | -------- | ------------ | ------------------------------ |
+| locale            | `object` | `null`       | date-fns locale object         |
+| format            | `string` | `MM/dd/yyyy` | Date format                    |
+| calendarClassName | `string` | `null`       | Classname for calendar element |
+
+### DateRangePicker
+
+This component combined with Calendar component and Select component. All props from Calendar component and Select can be passed to this component.
+
+| Name              | Type      | Default      | Description                                 |
+| ----------------- | --------- | ------------ | ------------------------------------------- |
+| value             | `object`  | ` ""`        | to - from object                            |
+| locale            | `object`  | `null`       | date-fns locale object                      |
+| format            | `string`  | `MM/dd/yyyy` | Date format                                 |
+| calendarClassName | `string`  | `null`       | Classname for calendar element              |
+| numberOfMonths    | `integer` | `2`          | Calender count to show date selection popup |
+| separator         | `string`  | `" / "`      | Separator for dates on showing input        |
+
 ### Form
 
 | Name     | Type        | Default | Description          |
@@ -180,100 +233,6 @@ The following props are available for each component:
 | appendClassName  | `string`              | `null`  | Classname for append element  |
 | prependClassName | `string`              | `null`  | Classname for prepend element |
 
-### TextArea
-
-| Name     | Type      | Default | Description        |
-| -------- | --------- | ------- | ------------------ |
-| autoGrow | `boolean` | `false` | Auto grow textarea |
-
-### Checkbox
-
-| Name    | Type      | Default | Description                   |
-| ------- | --------- | ------- | ----------------------------- |
-| checked | `boolean` | `false` | Checked state of the checkbox |
-
-### Radio
-
-| Name    | Type      | Default | Description                |
-| ------- | --------- | ------- | -------------------------- |
-| checked | `boolean` | `false` | Checked state of the radio |
-
-### Switch
-
-| Name    | Type      | Default | Description                 |
-| ------- | --------- | ------- | --------------------------- |
-| checked | `boolean` | `false` | Checked state of the switch |
-
-### RadioGroup
-
-| Name                 | Type     | Default | Description                 |
-| -------------------- | -------- | ------- | --------------------------- |
-| options              | `array`  | `[]`    | Array of options to display |
-| optionLabelClassName | `string` | `null`  | Classname for option label  |
-
-### PasswordInput
-
-| Name             | Type                  | Default | Description                   |
-| ---------------- | --------------------- | ------- | ----------------------------- |
-| prepend          | `string` or `element` | `null`  | Prepend text to the input     |
-| appendClassName  | `string`              | `null`  | Classname for append element  |
-| prependClassName | `string`              | `null`  | Classname for prepend element |
-
-### AmountInput
-
-This component is a wrapper around [react-currency-input-field](https://www.npmjs.com/package/react-currency-input-field) component. All props from react-currency-input-field can be passed to this component.
-
-| Name             | Type                  | Default | Description                   |
-| ---------------- | --------------------- | ------- | ----------------------------- |
-| prepend          | `string` or `element` | `null`  | Prepend text to the input     |
-| append           | `string` or `element` | `null`  | Append text to the input      |
-| appendClassName  | `string`              | `null`  | Classname for append element  |
-| prependClassName | `string`              | `null`  | Classname for prepend element |
-
-### NumberInput
-
-| Name             | Type                  | Default | Description                   |
-| ---------------- | --------------------- | ------- | ----------------------------- |
-| prepend          | `string` or `element` | `null`  | Prepend text to the input     |
-| appendClassName  | `string`              | `null`  | Classname for append element  |
-| prependClassName | `string`              | `null`  | Classname for prepend element |
-
-### Select
-
-This component is a wrapper around [react-select](https://react-select.com/home) component. All props from react-select can be passed to this component.
-
-| Name       | Type     | Default | Description                             |
-| ---------- | -------- | ------- | --------------------------------------- |
-| options    | `array`  | `[]`    | Array of options to display             |
-| classNames | `object` | `null`  | ClassNames object for select components |
-| components | `object` | `null`  | Components object for select            |
-
-### PhoneInput
-
-This component is a wrapper around [react-international-phone](https://www.npmjs.com/package/react-international-phone) component. All props from react-international-phone can be passed to this component.
-
-| Name           | Type     | Default | Description                                           |
-| -------------- | -------- | ------- | ----------------------------------------------------- |
-| defaultCountry | `string` | `us`    | Default country code for phone starting code and flag |
-
-### Calendar
-
-This component is a wrapper around [react-day-picker](https://www.npmjs.com/package/react-day-picker) component. All props from react-day-picker can be passed to this component.
-
-| Name              | Type     | Default | Description                    |
-| ----------------- | -------- | ------- | ------------------------------ |
-| calendarClassName | `string` | `null`  | Classname for calendar element |
-
-### DatePicker
-
-This component combined with Calendar component and Input component. All props from Calendar component and Input can be passed to this component.
-
-| Name              | Type     | Default      | Description                    |
-| ----------------- | -------- | ------------ | ------------------------------ |
-| locale            | `object` | `null`       | date-fns locale object         |
-| format            | `string` | `MM/dd/yyyy` | Date format                    |
-| calendarClassName | `string` | `null`       | Classname for calendar element |
-
 ### MultipleDatePicker
 
 This component combined with Calendar component and Select component. All props from Calendar component and Select can be passed to this component.
@@ -285,18 +244,13 @@ This component combined with Calendar component and Select component. All props 
 | format            | `string` | `MM/dd/yyyy` | Date format                       |
 | calendarClassName | `string` | `null`       | Classname for calendar element    |
 
-### DateRangePicker
+### NumberInput
 
-This component combined with Calendar component and Select component. All props from Calendar component and Select can be passed to this component.
-
-| Name              | Type      | Default      | Description                                 |
-| ----------------- | --------- | ------------ | ------------------------------------------- |
-| value             | `object`  | ` ""`        | to - from object                            |
-| locale            | `object`  | `null`       | date-fns locale object                      |
-| format            | `string`  | `MM/dd/yyyy` | Date format                                 |
-| calendarClassName | `string`  | `null`       | Classname for calendar element              |
-| numberOfMonths    | `integer` | `2`          | Calender count to show date selection popup |
-| separator         | `string`  | `" / "`      | Separator for dates on showing input        |
+| Name             | Type                  | Default | Description                   |
+| ---------------- | --------------------- | ------- | ----------------------------- |
+| prepend          | `string` or `element` | `null`  | Prepend text to the input     |
+| appendClassName  | `string`              | `null`  | Classname for append element  |
+| prependClassName | `string`              | `null`  | Classname for prepend element |
 
 ### OTPInput
 
@@ -312,6 +266,74 @@ This component is a wrapper around [input-otp](https://www.npmjs.com/package/inp
 | format      | `array`    | `null`     | Inputs Separation array.                                                    |
 | separator   | `string`   | `"-"`      | Separator element between inputs                                            |
 | resendLabel | `string`   | `"Resend"` | Resend button text.                                                         |
+
+### PasswordInput
+
+| Name             | Type                  | Default | Description                   |
+| ---------------- | --------------------- | ------- | ----------------------------- |
+| prepend          | `string` or `element` | `null`  | Prepend text to the input     |
+| appendClassName  | `string`              | `null`  | Classname for append element  |
+| prependClassName | `string`              | `null`  | Classname for prepend element |
+
+### PhoneInput
+
+This component is a wrapper around [react-international-phone](https://www.npmjs.com/package/react-international-phone) component. All props from react-international-phone can be passed to this component.
+
+| Name           | Type     | Default | Description                                           |
+| -------------- | -------- | ------- | ----------------------------------------------------- |
+| defaultCountry | `string` | `us`    | Default country code for phone starting code and flag |
+
+### Radio
+
+| Name    | Type      | Default | Description                |
+| ------- | --------- | ------- | -------------------------- |
+| checked | `boolean` | `false` | Checked state of the radio |
+
+### RadioCards
+
+| Name    | Type      | Default | Description                        |
+| ------- |-----------|---------|------------------------------------|
+| options              | `array`   | `[]`    | Array of options to display        |
+| optionLabelClassName | `string`  | `null`  | Classname for option label         |
+| direction | `string`  | `column`  | Options direction `column` or `row` |
+| hideInput | `boolean` | `true`  | Input hide option                  |
+
+### RadioGroup
+
+| Name                 | Type     | Default | Description                 |
+| -------------------- | -------- | ------- | --------------------------- |
+| options              | `array`  | `[]`    | Array of options to display |
+| optionLabelClassName | `string` | `null`  | Classname for option label  |
+
+### Select
+
+This component is a wrapper around [react-select](https://react-select.com/home) component. All props from react-select can be passed to this component.
+
+| Name       | Type     | Default | Description                             |
+| ---------- | -------- | ------- | --------------------------------------- |
+| options    | `array`  | `[]`    | Array of options to display             |
+| classNames | `object` | `null`  | ClassNames object for select components |
+| components | `object` | `null`  | Components object for select            |
+
+### Slider
+
+This component is a wrapper around [rc-slider](https://slider-react-component.vercel.app/) component. All props from rc-slider can be passed to this component.
+
+| Name    | Type      | Default | Description                 |
+| ------- | --------- | ------- | --------------------------- |
+| checked | `boolean` | `false` | Checked state of the switch |
+
+### Switch
+
+| Name    | Type      | Default | Description                 |
+| ------- | --------- | ------- | --------------------------- |
+| checked | `boolean` | `false` | Checked state of the switch |
+
+### TextArea
+
+| Name     | Type      | Default | Description        |
+| -------- | --------- | ------- | ------------------ |
+| autoGrow | `boolean` | `false` | Auto grow textarea |
 
 ## Styling
 
