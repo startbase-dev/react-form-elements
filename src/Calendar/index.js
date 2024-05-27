@@ -13,7 +13,7 @@ const Index = forwardRef(
       onChange,
       error = null,
       label = null,
-      value = '',
+      value = null,
       labelClassName = null,
       errorClassName = null,
       calendarClassName = null,
@@ -67,7 +67,7 @@ const Index = forwardRef(
             type="hidden"
             {...rest}
             name={name}
-            value={value}
+            value={value ? value : ''}
             ref={inputRef}
           />
 

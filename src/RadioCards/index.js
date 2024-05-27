@@ -16,6 +16,7 @@ const Index = forwardRef(
       options = [],
       label = null,
       inputClassName = null,
+      cardClassName = null,
       labelClassName = null,
       optionLabelClassName = null,
       direction = 'column',
@@ -65,7 +66,7 @@ const Index = forwardRef(
             return (
               <div
                 key={index}
-                className={cx(s.card, {
+                className={cx(cardClassName, s.card, {
                   [s.selected]: option.value === value,
                   [s.disabled]: disabled,
                   [s.inputError]: typeof error === 'boolean' && error,
@@ -113,6 +114,7 @@ Index.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   options: PropTypes.arrayOf(Option),
   inputClassName: PropTypes.string,
+  cardClassName: PropTypes.string,
   labelClassName: PropTypes.string,
   optionLabelClassName: PropTypes.string,
   errorClassName: PropTypes.string,

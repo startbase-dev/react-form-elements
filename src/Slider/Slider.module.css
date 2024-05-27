@@ -99,6 +99,14 @@
   .rail {
     border-color: var(--rfe-color-error) !important;
   }
+
+  .tracks {
+    border-color: var(--rfe-color-error) !important;
+  }
+
+  .track {
+    border-color: var(--rfe-color-error) !important;
+  }
 }
 
 .slider:focus-within {

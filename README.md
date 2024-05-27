@@ -7,7 +7,7 @@
 
 ## Demos
 
-For live demos of these components in action, please visit our [CodeSandbox](https://codesandbox.io/p/sandbox/inspiring-jepsen-wnr5tg) and [Storybook](https://react-form-elements-eosin.vercel.app/) demo pages.
+For live demos of these components in action, please visit our [Storybook](https://react-form-elements-eosin.vercel.app/), [react-hook-form](https://react-form-elements-eosin.vercel.app/?path=/story/form-form-reacthookform--form-component) and [react-hook-form-with-yup](https://react-form-elements-eosin.vercel.app/?path=/story/form-form-reacthookformyup--form-component) demo pages.
 
 ## Introduction
 
@@ -210,6 +210,7 @@ A card-style checkbox group component for enhanced visual presentation.
 | -------------------- | --------- | -------- | ----------------------------------- |
 | options              | `array`   | `[]`     | Array of options to display         |
 | optionLabelClassName | `string`  | `null`   | Classname for option label          |
+| cardClassName        | `string`  | `null`   | Classname for option card           |
 | direction            | `string`  | `column` | Options direction `column` or `row` |
 | hideInput            | `boolean` | `true`   | Input hide option                   |
 
@@ -334,6 +335,7 @@ A card-style radio group component for enhanced visual presentation.
 | -------------------- | --------- | -------- | ----------------------------------- |
 | options              | `array`   | `[]`     | Array of options to display         |
 | optionLabelClassName | `string`  | `null`   | Classname for option label          |
+| cardClassName        | `string`  | `null`   | Classname for option card           |
 | direction            | `string`  | `column` | Options direction `column` or `row` |
 | hideInput            | `boolean` | `true`   | Input hide option                   |
 
@@ -569,7 +571,7 @@ export default Page;
 
 ## Demos
 
-For live demos of these components in action, please visit our [CodeSandbox](https://codesandbox.io/p/sandbox/inspiring-jepsen-wnr5tg) and [Storybook](https://react-form-elements-eosin.vercel.app/) demo pages.
+For live demos of these components in action, please visit our [Storybook](https://react-form-elements-eosin.vercel.app/), [react-hook-form](https://react-form-elements-eosin.vercel.app/?path=/story/form-form-reacthookform--form-component) and [react-hook-form-with-yup](https://react-form-elements-eosin.vercel.app/?path=/story/form-form-reacthookformyup--form-component) demo pages.
 
 ![](og.png)
 <br />

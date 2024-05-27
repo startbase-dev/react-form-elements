@@ -13,6 +13,7 @@ const Index = forwardRef(
       options = [],
       label = null,
       inputClassName = null,
+      cardClassName = null,
       labelClassName = null,
       optionLabelClassName = null,
       direction = 'column',
@@ -29,7 +30,7 @@ const Index = forwardRef(
         if (checked) {
           newValue = [...value, optionValue];
         } else {
-          newValue = value.filter((val) => val !== optionValue);
+          newValue = value?.filter((val) => val !== optionValue);
         }
 
         onChange({
@@ -70,13 +71,16 @@ const Index = forwardRef(
             return (
               <div
                 key={index}
-                className={cx(s.card, {
-                  [s.selected]: value?.includes(option.value),
+                className={cx(cardClassName, s.card, {
+                  [s.selected]: value ? value?.includes(option.value) : false,
                   [s.disabled]: disabled,
                   [s.inputError]: typeof error === 'boolean' && error,
                 })}
                 onClick={() =>
-                  handleChange(value?.includes(option.value), option.value)
+                  handleChange(
+                    value ? value?.includes(option.value) : false,
+                    option.value
+                  )
                 }
               >
                 <Checkbox
@@ -84,7 +88,7 @@ const Index = forwardRef(
                   key={index}
                   inputClassName={cx(inputClassName, { [s.hide]: hideInput })}
                   labelClassName={optionLabelClassName}
-                  checked={value?.includes(option.value)}
+                  checked={value ? value?.includes(option.value) : false}
                   label={option.label}
                   value={option.value}
                   error={error && typeof error === 'boolean'}
@@ -120,6 +124,7 @@ Index.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   options: PropTypes.arrayOf(Option).isRequired,
   inputClassName: PropTypes.string,
+  cardClassName: PropTypes.string,
   labelClassName: PropTypes.string,
   optionLabelClassName: PropTypes.string,
   errorClassName: PropTypes.string,

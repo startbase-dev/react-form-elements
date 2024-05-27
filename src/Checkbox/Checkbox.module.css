@@ -74,6 +74,10 @@
   border-color: var(--rfe-border);
 }
 
+.input:checked ~ .boxDisabled {
+  background: var(--rfe-background-disabled) !important;
+}
+
 .input:checked ~ .box .icon {
   display: block;
 }

@@ -24,10 +24,10 @@ const Template = (args) => {
         }}
       >
         <Slider
-          checked={inputs.default}
           {...args}
+          name="slider"
           label="Slider"
-          name="default"
+          value={inputs.slider}
           onChange={onChange}
         />
       </div>
@@ -37,9 +37,6 @@ const Template = (args) => {
 
 export const SliderComponent = Template.bind({});
 SliderComponent.args = { title: 'Slider' };
-
-export const SliderComponentChecked = Template.bind({});
-SliderComponentChecked.args = { title: 'Slider', checked: true };
 
 export const SliderComponentDisabled = Template.bind({});
 SliderComponentDisabled.args = { title: 'Slider', disabled: true };

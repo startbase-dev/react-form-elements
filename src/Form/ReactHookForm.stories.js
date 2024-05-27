@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
-import Checkbox from '../Checkbox';
-import Input from '../Input';
-import PasswordInput from '../PasswordInput';
-import RadioGroup from '../RadioGroup';
-import CheckboxGroup from '../CheckboxGroup';
-import Switch from '../Switch';
-import Radio from '../Radio';
-import TextArea from '../TextArea';
-import Form from './index.js';
-import NumberInput from '../NumberInput';
 import AmountInput from '../AmountInput';
-import Select from '../Select';
-import PhoneInput from '../PhoneInput';
+import Calendar from '../Calendar';
+import Checkbox from '../Checkbox';
+import CheckboxCards from '../CheckboxCards';
+import CheckboxGroup from '../CheckboxGroup';
 import DatePicker from '../DatePicker';
 import DateRangePicker from '../DateRangePicker';
+import Form from './index.js';
+import Input from '../Input';
 import MultipleDatePicker from '../MultipleDatePicker';
-import Calendar from '../Calendar';
+import NumberInput from '../NumberInput';
+import OTPInput from '../OTPInput';
+import PasswordInput from '../PasswordInput';
+import PhoneInput from '../PhoneInput';
+import Radio from '../Radio';
+import RadioCards from '../RadioCards';
+import RadioGroup from '../RadioGroup';
+import Select from '../Select';
+import Switch from '../Switch';
+import Slider from '../Slider';
+import TextArea from '../TextArea';
 import { PieIcon } from '../Icon';
 
 const OPTIONS = [
@@ -61,6 +65,10 @@ const Template = () => {
           gap: '1rem',
           justifyContent: 'center',
           alignItems: 'center',
+          border: '1px solid white',
+          padding: '10px',
+          marginBottom: '50px',
+          borderRadius: '10px',
         }}
       >
         <Checkbox
@@ -97,39 +105,12 @@ const Template = () => {
         />
       </div>
       <Form>
-        <Input
-          label="Username"
-          value={watch('username')}
-          {...register('username')}
-          disableShrink={disableShrink}
-          error={error}
-          disabled={disabled}
-          prepend={<PieIcon />}
-        />
-        <PasswordInput
-          label="Password"
-          disableShrink={disableShrink}
-          value={watch('password')}
-          {...register('password')}
-          error={error}
-          disabled={disabled}
-          prepend={<PieIcon />}
-        />
-        <NumberInput
-          label="Number"
-          disableShrink={disableShrink}
-          value={watch('number')}
-          {...register('number')}
-          error={error}
-          disabled={disabled}
-          prepend={<PieIcon />}
-        />
         <Controller
           name="amount"
           control={control}
           render={({ field }) => (
             <AmountInput
-              label="Amount"
+              label="Amount Input"
               disableShrink={disableShrink}
               value={watch('amount')}
               error={error}
@@ -138,6 +119,169 @@ const Template = () => {
               prepend={<PieIcon />}
             />
           )}
+        />
+        <Calendar
+          label="Calendar"
+          value={watch('calendar')}
+          {...register('calendar')}
+          error={error}
+          disabled={disabled}
+        />
+        <Checkbox
+          disabled={disabled}
+          label="Checkbox"
+          checked={watch('checkbox')}
+          {...register('checkbox')}
+          error={error}
+        />
+        <Controller
+          name="checkbox Cards"
+          control={control}
+          render={({ field }) => (
+            <CheckboxCards
+              disabled={disabled}
+              label="CheckboxCards"
+              value={watch('checkboxCards')}
+              {...field}
+              error={error}
+              options={[
+                { label: 'CheckboxCards Option 1', value: 'default1' },
+                { label: 'CheckboxCards Option 2', value: 'default2' },
+              ]}
+            />
+          )}
+        />
+        <Controller
+          name="checkbox Group"
+          control={control}
+          render={({ field }) => (
+            <CheckboxGroup
+              disabled={disabled}
+              label="CheckboxGroup"
+              value={watch('checkboxGroup')}
+              {...field}
+              error={error}
+              options={[
+                { label: 'CheckboxGroup Option 1', value: 'default1' },
+                { label: 'CheckboxGroup Option 2', value: 'default2' },
+              ]}
+            />
+          )}
+        />
+        <Controller
+          name="date"
+          control={control}
+          render={({ field }) => (
+            <DatePicker
+              label="Date Picker"
+              disableShrink={disableShrink}
+              value={watch('date')}
+              {...field}
+              error={error}
+              disabled={disabled}
+              prepend={<PieIcon />}
+            />
+          )}
+        />
+        <Controller
+          name="date_range"
+          control={control}
+          render={({ field }) => (
+            <DateRangePicker
+              label="Date Range Picker"
+              disableShrink={disableShrink}
+              value={watch('date_range')}
+              {...register('date_range')}
+              {...field}
+              error={error}
+              disabled={disabled}
+              prepend={<PieIcon />}
+            />
+          )}
+        />
+        <Input
+          label="Input"
+          value={watch('input')}
+          {...register('input')}
+          disableShrink={disableShrink}
+          error={error}
+          disabled={disabled}
+          prepend={<PieIcon />}
+        />
+        <MultipleDatePicker
+          value={watch('multiple_date')}
+          {...register('multiple_date')}
+          disableShrink={disableShrink}
+          error={error}
+          label="Multiple Date Picker"
+          disabled={disabled}
+        />
+        <NumberInput
+          label="Number Input"
+          disableShrink={disableShrink}
+          value={watch('number')}
+          {...register('number')}
+          error={error}
+          disabled={disabled}
+          prepend={<PieIcon />}
+        />
+        <OTPInput
+          length={6}
+          label="OTP Input"
+          name="otp"
+          value={watch('otp')}
+          {...register('otp')}
+          error={error}
+          disabled={disabled}
+          timer={120}
+        />
+        <PasswordInput
+          label="Password Input"
+          disableShrink={disableShrink}
+          value={watch('password')}
+          {...register('password')}
+          error={error}
+          disabled={disabled}
+          prepend={<PieIcon />}
+        />
+        <PhoneInput
+          label="Phone Input"
+          disableShrink={disableShrink}
+          value={watch('phone')}
+          {...register('phone')}
+          error={error}
+          disabled={disabled}
+          prepend={<PieIcon />}
+        />
+        <Radio
+          disabled={disabled}
+          label="Radio"
+          checked={watch('radio') === 'radio'}
+          value={'radio'}
+          {...register('radio')}
+          error={error}
+        />
+        <RadioCards
+          disabled={disabled}
+          label="Radio Cards"
+          value={watch('radioCards')}
+          {...register('radioCards')}
+          error={error}
+          options={[
+            { label: 'RadioCards Option 1', value: 'default1' },
+            { label: 'RadioCards Option 2', value: 'default2' },
+          ]}
+        />
+        <RadioGroup
+          disabled={disabled}
+          label="Radio Group"
+          value={watch('radioGroup')}
+          {...register('radioGroup')}
+          error={error}
+          options={[
+            { label: 'RadioGroup Option 1', value: 'default1' },
+            { label: 'RadioGroup Option 2', value: 'default2' },
+          ]}
         />
         <Select
           label="Select"
@@ -149,70 +293,20 @@ const Template = () => {
           error={error}
           disabled={disabled}
         />
-        <Select
-          label="Multi Select"
-          options={OPTIONS}
-          isMulti
-          disableShrink={disableShrink}
-          value={watch('multi')}
-          {...register('multi')}
+        <Slider
+          name="slider"
+          label="Slider"
+          value={watch('slider')}
+          {...register('slider')}
           error={error}
           disabled={disabled}
         />
-        <PhoneInput
-          label="Phone"
-          disableShrink={disableShrink}
-          value={watch('phone')}
-          {...register('phone')}
+        <Switch
+          label="Switch"
+          checked={watch('switch')}
+          {...register('switch')}
           error={error}
           disabled={disabled}
-          prepend={<PieIcon />}
-        />
-        <Calendar
-          label="Calendar"
-          value={watch('calendar')}
-          {...register('calendar')}
-          error={error}
-          disabled={disabled}
-        />
-        <Controller
-          name="date"
-          control={control}
-          render={({ field }) => (
-            <DatePicker
-              label="Date"
-              disableShrink={disableShrink}
-              value={watch('date')}
-              {...field}
-              error={error}
-              disabled={disabled}
-              prepend={<PieIcon />}
-            />
-          )}
-        />
-        <MultipleDatePicker
-          value={watch('multiple_date')}
-          {...register('multiple_date')}
-          disableShrink={disableShrink}
-          error={error}
-          label="Multiple Date Picker"
-          disabled={disabled}
-        />
-        <Controller
-          name="date_range"
-          control={control}
-          render={({ field }) => (
-            <DateRangePicker
-              label="DateRange"
-              disableShrink={disableShrink}
-              value={watch('date_range')}
-              {...register('date_range')}
-              {...field}
-              error={error}
-              disabled={disabled}
-              prepend={<PieIcon />}
-            />
-          )}
         />
         <Controller
           name="textarea"
@@ -229,52 +323,53 @@ const Template = () => {
             />
           )}
         />
-        <RadioGroup
-          disabled={disabled}
-          label="RadioGroup"
-          value={watch('country')}
-          {...register('country')}
-          error={error}
-          options={[
-            { label: 'Radio Option 1', value: 'default1' },
-            { label: 'Radio Option 2', value: 'default2' },
-          ]}
-        />
-        <CheckboxGroup
-          disabled={disabled}
-          label="CheckboxGroup"
-          value={watch('country2')}
-          {...register('country2')}
-          error={error}
-          options={[
-            { label: 'Radio Option 1', value: 'default1' },
-            { label: 'Radio Option 2', value: 'default2' },
-          ]}
-        />
-        <Radio
-          disabled={disabled}
-          label="I understand and accept the terms and conditions and privacy policy."
-          checked={watch('policy2')}
-          value={true}
-          {...register('policy2')}
-          error={error}
+      </Form>
+      <button onClick={handleSubmit(onSubmit)}> Submit</button>
+      <div
+        style={{
+          display: 'flex',
+          gap: '1rem',
+          justifyContent: 'center',
+          alignItems: 'center',
+          border: '1px solid white',
+          padding: '10px',
+          marginTop: '50px',
+          borderRadius: '10px',
+        }}
+      >
+        <Checkbox
+          label="Error"
+          name="error"
+          checked={error}
+          onChange={() => {
+            setError((prevState) => !prevState);
+          }}
         />
         <Checkbox
-          disabled={disabled}
-          label="I understand and accept the terms and conditions and privacy policy."
-          checked={watch('policy')}
-          {...register('policy')}
-          error={error}
+          label="Disabled"
+          name="disabled"
+          checked={disabled}
+          onChange={() => {
+            setDisabled((prevState) => !prevState);
+          }}
         />
-        <Switch
-          label="Switch"
-          checked={watch('terms')}
-          {...register('terms')}
-          error={error}
-          disabled={disabled}
+        <Checkbox
+          label="Disable Shrink"
+          name="disableShrink"
+          checked={disableShrink}
+          onChange={() => {
+            setDisableShrink((prevState) => !prevState);
+          }}
         />
-      </Form>
-      <button onClick={handleSubmit(onSubmit)}> Submit </button>
+        <Input
+          label="Error Message"
+          name="errorMessage"
+          value={error}
+          onChange={(e) => {
+            setError(e.target.value);
+          }}
+        />
+      </div>
     </>
   );
 };

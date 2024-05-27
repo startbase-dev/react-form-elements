@@ -65,7 +65,7 @@ const Index = forwardRef(
               key={index}
               inputClassName={inputClassName}
               labelClassName={optionLabelClassName}
-              checked={value?.includes(option.value)}
+              checked={value ? value?.includes(option.value) : false}
               label={option.label}
               value={option.value}
               error={error && typeof error === 'boolean'}
