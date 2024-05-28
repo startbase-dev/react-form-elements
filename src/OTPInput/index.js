@@ -9,7 +9,7 @@ import Slot from './Slot';
 import cx from 'classnames';
 import { useCountDown } from '../utils/useCountDown';
 import { remove, set } from '../utils/localStorage';
-import { formatSeconds } from '../utils/date';
+import formatSeconds from '../utils/date';
 
 const Index = forwardRef(
   (

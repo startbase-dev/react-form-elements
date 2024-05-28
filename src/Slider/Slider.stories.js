@@ -6,6 +6,7 @@ const Template = (args) => {
   const [inputs, setInputs] = useState({});
   const onChange = (e) => {
     const { name, value, type } = e.target;
+    console.log(name, value);
 
     setInputs((prevState) => ({
       ...prevState,
@@ -24,11 +25,14 @@ const Template = (args) => {
         }}
       >
         <Slider
-          {...args}
           name="slider"
           label="Slider"
+          min={0}
+          max={100}
+          step={20}
           value={inputs.slider}
           onChange={onChange}
+          {...args}
         />
       </div>
     </>
@@ -40,6 +44,29 @@ SliderComponent.args = { title: 'Slider' };
 
 export const SliderComponentDisabled = Template.bind({});
 SliderComponentDisabled.args = { title: 'Slider', disabled: true };
+
+export const SliderRangeComponent = Template.bind({});
+SliderRangeComponent.args = {
+  title: 'Slider Range',
+  range: true,
+  defaultValue: [20, 50],
+};
+
+export const SliderDotsComponent = Template.bind({});
+SliderDotsComponent.args = {
+  title: 'Slider Dots',
+  defaultValue: [20, 50],
+  dots: true,
+};
+
+export const SliderVerticalComponent = Template.bind({});
+SliderVerticalComponent.args = {
+  title: 'Slider Vertical',
+  defaultValue: [20, 50],
+  dots: true,
+  range: true,
+  vertical: true,
+};
 
 export const SliderComponentError = Template.bind({});
 SliderComponentError.args = {

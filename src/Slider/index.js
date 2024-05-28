@@ -11,8 +11,13 @@ const Index = forwardRef(
       name,
       onChange,
       label = null,
-      value = 0,
-      inputClassName = null,
+      value = null,
+      range = false,
+      vertical = false,
+      tracksClassName = null,
+      trackClassName = null,
+      railClassName = null,
+      handleClassName = null,
       labelClassName = null,
       errorClassName = null,
       disabled = false,
@@ -58,20 +63,38 @@ const Index = forwardRef(
           <Slider
             ref={inputRef}
             classNames={{
-              tracks: s.tracks,
-              track: s.track,
-              rail: s.rail,
-              handle: s.handle,
+              tracks: cx(s.tracks, {
+                [tracksClassName]: tracksClassName,
+              }),
+              track: cx(s.track, {
+                [trackClassName]: trackClassName,
+              }),
+              rail: cx(s.rail, {
+                [railClassName]: railClassName,
+              }),
+              handle: cx(s.handle, {
+                [handleClassName]: handleClassName,
+              }),
             }}
             className={cx(s.slider, {
+              [s.vertical]: vertical,
               [s.disabled]: disabled,
               [s.error]: typeof error === 'boolean' && error,
-              [inputClassName]: inputClassName,
             })}
             name={name}
-            value={value}
+            activeDotStyle={{
+              width: '6px',
+              height: '6px',
+              backgroundColor: 'var(--rfe-white)',
+              borderColor: 'var(--rfe-white)',
+            }}
+            value={
+              value === null && range ? [0, 0] : value === null ? 0 : value
+            }
             onChange={handleOnChange}
             disabled={disabled}
+            range={range}
+            vertical={vertical}
             {...rest}
           />
         </div>
@@ -96,11 +119,19 @@ Index.propTypes = {
     PropTypes.string,
     PropTypes.object,
   ]),
-  value: PropTypes.number,
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.arrayOf(PropTypes.number),
+  ]),
+  range: PropTypes.bool,
+  vertical: PropTypes.bool,
   min: PropTypes.number,
   max: PropTypes.number,
   step: PropTypes.number,
-  inputClassName: PropTypes.string,
+  tracksClassName: PropTypes.string,
+  trackClassName: PropTypes.string,
+  railClassName: PropTypes.string,
+  handleClassName: PropTypes.string,
   labelClassName: PropTypes.string,
   errorClassName: PropTypes.string,
   disabled: PropTypes.bool,
