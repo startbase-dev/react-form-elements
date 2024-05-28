@@ -82,9 +82,15 @@ const Index = forwardRef(
               [s.error]: typeof error === 'boolean' && error,
             })}
             name={name}
+            dotStyle={{
+              top: vertical ? 'unset' : '3px',
+              right: vertical ? '-3px' : 'unset',
+              width: '4px',
+              height: '4px',
+            }}
             activeDotStyle={{
-              width: '6px',
-              height: '6px',
+              width: '4px',
+              height: '4px',
               backgroundColor: 'var(--rfe-white)',
               borderColor: 'var(--rfe-white)',
             }}
@@ -96,6 +102,7 @@ const Index = forwardRef(
             range={range}
             vertical={vertical}
             {...rest}
+            z
           />
         </div>
         {errorMessage ? (
