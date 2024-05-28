@@ -237,14 +237,14 @@ This component combined with Calendar component and Input component. All props f
 
 This component combined with Calendar component and Select component. All props from Calendar component and Select can be passed to this component.
 
-| Name              | Type      | Default      | Description                                 |
-| ----------------- | --------- | ------------ | ------------------------------------------- |
-| value             | `object`  | ` ""`        | to - from object                            |
-| locale            | `object`  | `null`       | date-fns locale object                      |
-| format            | `string`  | `MM/dd/yyyy` | Date format                                 |
-| calendarClassName | `string`  | `null`       | Classname for calendar element              |
+| Name              | Type     | Default      | Description                                 |
+| ----------------- | -------- | ------------ | ------------------------------------------- |
+| value             | `object` | ` ""`        | to - from object                            |
+| locale            | `object` | `null`       | date-fns locale object                      |
+| format            | `string` | `MM/dd/yyyy` | Date format                                 |
+| calendarClassName | `string` | `null`       | Classname for calendar element              |
 | numberOfMonths    | `number` | `2`          | Calender count to show date selection popup |
-| separator         | `string`  | `" / "`      | Separator for dates on showing input        |
+| separator         | `string` | `" / "`      | Separator for dates on showing input        |
 
 ### Form
 
@@ -294,7 +294,7 @@ This component is a wrapper around [input-otp](https://www.npmjs.com/package/inp
 | ----------- | ---------- | ---------- | --------------------------------------------------------------------------- |
 | value       | `string`   |            | Value of the input                                                          |
 | length      | `object`   |            | Length of the code.                                                         |
-| timer       | `number`  | `null`     | OTP code timer limit of seconds.                                            |
+| timer       | `number`   | `null`     | OTP code timer limit of seconds.                                            |
 | onComplete  | `function` |            | Callback function that is fired when the all values entered.                |
 | onResend    | `function` |            | Callback function that is fired when the time out and cliced resend button. |
 | format      | `array`    | `null`     | Inputs Separation array.                                                    |
@@ -362,16 +362,16 @@ This component is a wrapper around [react-select](https://react-select.com/home)
 
 This component is a wrapper around [rc-slider](https://slider-react-component.vercel.app/) component. All props from rc-slider can be passed to this component.
 
-| Name    | Type      | Default | Description                       |
-| ------- | --------- | ------- |-----------------------------------|
-| min | `number` | `null`  | Min value of the slider           |
-| max | `number` | `null`  | Max value of the slider           |
-| step | `number` | `null`  | Step count of the handle movement |
+| Name            | Type     | Default | Description                       |
+| --------------- | -------- | ------- | --------------------------------- |
+| min             | `number` | `null`  | Min value of the slider           |
+| max             | `number` | `null`  | Max value of the slider           |
+| step            | `number` | `null`  | Step count of the handle movement |
 | tracksClassName | `string` | `null`  | Classname for slider tracks       |
-| trackClassName | `string` | `null`  | Classname for slider track        |
-| railClassName | `string` | `null`  | Classname for slider rail         |
+| trackClassName  | `string` | `null`  | Classname for slider track        |
+| railClassName   | `string` | `null`  | Classname for slider rail         |
 | handleClassName | `string` | `null`  | Classname for slider handle       |
-| dotClassName | `string` | `null`  | Classname for slider dots         |
+| dotClassName    | `string` | `null`  | Classname for slider dots         |
 
 ### Switch
 
