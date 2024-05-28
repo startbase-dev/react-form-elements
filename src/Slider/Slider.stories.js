@@ -6,7 +6,6 @@ const Template = (args) => {
   const [inputs, setInputs] = useState({});
   const onChange = (e) => {
     const { name, value, type } = e.target;
-    console.log(name, value);
 
     setInputs((prevState) => ({
       ...prevState,
