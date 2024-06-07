@@ -121,7 +121,6 @@ const Index = forwardRef(
 
           <ReactSelect
             value={value}
-            menuIsOpen={true}
             ref={inputRef}
             options={options}
             instanceId={useId()}
