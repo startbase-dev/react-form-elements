@@ -121,6 +121,7 @@ const Index = forwardRef(
 
           <ReactSelect
             value={value}
+            menuIsOpen={true}
             ref={inputRef}
             options={options}
             instanceId={useId()}
@@ -128,7 +129,10 @@ const Index = forwardRef(
             classNames={{
               input: () => s.innerInput,
               menu: () => s.menu,
-              option: (state) => (state.isFocused ? s.optionFocused : s.option),
+              option: (state) =>
+                state.isFocused || state.isSelected
+                  ? s.optionFocused
+                  : s.option,
               singleValue: () => s.singleValue,
               placeholder: () => s.placeholder,
               indicatorSeparator: () => s.indicatorSeparator,

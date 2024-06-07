@@ -101,12 +101,18 @@
   border: 1px solid var(--rfe-border);
   border-radius: var(--rfe-border-radius);
   padding: 0 !important;
+  box-shadow: none !important;
   margin: 6px 0 0 !important;
   z-index: 9999;
 }
 
 .option {
   color: var(--rfe-color) !important;
+  margin-left: 4px !important;
+  margin-right: 4px !important;
+  margin-bottom: 4px !important;
+  width: calc(100% - 8px) !important;
+  border-radius: calc(var(--rfe-border-radius) - 2px) !important;
 
   &:hover,
   &:focus,
@@ -115,11 +121,24 @@
   &:focus-within {
     background-color: var(--rfe-background-selected) !important;
   }
+
+  &:last-child {
+    margin-bottom: 0 !important;
+  }
 }
 
 .optionFocused {
   color: var(--rfe-color) !important;
   background-color: var(--rfe-background-selected) !important;
+  width: calc(100% - 8px) !important;
+  margin-left: 4px !important;
+  margin-right: 4px !important;
+  margin-bottom: 4px !important;
+  border-radius: calc(var(--rfe-border-radius) - 2px) !important;
+
+  &:last-child {
+    margin-bottom: 0 !important;
+  }
 }
 
 .singleValue {

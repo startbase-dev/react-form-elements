@@ -21,6 +21,7 @@ const config = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-webpack5-compiler-swc',
+    '@chromatic-com/storybook',
   ],
 
   framework: {
@@ -28,8 +29,10 @@ const config = {
     options: {},
   },
 
-  docs: {
-    autodocs: true,
+  docs: {},
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
   },
 };
 export default config;
