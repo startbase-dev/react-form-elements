@@ -1,6 +1,6 @@
 import React, { forwardRef, useCallback, useState } from 'react';
 
-import cx from 'classnames';
+import cx from 'clsx';
 
 import Input from '../Input';
 import s from './PasswordInput.module.css';

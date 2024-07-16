@@ -2,7 +2,7 @@ import React, { forwardRef, useMemo } from 'react';
 
 import PropTypes from 'prop-types';
 
-import cx from 'classnames';
+import cx from 'clsx';
 
 import Radio from '../Radio';
 import s from './RadioCards.module.css';

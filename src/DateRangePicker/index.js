@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo, useRef, useState } from 'react';
 
 import PropTypes from 'prop-types';
-import cx from 'classnames';
+import cx from 'clsx';
 import { format as dateFNSFormat } from 'date-fns/format';
 import { usePopper } from 'react-popper';
 import { FocusOn } from 'react-focus-on';

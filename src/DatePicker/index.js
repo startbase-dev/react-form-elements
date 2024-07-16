@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { format as dateFNSFormat } from 'date-fns/format';
 import { FocusOn } from 'react-focus-on';
 import { usePopper } from 'react-popper';
-import cx from 'classnames';
+import cx from 'clsx';
 
 import CalendarRoot from '../Calendar/CalendarRoot';
 

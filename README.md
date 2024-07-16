@@ -17,9 +17,7 @@ This npm package provides a set of form-related components for React. You can us
 - Classnames are available for all components.
 - Built-in dark mode support.
 
-![](dark.png)
-![](light.png)
-![](theme.png)
+![](form.gif)
 
 ## Installation
 
@@ -38,7 +36,7 @@ or
 Make sure to add css file to your app root file
 
 ```jsx title="layout.js"
-import '@start-base/react-form-elements/index.css';
+import '@start-base/react-form-elements/styles.css';
 ```
 
 ## Usage
@@ -455,6 +453,48 @@ const CustomInput = forwardRef((props, ref) => (
 ));
 
 export default CustomInput;
+```
+
+Or for all form elements you can use single css file.
+
+```css title="FormElements.module.scss"
+.input {
+  &:focus {
+  }
+}
+
+.inputFocused {
+}
+
+.label {
+}
+
+.errorLabel {
+}
+
+.card {
+  &:hover {
+  }
+}
+
+.option {
+  &:hover {
+  }
+}
+
+.switchInput {
+  &:hover {
+  }
+
+  & span {
+  }
+}
+
+.menu {
+}
+
+.calendar {
+}
 ```
 
 ## Examples

@@ -21,6 +21,7 @@ const Template = (args) => {
           display: 'flex',
           justifyContent: 'space-evenly',
           flexDirection: 'column',
+          height: '200px',
         }}
       >
         <Slider
@@ -28,7 +29,6 @@ const Template = (args) => {
           label="Slider"
           min={0}
           max={100}
-          step={20}
           value={inputs.slider}
           onChange={onChange}
           {...args}
@@ -42,7 +42,46 @@ export const SliderComponent = Template.bind({});
 SliderComponent.args = { title: 'Slider' };
 
 export const SliderComponentDisabled = Template.bind({});
-SliderComponentDisabled.args = { title: 'Slider', disabled: true };
+SliderComponentDisabled.args = {
+  title: 'Slider',
+  disabled: true,
+};
+
+export const SliderComponentMarks = Template.bind({});
+SliderComponentMarks.args = {
+  title: 'Slider',
+  disabled: false,
+  marks: {
+    0: <strong>0°C</strong>,
+    26: '26°C',
+    37: '37°C',
+    50: '50°C',
+    100: {
+      style: {
+        color: 'red',
+      },
+      label: <strong>100°C</strong>,
+    },
+  },
+};
+
+export const SliderComponentMarksVertical = Template.bind({});
+SliderComponentMarksVertical.args = {
+  title: 'Slider',
+  vertical: true,
+  marks: {
+    0: <strong>0°C</strong>,
+    26: '26°C',
+    37: '37°C',
+    50: '50°C',
+    100: {
+      style: {
+        color: 'red',
+      },
+      label: <strong>100°C</strong>,
+    },
+  },
+};
 
 export const SliderRangeComponent = Template.bind({});
 SliderRangeComponent.args = {
@@ -51,19 +90,10 @@ SliderRangeComponent.args = {
   defaultValue: [20, 50],
 };
 
-export const SliderDotsComponent = Template.bind({});
-SliderDotsComponent.args = {
-  title: 'Slider Dots',
-  defaultValue: [20, 50],
-  dots: true,
-};
-
 export const SliderVerticalComponent = Template.bind({});
 SliderVerticalComponent.args = {
   title: 'Slider Vertical',
-  defaultValue: [20, 50],
-  dots: true,
-  range: true,
+  defaultValue: 50,
   vertical: true,
 };
 

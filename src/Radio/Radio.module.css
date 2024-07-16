@@ -1,6 +1,6 @@
 .root {
   position: relative;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   margin-bottom: var(--rfe-spacing);
 }

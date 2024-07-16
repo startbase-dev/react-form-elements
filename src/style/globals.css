@@ -19,7 +19,7 @@
   --rfe-input-height: 56px;
   --rfe-spacing: 16px;
   --rfe-label-spacing: 10px;
-  --rfe-focus: 0 0 10px #dcdcdc;
+  --rfe-focus: rgb(0 0 0 / 15%) 0px 1px 3px;
   --rfe-font-family: 'Arial', sans-serif;
   --rfe-transition: all 250ms;
 
@@ -54,7 +54,6 @@
     --rfe-background: #0f0f0f;
     --rfe-background-selected: #191919;
     --rfe-background-disabled: #282828;
-    --rfe-focus: 0 0 10px #4b4b4b, 0 0 0 1px #4b4b4b;
   }
 }
 

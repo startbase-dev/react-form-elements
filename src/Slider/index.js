@@ -1,6 +1,6 @@
 import React, { forwardRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
+import cx from 'clsx';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import s from './Slider.module.css';
@@ -76,23 +76,22 @@ const Index = forwardRef(
                 [handleClassName]: handleClassName,
               }),
             }}
+            activeDotStyle={{
+              borderColor: 'var(--rfe-black)',
+              background: 'var(--rfe-black)',
+            }}
             className={cx(s.slider, {
               [s.vertical]: vertical,
+              [s.horizontal]: !vertical,
               [s.disabled]: disabled,
               [s.error]: typeof error === 'boolean' && error,
             })}
             name={name}
             dotStyle={{
-              top: vertical ? 'unset' : '3px',
-              right: vertical ? '-3px' : 'unset',
-              width: '4px',
-              height: '4px',
-            }}
-            activeDotStyle={{
-              width: '4px',
-              height: '4px',
-              backgroundColor: 'var(--rfe-white)',
-              borderColor: 'var(--rfe-white)',
+              top: vertical ? 'unset' : '1px',
+              right: vertical ? '-5px' : 'unset',
+              borderColor: 'var(--rfe-border)',
+              background: 'var(--rfe-border)',
             }}
             value={
               value === null && range ? [0, 0] : value === null ? 0 : value

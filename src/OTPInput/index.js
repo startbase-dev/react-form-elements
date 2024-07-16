@@ -6,7 +6,7 @@ import s from './OTPInput.module.css';
 import PropTypes from 'prop-types';
 import Slot from './Slot';
 
-import cx from 'classnames';
+import cx from 'clsx';
 import { useCountDown } from '../utils/useCountDown';
 import { remove, set } from '../utils/localStorage';
 import formatSeconds from '../utils/date';

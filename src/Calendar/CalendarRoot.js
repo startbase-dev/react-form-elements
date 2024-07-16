@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { DayPicker } from 'react-day-picker';
-import cx from 'classnames';
+import cx from 'clsx';
 import 'react-day-picker/dist/style.css';
 
 import s from './CalendarRoot.module.css';

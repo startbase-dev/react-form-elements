@@ -2,7 +2,7 @@ import React, { forwardRef, useCallback, useMemo } from 'react';
 
 import PropTypes from 'prop-types';
 
-import cx from 'classnames';
+import cx from 'clsx';
 
 import s from './Input.module.css';
 

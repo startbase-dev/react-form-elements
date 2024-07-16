@@ -1,5 +1,5 @@
 .switch {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   position: relative;
   margin-bottom: var(--rfe-spacing);

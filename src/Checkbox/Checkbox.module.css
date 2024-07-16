@@ -1,8 +1,8 @@
 .root {
   position: relative;
-  display: flex;
   flex-direction: column;
   margin-bottom: var(--rfe-spacing);
+  display: inline-flex;
 }
 
 .inputRoot {

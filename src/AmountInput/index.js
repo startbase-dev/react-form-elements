@@ -1,6 +1,6 @@
 import React, { forwardRef, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
+import cx from 'clsx';
 import AmountInputRoot from './AmountInputRoot';
 import s from './AmountInput.module.css';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Slot.module.css';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
+import cx from 'clsx';
 
 function Slot({
   char,

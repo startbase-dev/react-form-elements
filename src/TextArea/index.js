@@ -9,7 +9,7 @@ import React, {
 
 import PropTypes from 'prop-types';
 
-import cx from 'classnames';
+import cx from 'clsx';
 
 import s from './TextArea.module.css';
 

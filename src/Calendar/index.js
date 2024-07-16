@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo } from 'react';
 
 import PropTypes from 'prop-types';
-import cx from 'classnames';
+import cx from 'clsx';
 
 import CalendarRoot from './CalendarRoot';
 import s from './Calendar.module.css';
