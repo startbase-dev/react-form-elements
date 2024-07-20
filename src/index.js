@@ -19,6 +19,9 @@ import Slider from './Slider';
 import Select from './Select';
 import Switch from './Switch';
 import TextArea from './TextArea';
+
+import 'react-day-picker/dist/style.css';
+import 'rc-slider/assets/index.css';
 import './style/globals.css';
 
 export {
