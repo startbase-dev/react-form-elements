@@ -1,3 +1,6 @@
+@import './react-day-picker.css';
+@import './rc-slider.css';
+
 :root {
   --rfe-transparent: transparent;
   --rfe-white: #fff;

@@ -1,5 +1,3 @@
-import 'react-day-picker/dist/style.css';
-import 'rc-slider/assets/index.css';
 import '../src/style/globals.css';
 import './storybook.css';
 
