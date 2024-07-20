@@ -52,7 +52,6 @@ export default defineConfig({
   entry: ['src/index.js'],
   format: ['esm', 'cjs'],
   loader: {
-    '.css': 'local-css',
     '.js': 'jsx',
   },
   dts: false,
