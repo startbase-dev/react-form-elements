@@ -78,6 +78,10 @@
   background: var(--rfe-background-selected);
 }
 
+.noLabel {
+  margin: 0;
+}
+
 .switchSwitchChecked {
   right: 2px;
 }

@@ -56,6 +56,7 @@ const Index = forwardRef(
             className={cx(s.box, {
               [s.boxDisabled]: disabled,
               [s.inputError]: typeof error === 'boolean' && error,
+              [s.noLabel]: !label,
               [inputClassName]: inputClassName,
             })}
           >

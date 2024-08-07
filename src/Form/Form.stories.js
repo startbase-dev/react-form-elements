@@ -130,7 +130,6 @@ const Template = () => {
         />
         <Checkbox
           disabled={disabled}
-          label="Checkbox"
           name="checkbox"
           checked={inputs.checkbox}
           onChange={onChange}
@@ -237,7 +236,6 @@ const Template = () => {
         />
         <Radio
           disabled={disabled}
-          label="Radio"
           name="radio"
           value="radio"
           checked={inputs.radio === 'radio'}
@@ -289,7 +287,6 @@ const Template = () => {
           disabled={disabled}
         />
         <Switch
-          label="Switch"
           name="switch"
           checked={inputs.switch}
           onChange={onChange}

@@ -40,6 +40,10 @@
   }
 }
 
+.noLabel {
+  margin: 0;
+}
+
 .inputError {
   border-color: var(--rfe-color-error) !important;
 }

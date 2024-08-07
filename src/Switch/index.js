@@ -53,6 +53,7 @@ const Index = forwardRef(
               [s.inputError]: typeof error === 'boolean' && error,
               [inputClassName]: inputClassName,
               [s.switchInnerChecked]: checked,
+              [s.noLabel]: !label,
             })}
           >
             <span

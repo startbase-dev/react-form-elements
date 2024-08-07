@@ -40,6 +40,10 @@
   }
 }
 
+.noLabel {
+  margin: 0;
+}
+
 .boxDisabled {
   background-color: var(--rfe-background-disabled);
 
