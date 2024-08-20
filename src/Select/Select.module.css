@@ -29,6 +29,11 @@
   transform: none;
 }
 
+.disabledLabel {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .labelPlaceholder {
   font-size: var(--rfe-focused-font-size);
   transform: translateY(9px);

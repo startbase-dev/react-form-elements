@@ -40,6 +40,7 @@ TextAreaComponentPlaceholderAndLabel.args = {
   title: 'TextArea',
   placeholder: 'TextArea Placeholder',
   label: 'TextArea Label',
+  disabled: true,
 };
 
 export const TextAreaComponentResizable = Template.bind({});

@@ -36,6 +36,11 @@
   transform: translateY(9px);
 }
 
+.disabledLabel {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .input {
   width: 100%;
   line-height: 24px;

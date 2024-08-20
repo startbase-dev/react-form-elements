@@ -59,6 +59,7 @@ const Index = forwardRef(
           htmlFor={name}
           className={cx(s.label, {
             [s.disableShrink]: disableShrink,
+            [s.disabledLabel]: disabled,
             [s.labelPlaceholder]: label && placeholder && !disableShrink,
             [s.labelFocused]:
               (label && focused && !disableShrink) ||
@@ -90,6 +91,7 @@ const Index = forwardRef(
         </label>
       ),
       [
+        disabled,
         name,
         disableShrink,
         label,

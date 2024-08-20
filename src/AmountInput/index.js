@@ -81,6 +81,7 @@ const Index = forwardRef(
           htmlFor={name}
           className={cx(s.label, {
             [s.disableShrink]: disableShrink,
+            [s.disabledLabel]: disabled,
             [s.focusedLabel]: label && placeholder && !disableShrink,
             [labelClassName]: labelClassName,
           })}
@@ -88,7 +89,7 @@ const Index = forwardRef(
           {label}
         </label>
       ),
-      [name, disableShrink, label, placeholder, labelClassName]
+      [disabled, name, disableShrink, label, placeholder, labelClassName]
     );
 
     const errorMessage = useMemo(() => {

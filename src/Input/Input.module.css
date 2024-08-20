@@ -74,6 +74,11 @@
   padding: 16px;
 }
 
+.disabledLabel {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .append,
 .prepend {
   position: absolute;

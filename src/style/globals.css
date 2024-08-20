@@ -94,7 +94,6 @@ select:-webkit-autofill:focus,
 select:-webkit-autofill:active {
   background-clip: border-box !important;
   -webkit-text-fill-color: var(--rfe-color) !important;
-  box-shadow: 0 0 0 1000px var(--rfe-background) inset !important;
 }
 
 input:-webkit-autofill:disabled,
@@ -111,7 +110,6 @@ select:-webkit-autofill:disabled:focus,
 select:-webkit-autofill:disabled:active {
   background-clip: border-box !important;
   -webkit-text-fill-color: var(--rfe-color) !important;
-  box-shadow: 0 0 0 1000px var(--rfe-background-disabled) inset !important;
 }
 
 input {

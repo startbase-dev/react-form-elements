@@ -39,6 +39,11 @@
   padding: 19px 16px 0 !important;
 }
 
+.disabledLabel {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .labelPlaceholder {
   font-size: var(--rfe-focused-font-size);
   transform: translateY(9px);

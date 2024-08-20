@@ -132,6 +132,7 @@ const Index = forwardRef(
           htmlFor={name}
           className={cx(s.label, {
             [s.disableShrink]: disableShrink,
+            [s.disabledLabel]: disabled,
             [s.labelPlaceholder]: label && placeholder && !disableShrink,
             [s.labelFocused]:
               (label && value?.length !== 0 && !!value && !disableShrink) ||
@@ -163,7 +164,7 @@ const Index = forwardRef(
           {label}
         </label>
       ),
-      [name, disableShrink, label, labelClassName, placeholder, value]
+      [disabled, name, disableShrink, label, labelClassName, placeholder, value]
     );
 
     useEffect(() => {

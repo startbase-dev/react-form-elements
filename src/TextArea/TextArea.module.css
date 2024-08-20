@@ -91,6 +91,9 @@
 }
 
 .disabledLabel {
+  pointer-events: none;
+  cursor: not-allowed;
+
   &::before {
     background-color: var(--rfe-background-disabled) !important;
   }

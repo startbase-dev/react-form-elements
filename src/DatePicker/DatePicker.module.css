@@ -35,6 +35,11 @@
   padding: 24px 16px 0 60px !important;
 }
 
+.disabledLabel {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .placeholder {
   padding: 19px 16px 0 !important;
 }
