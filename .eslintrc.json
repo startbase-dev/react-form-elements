@@ -5,17 +5,20 @@
     "browser": true,
     "es2024": true
   },
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
+    "plugin:@typescript-eslint/strict",
+    "plugin:@typescript-eslint/stylistic",
     "plugin:css-modules/recommended",
     "plugin:react/recommended",
     "plugin:compat/recommended",
-    "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
     "prettier",
     "plugin:storybook/recommended"
   ],
-  "plugins": ["compat", "prettier", "css-modules"],
+
+  "plugins": ["@typescript-eslint", "compat", "prettier", "css-modules"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -38,6 +41,10 @@
         "max": 1
       }
     ],
-    "no-useless-catch": 0
+    "no-useless-catch": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-non-null-assertion": 0
   }
 }

@@ -10,7 +10,7 @@ import CheckboxCards from '../CheckboxCards';
 import CheckboxGroup from '../CheckboxGroup';
 import DatePicker from '../DatePicker';
 import DateRangePicker from '../DateRangePicker';
-import Form from './index.js';
+import Form from './index';
 import Input from '../Input';
 import MultipleDatePicker from '../MultipleDatePicker';
 import NumberInput from '../NumberInput';
