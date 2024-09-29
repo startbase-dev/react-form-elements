@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   DayPicker,
+  DayPickerMultipleProps,
   type DayPickerRangeProps,
   type DayPickerSingleProps,
 } from 'react-day-picker';
@@ -25,8 +26,17 @@ export interface CalendarRootSingleProps extends DayPickerSingleProps {
   error?: boolean | string | { message?: string } | null;
 }
 
+export interface CalendarRootMultipleProps extends DayPickerMultipleProps {
+  numberOfMonths?: number;
+  classNames?: Partial<Record<string, string>>;
+  calendarClassName?: string | null;
+  className?: string;
+  disabled?: boolean;
+  error?: boolean | string | { message?: string } | null;
+}
+
 const CalendarRoot: React.FC<
-  CalendarRootRangeProps | CalendarRootSingleProps
+  CalendarRootRangeProps | CalendarRootSingleProps | CalendarRootMultipleProps
 > = ({
   disabled,
   error,

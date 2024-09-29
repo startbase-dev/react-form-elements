@@ -1,6 +1,6 @@
 import React, {
   forwardRef,
-  MutableRefObject,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState,
@@ -77,7 +77,8 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
     ref
   ) => {
     const [isPopperOpen, setIsPopperOpen] = useState(false);
-    const inputRef = useRef<MutableRefObject<HTMLInputElement | null>>(ref);
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    useImperativeHandle(ref, () => inputRef?.current!);
     const popperRef = useRef<HTMLDivElement>(null);
     const [popperElement, setPopperElement] = useState<HTMLElement | null>(
       null
@@ -88,7 +89,7 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
 
     const closePopper = () => {
       setIsPopperOpen(false);
-      inputRef.current?.current?.focus();
+      inputRef.current?.focus();
     };
 
     const handleDaySelect = (date: Date) => {
@@ -116,7 +117,6 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
     const input = useMemo(() => {
       return (
         <input
-          {...rest}
           type="text"
           autoComplete="off"
           readOnly
@@ -138,7 +138,7 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
           disabled={disabled}
           placeholder={placeholder}
           onClick={() => {
-            inputRef.current?.current?.focus();
+            inputRef.current?.focus();
             setIsPopperOpen((prevState) => !prevState);
           }}
           onChange={() => ({})}
@@ -184,7 +184,7 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
                 ) as HTMLInputElement;
               }
               input?.focus();
-              inputRef.current?.current?.focus();
+              inputRef.current?.focus();
               setIsPopperOpen((prevState) => !prevState);
             } catch (error) {
               throw error;

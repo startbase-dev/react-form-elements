@@ -79,7 +79,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             [s.placeholder]: label && placeholder && !disableShrink,
             [s.disabled]: disabled,
             [s.inputError]: typeof error === 'boolean' && error,
-            [inputClassName]: inputClassName,
+            ...(inputClassName ? { [inputClassName]: true } : {}),
           })}
           name={name}
           value={value}
@@ -112,7 +112,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             [s.disabledLabel]: disabled,
             [s.disableShrink]: disableShrink,
             [s.labelPlaceholder]: label && placeholder && !disableShrink,
-            [labelClassName]: labelClassName,
+            ...(labelClassName ? { [labelClassName]: true } : {}),
           })}
           onClick={() => {
             try {
@@ -126,8 +126,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
               let input = inputs[0];
 
-              if (input.type === 'hidden') {
-                input = input.parentNode?.querySelector(
+              if (input?.type === 'hidden') {
+                input = input?.parentNode?.querySelector(
                   'input'
                 ) as HTMLInputElement;
               }
@@ -150,7 +150,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {prepend && (
             <div
               className={cx(s.prepend, {
-                [prependClassName]: prependClassName,
+                ...(prependClassName ? { [prependClassName]: true } : {}),
                 [s.prependDisabledShrink]: disableShrink,
               })}
             >
@@ -162,7 +162,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             <div
               className={cx(s.append, {
                 [s.appendDisabledShrink]: disableShrink,
-                [appendClassName]: appendClassName,
+                ...(appendClassName ? { [appendClassName]: true } : {}),
               })}
             >
               {append}
@@ -177,7 +177,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         </div>
         {errorMessage ? (
           <span
-            className={cx(s.errorLabel, { [errorClassName]: errorClassName })}
+            className={cx(s.errorLabel, {
+              ...(errorClassName ? { [errorClassName]: true } : {}),
+            })}
           >
             {errorMessage}
           </span>

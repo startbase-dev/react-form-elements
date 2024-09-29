@@ -7,6 +7,7 @@ import React, {
   useRef,
   useEffect,
   ForwardedRef,
+  useImperativeHandle,
 } from 'react';
 
 import cx from 'clsx';
@@ -14,6 +15,7 @@ import {
   default as ReactSelect,
   components as ReactSelectComponents,
   GroupBase,
+  Props,
 } from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { format as dateFNSFormat, type Locale } from 'date-fns';
@@ -30,13 +32,13 @@ interface Option {
   label: string | JSX.Element;
 }
 
-interface MultipleDatePickerProps {
+interface MultipleDatePickerProps extends Props {
   name: string;
   onChange: (event: { target: { name: string; value: Date[] } }) => void;
   error?: boolean | string | { message?: string };
   label?: string | null;
   placeholder?: string | null;
-  value?: Date[];
+  value?: Date[] | undefined;
   locale?: Locale | null;
   format?: string;
   inputClassName?: string | null;
@@ -45,8 +47,6 @@ interface MultipleDatePickerProps {
   calendarClassName?: string | null;
   disableShrink?: boolean;
   disabled?: boolean;
-  classNames?: Record<string, (state: any) => string> | null;
-  components?: Record<string, React.ElementType> | null;
   onFocus?: (e: React.FocusEvent) => void;
   onBlur?: (e: React.FocusEvent) => void;
 }
@@ -74,11 +74,12 @@ const MultipleDatePicker = forwardRef<HTMLDivElement, MultipleDatePickerProps>(
       onBlur = () => ({}),
       ...rest
     },
-    ref: ForwardedRef<HTMLDivElement>
+    ref: ForwardedRef<HTMLInputElement | null>
   ) => {
     const [isPopperOpen, setIsPopperOpen] = useState(false);
 
-    const inputRef = useRef(ref);
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    useImperativeHandle(ref, () => inputRef?.current!);
     const popperRef = useRef<HTMLDivElement>(null);
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
       null
@@ -88,7 +89,7 @@ const MultipleDatePicker = forwardRef<HTMLDivElement, MultipleDatePickerProps>(
       placement: 'bottom-end',
     });
 
-    const handleDaySelect = (date: Date) => {
+    const handleDaySelect = (date: Date[]) => {
       onChange({
         target: {
           name: name,
@@ -186,7 +187,7 @@ const MultipleDatePicker = forwardRef<HTMLDivElement, MultipleDatePickerProps>(
               let input = inputs?.[0];
 
               if (input?.type === 'hidden') {
-                input = input?.parentNode?.querySelector('input') || null;
+                input = input?.parentNode?.querySelector('input') || undefined;
               }
 
               input?.focus();
@@ -243,7 +244,7 @@ const MultipleDatePicker = forwardRef<HTMLDivElement, MultipleDatePickerProps>(
                   clearIndicator: () => s.clearIndicator,
                   multiValue: () => s.multiValue,
                   valueContainer: () =>
-                    label && !disableShrink ? s.valueContainer : null,
+                    label && !disableShrink ? s.valueContainer : '',
                   multiValueRemove: () => s.multiValueRemove,
                   ...classNames,
                   control: (state) =>

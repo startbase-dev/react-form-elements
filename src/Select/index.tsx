@@ -4,11 +4,15 @@ import React, {
   useCallback,
   useMemo,
   useState,
+  useRef,
+  useImperativeHandle, // Import RefObject for ReactSelect ref
 } from 'react';
 import cx from 'clsx';
 import {
   default as ReactSelect,
   components as SelectComponents,
+  ActionMeta,
+  Props,
 } from 'react-select';
 import makeAnimated from 'react-select/animated';
 
@@ -21,7 +25,7 @@ interface Option {
   label: string | React.ReactNode;
 }
 
-interface SelectProps {
+interface SelectProps extends Props {
   name: string;
   onChange: (event: { target: { name: string; value: Option | null } }) => void;
   error?: boolean | string | { message: string };
@@ -41,7 +45,7 @@ interface SelectProps {
   [rest: string]: any;
 }
 
-const Select = forwardRef<HTMLDivElement, SelectProps>(
+const Select = forwardRef<HTMLInputElement, SelectProps>(
   (
     {
       name,
@@ -62,14 +66,15 @@ const Select = forwardRef<HTMLDivElement, SelectProps>(
       onBlur = () => ({}),
       ...rest
     },
-    inputRef
+    inputRef // This should be typed as RefObject<ReactSelect>
   ) => {
     const [focused, setFocused] = useState(false);
-
+    const ref = useRef<HTMLInputElement | null>(null);
+    useImperativeHandle(inputRef, () => ref?.current!);
     const handleChange = useCallback(
-      (option: Option | null, { action }) => {
-        if (action === 'clear') {
-          inputRef?.current?.blur();
+      (option: Option | null, actionMeta: ActionMeta<Option>) => {
+        if (actionMeta.action === 'clear') {
+          ref?.current?.blur();
         }
         onChange({
           target: {
@@ -101,7 +106,7 @@ const Select = forwardRef<HTMLDivElement, SelectProps>(
                 ? inputs?.[0]?.parentNode?.querySelector('input')
                 : inputs?.[0];
             input?.focus();
-            inputRef?.current?.focus();
+            ref?.current?.focus();
           }}
         >
           {label}
@@ -136,7 +141,7 @@ const Select = forwardRef<HTMLDivElement, SelectProps>(
 
           <ReactSelect
             value={value}
-            ref={inputRef}
+            ref={ref}
             options={options}
             instanceId={useId()}
             onChange={handleChange}

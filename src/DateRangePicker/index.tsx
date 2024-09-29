@@ -1,19 +1,23 @@
-import React, { forwardRef, useMemo, useRef, useState } from 'react';
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import cx from 'clsx';
 import { format as dateFNSFormat } from 'date-fns';
 import { usePopper } from 'react-popper';
 import { FocusOn } from 'react-focus-on';
 import CalendarRoot, { CalendarRootRangeProps } from '../Calendar/CalendarRoot';
 import s from './DateRangePicker.module.css';
-
-interface DateRange {
-  from?: Date;
-  to?: Date;
-}
+import { DateRange, SelectRangeEventHandler } from 'react-day-picker';
 
 interface DateRangePickerProps extends CalendarRootRangeProps {
   name: string;
-  onChange: (event: { target: { name: string; value: DateRange } }) => void;
+  onChange: (event: {
+    target: { name: string; value: DateRange | undefined };
+  }) => void;
   error?: boolean | string | { message?: string };
   label?: string | null;
   placeholder?: string | null;
@@ -77,14 +81,13 @@ const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
     ref
   ) => {
     const [isPopperOpen, setIsPopperOpen] = useState(false);
-    const [range, setRange] = useState<DateRange>(value);
+    const [range, setRange] = useState<DateRange | undefined>(value);
     const popperRef = useRef<HTMLDivElement | null>(null);
-    const inputRef = useRef<HTMLInputElement | null>(
-      ref as React.RefObject<HTMLInputElement> | null
-    );
+    const inputRef = useRef<HTMLInputElement | null>(null);
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
       null
     );
+    useImperativeHandle(ref, () => inputRef?.current!);
 
     const popper = usePopper(popperRef.current, popperElement, {
       placement: 'bottom-end',
@@ -95,7 +98,9 @@ const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
       inputRef?.current?.focus();
     };
 
-    const handleDaySelect = (date: DateRange) => {
+    const handleDaySelect: SelectRangeEventHandler | undefined = (
+      date: DateRange | undefined
+    ) => {
       setRange(date);
       onChange({
         target: {
@@ -199,7 +204,8 @@ const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
           })}
           onClick={() => {
             const inputs = document.querySelectorAll(`[name="${name}"]`);
-            let input = inputs?.[0];
+            let input: HTMLInputElement | undefined | null =
+              inputs?.[0] as HTMLInputElement;
             if (input?.type === 'hidden') {
               input = input?.parentNode?.querySelector('input');
             }
