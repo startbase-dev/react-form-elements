@@ -1,4 +1,3 @@
-declare module '*.module.css' {
-  const classes: Record<string, string>;
-  export default classes;
+declare module 'csstype' {
+  type Properties = Record<`--${string}`, string>;
 }
