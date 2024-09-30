@@ -4,15 +4,14 @@ import React, {
   useCallback,
   useMemo,
   useState,
-  useRef,
-  useImperativeHandle, // Import RefObject for ReactSelect ref
 } from 'react';
 import cx from 'clsx';
 import {
   default as ReactSelect,
   components as SelectComponents,
-  ActionMeta,
   Props,
+  GroupBase,
+  SelectInstance,
 } from 'react-select';
 import makeAnimated from 'react-select/animated';
 
@@ -25,9 +24,8 @@ interface Option {
   label: string | React.ReactNode;
 }
 
-interface SelectProps extends Props {
+interface SelectProps extends Props<Option, false, GroupBase<Option>> {
   name: string;
-  onChange: (event: { target: { name: string; value: Option | null } }) => void;
   error?: boolean | string | { message: string };
   label?: string | React.ReactNode;
   options?: Option[];
@@ -45,7 +43,10 @@ interface SelectProps extends Props {
   [rest: string]: any;
 }
 
-const Select = forwardRef<HTMLInputElement, SelectProps>(
+const Select = forwardRef<
+  SelectInstance<Option, false, GroupBase<Option>>,
+  SelectProps
+>(
   (
     {
       name,
@@ -66,16 +67,12 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(
       onBlur = () => ({}),
       ...rest
     },
-    inputRef // This should be typed as RefObject<ReactSelect>
+    inputRef // inputRef is now typed as a ForwardedRef of StateManager (ReactSelect component)
   ) => {
     const [focused, setFocused] = useState(false);
-    const ref = useRef<HTMLInputElement | null>(null);
-    useImperativeHandle(inputRef, () => ref?.current!);
+
     const handleChange = useCallback(
-      (option: Option | null, actionMeta: ActionMeta<Option>) => {
-        if (actionMeta.action === 'clear') {
-          ref?.current?.blur();
-        }
+      (option: Option | null) => {
         onChange({
           target: {
             name,
@@ -99,15 +96,6 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(
               (label && value && !disableShrink),
             [labelClassName]: labelClassName,
           })}
-          onClick={() => {
-            const inputs = document.querySelectorAll(`[name="${name}"]`);
-            const input =
-              inputs?.[0]?.type === 'hidden'
-                ? inputs?.[0]?.parentNode?.querySelector('input')
-                : inputs?.[0];
-            input?.focus();
-            ref?.current?.focus();
-          }}
         >
           {label}
         </label>
@@ -141,7 +129,7 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(
 
           <ReactSelect
             value={value}
-            ref={ref}
+            ref={inputRef}
             options={options}
             instanceId={useId()}
             onChange={handleChange}
