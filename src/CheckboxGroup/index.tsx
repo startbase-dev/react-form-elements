@@ -2,6 +2,7 @@ import React, { forwardRef, useCallback, useMemo } from 'react';
 import cx from 'clsx';
 import Checkbox from '../Checkbox';
 import s from './CheckboxGroup.module.scss';
+import { FieldError } from 'react-hook-form';
 
 interface Option {
   value: string | number;
@@ -21,7 +22,13 @@ interface CheckboxGroupProps {
   optionLabelClassName?: string | null;
   errorClassName?: string | null;
   disabled?: boolean;
-  error?: boolean | string | { message?: string } | null;
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
 }
 
 const CheckboxGroup = forwardRef<HTMLInputElement, CheckboxGroupProps>(

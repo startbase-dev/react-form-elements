@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import cx from 'clsx';
 import s from './Input.module.scss';
+import { FieldError } from 'react-hook-form';
 
 export interface DateRangePickerInputProps {
   from: Date;
@@ -16,7 +17,13 @@ export interface DateRangePickerInputProps {
 type InputProps = {
   name: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  error?: boolean | string | { message: string } | null;
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
   label?: string | null;
   placeholder?: string | undefined;
   value?: string | boolean | number | Date | Date[] | DateRangePickerInputProps;

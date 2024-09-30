@@ -16,6 +16,7 @@ import {
 import makeAnimated from 'react-select/animated';
 
 import s from './Select.module.scss';
+import { FieldError } from 'react-hook-form';
 
 const animatedComponents = makeAnimated();
 
@@ -26,7 +27,13 @@ interface Option {
 
 interface SelectProps extends Props<Option, false, GroupBase<Option>> {
   name: string;
-  error?: boolean | string | { message: string };
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
   label?: string | React.ReactNode;
   options?: Option[];
   placeholder?: string;

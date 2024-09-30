@@ -13,11 +13,18 @@ import CalendarRoot, {
   CalendarRootSingleProps,
 } from '../Calendar/CalendarRoot';
 import s from './DatePicker.module.scss';
+import { FieldError } from 'react-hook-form';
 
 interface DatePickerProps extends CalendarRootSingleProps {
   name: string;
   onChange: (event: unknown) => void;
-  error?: boolean | string | { message?: string } | null;
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
   label?: string;
   placeholder?: string;
   value?: string | number | Date | undefined;

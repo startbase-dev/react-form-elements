@@ -11,6 +11,7 @@ import React, {
 } from 'react';
 import cx from 'clsx';
 import s from './TextArea.module.scss';
+import { FieldError } from 'react-hook-form';
 
 type TextAreaProps = {
   name: string;
@@ -26,7 +27,13 @@ type TextAreaProps = {
   errorClassName?: string;
   onFocus?: (e: FocusEvent<HTMLTextAreaElement>) => void;
   onBlur?: (e: FocusEvent<HTMLTextAreaElement>) => void;
-  error?: boolean | string | { message: string } | null;
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(

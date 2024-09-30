@@ -27,6 +27,7 @@ import { FocusOn } from 'react-focus-on';
 import CalendarRoot from '../Calendar/CalendarRoot';
 
 import s from './MultipleDatePicker.module.scss';
+import { FieldError } from 'react-hook-form';
 
 interface OptionType {
   value: number;
@@ -36,7 +37,13 @@ interface OptionType {
 interface MultipleDatePickerProps extends Props {
   name: string;
   onChange: (event: { target: { name: string; value: Date[] } }) => void;
-  error?: boolean | string | { message?: string };
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
   label?: string | null;
   placeholder?: string | null;
   value?: Date[] | undefined;

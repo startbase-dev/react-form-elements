@@ -2,6 +2,7 @@ import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
 import Slider from 'rc-slider';
 import s from './Slider.module.scss';
+import { FieldError } from 'react-hook-form';
 
 interface SliderProps {
   name: string;
@@ -19,7 +20,13 @@ interface SliderProps {
   labelClassName?: string;
   errorClassName?: string;
   disabled?: boolean;
-  error?: boolean | string | { message: string };
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
   [rest: string]: any;
 }
 

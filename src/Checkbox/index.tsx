@@ -2,6 +2,7 @@ import React, { forwardRef, useMemo, ChangeEvent, ReactNode } from 'react';
 import cx from 'clsx';
 import { CheckIcon } from '../Icon';
 import s from './Checkbox.module.scss';
+import { FieldError } from 'react-hook-form';
 
 interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -12,7 +13,13 @@ interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   labelClassName?: string;
   errorClassName?: string;
   disabled?: boolean;
-  error?: string | boolean | { message?: string };
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
 }
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(

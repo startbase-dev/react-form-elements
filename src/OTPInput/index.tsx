@@ -6,6 +6,7 @@ import cx from 'clsx';
 import { useCountDown } from '../utils/useCountDown';
 import { remove, set } from '../utils/localStorage';
 import formatSeconds from '../utils/date';
+import { FieldError } from 'react-hook-form';
 
 interface OTPInputProps {
   name: string;
@@ -17,7 +18,13 @@ interface OTPInputProps {
   onComplete?: () => void;
   onResend?: () => void;
   value?: string;
-  error?: boolean | string | { message: string };
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
   label?: string | null;
   resendLabel?: string;
   inputClassName?: string;

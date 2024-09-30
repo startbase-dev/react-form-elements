@@ -12,13 +12,20 @@ import { FocusOn } from 'react-focus-on';
 import CalendarRoot, { CalendarRootRangeProps } from '../Calendar/CalendarRoot';
 import s from './DateRangePicker.module.scss';
 import { DateRange, SelectRangeEventHandler } from 'react-day-picker';
+import { FieldError } from 'react-hook-form';
 
 interface DateRangePickerProps extends CalendarRootRangeProps {
   name: string;
   onChange: (event: {
     target: { name: string; value: DateRange | undefined };
   }) => void;
-  error?: boolean | string | { message?: string };
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
   label?: string | null;
   placeholder?: string | null;
   value?: DateRange;

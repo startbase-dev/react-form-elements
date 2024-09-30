@@ -1,6 +1,7 @@
 import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
 import s from './Switch.module.scss';
+import { FieldError } from 'react-hook-form';
 
 interface SwitchProps {
   name: string;
@@ -11,7 +12,13 @@ interface SwitchProps {
   labelClassName?: string;
   errorClassName?: string;
   disabled?: boolean;
-  error?: boolean | string | { message: string };
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
 }
 
 const Switch = forwardRef<HTMLInputElement, SwitchProps>(

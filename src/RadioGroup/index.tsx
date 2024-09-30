@@ -2,6 +2,7 @@ import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
 import Radio from '../Radio';
 import s from './RadioGroup.module.scss';
+import { FieldError } from 'react-hook-form';
 
 interface Option {
   value: string;
@@ -19,7 +20,13 @@ interface RadioGroupProps {
   optionLabelClassName?: string;
   errorClassName?: string;
   disabled?: boolean;
-  error?: boolean | string | { message: string };
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
 }
 
 const RadioGroup = forwardRef<HTMLInputElement, RadioGroupProps>(

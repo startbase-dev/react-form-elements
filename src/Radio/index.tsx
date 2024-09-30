@@ -2,6 +2,7 @@ import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
 import { CheckIcon } from '../Icon';
 import s from './Radio.module.scss';
+import { FieldError } from 'react-hook-form';
 
 interface RadioProps {
   name: string;
@@ -13,7 +14,13 @@ interface RadioProps {
   labelClassName?: string;
   errorClassName?: string;
   disabled?: boolean;
-  error?: boolean | string | { message: string };
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
   [rest: string]: any;
 }
 

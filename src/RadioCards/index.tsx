@@ -2,6 +2,7 @@ import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
 import Radio from '../Radio';
 import s from './RadioCards.module.scss';
+import { FieldError } from 'react-hook-form';
 
 interface Option {
   value: string;
@@ -22,7 +23,13 @@ interface RadioCardsProps {
   errorClassName?: string;
   disabled?: boolean;
   hideInput?: boolean;
-  error?: boolean | string | { message: string };
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
 }
 
 const RadioCards = forwardRef<HTMLInputElement, RadioCardsProps>(

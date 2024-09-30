@@ -2,11 +2,18 @@ import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
 import CalendarRoot, { CalendarRootSingleProps } from './CalendarRoot';
 import s from './Calendar.module.scss';
+import { FieldError } from 'react-hook-form';
 
 interface CalendarProps extends CalendarRootSingleProps {
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  error?: boolean | string | { message?: string };
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
   label?: string;
   value?: Date | null;
   labelClassName?: string;

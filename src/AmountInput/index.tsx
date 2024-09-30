@@ -2,10 +2,17 @@ import React, { forwardRef, useCallback, useMemo } from 'react';
 import cx from 'clsx';
 import AmountInputRoot, { type AmountInputRootProps } from './AmountInputRoot';
 import s from './AmountInput.module.scss';
+import { FieldError } from 'react-hook-form';
 
 interface AmountInputProps extends AmountInputRootProps {
   name: string;
-  error?: boolean | string | { message?: string } | null;
+  error?:
+    | boolean
+    | string
+    | { message?: string }
+    | null
+    | undefined
+    | FieldError;
   label?: string | null;
   value?: string | number | readonly string[] | undefined;
   inputClassName?: string | null;
