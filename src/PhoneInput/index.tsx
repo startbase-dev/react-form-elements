@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import Input, { type InputProps } from '../Input';
-import s from './PhoneInput.module.css';
+import s from './PhoneInput.module.scss';
 import { usePhoneInput, FlagImage } from 'react-international-phone';
 
 interface PhoneInputProps extends InputProps {
@@ -52,3 +52,5 @@ const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
 PhoneInput.displayName = 'PhoneInput';
 
 export default PhoneInput;
+
+export { type PhoneInputProps };

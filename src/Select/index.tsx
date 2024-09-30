@@ -15,7 +15,7 @@ import {
 } from 'react-select';
 import makeAnimated from 'react-select/animated';
 
-import s from './Select.module.css';
+import s from './Select.module.scss';
 
 const animatedComponents = makeAnimated();
 
@@ -195,4 +195,4 @@ Select.displayName = 'Select';
 
 export default Select;
 
-export { SelectComponents };
+export { SelectComponents, type SelectProps };

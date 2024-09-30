@@ -61,7 +61,7 @@ export default defineConfig({
   clean: false,
   esbuildPlugins: [
     sassPlugin({
-      filter: /\.module\.css$/,
+      filter: /\.module\.scss$/,
       transform: postcssModules({
         generateScopedName: 'SUI-[name]-[local]-[hash:base64:5]',
         localsConvention: 'camelCaseOnly',

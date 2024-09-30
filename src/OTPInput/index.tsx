@@ -1,13 +1,13 @@
 import { OTPInput } from 'input-otp';
 import React, { forwardRef, useCallback, useEffect, useMemo } from 'react';
-import s from './OTPInput.module.css';
+import s from './OTPInput.module.scss';
 import Slot from './Slot';
 import cx from 'clsx';
 import { useCountDown } from '../utils/useCountDown';
 import { remove, set } from '../utils/localStorage';
 import formatSeconds from '../utils/date';
 
-interface OTPProps {
+interface OTPInputProps {
   name: string;
   length: number;
   onChange: (event: { target: { name: string; value: string } }) => void;
@@ -26,7 +26,7 @@ interface OTPProps {
   disabled?: boolean;
 }
 
-const OTPInputComponent = forwardRef<HTMLInputElement, OTPProps>(
+const OTPInputComponent = forwardRef<HTMLInputElement, OTPInputProps>(
   (
     {
       name,
@@ -198,3 +198,5 @@ const OTPInputComponent = forwardRef<HTMLInputElement, OTPProps>(
 OTPInputComponent.displayName = 'OTPInput';
 
 export default OTPInputComponent;
+
+export { type OTPInputProps };

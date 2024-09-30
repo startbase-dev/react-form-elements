@@ -1,7 +1,7 @@
 import React, { forwardRef, useCallback, useMemo } from 'react';
 import cx from 'clsx';
 import AmountInputRoot, { type AmountInputRootProps } from './AmountInputRoot';
-import s from './AmountInput.module.css';
+import s from './AmountInput.module.scss';
 
 interface AmountInputProps extends AmountInputRootProps {
   name: string;
@@ -166,3 +166,5 @@ const AmountInput = forwardRef<HTMLInputElement, AmountInputProps>(
 AmountInput.displayName = 'AmountInput';
 
 export default AmountInput;
+
+export { type AmountInputProps };

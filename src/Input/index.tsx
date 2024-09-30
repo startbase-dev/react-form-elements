@@ -6,14 +6,14 @@ import React, {
   RefObject,
 } from 'react';
 import cx from 'clsx';
-import s from './Input.module.css';
+import s from './Input.module.scss';
 
-interface DateRangePickerInputProps {
+export interface DateRangePickerInputProps {
   from: Date;
   to: Date;
 }
 
-export type InputProps = {
+type InputProps = {
   name: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   error?: boolean | string | { message: string } | null;
@@ -192,3 +192,5 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 Input.displayName = 'Input';
 
 export default Input;
+
+export { type InputProps };

@@ -20,7 +20,7 @@ import Select from './Select';
 import Switch from './Switch';
 import TextArea from './TextArea';
 
-import './style/globals.css';
+import './style/globals.scss';
 
 export {
   AmountInput,

@@ -1,7 +1,7 @@
 import React, { forwardRef, useCallback, useState } from 'react';
 import cx from 'clsx';
 import Input, { type InputProps } from '../Input';
-import s from './PasswordInput.module.css';
+import s from './PasswordInput.module.scss';
 
 type PasswordInputProps = InputProps;
 
@@ -71,3 +71,5 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 PasswordInput.displayName = 'PasswordInput';
 
 export default PasswordInput;
+
+export { type PasswordInputProps };

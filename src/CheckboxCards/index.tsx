@@ -1,7 +1,7 @@
 import React, { forwardRef, useCallback, useMemo } from 'react';
 import cx from 'clsx';
 import Checkbox from '../Checkbox';
-import s from './CheckboxCards.module.css';
+import s from './CheckboxCards.module.scss';
 
 interface Option {
   value: string | number;
@@ -142,3 +142,5 @@ const CheckboxCards = forwardRef<HTMLInputElement, CheckboxCardsProps>(
 CheckboxCards.displayName = 'CheckboxCards';
 
 export default CheckboxCards;
+
+export { type CheckboxCardsProps };

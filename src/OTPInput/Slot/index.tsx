@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Slot.module.css';
+import s from './Slot.module.scss';
 import cx from 'clsx';
 
 interface SlotProps {

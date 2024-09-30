@@ -6,7 +6,7 @@ import {
   type DayPickerSingleProps,
 } from 'react-day-picker';
 import cx from 'clsx';
-import s from './CalendarRoot.module.css';
+import s from './CalendarRoot.module.scss';
 
 export interface CalendarRootRangeProps extends DayPickerRangeProps {
   numberOfMonths?: number;

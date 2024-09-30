@@ -12,7 +12,7 @@ import cx from 'clsx';
 import CalendarRoot, {
   CalendarRootSingleProps,
 } from '../Calendar/CalendarRoot';
-import s from './DatePicker.module.css';
+import s from './DatePicker.module.scss';
 
 interface DatePickerProps extends CalendarRootSingleProps {
   name: string;
@@ -277,3 +277,5 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
 DatePicker.displayName = 'DatePicker';
 
 export default DatePicker;
+
+export { type DatePickerProps };

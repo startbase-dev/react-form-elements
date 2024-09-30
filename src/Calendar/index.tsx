@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
 import CalendarRoot, { CalendarRootSingleProps } from './CalendarRoot';
-import s from './Calendar.module.css';
+import s from './Calendar.module.scss';
 
 interface CalendarProps extends CalendarRootSingleProps {
   name: string;
@@ -107,3 +107,5 @@ const Calendar = forwardRef<HTMLInputElement, CalendarProps>(
 Calendar.displayName = 'Calendar';
 
 export default Calendar;
+
+export { type CalendarProps };

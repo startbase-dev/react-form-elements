@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
 import Slider from 'rc-slider';
-import s from './Slider.module.css';
+import s from './Slider.module.scss';
 
 interface SliderProps {
   name: string;
@@ -133,3 +133,5 @@ const SliderComponent = forwardRef<HTMLInputElement, SliderProps>(
 SliderComponent.displayName = 'Slider';
 
 export default SliderComponent;
+
+export { type SliderProps };

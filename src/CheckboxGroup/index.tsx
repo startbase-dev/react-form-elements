@@ -1,7 +1,7 @@
 import React, { forwardRef, useCallback, useMemo } from 'react';
 import cx from 'clsx';
 import Checkbox from '../Checkbox';
-import s from './CheckboxGroup.module.css';
+import s from './CheckboxGroup.module.scss';
 
 interface Option {
   value: string | number;
@@ -114,3 +114,5 @@ const CheckboxGroup = forwardRef<HTMLInputElement, CheckboxGroupProps>(
 CheckboxGroup.displayName = 'CheckboxGroup';
 
 export default CheckboxGroup;
+
+export { type CheckboxGroupProps };

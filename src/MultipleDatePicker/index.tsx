@@ -26,7 +26,7 @@ import { FocusOn } from 'react-focus-on';
 
 import CalendarRoot from '../Calendar/CalendarRoot';
 
-import s from './MultipleDatePicker.module.css';
+import s from './MultipleDatePicker.module.scss';
 
 interface OptionType {
   value: number;
@@ -361,3 +361,5 @@ const MultipleDatePicker = forwardRef<SelectInstance, MultipleDatePickerProps>(
 MultipleDatePicker.displayName = 'MultipleDatePicker';
 
 export default MultipleDatePicker;
+
+export { type MultipleDatePickerProps };

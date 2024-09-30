@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo, ChangeEvent, ReactNode } from 'react';
 import cx from 'clsx';
 import { CheckIcon } from '../Icon';
-import s from './Checkbox.module.css';
+import s from './Checkbox.module.scss';
 
 interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -87,3 +87,5 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 Checkbox.displayName = 'Checkbox';
 
 export default Checkbox;
+
+export { type CheckboxProps };

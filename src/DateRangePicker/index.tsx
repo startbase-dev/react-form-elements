@@ -10,7 +10,7 @@ import { format as dateFNSFormat } from 'date-fns';
 import { usePopper } from 'react-popper';
 import { FocusOn } from 'react-focus-on';
 import CalendarRoot, { CalendarRootRangeProps } from '../Calendar/CalendarRoot';
-import s from './DateRangePicker.module.css';
+import s from './DateRangePicker.module.scss';
 import { DateRange, SelectRangeEventHandler } from 'react-day-picker';
 
 interface DateRangePickerProps extends CalendarRootRangeProps {
@@ -300,3 +300,5 @@ const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
 DateRangePicker.displayName = 'DateRangePicker';
 
 export default DateRangePicker;
+
+export { type DateRangePickerProps };

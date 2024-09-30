@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
 import Radio from '../Radio';
-import s from './RadioGroup.module.css';
+import s from './RadioGroup.module.scss';
 
 interface Option {
   value: string;
@@ -87,3 +87,5 @@ const RadioGroup = forwardRef<HTMLInputElement, RadioGroupProps>(
 RadioGroup.displayName = 'RadioGroup';
 
 export default RadioGroup;
+
+export { type RadioGroupProps };

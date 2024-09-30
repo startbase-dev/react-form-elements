@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import Input, { type InputProps } from '../Input';
-import s from './NumberInput.module.css';
+import s from './NumberInput.module.scss';
 
 interface NumberInputProps extends InputProps {
   name: string;
@@ -70,3 +70,5 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
 NumberInput.displayName = 'NumberInput';
 
 export default NumberInput;
+
+export { type NumberInputProps };

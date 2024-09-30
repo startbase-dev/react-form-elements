@@ -69,3 +69,5 @@ package-lock.json
 /index.css
 /styles.css
 /index.mjs
+/index.d.mts
+/index.d.ts

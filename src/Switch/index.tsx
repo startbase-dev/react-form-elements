@@ -1,6 +1,6 @@
 import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
-import s from './Switch.module.css';
+import s from './Switch.module.scss';
 
 interface SwitchProps {
   name: string;
@@ -91,3 +91,5 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 Switch.displayName = 'Switch';
 
 export default Switch;
+
+export { type SwitchProps };

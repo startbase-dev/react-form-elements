@@ -10,7 +10,7 @@ import React, {
   RefObject,
 } from 'react';
 import cx from 'clsx';
-import s from './TextArea.module.css';
+import s from './TextArea.module.scss';
 
 type TextAreaProps = {
   name: string;
@@ -200,3 +200,5 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 TextArea.displayName = 'TextArea';
 
 export default TextArea;
+
+export { type TextAreaProps };

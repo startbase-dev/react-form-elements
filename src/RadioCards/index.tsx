@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
 import Radio from '../Radio';
-import s from './RadioCards.module.css';
+import s from './RadioCards.module.scss';
 
 interface Option {
   value: string;
@@ -122,3 +122,5 @@ const RadioCards = forwardRef<HTMLInputElement, RadioCardsProps>(
 RadioCards.displayName = 'RadioCards';
 
 export default RadioCards;
+
+export { type RadioCardsProps };
