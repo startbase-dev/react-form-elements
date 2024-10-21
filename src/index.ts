@@ -20,6 +20,8 @@ import Select from './Select';
 import Switch from './Switch';
 import TextArea from './TextArea';
 
+import 'react-day-picker/src/style.css';
+import 'rc-slider/assets/index.css';
 import './style/globals.scss';
 
 export {
