@@ -13,6 +13,10 @@
   gap: var(--rfe-spacing);
   width: fit-content;
 
+  > div {
+    margin: 0;
+  }
+
   @media (max-width: 576px) {
     flex-direction: column;
   }
