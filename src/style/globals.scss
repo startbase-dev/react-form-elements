@@ -26,21 +26,22 @@
   --rfe-transition: all 250ms;
 
   .rdp {
-    --rdp-cell-size: 40px !important; /* Size of the day cells. */
-    --rdp-caption-font-size: 16px !important; /* Font size for the caption labels. */
-    --rdp-accent-color: var(
-      --rfe-background-selected
-    ) !important; /* Accent color for the background of selected days. */
+    --rdp-cell-size: 30px;
+    /* Size of the day cells. */
+    --rdp-caption-font-size: 0.875rem;
+    /* Font size for the caption labels. */
+    --rdp-accent-color: var(--rfe-background-selected) !important;
+    /* Accent color for the background of selected days. */
 
-    --rdp-background-color: var(
-      --rfe-background-selected
-    ) !important; /* Background color for the hovered/focused elements. */
+    --rdp-background-color: var(--rfe-background-selected) !important;
+    /* Background color for the hovered/focused elements. */
 
-    --rdp-outline: 2px solid rgb(128 128 128) !important; /* Outline border for focused elements */
-    --rdp-outline-selected: 3px solid var(--rdp-accent-color) !important; /* Outline border for focused _and_ selected elements */
-    --rdp-selected-color: var(
-      --rfe-color
-    ) !important; /* Color of selected day text */
+    --rdp-outline: 2px solid rgb(128 128 128) !important;
+    /* Outline border for focused elements */
+    --rdp-outline-selected: 3px solid var(--rdp-accent-color) !important;
+    /* Outline border for focused _and_ selected elements */
+    --rdp-selected-color: var(--rfe-color) !important;
+    /* Color of selected day text */
   }
 }
 
@@ -134,4 +135,32 @@ input[type='week'],
 select:focus,
 textarea {
   font-size: var(--rfe-font-size) !important;
+}
+
+@media (min-width: 576px) {
+  // Small devices (landscape phones, 576px and up)
+  .rdp {
+    --rdp-cell-size: 40px !important;
+    --rdp-caption-font-size: 1rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  // Small devices (tablets, 768px and up)
+}
+
+@media (min-width: 992px) {
+  // Small devices (desktops, 992px and up)
+}
+
+@media (min-width: 1200px) {
+  // Small devices (large desktops, 1200px and up)
+}
+
+@media (min-width: 1400px) {
+  // Small devices (larger desktops, 1400px and up)
+}
+
+@media (min-width: 2160px) {
+  // Small devices (largest desktops, 2160px and up)
 }
