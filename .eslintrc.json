@@ -18,12 +18,7 @@
     "plugin:storybook/recommended",
     "plugin:storybook/recommended"
   ],
-  "plugins": [
-    "@typescript-eslint",
-    "compat",
-    "prettier",
-    "css-modules"
-  ],
+  "plugins": ["@typescript-eslint", "compat", "prettier", "css-modules"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -37,17 +32,9 @@
     }
   },
   "rules": {
-    "jsx-a11y/alt-text": [
-      "off"
-    ],
-    "linebreak-style": [
-      2,
-      "unix"
-    ],
-    "semi": [
-      2,
-      "always"
-    ],
+    "jsx-a11y/alt-text": ["off"],
+    "linebreak-style": [2, "unix"],
+    "semi": [2, "always"],
     "no-multiple-empty-lines": [
       2,
       {
