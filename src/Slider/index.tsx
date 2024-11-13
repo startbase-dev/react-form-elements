@@ -13,6 +13,7 @@ interface SliderProps {
   value?: number | number[] | null;
   range?: boolean;
   vertical?: boolean;
+  defaultValue?: number[];
   tracksClassName?: string;
   trackClassName?: string;
   railClassName?: string;
@@ -39,6 +40,7 @@ const SliderComponent = forwardRef<HTMLInputElement, SliderProps>(
       value = null,
       range = false,
       vertical = false,
+      defaultValue = [0, 0],
       tracksClassName = null,
       trackClassName = null,
       railClassName = null,
@@ -114,7 +116,7 @@ const SliderComponent = forwardRef<HTMLInputElement, SliderProps>(
               background: 'var(--rfe-border)',
             }}
             value={
-              value === null && range ? [0, 0] : value === null ? 0 : value
+              value === null && range ? defaultValue : value === null ? 0 : value
             }
             onChange={handleOnChange}
             disabled={disabled}
