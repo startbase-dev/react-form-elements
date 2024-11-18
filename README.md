@@ -48,6 +48,83 @@ import '@start-base/react-form-elements/styles.css';
 - Built-in dark mode support.
 - Variants for different styles.
 
+## Styling
+
+### With CSS Variables
+
+You can use CSS variables to customize the look and feel of the components. Here's a list of all available variables:
+
+```css title="global.css"
+--rfe-transparent: transparent;
+--rfe-white: #fff;
+--rfe-white-rgb: 255 255 255;
+--rfe-black: #000;
+--rfe-black-rgb: 0 0 0;
+--rfe-color: #000;
+--rfe-color-placeholder: #646464;
+--rfe-color-error: #ff383e;
+--rfe-border: #e6e6e6;
+--rfe-background: #fafafa;
+--rfe-background-selected: #f0f0f0;
+--rfe-background-disabled: #e1e1e1;
+--rfe-border-radius: 6px;
+--rfe-font-size: 16px;
+--rfe-placeholder-font-size: 14px;
+--rfe-focused-font-size: 12px;
+--rfe-error-font-size: 12px;
+--rfe-input-height: 56px;
+--rfe-spacing: 16px;
+--rfe-label-spacing: 10px;
+--rfe-focus: 0 0 10px #dcdcdc;
+--rfe-font-family: 'Arial', sans-serif;
+```
+
+### With Classnames
+
+You can use classnames to customize the look and feel of the components. Here's an example of how to use classnames:
+
+```css title="CustomInput.module.scss"
+.input {
+  &:focus {
+  }
+}
+
+.label {
+}
+```
+
+```jsx title="CustomInput.js"
+import { forwardRef } from 'react';
+
+import Input from '@start-base/react-form-elements/Input';
+
+import styles from './CustomInput.module.scss';
+
+const CustomInput = forwardRef((props, ref) => (
+  <Input
+    ref={ref}
+    {...props}
+    inputClassName={styles.input}
+    labelClassName={styles.label}
+    errorClassName={styles.errorLabel}
+  />
+));
+
+export default CustomInput;
+```
+
+Or for all form elements you can use single css file.
+
+```css title="FormElements.module.scss"
+.input {
+  &:focus {
+  }
+}
+
+.inputFocused {
+}
+```
+
 ## Demos
 
 For live demos, please visit our [Storybook](https://react-form-elements-eosin.vercel.app/) page.
