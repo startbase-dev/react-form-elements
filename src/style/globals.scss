@@ -121,10 +121,6 @@ select:-webkit-autofill:disabled:active {
   -webkit-text-fill-color: var(--rfe-color) !important;
 }
 
-input {
-  appearance: none;
-}
-
 input[type='color'],
 input[type='date'],
 input[type='datetime'],

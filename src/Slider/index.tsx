@@ -116,7 +116,11 @@ const SliderComponent = forwardRef<HTMLInputElement, SliderProps>(
               background: 'var(--rfe-border)',
             }}
             value={
-              value === null && range ? defaultValue : value === null ? 0 : value
+              value === null && range
+                ? defaultValue
+                : value === null
+                  ? 0
+                  : value
             }
             onChange={handleOnChange}
             disabled={disabled}
