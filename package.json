@@ -2,7 +2,7 @@
   "name": "@start-base/react-form-elements",
   "author": "Start-Base",
   "description": "Simplify form elements and form management. Selection of user friendly inputs and wide customization abilities to match your design and functionality.",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -11,6 +11,8 @@
   "files": [
     "./index.js",
     "./index.mjs",
+    "./index.d.ts",
+    "./index.d.mts",
     "./styles.css",
     "AmountInput",
     "Calendar",
@@ -90,98 +92,229 @@
     "textarea",
     "react-textarea"
   ],
-  "main": "./index.cjs",
-  "module": "./index.js",
-  "types": "./index.d.ts",
+  "main": "./index.js",
+  "module": "./index.mjs",
   "exports": {
     ".": {
-      "require": "./index.cjs",
-      "import": "./index.js"
+      "import": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      },
+      "require": {
+        "types": "./index.d.ts",
+        "default": "./index.js"
+      }
     },
     "./styles.css": "./styles.css",
     "./AmountInput": {
-      "require": "./AmountInput/index.cjs",
-      "import": "./AmountInput/index.js"
+      "require": {
+        "types": "./AmountInput/index.d.ts",
+        "default": "./AmountInput/index.js"
+      },
+      "import": {
+        "types": "./AmountInput/index.d.mts",
+        "default": "./AmountInput/index.mjs"
+      }
     },
     "./Calendar": {
-      "require": "./Calendar/index.cjs",
-      "import": "./Calendar/index.js"
+      "require": {
+        "types": "./Calendar/index.d.ts",
+        "default": "./Calendar/index.js"
+      },
+      "import": {
+        "types": "./Calendar/index.d.mts",
+        "default": "./Calendar/index.mjs"
+      }
     },
     "./Checkbox": {
-      "require": "./Checkbox/index.cjs",
-      "import": "./Checkbox/index.js"
+      "require": {
+        "types": "./Checkbox/index.d.ts",
+        "default": "./Checkbox/index.js"
+      },
+      "import": {
+        "types": "./Checkbox/index.d.mts",
+        "default": "./Checkbox/index.mjs"
+      }
     },
     "./CheckboxCards": {
-      "require": "./CheckboxCards/index.cjs",
-      "import": "./CheckboxCards/index.js"
+      "require": {
+        "types": "./CheckboxCards/index.d.ts",
+        "default": "./CheckboxCards/index.js"
+      },
+      "import": {
+        "types": "./CheckboxCards/index.d.mts",
+        "default": "./CheckboxCards/index.mjs"
+      }
     },
     "./CheckboxGroup": {
-      "require": "./CheckboxGroup/index.cjs",
-      "import": "./CheckboxGroup/index.js"
+      "require": {
+        "types": "./CheckboxGroup/index.d.ts",
+        "default": "./CheckboxGroup/index.js"
+      },
+      "import": {
+        "types": "./CheckboxGroup/index.d.mts",
+        "default": "./CheckboxGroup/index.mjs"
+      }
     },
     "./DatePicker": {
-      "require": "./DatePicker/index.cjs",
-      "import": "./DatePicker/index.js"
+      "require": {
+        "types": "./DatePicker/index.d.ts",
+        "default": "./DatePicker/index.js"
+      },
+      "import": {
+        "types": "./DatePicker/index.d.mts",
+        "default": "./DatePicker/index.mjs"
+      }
     },
     "./DateRangePicker": {
-      "require": "./DateRangePicker/index.cjs",
-      "import": "./DateRangePicker/index.js"
+      "require": {
+        "types": "./DateRangePicker/index.d.ts",
+        "default": "./DateRangePicker/index.js"
+      },
+      "import": {
+        "types": "./DateRangePicker/index.d.mts",
+        "default": "./DateRangePicker/index.mjs"
+      }
     },
     "./Form": {
-      "require": "./Form/index.cjs",
-      "import": "./Form/index.js"
+      "require": {
+        "types": "./Form/index.d.ts",
+        "default": "./Form/index.js"
+      },
+      "import": {
+        "types": "./Form/index.d.mts",
+        "default": "./Form/index.mjs"
+      }
     },
     "./Input": {
-      "require": "./Input/index.cjs",
-      "import": "./Input/index.js"
+      "require": {
+        "types": "./Input/index.d.ts",
+        "default": "./Input/index.js"
+      },
+      "import": {
+        "types": "./Input/index.d.mts",
+        "default": "./Input/index.mjs"
+      }
     },
     "./MultipleDatePicker": {
-      "require": "./MultipleDatePicker/index.cjs",
-      "import": "./MultipleDatePicker/index.js"
+      "require": {
+        "types": "./MultipleDatePicker/index.d.ts",
+        "default": "./MultipleDatePicker/index.js"
+      },
+      "import": {
+        "types": "./MultipleDatePicker/index.d.mts",
+        "default": "./MultipleDatePicker/index.mjs"
+      }
     },
     "./NumberInput": {
-      "require": "./NumberInput/index.cjs",
-      "import": "./NumberInput/index.js"
+      "require": {
+        "types": "./NumberInput/index.d.ts",
+        "default": "./NumberInput/index.js"
+      },
+      "import": {
+        "types": "./NumberInput/index.d.mts",
+        "default": "./NumberInput/index.mjs"
+      }
     },
     "./OTPInput": {
-      "require": "./OTPInput/index.cjs",
-      "import": "./OTPInput/index.js"
+      "require": {
+        "types": "./OTPInput/index.d.ts",
+        "default": "./OTPInput/index.js"
+      },
+      "import": {
+        "types": "./OTPInput/index.d.mts",
+        "default": "./OTPInput/index.mjs"
+      }
     },
     "./PasswordInput": {
-      "require": "./PasswordInput/index.cjs",
-      "import": "./PasswordInput/index.js"
+      "require": {
+        "types": "./PasswordInput/index.d.ts",
+        "default": "./PasswordInput/index.js"
+      },
+      "import": {
+        "types": "./PasswordInput/index.d.mts",
+        "default": "./PasswordInput/index.mjs"
+      }
     },
     "./PhoneInput": {
-      "require": "./PhoneInput/index.cjs",
-      "import": "./PhoneInput/index.js"
+      "require": {
+        "types": "./PhoneInput/index.d.ts",
+        "default": "./PhoneInput/index.js"
+      },
+      "import": {
+        "types": "./PhoneInput/index.d.mts",
+        "default": "./PhoneInput/index.mjs"
+      }
     },
     "./Radio": {
-      "require": "./Radio/index.cjs",
-      "import": "./Radio/index.js"
+      "require": {
+        "types": "./Radio/index.d.ts",
+        "default": "./Radio/index.js"
+      },
+      "import": {
+        "types": "./Radio/index.d.mts",
+        "default": "./Radio/index.mjs"
+      }
     },
     "./RadioCards": {
-      "require": "./RadioCards/index.cjs",
-      "import": "./RadioCards/index.js"
+      "require": {
+        "types": "./RadioCards/index.d.ts",
+        "default": "./RadioCards/index.js"
+      },
+      "import": {
+        "types": "./RadioCards/index.d.mts",
+        "default": "./RadioCards/index.mjs"
+      }
     },
     "./RadioGroup": {
-      "require": "./RadioGroup/index.cjs",
-      "import": "./RadioGroup/index.js"
+      "require": {
+        "types": "./RadioGroup/index.d.ts",
+        "default": "./RadioGroup/index.js"
+      },
+      "import": {
+        "types": "./RadioGroup/index.d.mts",
+        "default": "./RadioGroup/index.mjs"
+      }
     },
     "./Select": {
-      "require": "./Select/index.cjs",
-      "import": "./Select/index.js"
+      "require": {
+        "types": "./Select/index.d.ts",
+        "default": "./Select/index.js"
+      },
+      "import": {
+        "types": "./Select/index.d.mts",
+        "default": "./Select/index.mjs"
+      }
     },
     "./Slider": {
-      "require": "./Slider/index.cjs",
-      "import": "./Slider/index.js"
+      "require": {
+        "types": "./Slider/index.d.ts",
+        "default": "./Slider/index.js"
+      },
+      "import": {
+        "types": "./Slider/index.d.mts",
+        "default": "./Slider/index.mjs"
+      }
     },
     "./Switch": {
-      "require": "./Switch/index.cjs",
-      "import": "./Switch/index.js"
+      "require": {
+        "types": "./Switch/index.d.ts",
+        "default": "./Switch/index.js"
+      },
+      "import": {
+        "types": "./Switch/index.d.mts",
+        "default": "./Switch/index.mjs"
+      }
     },
     "./TextArea": {
-      "require": "./TextArea/index.cjs",
-      "import": "./TextArea/index.js"
+      "require": {
+        "types": "./TextArea/index.d.ts",
+        "default": "./TextArea/index.js"
+      },
+      "import": {
+        "types": "./TextArea/index.d.mts",
+        "default": "./TextArea/index.mjs"
+      }
     }
   },
   "scripts": {
