@@ -1,13 +1,20 @@
 import React, {
   forwardRef,
   useImperativeHandle,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
 import { format as dateFNSFormat } from 'date-fns/format';
 import { FocusOn } from 'react-focus-on';
-import { usePopper } from 'react-popper';
+import {
+  useFloating,
+  offset,
+  flip,
+  shift,
+  autoUpdate,
+} from '@floating-ui/react-dom';
 import cx from 'clsx';
 import CalendarRoot, {
   CalendarRootSingleProps,
@@ -86,13 +93,24 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
     const [isPopperOpen, setIsPopperOpen] = useState(false);
     const inputRef = useRef<HTMLInputElement | null>(null);
     useImperativeHandle(ref, () => inputRef?.current!);
-    const popperRef = useRef<HTMLDivElement>(null);
-    const [popperElement, setPopperElement] = useState<HTMLElement | null>(
+    const popperRef = useRef<HTMLDivElement | null>(null);
+    const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
       null
     );
-    const popper = usePopper(popperRef.current, popperElement, {
+
+    const { refs, floatingStyles, update } = useFloating({
       placement: 'bottom-end',
+      middleware: [offset(4), flip(), shift()],
+      whileElementsMounted: autoUpdate,
     });
+
+    useLayoutEffect(() => {
+      if (isPopperOpen && popperRef.current && popperElement) {
+        refs.setReference(popperRef.current);
+        refs.setFloating(popperElement);
+        requestAnimationFrame(() => update());
+      }
+    }, [isPopperOpen, popperElement, refs, update]);
 
     const closePopper = () => {
       setIsPopperOpen(false);
@@ -244,8 +262,7 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
             >
               <div
                 className={s.popper}
-                style={popper.styles.popper}
-                {...popper.attributes.popper}
+                style={floatingStyles as React.CSSProperties}
                 ref={setPopperElement}
                 role="dialog"
                 aria-label="Calendar"
@@ -255,7 +272,6 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
                   className={s.calendar}
                   calendarClassName={calendarClassName}
                   disabled={disabled}
-                  initialFocus={isPopperOpen}
                   selected={value instanceof Date ? value : undefined}
                   onSelect={handleDaySelect}
                   {...rest}

@@ -4,14 +4,22 @@ import React, {
   useMemo,
   useRef,
   useState,
+  useLayoutEffect,
+  JSX,
 } from 'react';
 import cx from 'clsx';
 import { format as dateFNSFormat } from 'date-fns';
-import { usePopper } from 'react-popper';
+import {
+  useFloating,
+  offset,
+  flip,
+  shift,
+  autoUpdate,
+} from '@floating-ui/react-dom';
 import { FocusOn } from 'react-focus-on';
 import CalendarRoot, { CalendarRootRangeProps } from '../Calendar/CalendarRoot';
 import s from './DateRangePicker.module.scss';
-import { DateRange, SelectRangeEventHandler } from 'react-day-picker';
+import { DateRange, PropsRange } from 'react-day-picker';
 import { FieldError } from 'react-hook-form';
 
 interface DateRangePickerProps extends CalendarRootRangeProps {
@@ -42,6 +50,7 @@ interface DateRangePickerProps extends CalendarRootRangeProps {
   appendClassName?: string | null;
   disableShrink?: boolean;
   disabled?: boolean;
+  locale?: any;
 }
 
 const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
@@ -96,16 +105,26 @@ const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
     );
     useImperativeHandle(ref, () => inputRef?.current!);
 
-    const popper = usePopper(popperRef.current, popperElement, {
+    const { refs, floatingStyles, update } = useFloating({
       placement: 'bottom-end',
+      middleware: [offset(4), flip(), shift()],
+      whileElementsMounted: autoUpdate,
     });
+
+    useLayoutEffect(() => {
+      if (isPopperOpen && popperRef.current && popperElement) {
+        refs.setReference(popperRef.current);
+        refs.setFloating(popperElement);
+        requestAnimationFrame(() => update());
+      }
+    }, [isPopperOpen, popperElement, refs, update]);
 
     const closePopper = () => {
       setIsPopperOpen(false);
       inputRef?.current?.focus();
     };
 
-    const handleDaySelect: SelectRangeEventHandler | undefined = (
+    const handleDaySelect: PropsRange['onSelect'] | undefined = (
       date: DateRange | undefined
     ) => {
       setRange(date);
@@ -176,7 +195,7 @@ const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
               : ''
           }
           onClick={() => setIsPopperOpen((prevState) => !prevState)}
-          onChange={() => ({})} // No-op to suppress warnings
+          onChange={() => ({})}
         />
       );
     }, [
@@ -266,8 +285,7 @@ const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
             >
               <div
                 className={s.popper}
-                style={popper.styles.popper}
-                {...popper.attributes.popper}
+                style={floatingStyles as React.CSSProperties}
                 ref={setPopperElement}
                 role="dialog"
                 aria-label="Calendar"
@@ -277,7 +295,6 @@ const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
                   className={s.calendar}
                   calendarClassName={calendarClassName}
                   disabled={disabled}
-                  initialFocus={isPopperOpen}
                   selected={range}
                   onSelect={handleDaySelect}
                   numberOfMonths={numberOfMonths}

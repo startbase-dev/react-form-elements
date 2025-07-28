@@ -6,6 +6,7 @@ import React, {
   useState,
   useRef,
   useEffect,
+  useLayoutEffect,
   useImperativeHandle,
 } from 'react';
 
@@ -21,7 +22,13 @@ import {
 } from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { format as dateFNSFormat, Locale } from 'date-fns';
-import { usePopper } from 'react-popper';
+import {
+  useFloating,
+  offset,
+  flip,
+  shift,
+  autoUpdate,
+} from '@floating-ui/react-dom';
 import { FocusOn } from 'react-focus-on';
 
 import CalendarRoot from '../Calendar/CalendarRoot';
@@ -99,9 +106,19 @@ const MultipleDatePicker = forwardRef<SelectInstance, MultipleDatePickerProps>(
       null
     );
 
-    const popper = usePopper(popperRef.current, popperElement, {
+    const { refs, floatingStyles } = useFloating({
       placement: 'bottom-end',
+      open: isPopperOpen,
+      middleware: [offset(4), flip(), shift()],
+      whileElementsMounted: autoUpdate,
     });
+
+    useLayoutEffect(() => {
+      if (isPopperOpen && popperRef.current && popperElement) {
+        refs.setReference(popperRef.current);
+        refs.setFloating(popperElement);
+      }
+    }, [isPopperOpen, refs, popperRef, popperElement]);
 
     const handleDaySelect = (date: Date[]) => {
       onChange({
@@ -329,8 +346,7 @@ const MultipleDatePicker = forwardRef<SelectInstance, MultipleDatePickerProps>(
               >
                 <div
                   className={s.popper}
-                  style={popper.styles.popper as React.CSSProperties}
-                  {...popper.attributes.popper}
+                  style={floatingStyles as React.CSSProperties}
                   ref={setPopperElement}
                   role="dialog"
                   aria-label="Calendar"
@@ -340,7 +356,6 @@ const MultipleDatePicker = forwardRef<SelectInstance, MultipleDatePickerProps>(
                     className={s.calendar}
                     calendarClassName={calendarClassName}
                     disabled={disabled}
-                    initialFocus={isPopperOpen}
                     selected={value}
                     onSelect={handleDaySelect}
                     {...rest}
