@@ -52,6 +52,10 @@
   height: var(--rfe-input-height);
   transition: all 250ms;
   font-family: var(--rfe-font-family);
+
+  &:invalid {
+    border: 1px solid var(--rfe-color-error);
+  }
 }
 
 .input:focus {
@@ -65,7 +69,8 @@
 
 .input:-webkit-autofill:not(.disableShrink) ~ .label,
 .input:focus:not(.disableShrink) ~ .label,
-.input:not([value=''], .disableShrink) ~ .label {
+.input:not([value=''], .disableShrink) ~ .label,
+.input:invalid ~ .label {
   font-size: var(--rfe-focused-font-size);
   transform: translateY(9px);
 }
