@@ -20,7 +20,7 @@ import CalendarRoot, {
   CalendarRootSingleProps,
 } from '../Calendar/CalendarRoot';
 import s from './DatePicker.module.scss';
-import { FieldError } from 'react-hook-form';
+import { FieldError, useFormContext } from 'react-hook-form';
 
 interface DatePickerProps extends CalendarRootSingleProps {
   name: string;
@@ -53,19 +53,17 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
   (
     {
       name,
-      onChange,
       error = null,
       label = null,
       placeholder = undefined,
-      value = '',
       locale = null,
       format = 'MM/dd/yyyy',
-      inputClassName = null,
-      labelClassName = null,
-      errorClassName = null,
-      calendarClassName = null,
+      inputClassName,
+      labelClassName,
+      errorClassName,
+      calendarClassName,
       prepend = null,
-      prependClassName = null,
+      prependClassName,
       append = (
         <svg
           className={s.icon}
@@ -90,6 +88,8 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
     },
     ref
   ) => {
+    const { watch } = useFormContext();
+    const value = watch(name) ?? '';
     const [isPopperOpen, setIsPopperOpen] = useState(false);
     const inputRef = useRef<HTMLInputElement | null>(null);
     useImperativeHandle(ref, () => inputRef?.current!);
@@ -115,16 +115,6 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
     const closePopper = () => {
       setIsPopperOpen(false);
       inputRef.current?.focus();
-    };
-
-    const handleDaySelect = (date: Date) => {
-      onChange({
-        target: {
-          name: name,
-          value: date,
-        },
-      });
-      closePopper();
     };
 
     const errorMessage = useMemo(() => {
@@ -268,12 +258,12 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
                 aria-label="Calendar"
               >
                 <CalendarRoot
+                  name={name}
+                  onSelectCallback={() => closePopper()}
                   error={error}
                   className={s.calendar}
                   calendarClassName={calendarClassName}
                   disabled={disabled}
-                  selected={value instanceof Date ? value : undefined}
-                  onSelect={handleDaySelect}
                   {...rest}
                   mode="single"
                 />

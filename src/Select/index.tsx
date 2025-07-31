@@ -16,7 +16,7 @@ import {
 import makeAnimated from 'react-select/animated';
 
 import s from './Select.module.scss';
-import { FieldError } from 'react-hook-form';
+import { FieldError, useFormContext } from 'react-hook-form';
 
 const animatedComponents = makeAnimated();
 
@@ -62,7 +62,6 @@ const Select = forwardRef<
       label = null,
       options = [],
       placeholder = null,
-      value = null,
       inputClassName = null,
       labelClassName = null,
       errorClassName = null,
@@ -72,10 +71,13 @@ const Select = forwardRef<
       components = null,
       onFocus = () => ({}),
       onBlur = () => ({}),
+      isMulti = false,
       ...rest
     },
     inputRef // inputRef is now typed as a ForwardedRef of StateManager (ReactSelect component)
   ) => {
+    const { watch } = useFormContext();
+    const value = watch(name);
     const [focused, setFocused] = useState(false);
 
     const handleChange = useCallback(
@@ -135,6 +137,8 @@ const Select = forwardRef<
           {label && disableShrink ? labelEl : null}
 
           <ReactSelect
+            closeMenuOnSelect={!isMulti}
+            isMulti={isMulti}
             value={value}
             ref={inputRef}
             options={options}

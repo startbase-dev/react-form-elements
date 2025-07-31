@@ -19,8 +19,8 @@ import {
 import { FocusOn } from 'react-focus-on';
 import CalendarRoot, { CalendarRootRangeProps } from '../Calendar/CalendarRoot';
 import s from './DateRangePicker.module.scss';
-import { DateRange, PropsRange } from 'react-day-picker';
-import { FieldError } from 'react-hook-form';
+import { DateRange } from 'react-day-picker';
+import { FieldError, useFormContext } from 'react-hook-form';
 
 interface DateRangePickerProps extends CalendarRootRangeProps {
   name: string;
@@ -37,12 +37,12 @@ interface DateRangePickerProps extends CalendarRootRangeProps {
   label?: string | null;
   placeholder?: string | null;
   value?: DateRange;
-  inputClassName?: string | null;
+  inputClassName?: string;
   numberOfMonths?: number;
   separator?: string;
-  labelClassName?: string | null;
-  errorClassName?: string | null;
-  calendarClassName?: string | null;
+  labelClassName?: string;
+  errorClassName?: string;
+  calendarClassName?: string;
   format?: string;
   prepend?: React.ReactNode | JSX.Element | null;
   prependClassName?: string | null;
@@ -57,19 +57,17 @@ const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
   (
     {
       name,
-      onChange,
       error = null,
       numberOfMonths = 2,
       separator = ' / ',
       label = null,
       placeholder = null,
-      value,
       locale = null,
       format = 'MM/dd/yyyy',
-      inputClassName = null,
-      labelClassName = null,
-      errorClassName = null,
-      calendarClassName = null,
+      inputClassName,
+      labelClassName,
+      errorClassName,
+      calendarClassName,
       prepend = null,
       append = (
         <svg
@@ -88,16 +86,18 @@ const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
           <path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" />
         </svg>
       ),
-      appendClassName = null,
-      prependClassName = null,
+      appendClassName,
+      prependClassName,
       disableShrink = false,
       disabled = false,
       ...rest
     },
     ref
   ) => {
+    const { watch } = useFormContext();
+    const value = watch(name) ?? '';
+
     const [isPopperOpen, setIsPopperOpen] = useState(false);
-    const [range, setRange] = useState<DateRange | undefined>(value);
     const popperRef = useRef<HTMLDivElement | null>(null);
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
@@ -122,21 +122,6 @@ const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
     const closePopper = () => {
       setIsPopperOpen(false);
       inputRef?.current?.focus();
-    };
-
-    const handleDaySelect: PropsRange['onSelect'] | undefined = (
-      date: DateRange | undefined
-    ) => {
-      setRange(date);
-      onChange({
-        target: {
-          name: name,
-          value: date,
-        },
-      });
-      if (date?.from && date?.to) {
-        closePopper();
-      }
     };
 
     const errorMessage = useMemo(() => {
@@ -291,12 +276,16 @@ const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps>(
                 aria-label="Calendar"
               >
                 <CalendarRoot
+                  name={name}
                   error={error}
                   className={s.calendar}
                   calendarClassName={calendarClassName}
                   disabled={disabled}
-                  selected={range}
-                  onSelect={handleDaySelect}
+                  onSelectCallback={() => {
+                    if (value?.from && value?.to) {
+                      closePopper();
+                    }
+                  }}
                   numberOfMonths={numberOfMonths}
                   {...rest}
                   mode="range"

@@ -1,12 +1,11 @@
 import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
-import CalendarRoot, { CalendarRootSingleProps } from './CalendarRoot';
 import s from './Calendar.module.scss';
-import { FieldError } from 'react-hook-form';
+import type { FieldError } from 'react-hook-form';
+import CalendarRoot, { type CalendarRootSingleProps } from './CalendarRoot';
 
-interface CalendarProps extends CalendarRootSingleProps {
+interface CalendarProps extends Omit<CalendarRootSingleProps, 'mode'> {
   name: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   error?:
     | boolean
     | string
@@ -15,7 +14,6 @@ interface CalendarProps extends CalendarRootSingleProps {
     | undefined
     | FieldError;
   label?: string;
-  value?: Date | null;
   labelClassName?: string;
   errorClassName?: string;
   calendarClassName?: string;
@@ -26,31 +24,15 @@ const Calendar = forwardRef<HTMLInputElement, CalendarProps>(
   (
     {
       name,
-      onChange,
       error = null,
-      label = null,
-      value = null,
-      labelClassName = null,
-      errorClassName = null,
-      calendarClassName = null,
-      disabled = false,
+      label,
+      labelClassName,
+      errorClassName,
+      calendarClassName,
       ...rest
     },
-    inputRef
+    rootRef
   ) => {
-    const handleDaySelect = (date: Date | undefined) => {
-      if (date) {
-        onChange({
-          target: {
-            name: name,
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            value: date,
-          },
-        });
-      }
-    };
-
     const errorMessage = useMemo(() => {
       if (error && typeof error === 'string') {
         return error;
@@ -76,24 +58,14 @@ const Calendar = forwardRef<HTMLInputElement, CalendarProps>(
     );
 
     return (
-      <div className={cx(s.root)}>
+      <div className={cx(s.root)} ref={rootRef}>
         <div className={cx(s.inputRoot)}>
           {label ? labelEl : null}
 
-          <input
-            type="hidden"
-            name={name}
-            value={value ? value.toISOString() : ''}
-            ref={inputRef}
-          />
-
           <CalendarRoot
-            className="globals_rdp"
+            name={name}
+            mode="single"
             calendarClassName={calendarClassName}
-            error={error}
-            disabled={disabled}
-            selected={value instanceof Date ? value : undefined}
-            onSelect={handleDaySelect}
             {...rest}
           />
         </div>

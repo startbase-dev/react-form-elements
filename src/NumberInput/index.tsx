@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 import Input, { type InputProps } from '../Input';
 import s from './NumberInput.module.scss';
+import { useFormContext } from 'react-hook-form';
 
 interface NumberInputProps extends InputProps {
   name: string;
@@ -11,22 +12,16 @@ interface NumberInputProps extends InputProps {
 }
 
 const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
-  ({ value, onChange, name, ...rest }, inputRef) => {
+  ({ name, ...rest }, inputRef) => {
+    const { watch, setValue } = useFormContext();
+    const value = watch(name);
+
     const handleIncrease = () => {
-      handleChange(parseInt(value as string) + 1);
+      setValue(name, Number.parseInt(value) + 1);
     };
 
     const handleDecrease = () => {
-      handleChange(parseInt(value as string) - 1);
-    };
-
-    const handleChange = (newValue: number) => {
-      onChange({
-        target: {
-          name,
-          value: newValue,
-        },
-      });
+      setValue(name, Number.parseInt(value) - 1);
     };
 
     return (
@@ -36,8 +31,6 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         type="number"
         inputMode="numeric"
         name={name}
-        value={value}
-        onChange={onChange}
         append={
           <div className={s.buttons}>
             <button type="button" className={s.button} onClick={handleIncrease}>

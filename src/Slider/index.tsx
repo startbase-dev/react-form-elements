@@ -2,7 +2,7 @@ import React, { forwardRef, useMemo } from 'react';
 import cx from 'clsx';
 import Slider from 'rc-slider';
 import s from './Slider.module.scss';
-import { FieldError } from 'react-hook-form';
+import { FieldError, useFormContext } from 'react-hook-form';
 
 interface SliderProps {
   name: string;
@@ -37,7 +37,6 @@ const SliderComponent = forwardRef<HTMLInputElement, SliderProps>(
       name,
       onChange,
       label = null,
-      value = null,
       range = false,
       vertical = false,
       defaultValue = [0, 0],
@@ -53,6 +52,8 @@ const SliderComponent = forwardRef<HTMLInputElement, SliderProps>(
     },
     inputRef
   ) => {
+    const { watch } = useFormContext();
+    const value = watch(name);
     const errorMessage = useMemo(() => {
       if (error && typeof error === 'string') {
         return error;

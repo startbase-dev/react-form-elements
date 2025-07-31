@@ -1,11 +1,4 @@
-import React, {
-  forwardRef,
-  useCallback,
-  useMemo,
-  ChangeEvent,
-  RefObject,
-  JSX,
-} from 'react';
+import React, { forwardRef, useMemo, ChangeEvent, RefObject, JSX } from 'react';
 import cx from 'clsx';
 import s from './Input.module.scss';
 import { FieldError } from 'react-hook-form';
@@ -43,11 +36,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       name,
-      onChange,
       error = null,
       label = null,
+      value,
+      defaultValue,
       placeholder = undefined,
-      value = '',
       inputClassName = null,
       labelClassName = null,
       errorClassName = null,
@@ -61,13 +54,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     inputRef: RefObject<HTMLInputElement>
   ) => {
-    const handleChange = useCallback(
-      (e: ChangeEvent<HTMLInputElement>) => {
-        onChange(e);
-      },
-      [onChange]
-    );
-
     const errorMessage = useMemo(() => {
       let message: string | null = null;
       if (error && typeof error === 'string') {
@@ -90,11 +76,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             ...(inputClassName ? { [inputClassName]: true } : {}),
           })}
           name={name}
-          value={value}
           ref={inputRef}
-          onChange={handleChange}
           disabled={disabled}
           placeholder={placeholder}
+          {...(value !== undefined
+            ? { value }
+            : defaultValue !== undefined
+              ? { defaultValue }
+              : {})}
           {...rest}
         />
       );
@@ -106,9 +95,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       error,
       inputClassName,
       name,
-      value,
       inputRef,
-      handleChange,
       rest,
     ]);
 

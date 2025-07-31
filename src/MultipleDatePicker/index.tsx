@@ -34,7 +34,7 @@ import { FocusOn } from 'react-focus-on';
 import CalendarRoot from '../Calendar/CalendarRoot';
 
 import s from './MultipleDatePicker.module.scss';
-import { FieldError } from 'react-hook-form';
+import { FieldError, useFormContext } from 'react-hook-form';
 
 interface OptionType {
   value: number;
@@ -79,7 +79,6 @@ const MultipleDatePicker = forwardRef<SelectInstance, MultipleDatePickerProps>(
       error = null,
       label = null,
       placeholder = null,
-      value = [],
       locale = null,
       format = 'MM/dd/yyyy',
       inputClassName = null,
@@ -96,6 +95,8 @@ const MultipleDatePicker = forwardRef<SelectInstance, MultipleDatePickerProps>(
     },
     ref
   ) => {
+    const { watch } = useFormContext();
+    const value = watch(name);
     const [isPopperOpen, setIsPopperOpen] = useState<boolean>(false);
 
     const inputRef = useRef<SelectInstance>(null);
@@ -119,15 +120,6 @@ const MultipleDatePicker = forwardRef<SelectInstance, MultipleDatePickerProps>(
         refs.setFloating(popperElement);
       }
     }, [isPopperOpen, refs, popperRef, popperElement]);
-
-    const handleDaySelect = (date: Date[]) => {
-      onChange({
-        target: {
-          name: name,
-          value: date,
-        },
-      });
-    };
 
     const options: OptionType[] = value?.map(
       (v: Date | string, index: number) => ({
@@ -352,12 +344,11 @@ const MultipleDatePicker = forwardRef<SelectInstance, MultipleDatePickerProps>(
                   aria-label="Calendar"
                 >
                   <CalendarRoot
+                    name={name}
                     error={error}
                     className={s.calendar}
                     calendarClassName={calendarClassName}
                     disabled={disabled}
-                    selected={value}
-                    onSelect={handleDaySelect}
                     {...rest}
                     mode="multiple"
                   />

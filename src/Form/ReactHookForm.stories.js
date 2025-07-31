@@ -48,14 +48,14 @@ const OPTIONS = [
 ];
 
 const Template = () => {
-  const [inputs, setInputs] = useState({});
   const [error, setError] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [disableShrink, setDisableShrink] = useState(false);
-  const { control, register, handleSubmit, watch } = useForm();
-  const onSubmit = (data) => setInputs(data);
 
-  console.log(inputs);
+  const form = useForm();
+  const { control, register, handleSubmit, watch, getValues } = form;
+  const onSubmit = () => console.log(getValues());
+
   return (
     <>
       <h2>Form Component</h2>
@@ -71,6 +71,7 @@ const Template = () => {
           borderRadius: '10px',
         }}
       >
+        <input type="checkbox" {...register('test')} />
         <Checkbox
           label="Error"
           name="error"
@@ -104,7 +105,10 @@ const Template = () => {
           }}
         />
       </div>
-      <Form>
+      <Form methods={form} onSubmit={handleSubmit(onSubmit)}>
+        <button type="submit" style={{ marginBottom: '1rem' }}>
+          Submit
+        </button>
         <Controller
           name="amount"
           control={control}
@@ -112,7 +116,6 @@ const Template = () => {
             <AmountInput
               label="Amount Input"
               disableShrink={disableShrink}
-              value={watch('amount')}
               error={error}
               {...field}
               disabled={disabled}
@@ -122,8 +125,8 @@ const Template = () => {
         />
         <Calendar
           label="Calendar"
-          value={watch('calendar')}
-          {...register('calendar')}
+          name="calendar"
+          mode="single"
           error={error}
           disabled={disabled}
         />
@@ -141,7 +144,6 @@ const Template = () => {
             <CheckboxCards
               disabled={disabled}
               label="CheckboxCards"
-              value={watch('checkboxCards')}
               {...field}
               error={error}
               options={[
@@ -158,7 +160,6 @@ const Template = () => {
             <CheckboxGroup
               disabled={disabled}
               label="CheckboxGroup"
-              value={watch('checkboxGroup')}
               {...field}
               error={error}
               options={[
@@ -168,40 +169,24 @@ const Template = () => {
             />
           )}
         />
-        <Controller
+        <DatePicker
+          label="Date Picker"
           name="date"
-          control={control}
-          render={({ field }) => (
-            <DatePicker
-              label="Date Picker"
-              disableShrink={disableShrink}
-              value={watch('date')}
-              {...field}
-              error={error}
-              disabled={disabled}
-              prepend={<PieIcon />}
-            />
-          )}
+          disableShrink={disableShrink}
+          error={error}
+          disabled={disabled}
+          prepend={<PieIcon />}
         />
-        <Controller
+        <DateRangePicker
+          label="Date Range Picker"
           name="date_range"
-          control={control}
-          render={({ field }) => (
-            <DateRangePicker
-              label="Date Range Picker"
-              disableShrink={disableShrink}
-              value={watch('date_range')}
-              {...register('date_range')}
-              {...field}
-              error={error}
-              disabled={disabled}
-              prepend={<PieIcon />}
-            />
-          )}
+          disableShrink={disableShrink}
+          error={error}
+          disabled={disabled}
+          prepend={<PieIcon />}
         />
         <Input
           label="Input"
-          value={watch('input')}
           {...register('input')}
           disableShrink={disableShrink}
           error={error}
@@ -209,17 +194,15 @@ const Template = () => {
           prepend={<PieIcon />}
         />
         <MultipleDatePicker
-          value={watch('multiple_date')}
+          label="Multiple Date Picker"
           {...register('multiple_date')}
           disableShrink={disableShrink}
           error={error}
-          label="Multiple Date Picker"
           disabled={disabled}
         />
         <NumberInput
           label="Number Input"
           disableShrink={disableShrink}
-          value={watch('number')}
           {...register('number')}
           error={error}
           disabled={disabled}
@@ -229,7 +212,6 @@ const Template = () => {
           length={6}
           label="OTP Input"
           name="otp"
-          value={watch('otp')}
           {...register('otp')}
           error={error}
           disabled={disabled}
@@ -238,7 +220,6 @@ const Template = () => {
         <PasswordInput
           label="Password Input"
           disableShrink={disableShrink}
-          value={watch('password')}
           {...register('password')}
           error={error}
           disabled={disabled}
@@ -247,7 +228,6 @@ const Template = () => {
         <PhoneInput
           label="Phone Input"
           disableShrink={disableShrink}
-          value={watch('phone')}
           {...register('phone')}
           error={error}
           disabled={disabled}
@@ -256,7 +236,7 @@ const Template = () => {
         <Radio
           disabled={disabled}
           label="Radio"
-          checked={watch('radio') === 'radio'}
+          checked={watch('radio')}
           value={'radio'}
           {...register('radio')}
           error={error}
@@ -288,15 +268,23 @@ const Template = () => {
           options={OPTIONS}
           isClearable
           disableShrink={disableShrink}
-          value={watch('select')}
           {...register('select')}
+          error={error}
+          disabled={disabled}
+        />
+        <Select
+          label="Multi Select"
+          options={OPTIONS}
+          isClearable
+          isMulti
+          disableShrink={disableShrink}
+          {...register('select_multi')}
           error={error}
           disabled={disabled}
         />
         <Slider
           name="slider"
           label="Slider"
-          value={watch('slider')}
           {...register('slider')}
           error={error}
           disabled={disabled}
@@ -316,15 +304,14 @@ const Template = () => {
               label="Description"
               autoGrow
               disableShrink={disableShrink}
-              value={watch('textarea')}
               {...field}
               error={error}
               disabled={disabled}
             />
           )}
         />
+        <button type="submit">Submit</button>
       </Form>
-      <button onClick={handleSubmit(onSubmit)}> Submit</button>
       <div
         style={{
           display: 'flex',

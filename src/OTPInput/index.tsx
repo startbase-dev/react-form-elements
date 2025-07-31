@@ -6,7 +6,7 @@ import cx from 'clsx';
 import { useCountDown } from '../utils/useCountDown';
 import { remove, set } from '../utils/localStorage';
 import formatSeconds from '../utils/date';
-import { FieldError } from 'react-hook-form';
+import { FieldError, useFormContext } from 'react-hook-form';
 
 interface OTPInputProps {
   name: string;
@@ -44,7 +44,6 @@ const OTPInputComponent = forwardRef<HTMLInputElement, OTPInputProps>(
       timer = null,
       onComplete = () => ({}),
       onResend = () => ({}),
-      value = '',
       error = null,
       label = null,
       resendLabel = 'Resend',
@@ -55,6 +54,8 @@ const OTPInputComponent = forwardRef<HTMLInputElement, OTPInputProps>(
     },
     inputRef
   ) => {
+    const { watch } = useFormContext();
+    const value = watch(name);
     const [seconds, resetSeconds] = useCountDown(name);
 
     const handleResend = useCallback(() => {
