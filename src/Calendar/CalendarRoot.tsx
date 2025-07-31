@@ -1,14 +1,14 @@
 import React from 'react';
 import {
   DayPicker,
-  DayPickerMultipleProps,
-  type DayPickerRangeProps,
-  type DayPickerSingleProps,
+  type PropsMulti,
+  type PropsSingle,
+  type PropsRange,
 } from 'react-day-picker';
 import cx from 'clsx';
 import s from './CalendarRoot.module.scss';
 
-export interface CalendarRootRangeProps extends DayPickerRangeProps {
+export interface CalendarRootRangeProps extends PropsRange {
   numberOfMonths?: number;
   classNames?: Partial<Record<string, string>>;
   calendarClassName?: string | null;
@@ -17,7 +17,7 @@ export interface CalendarRootRangeProps extends DayPickerRangeProps {
   error?: boolean | string | { message?: string } | null;
 }
 
-export interface CalendarRootSingleProps extends DayPickerSingleProps {
+export interface CalendarRootSingleProps extends PropsSingle {
   numberOfMonths?: number;
   classNames?: Partial<Record<string, string>>;
   calendarClassName?: string | null;
@@ -26,7 +26,7 @@ export interface CalendarRootSingleProps extends DayPickerSingleProps {
   error?: boolean | string | { message?: string } | null;
 }
 
-export interface CalendarRootMultipleProps extends DayPickerMultipleProps {
+export interface CalendarRootMultipleProps extends PropsMulti {
   numberOfMonths?: number;
   classNames?: Partial<Record<string, string>>;
   calendarClassName?: string | null;
